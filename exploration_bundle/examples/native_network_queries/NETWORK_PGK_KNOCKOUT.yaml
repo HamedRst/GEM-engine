@@ -1,0 +1,63 @@
+schema_version: '1.0'
+problem_type: exploration.network_visualization
+problem_id: NETWORK_PGK_KNOCKOUT
+description: 'PGK knockout: side-by-side compact and context figures with growth-maximizing
+  FBA in each model scenario'
+model:
+  registry_id: cglutamicum_growth_product_cost
+  sha256: 0e92b450de71e640cf649be67e8ba38f3df02884e42ff7d6e760291819708439
+subject:
+  kind: genes
+  entity_kind: metabolite
+  variant_id: canonical_v1
+  branch_only: false
+  gene_ids:
+  - lcl_NC_006958_1_prot_WP_003862252_1_1542
+analysis:
+  mode: fba
+  knockout_gene_ids:
+  - lcl_NC_006958_1_prot_WP_003862252_1_1542
+  compare_to_wild_type: true
+fba:
+  objective:
+    source: model
+  direction: max
+  medium:
+    source: model_encoded
+    uptake_bounds: {}
+    close_unselected: true
+  flux_threshold: 1.0e-08
+  bounds_overrides: {}
+pathway_library:
+  id: atlas_canonical
+  version: 1.0.0
+render:
+  style_preset: atlas_v023_publication
+  hide_currency_metabolites: true
+  max_display_reactions: 28
+  depth: 3
+  direction: upstream
+  label_mode: names
+  include_legend: true
+  show_flux_values: true
+  active_only: false
+  gene_context_depth: 1
+  gene_context_max_reactions: 16
+  dpi: 300
+  export_formats:
+  - svg
+  - pdf
+  - png
+output: {}
+metadata:
+  si_expected:
+    kind: genes
+    model_gene: lcl_NC_006958_1_prot_WP_003862252_1_1542
+    reaction: R_PGK
+    expected_gpr_state: disabled
+    gpr_rule: lcl_NC_006958_1_prot_WP_003862252_1_1542
+    interpretation: Boolean model GPR only; does not predict experimental phenotype
+  reference_urls:
+  - https://pmc.ncbi.nlm.nih.gov/articles/PMC8634658/
+  scope: Model-predicted biomass objective and flux rerouting; alternative optima
+    possible and no experimental mutant phenotype validation

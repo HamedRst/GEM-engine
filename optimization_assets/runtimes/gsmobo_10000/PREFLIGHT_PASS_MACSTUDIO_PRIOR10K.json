@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "worker": "MACSTUDIO",
+  "prior_label": "10K",
+  "prior_tag": "PRIOR10K",
+  "study_config": "/Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml",
+  "study_config_sha256": "062bcc07a1930140d80f66c925d966255fc3130f83fe39d887c045d5d54c61f8",
+  "package_hash_manifest_sha256": "c327cdee5884b82e66c222baa4beb31d8048efa4a3843563a9cbf580d3c7f650",
+  "cases": 25,
+  "time": 1788893688.943737,
+  "runtime_repair": "v0.4.4_skip_single_exact_failure",
+  "runtime_repair_time": 1788919144.565336
+}

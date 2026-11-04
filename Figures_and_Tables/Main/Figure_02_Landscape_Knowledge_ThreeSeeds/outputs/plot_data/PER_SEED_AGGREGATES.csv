@@ -1,0 +1,361 @@
+panel,landscape_seed,prior_points,method,mean_hv_pct,n_cases,species
+trends,42,10000,Landscape,89.73619787482137,25,
+trends,42,10000,NSGA-II (no prior),52.94197925727585,25,
+trends,42,10000,NSGA-II + landscape,95.59596332839796,25,
+trends,42,10000,gsMOBO (no prior),70.91555359870685,25,
+trends,42,10000,gsMOBO + landscape,98.95904401480627,25,
+trends,42,25000,Landscape,96.93915952381155,25,
+trends,42,25000,NSGA-II (no prior),52.94197925727585,25,
+trends,42,25000,NSGA-II + landscape,100.91031721331474,25,
+trends,42,25000,gsMOBO (no prior),70.91555359870685,25,
+trends,42,25000,gsMOBO + landscape,101.52585947166665,25,
+trends,42,5000,Landscape,84.311341655119,25,
+trends,42,5000,NSGA-II (no prior),52.94197925727585,25,
+trends,42,5000,NSGA-II + landscape,92.33996520088157,25,
+trends,42,5000,gsMOBO (no prior),70.91555359870685,25,
+trends,42,5000,gsMOBO + landscape,92.85836668179743,25,
+trends,42,50000,Landscape,100.0,25,
+trends,42,50000,NSGA-II (no prior),52.94197925727585,25,
+trends,42,50000,NSGA-II + landscape,104.43937424107607,25,
+trends,42,50000,gsMOBO (no prior),70.91555359870685,25,
+trends,42,50000,gsMOBO + landscape,106.21910618056721,25,
+trends,43,10000,Landscape,92.56236652971327,25,
+trends,43,10000,NSGA-II (no prior),49.031097187231154,25,
+trends,43,10000,NSGA-II + landscape,97.93204957092834,25,
+trends,43,10000,gsMOBO (no prior),66.31500909669717,25,
+trends,43,10000,gsMOBO + landscape,98.77569485001744,25,
+trends,43,25000,Landscape,97.84375753893055,25,
+trends,43,25000,NSGA-II (no prior),49.031097187231154,25,
+trends,43,25000,NSGA-II + landscape,101.91595206114954,25,
+trends,43,25000,gsMOBO (no prior),66.31500909669717,25,
+trends,43,25000,gsMOBO + landscape,103.82574797395509,25,
+trends,43,5000,Landscape,85.54851072928734,25,
+trends,43,5000,NSGA-II (no prior),49.031097187231154,25,
+trends,43,5000,NSGA-II + landscape,92.9689759497879,25,
+trends,43,5000,gsMOBO (no prior),66.31500909669717,25,
+trends,43,5000,gsMOBO + landscape,95.07581585161455,25,
+trends,43,50000,Landscape,100.0,25,
+trends,43,50000,NSGA-II (no prior),49.031097187231154,25,
+trends,43,50000,NSGA-II + landscape,103.62291583957617,25,
+trends,43,50000,gsMOBO (no prior),66.31500909669717,25,
+trends,43,50000,gsMOBO + landscape,105.3626690637046,25,
+trends,44,10000,Landscape,91.93949138407227,25,
+trends,44,10000,NSGA-II (no prior),49.692708868303335,25,
+trends,44,10000,NSGA-II + landscape,97.18285352056905,25,
+trends,44,10000,gsMOBO (no prior),63.27630521260473,25,
+trends,44,10000,gsMOBO + landscape,99.11574513004237,25,
+trends,44,25000,Landscape,95.49515587294361,25,
+trends,44,25000,NSGA-II (no prior),49.692708868303335,25,
+trends,44,25000,NSGA-II + landscape,100.99750993129064,25,
+trends,44,25000,gsMOBO (no prior),63.27630521260473,25,
+trends,44,25000,gsMOBO + landscape,105.05197047280919,25,
+trends,44,5000,Landscape,86.77541190906189,25,
+trends,44,5000,NSGA-II (no prior),49.692708868303335,25,
+trends,44,5000,NSGA-II + landscape,94.56708855302172,25,
+trends,44,5000,gsMOBO (no prior),63.27630521260473,25,
+trends,44,5000,gsMOBO + landscape,93.59546328025145,25,
+trends,44,50000,Landscape,100.0,25,
+trends,44,50000,NSGA-II (no prior),49.692708868303335,25,
+trends,44,50000,NSGA-II + landscape,105.62417319583615,25,
+trends,44,50000,gsMOBO (no prior),63.27630521260473,25,
+trends,44,50000,gsMOBO + landscape,105.00867310887806,25,
+species,42,10000,Landscape,100.0,5,cglutamicum
+species,42,10000,NSGA-II (no prior),52.42286907646727,5,cglutamicum
+species,42,10000,NSGA-II + landscape,103.10412548222031,5,cglutamicum
+species,42,10000,gsMOBO (no prior),81.15211905357847,5,cglutamicum
+species,42,10000,gsMOBO + landscape,103.6299436937283,5,cglutamicum
+species,42,10000,Landscape,100.0,5,cho
+species,42,10000,NSGA-II (no prior),61.676726784610906,5,cho
+species,42,10000,NSGA-II + landscape,112.2856074340313,5,cho
+species,42,10000,gsMOBO (no prior),89.2607273119183,5,cho
+species,42,10000,gsMOBO + landscape,132.05578684460298,5,cho
+species,42,10000,Landscape,100.0,5,ecoli_antiepex
+species,42,10000,NSGA-II (no prior),34.075947203432605,5,ecoli_antiepex
+species,42,10000,NSGA-II + landscape,110.03886463834456,5,ecoli_antiepex
+species,42,10000,gsMOBO (no prior),60.67146897762779,5,ecoli_antiepex
+species,42,10000,gsMOBO + landscape,109.20143100072806,5,ecoli_antiepex
+species,42,10000,Landscape,100.0,5,pputida
+species,42,10000,NSGA-II (no prior),76.78772402698439,5,pputida
+species,42,10000,NSGA-II + landscape,101.25763273523617,5,pputida
+species,42,10000,gsMOBO (no prior),86.85220880927095,5,pputida
+species,42,10000,gsMOBO + landscape,100.60409051740211,5,pputida
+species,42,10000,Landscape,100.0,5,yeast
+species,42,10000,NSGA-II (no prior),61.704013482280686,5,yeast
+species,42,10000,NSGA-II + landscape,109.0832845146164,5,yeast
+species,42,10000,gsMOBO (no prior),70.1166373518713,5,yeast
+species,42,10000,gsMOBO + landscape,111.41251346505557,5,yeast
+species,42,25000,Landscape,100.0,5,cglutamicum
+species,42,25000,NSGA-II (no prior),49.648869267264224,5,cglutamicum
+species,42,25000,NSGA-II + landscape,105.61410737547354,5,cglutamicum
+species,42,25000,gsMOBO (no prior),76.81339069810177,5,cglutamicum
+species,42,25000,gsMOBO + landscape,103.27018440040297,5,cglutamicum
+species,42,25000,Landscape,100.0,5,cho
+species,42,25000,NSGA-II (no prior),54.50964087653672,5,cho
+species,42,25000,NSGA-II + landscape,105.1618740028415,5,cho
+species,42,25000,gsMOBO (no prior),79.25484529440207,5,cho
+species,42,25000,gsMOBO + landscape,113.6720822350417,5,cho
+species,42,25000,Landscape,100.0,5,ecoli_antiepex
+species,42,25000,NSGA-II (no prior),32.43760104422042,5,ecoli_antiepex
+species,42,25000,NSGA-II + landscape,106.24217660669319,5,ecoli_antiepex
+species,42,25000,gsMOBO (no prior),56.76574538983527,5,ecoli_antiepex
+species,42,25000,gsMOBO + landscape,106.77726776269645,5,ecoli_antiepex
+species,42,25000,Landscape,100.0,5,pputida
+species,42,25000,NSGA-II (no prior),75.67298313282603,5,pputida
+species,42,25000,NSGA-II + landscape,101.45824256670849,5,pputida
+species,42,25000,gsMOBO (no prior),85.48570315236792,5,pputida
+species,42,25000,gsMOBO + landscape,100.21470311631376,5,pputida
+species,42,25000,Landscape,100.0,5,yeast
+species,42,25000,NSGA-II (no prior),58.657020669616564,5,yeast
+species,42,25000,NSGA-II + landscape,102.40993503106858,5,yeast
+species,42,25000,gsMOBO (no prior),66.71865640965746,5,yeast
+species,42,25000,gsMOBO + landscape,100.29129791337769,5,yeast
+species,42,5000,Landscape,100.0,5,cglutamicum
+species,42,5000,NSGA-II (no prior),54.85754881266442,5,cglutamicum
+species,42,5000,NSGA-II + landscape,104.50509839647243,5,cglutamicum
+species,42,5000,gsMOBO (no prior),84.94146081417001,5,cglutamicum
+species,42,5000,gsMOBO + landscape,106.16228905006948,5,cglutamicum
+species,42,5000,Landscape,100.0,5,cho
+species,42,5000,NSGA-II (no prior),62.8943151834741,5,cho
+species,42,5000,NSGA-II + landscape,114.91810446233558,5,cho
+species,42,5000,gsMOBO (no prior),91.06135321349022,5,cho
+species,42,5000,gsMOBO + landscape,135.22908806252744,5,cho
+species,42,5000,Landscape,100.0,5,ecoli_antiepex
+species,42,5000,NSGA-II (no prior),40.384986605013786,5,ecoli_antiepex
+species,42,5000,NSGA-II + landscape,124.75265477407932,5,ecoli_antiepex
+species,42,5000,gsMOBO (no prior),69.95268997554113,5,ecoli_antiepex
+species,42,5000,gsMOBO + landscape,106.87838991720216,5,ecoli_antiepex
+species,42,5000,Landscape,100.0,5,pputida
+species,42,5000,NSGA-II (no prior),78.32410900234738,5,pputida
+species,42,5000,NSGA-II + landscape,102.21836718971092,5,pputida
+species,42,5000,gsMOBO (no prior),88.54640495645265,5,pputida
+species,42,5000,gsMOBO + landscape,101.93219730226902,5,pputida
+species,42,5000,Landscape,100.0,5,yeast
+species,42,5000,NSGA-II (no prior),63.05594374582405,5,yeast
+species,42,5000,NSGA-II + landscape,110.36591665384627,5,yeast
+species,42,5000,gsMOBO (no prior),71.70879281633734,5,yeast
+species,42,5000,gsMOBO + landscape,101.16848482340907,5,yeast
+species,42,50000,Landscape,100.0,5,cglutamicum
+species,42,50000,NSGA-II (no prior),47.77359205991302,5,cglutamicum
+species,42,50000,NSGA-II + landscape,106.5887098703315,5,cglutamicum
+species,42,50000,gsMOBO (no prior),73.63755262546486,5,cglutamicum
+species,42,50000,gsMOBO + landscape,102.09992425916953,5,cglutamicum
+species,42,50000,Landscape,100.0,5,cho
+species,42,50000,NSGA-II (no prior),52.32350431341199,5,cho
+species,42,50000,NSGA-II + landscape,109.0192701749029,5,cho
+species,42,50000,gsMOBO (no prior),75.50252022396118,5,cho
+species,42,50000,gsMOBO + landscape,126.15588585642438,5,cho
+species,42,50000,Landscape,100.0,5,ecoli_antiepex
+species,42,50000,NSGA-II (no prior),31.348993393130232,5,ecoli_antiepex
+species,42,50000,NSGA-II + landscape,104.03348611371212,5,ecoli_antiepex
+species,42,50000,gsMOBO (no prior),54.518881988038444,5,ecoli_antiepex
+species,42,50000,gsMOBO + landscape,102.35993114638906,5,ecoli_antiepex
+species,42,50000,Landscape,100.0,5,pputida
+species,42,50000,NSGA-II (no prior),75.01346758765033,5,pputida
+species,42,50000,NSGA-II + landscape,100.66218507721192,5,pputida
+species,42,50000,gsMOBO (no prior),84.69955922729972,5,pputida
+species,42,50000,gsMOBO + landscape,100.2795511882791,5,pputida
+species,42,50000,Landscape,100.0,5,yeast
+species,42,50000,NSGA-II (no prior),58.25033893227365,5,yeast
+species,42,50000,NSGA-II + landscape,101.89321996922189,5,yeast
+species,42,50000,gsMOBO (no prior),66.21925392877004,5,yeast
+species,42,50000,gsMOBO + landscape,100.20023845257401,5,yeast
+species,43,10000,Landscape,100.0,5,cglutamicum
+species,43,10000,NSGA-II (no prior),71.88385215058034,5,cglutamicum
+species,43,10000,NSGA-II + landscape,105.30981946750862,5,cglutamicum
+species,43,10000,gsMOBO (no prior),81.52838806241269,5,cglutamicum
+species,43,10000,gsMOBO + landscape,104.27204034417441,5,cglutamicum
+species,43,10000,Landscape,100.0,5,cho
+species,43,10000,NSGA-II (no prior),26.944813158889207,5,cho
+species,43,10000,NSGA-II + landscape,110.02325568801568,5,cho
+species,43,10000,gsMOBO (no prior),59.70825848259959,5,cho
+species,43,10000,gsMOBO + landscape,126.09480011666064,5,cho
+species,43,10000,Landscape,100.0,5,ecoli_antiepex
+species,43,10000,NSGA-II (no prior),33.61900054037401,5,ecoli_antiepex
+species,43,10000,NSGA-II + landscape,106.16275253899623,5,ecoli_antiepex
+species,43,10000,gsMOBO (no prior),57.85220126600891,5,ecoli_antiepex
+species,43,10000,gsMOBO + landscape,104.45172355946397,5,ecoli_antiepex
+species,43,10000,Landscape,100.0,5,pputida
+species,43,10000,NSGA-II (no prior),53.03819695589902,5,pputida
+species,43,10000,NSGA-II + landscape,102.72364693342735,5,pputida
+species,43,10000,gsMOBO (no prior),79.55166075153222,5,pputida
+species,43,10000,gsMOBO + landscape,100.62701699407415,5,pputida
+species,43,10000,Landscape,100.0,5,yeast
+species,43,10000,NSGA-II (no prior),74.88394577250963,5,yeast
+species,43,10000,NSGA-II + landscape,105.88061770267298,5,yeast
+species,43,10000,gsMOBO (no prior),74.3301275491701,5,yeast
+species,43,10000,gsMOBO + landscape,100.70555266086244,5,yeast
+species,43,25000,Landscape,100.0,5,cglutamicum
+species,43,25000,NSGA-II (no prior),69.15888574803945,5,cglutamicum
+species,43,25000,NSGA-II + landscape,104.99726391149728,5,cglutamicum
+species,43,25000,gsMOBO (no prior),78.42899831961884,5,cglutamicum
+species,43,25000,gsMOBO + landscape,102.88138745561025,5,cglutamicum
+species,43,25000,Landscape,100.0,5,cho
+species,43,25000,NSGA-II (no prior),24.251090751047713,5,cho
+species,43,25000,NSGA-II + landscape,106.79522282714821,5,cho
+species,43,25000,gsMOBO (no prior),54.976029596873055,5,cho
+species,43,25000,gsMOBO + landscape,122.68741670590886,5,cho
+species,43,25000,Landscape,100.0,5,ecoli_antiepex
+species,43,25000,NSGA-II (no prior),32.04955612294233,5,ecoli_antiepex
+species,43,25000,NSGA-II + landscape,105.53882926244673,5,ecoli_antiepex
+species,43,25000,gsMOBO (no prior),54.569093048096796,5,ecoli_antiepex
+species,43,25000,gsMOBO + landscape,104.81557273636666,5,ecoli_antiepex
+species,43,25000,Landscape,100.0,5,pputida
+species,43,25000,NSGA-II (no prior),52.133252778364955,5,pputida
+species,43,25000,NSGA-II + landscape,101.6960035612329,5,pputida
+species,43,25000,gsMOBO (no prior),78.53887949364078,5,pputida
+species,43,25000,gsMOBO + landscape,100.23501597740514,5,pputida
+species,43,25000,Landscape,100.0,5,yeast
+species,43,25000,NSGA-II (no prior),71.20944819356167,5,yeast
+species,43,25000,NSGA-II + landscape,101.9836457345294,5,yeast
+species,43,25000,gsMOBO (no prior),71.25934157144674,5,yeast
+species,43,25000,gsMOBO + landscape,100.52627975948357,5,yeast
+species,43,5000,Landscape,100.0,5,cglutamicum
+species,43,5000,NSGA-II (no prior),72.90253163845875,5,cglutamicum
+species,43,5000,NSGA-II + landscape,104.80795465923146,5,cglutamicum
+species,43,5000,gsMOBO (no prior),82.79109811247841,5,cglutamicum
+species,43,5000,gsMOBO + landscape,105.14590395618998,5,cglutamicum
+species,43,5000,Landscape,100.0,5,cho
+species,43,5000,NSGA-II (no prior),29.904294698569657,5,cho
+species,43,5000,NSGA-II + landscape,110.09045083500564,5,cho
+species,43,5000,gsMOBO (no prior),68.9262165935702,5,cho
+species,43,5000,gsMOBO + landscape,140.03766797339242,5,cho
+species,43,5000,Landscape,100.0,5,ecoli_antiepex
+species,43,5000,NSGA-II (no prior),39.60145434543909,5,ecoli_antiepex
+species,43,5000,NSGA-II + landscape,127.62225624191498,5,ecoli_antiepex
+species,43,5000,gsMOBO (no prior),66.35616092231037,5,ecoli_antiepex
+species,43,5000,gsMOBO + landscape,107.32626168397448,5,ecoli_antiepex
+species,43,5000,Landscape,100.0,5,pputida
+species,43,5000,NSGA-II (no prior),54.4902679458417,5,pputida
+species,43,5000,NSGA-II + landscape,106.35900240266702,5,pputida
+species,43,5000,gsMOBO (no prior),82.62010956365755,5,pputida
+species,43,5000,gsMOBO + landscape,103.58676252387265,5,pputida
+species,43,5000,Landscape,100.0,5,yeast
+species,43,5000,NSGA-II (no prior),76.15660119868228,5,yeast
+species,43,5000,NSGA-II + landscape,104.82333151633294,5,yeast
+species,43,5000,gsMOBO (no prior),75.85577688548004,5,yeast
+species,43,5000,gsMOBO + landscape,104.76286728481355,5,yeast
+species,43,50000,Landscape,100.0,5,cglutamicum
+species,43,50000,NSGA-II (no prior),68.23746737403424,5,cglutamicum
+species,43,50000,NSGA-II + landscape,103.3972701748835,5,cglutamicum
+species,43,50000,gsMOBO (no prior),77.32669455862393,5,cglutamicum
+species,43,50000,gsMOBO + landscape,102.48822909288337,5,cglutamicum
+species,43,50000,Landscape,100.0,5,cho
+species,43,50000,NSGA-II (no prior),23.579403282374255,5,cho
+species,43,50000,NSGA-II + landscape,107.8434887044678,5,cho
+species,43,50000,gsMOBO (no prior),52.77790834378007,5,cho
+species,43,50000,gsMOBO + landscape,120.11531219325485,5,cho
+species,43,50000,Landscape,100.0,5,ecoli_antiepex
+species,43,50000,NSGA-II (no prior),31.276633396424785,5,ecoli_antiepex
+species,43,50000,NSGA-II + landscape,103.75287386990917,5,ecoli_antiepex
+species,43,50000,gsMOBO (no prior),53.161256323100964,5,ecoli_antiepex
+species,43,50000,gsMOBO + landscape,103.7659815040639,5,ecoli_antiepex
+species,43,50000,Landscape,100.0,5,pputida
+species,43,50000,NSGA-II (no prior),51.55329169144567,5,pputida
+species,43,50000,NSGA-II + landscape,101.36104771415285,5,pputida
+species,43,50000,gsMOBO (no prior),77.80413615476618,5,pputida
+species,43,50000,gsMOBO + landscape,100.31847019285534,5,pputida
+species,43,50000,Landscape,100.0,5,yeast
+species,43,50000,NSGA-II (no prior),70.50869019187681,5,yeast
+species,43,50000,NSGA-II + landscape,101.75989873446751,5,yeast
+species,43,50000,gsMOBO (no prior),70.50505010321473,5,yeast
+species,43,50000,gsMOBO + landscape,100.12535233546552,5,yeast
+species,44,10000,Landscape,100.0,5,cglutamicum
+species,44,10000,NSGA-II (no prior),59.68747742930476,5,cglutamicum
+species,44,10000,NSGA-II + landscape,106.1132999006397,5,cglutamicum
+species,44,10000,gsMOBO (no prior),84.58143101889944,5,cglutamicum
+species,44,10000,gsMOBO + landscape,105.02821532758853,5,cglutamicum
+species,44,10000,Landscape,100.0,5,cho
+species,44,10000,NSGA-II (no prior),47.00024920730961,5,cho
+species,44,10000,NSGA-II + landscape,110.5933443159218,5,cho
+species,44,10000,gsMOBO (no prior),64.10333998579848,5,cho
+species,44,10000,gsMOBO + landscape,125.42414705616969,5,cho
+species,44,10000,Landscape,100.0,5,ecoli_antiepex
+species,44,10000,NSGA-II (no prior),36.482932153332925,5,ecoli_antiepex
+species,44,10000,NSGA-II + landscape,107.91390154061695,5,ecoli_antiepex
+species,44,10000,gsMOBO (no prior),60.69443474782917,5,ecoli_antiepex
+species,44,10000,gsMOBO + landscape,105.1509998266541,5,ecoli_antiepex
+species,44,10000,Landscape,100.0,5,pputida
+species,44,10000,NSGA-II (no prior),72.19298724546228,5,pputida
+species,44,10000,NSGA-II + landscape,101.67500588735038,5,pputida
+species,44,10000,gsMOBO (no prior),80.17116128030459,5,pputida
+species,44,10000,gsMOBO + landscape,100.41032544713785,5,pputida
+species,44,10000,Landscape,100.0,5,yeast
+species,44,10000,NSGA-II (no prior),51.14539821197314,5,yeast
+species,44,10000,NSGA-II + landscape,103.01023592399744,5,yeast
+species,44,10000,gsMOBO (no prior),53.49960221028875,5,yeast
+species,44,10000,gsMOBO + landscape,104.42198824513605,5,yeast
+species,44,25000,Landscape,100.0,5,cglutamicum
+species,44,25000,NSGA-II (no prior),57.08677472038365,5,cglutamicum
+species,44,25000,NSGA-II + landscape,110.04002807592728,5,cglutamicum
+species,44,25000,gsMOBO (no prior),80.74375275905105,5,cglutamicum
+species,44,25000,gsMOBO + landscape,103.00022877691805,5,cglutamicum
+species,44,25000,Landscape,100.0,5,cho
+species,44,25000,NSGA-II (no prior),45.19489919580972,5,cho
+species,44,25000,NSGA-II + landscape,107.7034161099038,5,cho
+species,44,25000,gsMOBO (no prior),61.273127142721734,5,cho
+species,44,25000,gsMOBO + landscape,130.5332167044977,5,cho
+species,44,25000,Landscape,100.0,5,ecoli_antiepex
+species,44,25000,NSGA-II (no prior),34.70289973973165,5,ecoli_antiepex
+species,44,25000,NSGA-II + landscape,106.89729173196388,5,ecoli_antiepex
+species,44,25000,gsMOBO (no prior),57.15714368358833,5,ecoli_antiepex
+species,44,25000,gsMOBO + landscape,113.84934706480482,5,ecoli_antiepex
+species,44,25000,Landscape,100.0,5,pputida
+species,44,25000,NSGA-II (no prior),71.33029053491991,5,pputida
+species,44,25000,NSGA-II + landscape,101.86250662689203,5,pputida
+species,44,25000,gsMOBO (no prior),79.08686268047097,5,pputida
+species,44,25000,gsMOBO + landscape,100.21869433537552,5,pputida
+species,44,25000,Landscape,100.0,5,yeast
+species,44,25000,NSGA-II (no prior),50.2391239522738,5,yeast
+species,44,25000,NSGA-II + landscape,103.7207087658021,5,yeast
+species,44,25000,gsMOBO (no prior),52.61729364737855,5,yeast
+species,44,25000,gsMOBO + landscape,104.52955850850827,5,yeast
+species,44,5000,Landscape,100.0,5,cglutamicum
+species,44,5000,NSGA-II (no prior),62.12117268880264,5,cglutamicum
+species,44,5000,NSGA-II + landscape,106.92142528064313,5,cglutamicum
+species,44,5000,gsMOBO (no prior),87.96581702672229,5,cglutamicum
+species,44,5000,gsMOBO + landscape,105.9380350342388,5,cglutamicum
+species,44,5000,Landscape,100.0,5,cho
+species,44,5000,NSGA-II (no prior),48.54734618119559,5,cho
+species,44,5000,NSGA-II + landscape,108.54979272737515,5,cho
+species,44,5000,gsMOBO (no prior),67.50732261400071,5,cho
+species,44,5000,gsMOBO + landscape,121.60344314848882,5,cho
+species,44,5000,Landscape,100.0,5,ecoli_antiepex
+species,44,5000,NSGA-II (no prior),41.31725548919586,5,ecoli_antiepex
+species,44,5000,NSGA-II + landscape,136.63941400056004,5,ecoli_antiepex
+species,44,5000,gsMOBO (no prior),68.90981547991825,5,ecoli_antiepex
+species,44,5000,gsMOBO + landscape,108.66226758047004,5,ecoli_antiepex
+species,44,5000,Landscape,100.0,5,pputida
+species,44,5000,NSGA-II (no prior),73.04592998170853,5,pputida
+species,44,5000,NSGA-II + landscape,101.95248257196346,5,pputida
+species,44,5000,gsMOBO (no prior),81.2315787074812,5,pputida
+species,44,5000,gsMOBO + landscape,100.89738500757106,5,pputida
+species,44,5000,Landscape,100.0,5,yeast
+species,44,5000,NSGA-II (no prior),52.186053529085385,5,yeast
+species,44,5000,NSGA-II + landscape,103.96599975888918,5,yeast
+species,44,5000,gsMOBO (no prior),54.262113472288824,5,yeast
+species,44,5000,gsMOBO + landscape,103.94204287136881,5,yeast
+species,44,50000,Landscape,100.0,5,cglutamicum
+species,44,50000,NSGA-II (no prior),52.909907504646185,5,cglutamicum
+species,44,50000,NSGA-II + landscape,102.75754991922764,5,cglutamicum
+species,44,50000,gsMOBO (no prior),74.79366958093144,5,cglutamicum
+species,44,50000,gsMOBO + landscape,102.2873020898214,5,cglutamicum
+species,44,50000,Landscape,100.0,5,cho
+species,44,50000,NSGA-II (no prior),41.31929166439548,5,cho
+species,44,50000,NSGA-II + landscape,112.75769386766592,5,cho
+species,44,50000,gsMOBO (no prior),55.754996452101096,5,cho
+species,44,50000,gsMOBO + landscape,114.74497771193387,5,cho
+species,44,50000,Landscape,100.0,5,ecoli_antiepex
+species,44,50000,NSGA-II (no prior),33.559343189017156,5,ecoli_antiepex
+species,44,50000,NSGA-II + landscape,107.70951698526692,5,ecoli_antiepex
+species,44,50000,gsMOBO (no prior),55.05771612411926,5,ecoli_antiepex
+species,44,50000,gsMOBO + landscape,104.84998674123709,5,ecoli_antiepex
+species,44,50000,Landscape,100.0,5,pputida
+species,44,50000,NSGA-II (no prior),70.95926971684116,5,pputida
+species,44,50000,NSGA-II + landscape,101.68965913098499,5,pputida
+species,44,50000,gsMOBO (no prior),78.62708945390224,5,pputida
+species,44,50000,gsMOBO + landscape,100.15501685393039,5,pputida
+species,44,50000,Landscape,100.0,5,yeast
+species,44,50000,NSGA-II (no prior),49.71573226661671,5,yeast
+species,44,50000,NSGA-II + landscape,103.20644607603523,5,yeast
+species,44,50000,gsMOBO (no prior),52.14805445196965,5,yeast
+species,44,50000,gsMOBO + landscape,103.00608214746757,5,yeast

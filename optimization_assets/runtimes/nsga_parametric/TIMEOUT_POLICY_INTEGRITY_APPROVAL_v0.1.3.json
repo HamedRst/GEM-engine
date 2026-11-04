@@ -1,0 +1,14 @@
+{
+  "patch": "GEM_NSGA2_M5_integrity_approval_v0.1.3",
+  "timestamp_utc": "2026-09-04T22:41:27.587896+00:00",
+  "approved_changes": {
+    "multi_problem_bridge.py": "dea04903371111e0c7d0b38d74af513c6deb9c22a714969d96861c2e12df8bb4"
+  },
+  "reason": "Approve only the intentional timeout-policy hotfix: 30s batch -> 30s isolated default -> 600s glpk_exact -> technical_timeout/infeasible, logical call consumed, no replacement, continue.",
+  "edited_integrity_files": [
+    "PACKAGE_HASHES.sha256"
+  ],
+  "backup_root": null,
+  "results_modified": false,
+  "resume_command": "caffeinate -i ./RUN_THIS.command"
+}

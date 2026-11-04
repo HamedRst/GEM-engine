@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "n_input_5k_runs": 600,
+  "seed_values": [
+    42,
+    43,
+    44
+  ],
+  "plotted_seed": 42,
+  "n_cases": 25,
+  "n_figures": 5,
+  "n_HV_call_samples": 77400,
+  "n_runtime_checkpoint_samples": 600,
+  "timing_coverage": {
+    "MEASURED_CUMULATIVE": 0,
+    "ENDPOINT_ONLY": 600,
+    "MISSING": 0
+  },
+  "scientific_reader": "Figures_and_Tables/Main/Figure_03_ThreeSeed_Optimization_Aggregate/scripts/figure_3_seeds.py",
+  "scientific_reader_sha256": "c704c2e198d4991f5ec674114889a5da12a0931c806070b195b1c5a609c45299",
+  "delta_hv_definition": "official archive_hv_after at each call - frozen same-seed 5K landscape HV",
+  "variance_definition": "3-seed mean and SD exported to CSV only; main figure shows selected seed without SD bands",
+  "runtime_definition": "measured optimizer worker wall time at 128 logical exact-FBA calls; bar height in minutes; excludes any unrecorded separate QC/landscape preparation",
+  "algorithm_definitions": {
+    "gsMOBO": {
+      "Base": "BASE_GSMOBO_QPAREGO_50K",
+      "GHOST": "DEV_GSMOBO50K_GHOST_LEGACY_VB",
+      "SPARC": "DEV_GSMOBO50K_SPARC_A",
+      "TRAIL": "DEV_GSMOBO50K_TRAIL_TRUE_NATIVE_V111"
+    },
+    "NSGA-II": {
+      "Base": "BASE_NSGA2_50K",
+      "GHOST": "DEV_NSGA50K_GHOST_A",
+      "SPARC": "DEV_NSGA50K_SPARC_LEGACY_OPERATOR",
+      "TRAIL": "DEV_NSGA50K_TRAIL_LEGACY_OPERATOR"
+    }
+  },
+  "plot_files": [
+    "Figure_4B_constrained_product_5K_seed42",
+    "Figure_4B_growth_product_5K_seed42",
+    "Figure_4B_growth_robustness_5K_seed42",
+    "Figure_4B_product_carbon_oxygen_5K_seed42",
+    "Figure_4B_product_cost_5K_seed42"
+  ],
+  "warnings": []
+}

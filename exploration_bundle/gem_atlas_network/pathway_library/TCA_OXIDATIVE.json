@@ -1,0 +1,271 @@
+{
+  "template_id": "TCA_OXIDATIVE",
+  "name": "Canonical oxidative TCA cycle",
+  "scope": "Acetyl-CoA entry and oxaloacetate regeneration in a single compatible compartment.",
+  "variant_id": "canonical_v1",
+  "release_version": "1.0.0",
+  "curation_status": "provisional_source_checked",
+  "validation_status": "automated_positive_negative_controls; independent human expert review pending",
+  "complete_claims_enabled": false,
+  "license": "Original Atlas definitions; source references only, no KEGG/MetaCyc data redistributed",
+  "reference_urls": [
+    "https://iubmb.qmul.ac.uk/enzyme/EC1/1/1/37.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC1/1/1/41.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC1/1/1/42.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC1/2/4/2.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC1/3/5/1.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC1/8/1/4.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC2/3/1/61.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC2/3/3/1.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC4/2/1/2.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC4/2/1/3.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC6/2/1/4.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC6/2/1/5.html",
+    "https://www.genome.jp/module/M00009"
+  ],
+  "required_step_groups": [
+    "CS",
+    [
+      "ACON",
+      [
+        "ACON1",
+        "ACON2"
+      ]
+    ],
+    "ICDH",
+    "AKGDH",
+    "SCS",
+    "SDH",
+    "FUM",
+    "MDH"
+  ],
+  "step_logic": "All groups AND; nested two-element group OR of direct step versus listed AND substeps",
+  "steps": {
+    "CS": {
+      "step_id": "CS",
+      "equation": "accoa + oaa + h2o -> cit + coa",
+      "stoichiometry": {
+        "accoa": -1,
+        "oaa": -1,
+        "h2o": -1,
+        "cit": 1,
+        "coa": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC2/3/3/1.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "ACON": {
+      "step_id": "ACON",
+      "equation": "cit -> icit",
+      "stoichiometry": {
+        "cit": -1,
+        "icit": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC4/2/1/3.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "ACON1": {
+      "step_id": "ACON1",
+      "equation": "cit -> acon_C + h2o",
+      "stoichiometry": {
+        "cit": -1,
+        "acon_C": 1,
+        "h2o": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC4/2/1/3.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "ACON2": {
+      "step_id": "ACON2",
+      "equation": "acon_C + h2o -> icit",
+      "stoichiometry": {
+        "acon_C": -1,
+        "h2o": -1,
+        "icit": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC4/2/1/3.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "ICDH": {
+      "step_id": "ICDH",
+      "equation": "icit + nad -> akg + co2 + nadh",
+      "stoichiometry": {
+        "icit": -1,
+        "nad": -1,
+        "akg": 1,
+        "co2": 1,
+        "nadh": 1
+      },
+      "alternatives": [
+        {
+          "icit": -1,
+          "nadp": -1,
+          "akg": 1,
+          "co2": 1,
+          "nadph": 1
+        }
+      ],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC1/1/1/41.html",
+        "https://iubmb.qmul.ac.uk/enzyme/EC1/1/1/42.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "AKGDH": {
+      "step_id": "AKGDH",
+      "equation": "akg + nad + coa -> succoa + co2 + nadh",
+      "stoichiometry": {
+        "akg": -1,
+        "nad": -1,
+        "coa": -1,
+        "succoa": 1,
+        "co2": 1,
+        "nadh": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC1/2/4/2.html",
+        "https://iubmb.qmul.ac.uk/enzyme/EC2/3/1/61.html",
+        "https://iubmb.qmul.ac.uk/enzyme/EC1/8/1/4.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "SCS": {
+      "step_id": "SCS",
+      "equation": "succoa + adp + pi -> succ + coa + atp",
+      "stoichiometry": {
+        "succoa": -1,
+        "adp": -1,
+        "pi": -1,
+        "succ": 1,
+        "coa": 1,
+        "atp": 1
+      },
+      "alternatives": [
+        {
+          "succoa": -1,
+          "gdp": -1,
+          "pi": -1,
+          "succ": 1,
+          "coa": 1,
+          "gtp": 1
+        }
+      ],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC6/2/1/4.html",
+        "https://iubmb.qmul.ac.uk/enzyme/EC6/2/1/5.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "SDH": {
+      "step_id": "SDH",
+      "equation": "succ + q8 -> fum + q8h2",
+      "stoichiometry": {
+        "succ": -1,
+        "q8": -1,
+        "fum": 1,
+        "q8h2": 1
+      },
+      "alternatives": [
+        {
+          "succ": -1,
+          "q6": -1,
+          "fum": 1,
+          "q6h2": 1
+        },
+        {
+          "succ": -1,
+          "q10": -1,
+          "fum": 1,
+          "q10h2": 1
+        },
+        {
+          "succ": -1,
+          "mqn8": -1,
+          "fum": 1,
+          "mql8": 1
+        },
+        {
+          "succ": -1,
+          "mqn6": -1,
+          "fum": 1,
+          "mql6": 1
+        },
+        {
+          "succ": -1,
+          "q": -1,
+          "fum": 1,
+          "qh2": 1
+        }
+      ],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC1/3/5/1.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "FUM": {
+      "step_id": "FUM",
+      "equation": "fum + h2o -> mal__L",
+      "stoichiometry": {
+        "fum": -1,
+        "h2o": -1,
+        "mal__L": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC4/2/1/2.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "MDH": {
+      "step_id": "MDH",
+      "equation": "mal__L + nad -> oaa + nadh",
+      "stoichiometry": {
+        "mal__L": -1,
+        "nad": -1,
+        "oaa": 1,
+        "nadh": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC1/1/1/37.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    }
+  },
+  "key_discriminators": [
+    "AKGDH",
+    "SDH"
+  ],
+  "compartment_policy": "All participating non-proton compounds in one compartment; exact model intermediate IDs shared between steps; transport routes not inferred",
+  "normalization": "Coefficients proportional; ignores only proton stoichiometry, retains water, carbon and redox cofactors",
+  "false_positive_controls": [
+    "No reaction-name or EC-only match",
+    "No currency-only connectivity",
+    "L-lactate identity required",
+    "No cross-compartment joins"
+  ],
+  "optional_steps": []
+}

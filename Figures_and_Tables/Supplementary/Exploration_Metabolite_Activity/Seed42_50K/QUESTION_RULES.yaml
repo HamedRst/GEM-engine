@@ -1,0 +1,55 @@
+version: EXP42P2
+engine: GEM Engine v2.1 native Exploration activity question runner
+seed: 42
+original_landscape_size: 50000
+uses_matched_existing_fluxes_only: true
+no_new_fba: true
+sample_per_question: 12000
+species: [yeast, pputida, cglutamicum, cho, ecoli_antiepex]
+layers:
+  gene:
+    output_folder: Gene_Activity
+    interpretation: "GPR-associated modeled reaction use; not gene expression"
+  reaction:
+    output_folder: Reaction_Activity
+    interpretation: "Native overview uses absolute relative reaction-flux use; detailed activity can be signed"
+  metabolite:
+    output_folder: Metabolite_Activity
+    interpretation: "Modeled stoichiometry-weighted flux processing; not concentration"
+region_modes:
+  angular: "6 native normalized phenotype angle sectors"
+  circular: "6 native normalized radius quantile rings"
+region_count: 6
+views_per_species_per_layer:
+  angular: [overview, feature_top, feature_bottom, regions]
+  circular: [overview, feature_top, feature_bottom, regions]
+selection:
+  source: "Actual rendered native GUI orderedOverview(feature_type) with sorting=progressive"
+  feature_pool: "All supported model features of that type; no preselected favorite IDs"
+  means: "All six unstandardized native per-region feature means"
+  formula: "Signed OLS slope * R^2 * directional consistency * step evenness"
+  positive_top: "Largest finite strictly positive progressive score; deterministic ID tie-break"
+  negative_bottom: "Most negative finite progressive score; deterministic ID tie-break"
+  strict_monotonic: false
+  zero_scores: "Retain in overview but not eligible for top/bottom; no magnitude floor"
+  missing_region: "Does not receive a valid progressive rank"
+  color: "Native per-feature six-region z-scores with fixed ±2.5 canvas scale"
+  change_boundary: "Ranking only; no change to region geometry, flux samples, colors, model, or FBA"
+expected_per_layer:
+  overview_maps: 10
+  region_maps: 10
+  single_feature_maps: 20
+  question_yaml: 40
+  native_receipts: 40
+  png: 40
+  pdf: 40
+expected_total:
+  question_yaml: 120
+  png: 120
+  pdf: 120
+  selection_pairs: 30
+publication:
+  require_all_layers_pass_before_replacement: true
+  preserve_old_results: true
+  previous_exp42v7_yaml: "Superseded, never reused as hard-coded selection input"
+  scope: "Results/Exploration/{Gene_Activity,Reaction_Activity,Metabolite_Activity}/Seed42_50K"

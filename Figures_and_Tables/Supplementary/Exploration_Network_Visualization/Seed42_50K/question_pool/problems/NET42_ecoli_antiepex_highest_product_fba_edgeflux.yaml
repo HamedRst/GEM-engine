@@ -1,0 +1,201 @@
+schema_version: '1.0'
+problem_id: NET42_ecoli_antiepex_highest_product_fba_edgeflux
+problem_type: exploration.network_visualization
+payload:
+  schema_version: '1.0'
+  problem_type: exploration.network_visualization
+  problem_id: NET42_ecoli_antiepex_highest_product_fba_edgeflux
+  description: Seed42 50K highest-product feasible sampled condition; E. coli antiEpEX-scFv
+  model:
+    registry_id: ecoli_antiepex_growth_product_cost
+    sha256: 8a27ee3067b7a3f65d9bbbd60629ef03743e09ddd657e5320372c57ff8f6117d
+  subject:
+    kind: target_neighborhood
+    target_id: scFvAA_c
+    entity_kind: metabolite
+    variant_id: canonical_v1
+    branch_only: false
+    gene_ids: []
+  analysis:
+    mode: fba
+    knockout_gene_ids: []
+    compare_to_wild_type: false
+  fba:
+    objective:
+      source: reaction
+      reaction_id: DM_scFvAA_c
+    direction: max
+    medium:
+      source: custom
+      uptake_bounds: {}
+      close_unselected: false
+    flux_threshold: 1.0e-08
+    bounds_overrides:
+      EX_cbl1_e:
+      - -0.0068937744945287704
+      - 1000.0
+      EX_glc__D_e:
+      - -9.943638801574707
+      - 1000.0
+      EX_nh4_e:
+      - -15.65411376953125
+      - 1000.0
+      EX_o2_e:
+      - -18.71013641357422
+      - 1000.0
+      EX_pi_e:
+      - -0.03803970292210579
+      - 1000.0
+      EX_so4_e:
+      - -1.3261207342147827
+      - 1000.0
+      BIOMASS_Ec_iJO1366_core_53p95M:
+      - 0.03549101431504449
+      - 1000.0
+  pathway_library:
+    id: atlas_canonical
+    version: 1.0.0
+  render:
+    style_preset: atlas_v023_publication
+    hide_currency_metabolites: true
+    max_display_reactions: 28
+    depth: 6
+    direction: upstream
+    label_mode: names
+    include_legend: true
+    show_flux_values: true
+    active_only: false
+    gene_context_depth: 1
+    gene_context_max_reactions: 16
+    dpi: 300
+    export_formats:
+    - png
+    - svg
+    - pdf
+  output:
+    subdirectory: ecoli_antiepex
+  metadata:
+    species: ecoli_antiepex
+    landscape_seed: 42
+    landscape_size: 50000
+    source: /Users/bboghli/Desktop/GEM_Publication_Archive/Results/Landscape_Generation/_CANDIDATE_UNVERIFIED/GEM_Learning_Engine_v1.0.4/outputs_multiseed_50k/seed42/ecoli_antiepex_50k
+    sample_id: '13738'
+    product_flux: 0.03308888185231348
+    maximum_growth: 0.03943446035004943
+    product_reaction_id_saved: DM_scFvAA_c
+    product_reaction_id_native: DM_scFvAA_c
+    biomass_reaction_id_saved: BIOMASS_Ec_iJO1366_core_53p95M
+    biomass_reaction_id_native: BIOMASS_Ec_iJO1366_core_53p95M
+    target_id: DM_scFvAA_c
+    recorded_input_bounds:
+    - landscape_variable: requested_medium__EX_cbl1_e
+      saved_reaction_id: EX_cbl1_e
+      native_reaction_id: EX_cbl1_e
+      capacity: 0.0068937744945287704
+    - landscape_variable: requested_medium__EX_glc__D_e
+      saved_reaction_id: EX_glc__D_e
+      native_reaction_id: EX_glc__D_e
+      capacity: 9.943638801574707
+    - landscape_variable: requested_medium__EX_nh4_e
+      saved_reaction_id: EX_nh4_e
+      native_reaction_id: EX_nh4_e
+      capacity: 15.65411376953125
+    - landscape_variable: requested_medium__EX_o2_e
+      saved_reaction_id: EX_o2_e
+      native_reaction_id: EX_o2_e
+      capacity: 18.71013641357422
+    - landscape_variable: requested_medium__EX_pi_e
+      saved_reaction_id: EX_pi_e
+      native_reaction_id: EX_pi_e
+      capacity: 0.03803970292210579
+    - landscape_variable: requested_medium__EX_so4_e
+      saved_reaction_id: EX_so4_e
+      native_reaction_id: EX_so4_e
+      capacity: 1.3261207342147827
+    model_sha256: 8a27ee3067b7a3f65d9bbbd60629ef03743e09ddd657e5320372c57ff8f6117d
+    original_fba_protocol:
+      minimum_growth_fraction: 0.9
+      growth_floor: 0.03549101431504449
+      growth_floor_basis: recorded_growth_floor
+      biomass_saved_id: BIOMASS_Ec_iJO1366_core_53p95M
+      biomass_native_id: BIOMASS_Ec_iJO1366_core_53p95M
+      fixed_boundary_capacities_original_ids: {}
+    medium_replay:
+      original_cobra_medium_count: 25
+      original_fixed_reactions: {}
+      selected_design_reactions:
+        EX_cbl1_e: 0.0068937744945287704
+        EX_glc__D_e: 9.943638801574707
+        EX_nh4_e: 15.65411376953125
+        EX_o2_e: 18.71013641357422
+        EX_pi_e: 0.03803970292210579
+        EX_so4_e: 1.3261207342147827
+      replayed_medium_count: 25
+      changed_reaction_count: 6
+      changed_nonextracellular_count: 0
+      modified_boundaries:
+      - cobra_reaction_id: EX_cbl1_e
+        native_reaction_id: EX_cbl1_e
+        before:
+        - -0.01
+        - 1000.0
+        after:
+        - -0.0068937744945287704
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_glc__D_e
+        native_reaction_id: EX_glc__D_e
+        before:
+        - -10.0
+        - 1000.0
+        after:
+        - -9.943638801574707
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_nh4_e
+        native_reaction_id: EX_nh4_e
+        before:
+        - -1000.0
+        - 1000.0
+        after:
+        - -15.65411376953125
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_o2_e
+        native_reaction_id: EX_o2_e
+        before:
+        - -1000.0
+        - 1000.0
+        after:
+        - -18.71013641357422
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_pi_e
+        native_reaction_id: EX_pi_e
+        before:
+        - -1000.0
+        - 1000.0
+        after:
+        - -0.03803970292210579
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_so4_e
+        native_reaction_id: EX_so4_e
+        before:
+        - -1000.0
+        - 1000.0
+        after:
+        - -1.3261207342147827
+        - 1000.0
+        is_native_extracellular_exchange: true
+      method: exact_worker.py COBRApy model.medium replay; FBA network bounds_overrides
+    note: Native FBA rerun at existing maximum-product condition, with original seed-42
+      growth floor. No new landscape simulation.
+    original_v5_problem_id: NET42_ecoli_antiepex_highest_product_fba
+    presentation_revision: 'V7.1: V6 clean Graphviz network, edge flux values ON'
+    selected_target_name: scFvAA[c]
+    selected_target_compartment: c
+    original_problem_id: NET42_ecoli_antiepex_highest_product_fba_clean
+execution:
+  new_fba_policy: native_per_query
+  landscape_copy: not_applicable

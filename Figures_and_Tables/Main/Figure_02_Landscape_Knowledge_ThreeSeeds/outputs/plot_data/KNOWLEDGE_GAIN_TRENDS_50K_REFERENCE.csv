@@ -1,0 +1,9 @@
+prior_points,family,mean_delta_pp_vs_canonical_no_prior,denominator,n_total_cases
+5000,gsMOBO,27.00759263521823,same-seed/case 50K landscape HV,75
+5000,NSGA-II,42.73674813029362,same-seed/case 50K landscape HV,75
+10000,gsMOBO,32.11453869561912,same-seed/case 50K landscape HV,75
+10000,NSGA-II,46.34836036902834,same-seed/case 50K landscape HV,75
+25000,gsMOBO,36.63223667014073,same-seed/case 50K landscape HV,75
+25000,NSGA-II,50.719331297648196,same-seed/case 50K landscape HV,75
+50000,gsMOBO,38.69452681504704,same-seed/case 50K landscape HV,75
+50000,NSGA-II,54.00689265455935,same-seed/case 50K landscape HV,75

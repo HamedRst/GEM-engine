@@ -1,0 +1,19 @@
+schema_version: '1.0'
+problem_id: EXP42P2_ecoli_antiepex_angular_metabolite_feature_top
+problem_type: exploration.activity
+payload:
+  source: matched_npz
+  model_path: /Users/bboghli/Downloads/GEM_Engine_v2.1_Unified_Optimization_Exploration_Mac_QA/GEM
+    Engine.app/Contents/Resources/GEM_Learning_Engine_Optimization/exploration_bundle/examples/models/ecoli_antiepex_growth_product_cost.json
+  matrix_path: /Users/bboghli/Desktop/GEM_Publication_Archive/Results/Exploration/Matched_Flux_Matrices/seed42/ecoli_antiepex_50k_flux.npz
+  view: feature
+  region_method: angular
+  n_regions: 6
+  sample_size: 12000
+  feature_type: metabolite
+  new_fba_policy: never
+  feature_id: glc__D_c
+  model_sha256: 8a27ee3067b7a3f65d9bbbd60629ef03743e09ddd657e5320372c57ff8f6117d
+execution:
+  new_fba_policy: never
+  landscape_copy: only_if_new_fba

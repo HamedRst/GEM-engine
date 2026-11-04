@@ -1,0 +1,207 @@
+{
+  "template_id": "EMP_GLYCOLYSIS",
+  "name": "EMP glycolysis",
+  "scope": "Intracellular D-glucose to pyruvate; ATP-dependent phosphorylation, NAD-linked lower glycolysis.",
+  "variant_id": "canonical_v1",
+  "release_version": "1.0.0",
+  "curation_status": "provisional_source_checked",
+  "validation_status": "automated_positive_negative_controls; independent human expert review pending",
+  "complete_claims_enabled": false,
+  "license": "Original Atlas definitions; source references only, no KEGG/MetaCyc data redistributed",
+  "reference_urls": [
+    "https://iubmb.qmul.ac.uk/enzyme/EC1/2/1/12.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC2/7/1/11.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC2/7/1/2.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC2/7/1/40.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC2/7/2/3.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC4/1/2/13.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC4/2/1/11.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC5/3/1/1.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC5/3/1/9.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC5/4/2/11.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC5/4/2/12.html",
+    "https://www.genome.jp/module/M00001"
+  ],
+  "required_step_groups": [
+    "GLK",
+    "PGI",
+    "PFK",
+    "ALD",
+    "TPI",
+    "GAPDH",
+    "PGK",
+    "PGM",
+    "ENO",
+    "PYK"
+  ],
+  "step_logic": "All groups AND; nested two-element group OR of direct step versus listed AND substeps",
+  "steps": {
+    "GLK": {
+      "step_id": "GLK",
+      "equation": "glc__D + atp -> g6p + adp",
+      "stoichiometry": {
+        "glc__D": -1,
+        "atp": -1,
+        "g6p": 1,
+        "adp": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC2/7/1/2.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "PGI": {
+      "step_id": "PGI",
+      "equation": "g6p -> f6p",
+      "stoichiometry": {
+        "g6p": -1,
+        "f6p": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC5/3/1/9.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "PFK": {
+      "step_id": "PFK",
+      "equation": "f6p + atp -> fdp + adp",
+      "stoichiometry": {
+        "f6p": -1,
+        "atp": -1,
+        "fdp": 1,
+        "adp": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC2/7/1/11.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "ALD": {
+      "step_id": "ALD",
+      "equation": "fdp -> dhap + g3p",
+      "stoichiometry": {
+        "fdp": -1,
+        "dhap": 1,
+        "g3p": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC4/1/2/13.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "TPI": {
+      "step_id": "TPI",
+      "equation": "dhap -> g3p",
+      "stoichiometry": {
+        "dhap": -1,
+        "g3p": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC5/3/1/1.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "GAPDH": {
+      "step_id": "GAPDH",
+      "equation": "g3p + pi + nad -> 13dpg + nadh",
+      "stoichiometry": {
+        "g3p": -1,
+        "pi": -1,
+        "nad": -1,
+        "13dpg": 1,
+        "nadh": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC1/2/1/12.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "PGK": {
+      "step_id": "PGK",
+      "equation": "13dpg + adp -> 3pg + atp",
+      "stoichiometry": {
+        "13dpg": -1,
+        "adp": -1,
+        "3pg": 1,
+        "atp": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC2/7/2/3.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "PGM": {
+      "step_id": "PGM",
+      "equation": "3pg -> 2pg",
+      "stoichiometry": {
+        "3pg": -1,
+        "2pg": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC5/4/2/11.html",
+        "https://iubmb.qmul.ac.uk/enzyme/EC5/4/2/12.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "ENO": {
+      "step_id": "ENO",
+      "equation": "2pg -> pep + h2o",
+      "stoichiometry": {
+        "2pg": -1,
+        "pep": 1,
+        "h2o": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC4/2/1/11.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "PYK": {
+      "step_id": "PYK",
+      "equation": "pep + adp -> pyr + atp",
+      "stoichiometry": {
+        "pep": -1,
+        "adp": -1,
+        "pyr": 1,
+        "atp": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC2/7/1/40.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    }
+  },
+  "key_discriminators": [
+    "PFK",
+    "PYK"
+  ],
+  "compartment_policy": "All participating non-proton compounds in one compartment; exact model intermediate IDs shared between steps; transport routes not inferred",
+  "normalization": "Coefficients proportional; ignores only proton stoichiometry, retains water, carbon and redox cofactors",
+  "false_positive_controls": [
+    "No reaction-name or EC-only match",
+    "No currency-only connectivity",
+    "L-lactate identity required",
+    "No cross-compartment joins"
+  ],
+  "optional_steps": []
+}

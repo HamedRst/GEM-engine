@@ -1,0 +1,502 @@
+schema_version: '1.0'
+problem_id: NET42_cho_highest_product_fba_edgeflux
+problem_type: exploration.network_visualization
+payload:
+  schema_version: '1.0'
+  problem_type: exploration.network_visualization
+  problem_id: NET42_cho_highest_product_fba_edgeflux
+  description: Seed42 50K highest-product feasible sampled condition; CHO
+  model:
+    registry_id: cho_growth_product_cost
+    sha256: fa8f41ccf17cc664bd5b15a085343d88f6a4c5d7375914084067be9ecf6f6f93
+  subject:
+    kind: target_neighborhood
+    target_id: M_igg__91__g__93__
+    entity_kind: metabolite
+    variant_id: canonical_v1
+    branch_only: false
+    gene_ids: []
+  analysis:
+    mode: fba
+    knockout_gene_ids: []
+    compare_to_wild_type: false
+  fba:
+    objective:
+      source: reaction
+      reaction_id: R_DM_igg__91__g__93__
+    direction: max
+    medium:
+      source: custom
+      uptake_bounds: {}
+      close_unselected: false
+    flux_threshold: 1.0e-08
+    bounds_overrides:
+      R_EX_arg_L__40__e__41__:
+      - -0.008130103349685669
+      - 1000.0
+      R_EX_asn_L__40__e__41__:
+      - -0.007633931003510952
+      - 1000.0
+      R_EX_asp_L__40__e__41__:
+      - -0.006567015312612057
+      - 1000.0
+      R_EX_chol__40__e__41__:
+      - -0.00234234775416553
+      - 1000.0
+      R_EX_cys_L__40__e__41__:
+      - -0.0038845085073262453
+      - 1000.0
+      R_EX_glc__40__e__41__:
+      - -0.19576744735240936
+      - 1000.0
+      R_EX_gln_L__40__e__41__:
+      - -0.001034641289152205
+      - 1000.0
+      R_EX_his_L__40__e__41__:
+      - -0.0016690038610249758
+      - 1000.0
+      R_EX_hxan__40__e__41__:
+      - -0.005125107709318399
+      - 1000.0
+      R_EX_ile_L__40__e__41__:
+      - -0.006337334401905537
+      - 1000.0
+      R_EX_leu_L__40__e__41__:
+      - -0.013325558044016361
+      - 1000.0
+      R_EX_lys_L__40__e__41__:
+      - -0.011220370419323444
+      - 1000.0
+      R_EX_met_L__40__e__41__:
+      - -0.0018176125595346093
+      - 1000.0
+      R_EX_o2__40__e__41__:
+      - -0.0021598779130727053
+      - 1000.0
+      R_EX_phe_L__40__e__41__:
+      - -0.005228598136454821
+      - 1000.0
+      R_EX_pi__40__e__41__:
+      - -3.4415223598480225
+      - 1000.0
+      R_EX_pro_L__40__e__41__:
+      - -0.004141699988394976
+      - 1000.0
+      R_EX_ser_L__40__e__41__:
+      - -0.003524680156260729
+      - 1000.0
+      R_EX_so4__40__e__41__:
+      - -5.991427898406982
+      - 1000.0
+      R_EX_thr_L__40__e__41__:
+      - -0.007992665283381939
+      - 1000.0
+      R_EX_trp_L__40__e__41__:
+      - -0.003349641105160117
+      - 1000.0
+      R_EX_tyr_L__40__e__41__:
+      - -0.00773396622389555
+      - 1000.0
+      R_EX_val_L__40__e__41__:
+      - -0.007832959294319153
+      - 1000.0
+      R_biomass_cho_prod:
+      - 0.0018854006752515831
+      - 1000.0
+  pathway_library:
+    id: atlas_canonical
+    version: 1.0.0
+  render:
+    style_preset: atlas_v023_publication
+    hide_currency_metabolites: true
+    max_display_reactions: 28
+    depth: 6
+    direction: upstream
+    label_mode: names
+    include_legend: true
+    show_flux_values: true
+    active_only: false
+    gene_context_depth: 1
+    gene_context_max_reactions: 16
+    dpi: 300
+    export_formats:
+    - png
+    - svg
+    - pdf
+  output:
+    subdirectory: cho
+  metadata:
+    species: cho
+    landscape_seed: 42
+    landscape_size: 50000
+    source: /Users/bboghli/Desktop/GEM_Publication_Archive/Results/Landscape_Generation/_CANDIDATE_UNVERIFIED/GEM_Learning_Engine_v1.0.4/outputs_multiseed_50k/seed42/cho_50k
+    sample_id: '4671'
+    product_flux: 5.1890186545676136e-05
+    maximum_growth: 0.0020948896391684256
+    product_reaction_id_saved: DM_igg[g]
+    product_reaction_id_native: R_DM_igg__91__g__93__
+    biomass_reaction_id_saved: biomass_cho_prod
+    biomass_reaction_id_native: R_biomass_cho_prod
+    target_id: R_DM_igg__91__g__93__
+    recorded_input_bounds:
+    - landscape_variable: requested_medium__EX_arg_L(e)
+      saved_reaction_id: EX_arg_L(e)
+      native_reaction_id: R_EX_arg_L__40__e__41__
+      capacity: 0.008130103349685669
+    - landscape_variable: requested_medium__EX_asn_L(e)
+      saved_reaction_id: EX_asn_L(e)
+      native_reaction_id: R_EX_asn_L__40__e__41__
+      capacity: 0.007633931003510952
+    - landscape_variable: requested_medium__EX_asp_L(e)
+      saved_reaction_id: EX_asp_L(e)
+      native_reaction_id: R_EX_asp_L__40__e__41__
+      capacity: 0.006567015312612057
+    - landscape_variable: requested_medium__EX_chol(e)
+      saved_reaction_id: EX_chol(e)
+      native_reaction_id: R_EX_chol__40__e__41__
+      capacity: 0.00234234775416553
+    - landscape_variable: requested_medium__EX_cys_L(e)
+      saved_reaction_id: EX_cys_L(e)
+      native_reaction_id: R_EX_cys_L__40__e__41__
+      capacity: 0.0038845085073262453
+    - landscape_variable: requested_medium__EX_glc(e)
+      saved_reaction_id: EX_glc(e)
+      native_reaction_id: R_EX_glc__40__e__41__
+      capacity: 0.19576744735240936
+    - landscape_variable: requested_medium__EX_gln_L(e)
+      saved_reaction_id: EX_gln_L(e)
+      native_reaction_id: R_EX_gln_L__40__e__41__
+      capacity: 0.001034641289152205
+    - landscape_variable: requested_medium__EX_his_L(e)
+      saved_reaction_id: EX_his_L(e)
+      native_reaction_id: R_EX_his_L__40__e__41__
+      capacity: 0.0016690038610249758
+    - landscape_variable: requested_medium__EX_hxan(e)
+      saved_reaction_id: EX_hxan(e)
+      native_reaction_id: R_EX_hxan__40__e__41__
+      capacity: 0.005125107709318399
+    - landscape_variable: requested_medium__EX_ile_L(e)
+      saved_reaction_id: EX_ile_L(e)
+      native_reaction_id: R_EX_ile_L__40__e__41__
+      capacity: 0.006337334401905537
+    - landscape_variable: requested_medium__EX_leu_L(e)
+      saved_reaction_id: EX_leu_L(e)
+      native_reaction_id: R_EX_leu_L__40__e__41__
+      capacity: 0.013325558044016361
+    - landscape_variable: requested_medium__EX_lys_L(e)
+      saved_reaction_id: EX_lys_L(e)
+      native_reaction_id: R_EX_lys_L__40__e__41__
+      capacity: 0.011220370419323444
+    - landscape_variable: requested_medium__EX_met_L(e)
+      saved_reaction_id: EX_met_L(e)
+      native_reaction_id: R_EX_met_L__40__e__41__
+      capacity: 0.0018176125595346093
+    - landscape_variable: requested_medium__EX_o2(e)
+      saved_reaction_id: EX_o2(e)
+      native_reaction_id: R_EX_o2__40__e__41__
+      capacity: 0.0021598779130727053
+    - landscape_variable: requested_medium__EX_phe_L(e)
+      saved_reaction_id: EX_phe_L(e)
+      native_reaction_id: R_EX_phe_L__40__e__41__
+      capacity: 0.005228598136454821
+    - landscape_variable: requested_medium__EX_pi(e)
+      saved_reaction_id: EX_pi(e)
+      native_reaction_id: R_EX_pi__40__e__41__
+      capacity: 3.4415223598480225
+    - landscape_variable: requested_medium__EX_pro_L(e)
+      saved_reaction_id: EX_pro_L(e)
+      native_reaction_id: R_EX_pro_L__40__e__41__
+      capacity: 0.004141699988394976
+    - landscape_variable: requested_medium__EX_ser_L(e)
+      saved_reaction_id: EX_ser_L(e)
+      native_reaction_id: R_EX_ser_L__40__e__41__
+      capacity: 0.003524680156260729
+    - landscape_variable: requested_medium__EX_so4(e)
+      saved_reaction_id: EX_so4(e)
+      native_reaction_id: R_EX_so4__40__e__41__
+      capacity: 5.991427898406982
+    - landscape_variable: requested_medium__EX_thr_L(e)
+      saved_reaction_id: EX_thr_L(e)
+      native_reaction_id: R_EX_thr_L__40__e__41__
+      capacity: 0.007992665283381939
+    - landscape_variable: requested_medium__EX_trp_L(e)
+      saved_reaction_id: EX_trp_L(e)
+      native_reaction_id: R_EX_trp_L__40__e__41__
+      capacity: 0.003349641105160117
+    - landscape_variable: requested_medium__EX_tyr_L(e)
+      saved_reaction_id: EX_tyr_L(e)
+      native_reaction_id: R_EX_tyr_L__40__e__41__
+      capacity: 0.00773396622389555
+    - landscape_variable: requested_medium__EX_val_L(e)
+      saved_reaction_id: EX_val_L(e)
+      native_reaction_id: R_EX_val_L__40__e__41__
+      capacity: 0.007832959294319153
+    model_sha256: fa8f41ccf17cc664bd5b15a085343d88f6a4c5d7375914084067be9ecf6f6f93
+    original_fba_protocol:
+      minimum_growth_fraction: 0.9
+      growth_floor: 0.0018854006752515831
+      growth_floor_basis: recorded_growth_floor
+      biomass_saved_id: biomass_cho_prod
+      biomass_native_id: R_biomass_cho_prod
+      fixed_boundary_capacities_original_ids:
+        EX_fe2(e): 1.0
+        EX_fol(e): 0.0004566608
+        EX_h(e): 1000.0
+        EX_h2o(e): 1000.0
+        EX_hco3(e): 1.0
+        EX_pydxn(e): 0.0001705534
+    medium_replay:
+      original_cobra_medium_count: 29
+      original_fixed_reactions:
+        EX_fe2(e): 1.0
+        EX_fol(e): 0.0004566608
+        EX_h(e): 1000.0
+        EX_h2o(e): 1000.0
+        EX_hco3(e): 1.0
+        EX_pydxn(e): 0.0001705534
+      selected_design_reactions:
+        EX_arg_L(e): 0.008130103349685669
+        EX_asn_L(e): 0.007633931003510952
+        EX_asp_L(e): 0.006567015312612057
+        EX_chol(e): 0.00234234775416553
+        EX_cys_L(e): 0.0038845085073262453
+        EX_glc(e): 0.19576744735240936
+        EX_gln_L(e): 0.001034641289152205
+        EX_his_L(e): 0.0016690038610249758
+        EX_hxan(e): 0.005125107709318399
+        EX_ile_L(e): 0.006337334401905537
+        EX_leu_L(e): 0.013325558044016361
+        EX_lys_L(e): 0.011220370419323444
+        EX_met_L(e): 0.0018176125595346093
+        EX_o2(e): 0.0021598779130727053
+        EX_phe_L(e): 0.005228598136454821
+        EX_pi(e): 3.4415223598480225
+        EX_pro_L(e): 0.004141699988394976
+        EX_ser_L(e): 0.003524680156260729
+        EX_so4(e): 5.991427898406982
+        EX_thr_L(e): 0.007992665283381939
+        EX_trp_L(e): 0.003349641105160117
+        EX_tyr_L(e): 0.00773396622389555
+        EX_val_L(e): 0.007832959294319153
+      replayed_medium_count: 29
+      changed_reaction_count: 23
+      changed_nonextracellular_count: 0
+      modified_boundaries:
+      - cobra_reaction_id: EX_arg_L(e)
+        native_reaction_id: R_EX_arg_L__40__e__41__
+        before:
+        - -0.01978022
+        - 1000.0
+        after:
+        - -0.008130103349685669
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_asn_L(e)
+        native_reaction_id: R_EX_asn_L__40__e__41__
+        before:
+        - -0.040384615
+        - 1000.0
+        after:
+        - -0.007633931003510952
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_asp_L(e)
+        native_reaction_id: R_EX_asp_L__40__e__41__
+        before:
+        - -0.009340659
+        - 1000.0
+        after:
+        - -0.006567015312612057
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_chol(e)
+        native_reaction_id: R_EX_chol__40__e__41__
+        before:
+        - -0.0202871524709346
+        - 1000.0
+        after:
+        - -0.00234234775416553
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_cys_L(e)
+        native_reaction_id: R_EX_cys_L__40__e__41__
+        before:
+        - -0.00521978
+        - 1000.0
+        after:
+        - -0.0038845085073262453
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_glc(e)
+        native_reaction_id: R_EX_glc__40__e__41__
+        before:
+        - -0.198351648
+        - 1000.0
+        after:
+        - -0.19576744735240936
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_gln_L(e)
+        native_reaction_id: R_EX_gln_L__40__e__41__
+        before:
+        - -0.067032967
+        - 1000.0
+        after:
+        - -0.001034641289152205
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_his_L(e)
+        native_reaction_id: R_EX_his_L__40__e__41__
+        before:
+        - -0.003296703
+        - 1000.0
+        after:
+        - -0.0016690038610249758
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_hxan(e)
+        native_reaction_id: R_EX_hxan__40__e__41__
+        before:
+        - -0.00619455034338034
+        - 1000.0
+        after:
+        - -0.005125107709318399
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_ile_L(e)
+        native_reaction_id: R_EX_ile_L__40__e__41__
+        before:
+        - -0.010164835
+        - 1000.0
+        after:
+        - -0.006337334401905537
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_leu_L(e)
+        native_reaction_id: R_EX_leu_L__40__e__41__
+        before:
+        - -0.014835165
+        - 1000.0
+        after:
+        - -0.013325558044016361
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_lys_L(e)
+        native_reaction_id: R_EX_lys_L__40__e__41__
+        before:
+        - -0.013461538
+        - 1000.0
+        after:
+        - -0.011220370419323444
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_met_L(e)
+        native_reaction_id: R_EX_met_L__40__e__41__
+        before:
+        - -0.006043956
+        - 1000.0
+        after:
+        - -0.0018176125595346093
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_o2(e)
+        native_reaction_id: R_EX_o2__40__e__41__
+        before:
+        - -1.127472527
+        - 1000.0
+        after:
+        - -0.0021598779130727053
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_phe_L(e)
+        native_reaction_id: R_EX_phe_L__40__e__41__
+        before:
+        - -0.006043956
+        - 1000.0
+        after:
+        - -0.005228598136454821
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_pi(e)
+        native_reaction_id: R_EX_pi__40__e__41__
+        before:
+        - -1000.0
+        - 1000.0
+        after:
+        - -3.4415223598480225
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_pro_L(e)
+        native_reaction_id: R_EX_pro_L__40__e__41__
+        before:
+        - -0.007967033
+        - 1000.0
+        after:
+        - -0.004141699988394976
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_ser_L(e)
+        native_reaction_id: R_EX_ser_L__40__e__41__
+        before:
+        - -0.047802198
+        - 1000.0
+        after:
+        - -0.003524680156260729
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_so4(e)
+        native_reaction_id: R_EX_so4__40__e__41__
+        before:
+        - -1000.0
+        - 1000.0
+        after:
+        - -5.991427898406982
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_thr_L(e)
+        native_reaction_id: R_EX_thr_L__40__e__41__
+        before:
+        - -0.010164835
+        - 1000.0
+        after:
+        - -0.007992665283381939
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_trp_L(e)
+        native_reaction_id: R_EX_trp_L__40__e__41__
+        before:
+        - -0.00407731961272637
+        - 1000.0
+        after:
+        - -0.003349641105160117
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_tyr_L(e)
+        native_reaction_id: R_EX_tyr_L__40__e__41__
+        before:
+        - -0.009340659
+        - 1000.0
+        after:
+        - -0.00773396622389555
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_val_L(e)
+        native_reaction_id: R_EX_val_L__40__e__41__
+        before:
+        - -0.012087912
+        - 1000.0
+        after:
+        - -0.007832959294319153
+        - 1000.0
+        is_native_extracellular_exchange: true
+      method: exact_worker.py COBRApy model.medium replay; FBA network bounds_overrides
+    note: Native FBA rerun at existing maximum-product condition, with original seed-42
+      growth floor. No new landscape simulation.
+    original_v5_problem_id: NET42_cho_highest_product_fba
+    presentation_revision: 'V7.1: V6 clean Graphviz network, edge flux values ON'
+    selected_target_name: igg[g]
+    selected_target_compartment: g
+    original_problem_id: NET42_cho_highest_product_fba_clean
+execution:
+  new_fba_policy: native_per_query
+  landscape_copy: not_applicable

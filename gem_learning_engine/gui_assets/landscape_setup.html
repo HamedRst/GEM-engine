@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GEM Landscape Setup</title>
+<style>
+:root { color-scheme: light dark; }
+body {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  margin: 0; padding: 24px;
+}
+main { max-width: 1500px; margin: 0 auto; }
+h1 { margin-top: 0; }
+.muted { opacity: .72; }
+.card {
+  border: 1px solid #8885; border-radius: 12px;
+  padding: 16px; margin: 14px 0;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+  gap: 12px;
+}
+label {
+  display:block; font-size:13px; font-weight:600; margin-bottom:5px;
+}
+input,select,button { font:inherit; }
+input,select {
+  width:100%; box-sizing:border-box;
+  padding:8px 10px; border:1px solid #8887; border-radius:8px;
+}
+button {
+  padding:9px 13px; border:1px solid #8887;
+  border-radius:8px; cursor:pointer;
+}
+button.primary { font-weight:700; }
+.toolbar {
+  display:flex; flex-wrap:wrap; gap:10px; align-items:end;
+}
+.toolbar > div { min-width:280px; flex:1; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th,td {
+  border-bottom:1px solid #8884; padding:7px;
+  text-align:left; vertical-align:middle;
+}
+th { position:sticky; top:0; background:Canvas; z-index:1; }
+td.num { min-width:95px; }
+td.num input { min-width:90px; }
+.tablewrap {
+  overflow:auto; max-height:560px;
+  border:1px solid #8884; border-radius:10px;
+}
+.status {
+  white-space:pre-wrap; padding:10px;
+  border-radius:8px; background:#8881;
+}
+a { color:inherit; }
+</style>
+</head>
+<body>
+<main>
+<h1>Landscape Setup</h1>
+<p class="muted">
+Choose the biological objective and explicitly define the exchange/metabolite
+design space before launching a large landscape.
+</p>
+
+<div class="card">
+  <div class="toolbar">
+    <div>
+      <label for="configSelect">Configuration</label>
+      <select id="configSelect"></select>
+    </div>
+    <button id="refreshConfigs">Refresh configs</button>
+    <button id="loadBtn" class="primary">Load setup</button>
+    <a href="/" style="padding:9px 4px">Back to main GUI</a>
+  </div>
+</div>
+
+<div id="editor" hidden>
+  <div class="card">
+    <h2>Objective</h2>
+    <div class="grid">
+      <div>
+        <label for="biomass">Biomass reaction</label>
+        <input id="biomass" list="reactionOptions" placeholder="reaction ID">
+      </div>
+      <div>
+        <label for="product">Product reaction</label>
+        <input id="product" list="reactionOptions" placeholder="reaction ID">
+      </div>
+      <div>
+        <label for="mode">Optimization mode</label>
+        <select id="mode">
+          <option value="growth_constrained_product">growth_constrained_product</option>
+          <option value="maximize_product">maximize_product</option>
+          <option value="maximize_biomass">maximize_biomass</option>
+          <option value="native_objective">native_objective</option>
+          <option value="auto">auto</option>
+        </select>
+      </div>
+      <div>
+        <label for="growthFraction">Minimum growth fraction</label>
+        <input id="growthFraction" type="number" min="0" max="1" step="0.01">
+      </div>
+    </div>
+    <datalist id="reactionOptions"></datalist>
+    <p class="muted" id="objectiveNames"></p>
+  </div>
+
+  <div class="card">
+    <h2>Exploration space</h2>
+    <p class="muted">
+      <b>Variable</b> = sampled dimension.
+      <b>Fixed</b> = removed from the search but preserved at baseline uptake.
+      <b>Excluded</b> = explicitly removed/closed where the model permits.
+    </p>
+
+    <div class="toolbar" style="margin-bottom:12px">
+      <div>
+        <label for="addExchange">Add an exchange reaction</label>
+        <input id="addExchange" list="exchangeOptions" placeholder="reaction ID">
+        <datalist id="exchangeOptions"></datalist>
+      </div>
+      <button id="addBtn">Add as variable</button>
+      <button id="variablesOnly">Show variables only</button>
+      <button id="showAll">Show all current medium rows</button>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Role</th>
+            <th>Reaction</th>
+            <th>Name</th>
+            <th>Baseline uptake</th>
+            <th>Min uptake</th>
+            <th>Max uptake</th>
+            <th>Native capacity</th>
+            <th>Source / reason</th>
+          </tr>
+        </thead>
+        <tbody id="spaceBody"></tbody>
+      </table>
+    </div>
+    <p id="dimCount"></p>
+  </div>
+
+  <div class="card">
+    <div class="toolbar">
+      <button id="saveBtn" class="primary">Save landscape setup</button>
+      <button id="reloadBtn">Reload from config</button>
+    </div>
+    <div id="status" class="status" style="margin-top:12px">Ready.</div>
+  </div>
+</div>
+</main>
+
+<script>
+let current = null;
+let rows = [];
+let allExchanges = new Map();
+let reactionNames = new Map();
+const $ = id => document.getElementById(id);
+
+async function api(url, options={}) {
+  const r = await fetch(url, options);
+  const txt = await r.text();
+  let data;
+  try { data = JSON.parse(txt); }
+  catch { data = {detail: txt}; }
+  if (!r.ok) throw new Error(data.detail || txt || `HTTP ${r.status}`);
+  return data;
+}
+
+async function loadConfigs() {
+  const data = await api('/api/configs');
+  const sel = $('configSelect');
+  const previous = sel.value;
+  sel.innerHTML = '';
+  for (const path of data.configs || []) {
+    const o = document.createElement('option');
+    o.value = path;
+    o.textContent = path;
+    sel.appendChild(o);
+  }
+  if (previous && [...sel.options].some(o => o.value === previous)) {
+    sel.value = previous;
+  }
+  const requested = new URLSearchParams(location.search).get('config');
+  if (requested && [...sel.options].some(o => o.value === requested)) {
+    sel.value = requested;
+  }
+}
+
+function reactionName(id) {
+  return reactionNames.get(id) || '';
+}
+
+function updateObjectiveNames() {
+  $('objectiveNames').textContent =
+    `Biomass: ${reactionName($('biomass').value)} | ` +
+    `Product: ${reactionName($('product').value)}`;
+}
+
+function normalizeRow(r) {
+  return {
+    reaction_id: String(r.reaction_id),
+    reaction_name: r.reaction_name || '',
+    role: r.role || 'fixed',
+    baseline_uptake: Number(r.baseline_uptake ?? 0),
+    min: Number(r.effective_min_uptake ?? r.requested_min_uptake ?? 0),
+    max: Number(
+      r.effective_max_uptake ??
+      r.requested_max_uptake ??
+      r.baseline_uptake ??
+      0
+    ),
+    native_capacity: Number(r.original_capacity ?? 0),
+    source: r.source || '',
+    reason: r.reason || ''
+  };
+}
+
+function render(variablesOnly=false) {
+  const body = $('spaceBody');
+  body.innerHTML = '';
+  const shown = variablesOnly
+    ? rows.filter(r => r.role === 'variable')
+    : rows;
+
+  for (const r of shown) {
+    const tr = document.createElement('tr');
+
+    const roleTd = document.createElement('td');
+    const role = document.createElement('select');
+    for (const value of ['variable','fixed','excluded']) {
+      const o = document.createElement('option');
+      o.value = value;
+      o.textContent = value;
+      role.appendChild(o);
+    }
+    role.value = r.role;
+    role.onchange = () => {
+      r.role = role.value;
+      render(variablesOnly);
+    };
+    roleTd.appendChild(role);
+
+    const ridTd = document.createElement('td');
+    ridTd.textContent = r.reaction_id;
+
+    const nameTd = document.createElement('td');
+    nameTd.textContent = r.reaction_name || reactionName(r.reaction_id);
+
+    const baseTd = document.createElement('td');
+    baseTd.textContent = Number.isFinite(r.baseline_uptake)
+      ? r.baseline_uptake
+      : '';
+
+    const minTd = document.createElement('td');
+    minTd.className = 'num';
+    const minInput = document.createElement('input');
+    minInput.type = 'number';
+    minInput.step = 'any';
+    minInput.min = '0';
+    minInput.value = r.min;
+    minInput.disabled = r.role !== 'variable';
+    minInput.onchange = () => { r.min = Number(minInput.value); };
+    minTd.appendChild(minInput);
+
+    const maxTd = document.createElement('td');
+    maxTd.className = 'num';
+    const maxInput = document.createElement('input');
+    maxInput.type = 'number';
+    maxInput.step = 'any';
+    maxInput.min = '0';
+    maxInput.value = r.max;
+    maxInput.disabled = r.role !== 'variable';
+    maxInput.onchange = () => { r.max = Number(maxInput.value); };
+    maxTd.appendChild(maxInput);
+
+    const capTd = document.createElement('td');
+    capTd.textContent = Number.isFinite(r.native_capacity)
+      ? r.native_capacity
+      : '';
+
+    const sourceTd = document.createElement('td');
+    sourceTd.textContent =
+      [r.source, r.reason].filter(Boolean).join(' — ');
+
+    tr.append(
+      roleTd, ridTd, nameTd, baseTd,
+      minTd, maxTd, capTd, sourceTd
+    );
+    body.appendChild(tr);
+  }
+
+  $('dimCount').textContent =
+    `Search dimensions: ${rows.filter(r => r.role === 'variable').length}`;
+}
+
+async function loadSetup() {
+  const path = $('configSelect').value;
+  if (!path) return;
+
+  $('status').textContent = 'Loading...';
+  const data = await api(
+    `/api/landscape/setup?path=${encodeURIComponent(path)}`
+  );
+  current = data;
+
+  reactionNames = new Map(
+    (data.reactions || []).map(
+      r => [r.reaction_id, r.reaction_name || '']
+    )
+  );
+  allExchanges = new Map(
+    (data.exchanges || []).map(
+      r => [r.reaction_id, r]
+    )
+  );
+
+  const reactionList = $('reactionOptions');
+  reactionList.innerHTML = '';
+  for (const r of data.reactions || []) {
+    const o = document.createElement('option');
+    o.value = r.reaction_id;
+    o.label = r.reaction_name || '';
+    reactionList.appendChild(o);
+  }
+
+  const exchangeList = $('exchangeOptions');
+  exchangeList.innerHTML = '';
+  for (const e of data.exchanges || []) {
+    const o = document.createElement('option');
+    o.value = e.reaction_id;
+    o.label = e.reaction_name || '';
+    exchangeList.appendChild(o);
+  }
+
+  $('biomass').value = data.model.biomass_reaction_id || '';
+  $('product').value = data.model.product_reaction_id || '';
+  $('mode').value = data.optimization.mode || 'auto';
+  $('growthFraction').value =
+    data.optimization.minimum_growth_fraction ?? 0.5;
+
+  updateObjectiveNames();
+  rows = (data.medium_space || []).map(normalizeRow);
+
+  for (const r of rows) {
+    const e = allExchanges.get(r.reaction_id);
+    if (!e) continue;
+    r.reaction_name = r.reaction_name || e.reaction_name || '';
+    if (!Number.isFinite(r.native_capacity) || r.native_capacity === 0) {
+      r.native_capacity = Number(e.native_uptake_capacity ?? 0);
+    }
+  }
+
+  render(false);
+  $('editor').hidden = false;
+  $('status').textContent = 'Loaded.';
+}
+
+function addExchange() {
+  const rid = $('addExchange').value.trim();
+  if (!rid) return;
+
+  const existing = rows.find(r => r.reaction_id === rid);
+  if (existing) {
+    existing.role = 'variable';
+    render(false);
+    return;
+  }
+
+  const e = allExchanges.get(rid);
+  if (!e) {
+    alert('Choose a valid exchange reaction ID.');
+    return;
+  }
+
+  const capacity = Number(e.native_uptake_capacity ?? 0);
+  const baseline = Number(e.baseline_uptake ?? 0);
+  let maximum = baseline > 0 ? baseline : Math.min(10, capacity);
+  if (maximum <= 0 && capacity > 0) {
+    maximum = Math.min(10, capacity);
+  }
+
+  rows.push({
+    reaction_id: rid,
+    reaction_name: e.reaction_name || '',
+    role: 'variable',
+    baseline_uptake: baseline,
+    min: 0,
+    max: maximum,
+    native_capacity: capacity,
+    source: 'GUI explicit include',
+    reason: ''
+  });
+
+  $('addExchange').value = '';
+  render(false);
+}
+
+async function saveSetup() {
+  const variable_bounds = {};
+  const fixed_reactions = {};
+  const exclude_reaction_ids = [];
+
+  for (const r of rows) {
+    if (r.role === 'variable') {
+      if (!(r.min >= 0) || !(r.max >= 0) || r.min > r.max) {
+        throw new Error(
+          `Invalid bounds for ${r.reaction_id}: ${r.min} to ${r.max}`
+        );
+      }
+      variable_bounds[r.reaction_id] = {
+        min: Number(r.min),
+        max: Number(r.max)
+      };
+    } else if (r.role === 'fixed') {
+      fixed_reactions[r.reaction_id] =
+        Number(r.baseline_uptake ?? 0);
+    } else {
+      exclude_reaction_ids.push(r.reaction_id);
+    }
+  }
+
+  const payload = {
+    path: $('configSelect').value,
+    biomass_reaction_id: $('biomass').value.trim() || null,
+    product_reaction_id: $('product').value.trim() || null,
+    optimization_mode: $('mode').value,
+    minimum_growth_fraction: Number($('growthFraction').value),
+    variable_bounds,
+    fixed_reactions,
+    exclude_reaction_ids
+  };
+
+  $('status').textContent = 'Validating and saving...';
+  const data = await api('/api/landscape/setup', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  });
+
+  const dims = data.landscape.medium_space.filter(
+    r => r.role === 'variable'
+  ).length;
+  $('status').textContent =
+    `SAVED\nConfig: ${data.path}\nSearch dimensions: ${dims}`;
+
+  await loadSetup();
+}
+
+$('refreshConfigs').onclick = () =>
+  loadConfigs().catch(e => $('status').textContent = 'ERROR: ' + e.message);
+
+$('loadBtn').onclick = () =>
+  loadSetup().catch(e => $('status').textContent = 'ERROR: ' + e.message);
+
+$('reloadBtn').onclick = () =>
+  loadSetup().catch(e => $('status').textContent = 'ERROR: ' + e.message);
+
+$('addBtn').onclick = addExchange;
+$('variablesOnly').onclick = () => render(true);
+$('showAll').onclick = () => render(false);
+
+$('saveBtn').onclick = () =>
+  saveSetup().catch(e => $('status').textContent = 'ERROR: ' + e.message);
+
+$('biomass').oninput = updateObjectiveNames;
+$('product').oninput = updateObjectiveNames;
+
+loadConfigs().catch(console.error);
+</script>
+</body>
+</html>

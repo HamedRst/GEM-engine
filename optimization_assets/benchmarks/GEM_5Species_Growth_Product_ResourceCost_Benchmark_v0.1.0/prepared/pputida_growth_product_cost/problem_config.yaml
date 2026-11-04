@@ -1,0 +1,62 @@
+problem:
+  case_name: pputida_growth_product_cost
+  case_label: Pseudomonas putida KT2440 / iJN1463 / growth + C8:0 mcl-PHA + resource
+    efficiency
+  run_dir: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0/inputs/runs/pputida_growth_product_cost
+  model_path: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0/inputs/models/pputida_growth_product_cost.sbml
+  case_key: pputida_growth_product_cost
+  model_id: iJN1463
+  model_fingerprint: 6a3bfcb87685041579b2bed16a84db236221e9a29b4345eb8613bedbfa71d753
+  config_hash: 167cf668363fd1d4781d
+  biomass_reaction_id: BIOMASS_KT2440_WT3
+  product_reaction_id: EX___iJN1463__C80aPHA_c
+  minimum_growth_fraction: 0.9
+  features:
+  - EX_glc__D_e
+  - EX_nh4_e
+  - EX_o2_e
+  - EX_pi_e
+  - EX_so4_e
+  feature_labels:
+    EX_glc__D_e: Exchange of D-glucopyranose.
+    EX_nh4_e: Exchange of ammonium.
+    EX_o2_e: Exchange of dioxygen.
+    EX_pi_e: Exchange of hydrogenphosphate.
+    EX_so4_e: Exchange of sulfate.
+  bounds:
+    EX_glc__D_e:
+    - 0.0
+    - 6.0
+    EX_nh4_e:
+    - 0.0
+    - 20.0
+    EX_o2_e:
+    - 0.0
+    - 20.0
+    EX_pi_e:
+    - 0.0
+    - 10.0
+    EX_so4_e:
+    - 0.0
+    - 10.0
+  growth_scale: 0.5860854576199805
+  product_scale: 3.1285590485869927
+  objective_names:
+  - maximum_growth
+  - growth_constrained_product_flux
+  - resource_efficiency
+  objective_directions:
+  - maximize
+  - maximize
+  - maximize
+  reported_cost_objective: normalized_resource_burden (minimize)
+  resource_cost_formula: mean_j((x_j-L_j)/(U_j-L_j))
+  resource_efficiency_formula: 1 - normalized_resource_burden
+  archive_additional_fba_solves_for_cost: 0
+  hv_reference_normalized:
+  - 0.0
+  - 0.0
+  - 0.0
+  baseline_table: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0/prepared/pputida_growth_product_cost/baseline_compact.csv.gz
+  design_cache: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0/inputs/runs/pputida_growth_product_cost/design_cache/sobol_d21667fee5f4931b05e1.npy
+  qd_feature: EX_o2_e

@@ -1,0 +1,169 @@
+schema_version: '1.0'
+problem_id: SURF42_pputida_product_surface
+problem_type: exploration.calculator
+payload:
+  public_question:
+    exploration_spec_version: '0.4'
+    name: SURF42_pputida_product_surface
+    source:
+      landscape: /Users/bboghli/Desktop/GEM_Publication_Archive/Results/Landscape_Generation/_CANDIDATE_UNVERIFIED/GEM_Learning_Engine_v1.0.4/outputs_multiseed_50k/seed42/pputida_50k
+      gem_model: /Users/bboghli/Downloads/GEM_Engine_v2.1_Unified_Optimization_Exploration_Mac_QA/GEM
+        Engine.app/Contents/Resources/GEM_Learning_Engine_Optimization/exploration_bundle/examples/models/pputida_growth_product_cost.sbml
+    observables:
+      targets:
+      - name: product_flux
+        value: result:product_flux
+        direction: maximize
+        label: Product Flux
+      derived: []
+    exploration:
+      primitive: vary
+      detail: surface
+      over:
+        mode: list
+        variables:
+        - requested_medium__EX_glc__D_e
+        - requested_medium__EX_nh4_e
+      compact_expression: vary(Product Flux, over=Exchange of D-glucopyranose., Exchange
+        of ammonium., mode=surface, under=the full resolved landscape)
+      calculator_function: vary
+    conditions:
+      logic: all
+      filters: []
+    regions: {}
+    context: {}
+    parameters: {}
+    evidence:
+      backend: auto
+      surrogate_qc:
+        model: extra_trees
+        n_estimators: 300
+        cv_folds: 5
+        min_r2: 0.5
+        min_auc: 0.65
+        max_train_rows: 50000
+        n_jobs: -1
+      new_fba_calls: 0
+    question:
+      title: How does Product Flux vary over Exchange of D-glucopyranose., Exchange
+        of ammonium. under the full landscape
+      text: How does Product Flux vary over Exchange of D-glucopyranose., Exchange
+        of ammonium. under the full landscape?
+    compiled_execution:
+      internal_operator: response_surface
+      note: The internal operator is an execution detail. The public scientific contract
+        is the four-field exploration calculator.
+    calculator:
+      observe: product
+      explore: vary
+      variables: requested_medium__EX_glc__D_e, requested_medium__EX_nh4_e
+      conditions: ''
+  internal_problem:
+    spec_version: '1.0'
+    name: SURF42_pputida_product_surface
+    question:
+      title: How does Product Flux vary over Exchange of D-glucopyranose., Exchange
+        of ammonium. under the full landscape
+      text: How does Product Flux vary over Exchange of D-glucopyranose., Exchange
+        of ammonium. under the full landscape?
+      why_it_matters: Joint response across two exploration variables.
+    landscape:
+      path: /Users/bboghli/Desktop/GEM_Publication_Archive/Results/Landscape_Generation/_CANDIDATE_UNVERIFIED/GEM_Learning_Engine_v1.0.4/outputs_multiseed_50k/seed42/pputida_50k
+      include_fluxes: false
+    variables:
+      mode: all_design
+    targets:
+    - name: product_flux
+      value: result:product_flux
+      direction: maximize
+    scope:
+      filter_logic: all
+    backend:
+      mode: auto
+    surrogate:
+      model: extra_trees
+      n_estimators: 300
+      cv_folds: 5
+      min_r2: 0.5
+      min_auc: 0.65
+      max_train_rows: 50000
+      n_jobs: -1
+    operator:
+      name: response_surface
+      parameters:
+        variables:
+        - requested_medium__EX_glc__D_e
+        - requested_medium__EX_nh4_e
+        grid_points: 41
+    semantics:
+      target_labels:
+        product_flux: Product Flux
+      target_units: {}
+      variable_labels:
+        applied_medium__EX___iJN1463__d2one_e: 2_Decanone exchange
+        applied_medium__EX___iJN1463__n2one_e: 2_Nonanone exchange
+        applied_medium__EX___iJN1463__und2one_e: 2_Undecanone exchange
+        applied_medium__EX___iJN1463__d3one_e: 3_Decanone exchange
+        applied_medium__EX___iJN1463__d4one_e: 4_Decanone exchange
+        applied_medium__EX_cl_e: Chloride exchange
+        applied_medium__EX_nh4_e: Exchange of ammonium.
+        requested_medium__EX_nh4_e: Exchange of ammonium.
+        applied_medium__EX_ca2_e: Exchange of calcium(2+).
+        applied_medium__EX_co2_e: Exchange of carbon dioxide.
+        applied_medium__EX_cobalt2_e: Exchange of cobalt(2+).
+        applied_medium__EX_cu2_e: Exchange of copper(2+).
+        applied_medium__EX_glc__D_e: Exchange of D-glucopyranose.
+        requested_medium__EX_glc__D_e: Exchange of D-glucopyranose.
+        applied_medium__EX_o2_e: Exchange of dioxygen.
+        requested_medium__EX_o2_e: Exchange of dioxygen.
+        applied_medium__EX_h2co3_e: Exchange of hydrogencarbonate.
+        applied_medium__EX_pi_e: Exchange of hydrogenphosphate.
+        requested_medium__EX_pi_e: Exchange of hydrogenphosphate.
+        applied_medium__EX_h_e: Exchange of hydron.
+        applied_medium__EX_fe2_e: Exchange of iron(2+).
+        applied_medium__EX_mg2_e: Exchange of magnesium(2+).
+        applied_medium__EX_mn2_e: Exchange of manganese(2+).
+        applied_medium__EX_mobd_e: Exchange of molybdate.
+        applied_medium__EX_ni2_e: Exchange of nickel(2+).
+        applied_medium__EX_k_e: Exchange of potassium(1+).
+        applied_medium__EX_sel_e: Exchange of selenate.
+        applied_medium__EX_na1_e: Exchange of sodium(1+).
+        applied_medium__EX_so4_e: Exchange of sulfate.
+        requested_medium__EX_so4_e: Exchange of sulfate.
+        applied_medium__EX_tungs_e: Exchange of tungstate.
+        applied_medium__EX_h2o_e: Exchange of water.
+        applied_medium__EX_zn2_e: Exchange of zinc(2+).
+        applied_medium__EX___iJN1463__pptrn_e: L_Phosphinothricin exchange
+        applied_medium__EX___iJN1463__mtsoxin_e: Methionine_sulfoximine exchange
+        applied_medium__EX___iJN1463__acmtsoxin_e: N_Acetylmethionine_sulfoximine
+          exchange
+        applied_medium__EX___iJN1463__acpptrn_e: N_Acetylphosphinothricin exchange
+        applied_medium__EX___iJN1463__PHAg_c: R_PHA_preexistent
+        applied_medium__EX___iJN1463__pqqA_kt_c: R_sink_pqqA_kt
+      variable_units: {}
+    visualization:
+      mode: auto
+    outputs:
+      save_figures: true
+      publication_formats:
+      - png
+      - pdf
+      - svg
+      dpi: 450
+    unified_exploration:
+      spec_version: '0.5'
+      primitive: vary
+      detail: surface
+      compact_expression: vary(Product Flux, over=Exchange of D-glucopyranose., Exchange
+        of ammonium., mode=surface, under=the full resolved landscape)
+      gem_model_path: /Users/bboghli/Downloads/GEM_Engine_v2.1_Unified_Optimization_Exploration_Mac_QA/GEM
+        Engine.app/Contents/Resources/GEM_Learning_Engine_Optimization/exploration_bundle/examples/models/pputida_growth_product_cost.sbml
+    calculator_exploration:
+      spec_version: '0.5'
+      observe: product
+      explore: vary
+      variables: requested_medium__EX_glc__D_e, requested_medium__EX_nh4_e
+      conditions: ''
+execution:
+  new_fba_policy: never
+  landscape_copy: only_if_new_fba

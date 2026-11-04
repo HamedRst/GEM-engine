@@ -1,0 +1,53 @@
+version: 2
+landscape: {seed: 42, n_simulations: 50000, source: original_archived_exact_FBA, create_new_landscapes: false}
+response_surface_examples:
+  question_count: 5
+  native_operator: exploration.calculator:response_surface
+  target: product_flux
+  variables: explicit_species_specific_medium_uptake_pair
+  new_FBA_calls: 0
+  export: [png, pdf]
+  fallback: native_exact_landscape_binned_surface_if_surrogate_QC_fails
+network_visualization:
+  question_count: 5
+  native_operator: exploration.network_visualization
+  mode: fba
+  select_condition: feasible_original_50k_row_maximum_product_then_maximum_growth
+  objective: maximize_original_landscape_product_reaction
+  medium: sample_specific_design_uptake_capacities_keep_other_native_exchanges
+  solver_calls: 1_per_species
+  source_landscape_generation: never
+  network: [target_neighborhood, upstream, depth_6, max_28_reactions, active_only, show_flux]
+  export: [svg, pdf, png]
+publication:
+  combine_surface_figures: assemble_5_NATIVE_GUI_PNGs_without_replotting
+  preserve_activity_folders: true
+  replace_only_after_all_questions_pass: true
+  keep_previous_folders_as_backups: true
+
+network_reproducibility:
+  reaction_id_translation: exact_COBRApy_to_SBML_identity_only
+  original_sampling_fixed_reactions: preserved
+  original_growth_floor: preserved
+  maximum_product_evidence: seed42_50K_saved_feasible_row
+  verify_fba_product_vs_saved: max_2_percent_relative_or_1e-5_absolute
+  on_science_mismatch: fail_and_preserve_existing_results
+
+  original_cobra_medium_replay:
+    purpose: preserve exact fixed/sample boundary capacities, including cytosolic demand and sink reactions
+    backend: COBRApy model.medium setter (as original seed42 exact_worker.py)
+    native_fba_encoding: reaction bounds_overrides (not external-only custom-medium table)
+    biomass_constraint: recorded seed42 growth_floor
+    acceptance: native FBA maximum product within 2 percent or absolute 1e-5 of recorded product
+
+# V5 detail: product-centered C. glutamicum cytosolic L-glutamate visualization.
+network_visualization_target_cglutamicum:
+  target_id: M_glu__L_c
+  target_location: cytosolic
+  target_role: display_center_only
+  fba_product_objective_unchanged: R_EX_glu__L_e
+
+native_calculator_receipt:
+  output_dir: run_one_result_directory_directly
+  summary: summary.json
+  figures: summary_figures_exported_by_native_GUI

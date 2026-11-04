@@ -1,0 +1,12 @@
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+pyyaml
+joblib
+pyarrow
+cobra==0.30.0
+torch
+gpytorch==1.15.2
+botorch==0.17.2

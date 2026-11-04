@@ -1,0 +1,36 @@
+{
+  "id": "GEM_QC_ONLY_SPARC_RIDGE_DEPLOYMENT_297_V1",
+  "model_kind": "one_feature_standard_scaler_ridge",
+  "training_cohort": "297 predeclared non-outlier historical rows from GHI three-seed primary predictions; post-evaluation deployment refit, NOT held-out CV model",
+  "historical_cross_validation": "leave-one-species-AND-one-problem-out reproduced 297 predictions with maximum absolute error <1e-10; no new result metrics claimed",
+  "historical_cv_max_abs_error": 1.5987211554602254e-14,
+  "source_csv_sha256": "4bfd64395a0c29f4f34105f6bd8612540484e0518bcf275aaf2481e1be6f51ed",
+  "source_csv_filename": "TRAINING_EVIDENCE_297.csv",
+  "n_train_rows": 297,
+  "train_seeds": [
+    42,
+    43,
+    44
+  ],
+  "feature_name": "qc_nrmse_max",
+  "feature_definition": "maximum finite range_nrmse across objective_metrics in preoptimization surrogate QC summary (objective-specific, not feature objective count)",
+  "target": "100*(final_HV_gsMOBO_SPARC-final_HV_NSGAII_SPARC)/landscape_HV",
+  "target_clip_pp": [
+    -20,
+    20
+  ],
+  "ridge_alpha": 6.0,
+  "fit_intercept": true,
+  "standard_scaler_mean": 0.04391022938852986,
+  "standard_scaler_scale": 0.03104154819198027,
+  "ridge_scaled_intercept": -0.6650692135270394,
+  "ridge_scaled_coefficient": 4.009340514140873,
+  "raw_intercept_pp": -6.336534456943461,
+  "raw_coefficient_pp_per_nrmse": 129.16045582986433,
+  "switch_margin_pp": 0.5,
+  "select_if_above": "gsMOBO + SPARC",
+  "otherwise": "NSGA-II + SPARC",
+  "training_qc_min": 0.0118413855238907,
+  "training_qc_max": 0.2119321476821633,
+  "retrained_deployment_model_not_retrospective_fig3_metrics": true
+}

@@ -1,0 +1,77 @@
+problem:
+  case_name: cglutamicum_product_carbon_oxygen
+  case_label: "Corynebacterium glutamicum / iCGB21FR / L-glutamate \xD7 carbon efficiency\
+    \ \xD7 oxygen efficiency"
+  run_dir: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0/inputs/runs/cglutamicum_product_carbon_oxygen
+  model_path: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0/inputs/models/cglutamicum_product_carbon_oxygen.xml
+  case_key: cglutamicum_product_carbon_oxygen
+  model_id: iCBG21FR
+  model_fingerprint: bda5a229ea347950697584c42313dd3513747d956b0fabaf9a7aaa936f913682
+  config_hash: 686da8e1698d019f5cb6
+  biomass_reaction_id: Growth
+  product_reaction_id: EX_glu__L_e
+  local_product_growth_fraction: 0.9
+  growth_constraint_fraction_of_archive_max: 0.5
+  archive_maximum_growth: 0.5698637824281788
+  growth_viability_floor: 0.2849318912140894
+  features:
+  - EX_34dhbz_e
+  - EX_glc__D_e
+  - EX_nh4_e
+  - EX_o2_e
+  - EX_pi_e
+  - EX_so4_e
+  - EX_urea_e
+  feature_labels:
+    EX_34dhbz_e: Exchange reaction for 3,4-Dihydroxybenzoate
+    EX_glc__D_e: D-Glucose exchange
+    EX_nh4_e: Ammonia exchange
+    EX_o2_e: O2 exchange
+    EX_pi_e: Phosphate exchange
+    EX_so4_e: Sulfate exchange
+    EX_urea_e: Urea exchange
+  bounds:
+    EX_34dhbz_e:
+    - 0.0
+    - 10.0
+    EX_glc__D_e:
+    - 0.0
+    - 10.0
+    EX_nh4_e:
+    - 0.0
+    - 10.0
+    EX_o2_e:
+    - 0.0
+    - 10.0
+    EX_pi_e:
+    - 0.0
+    - 10.0
+    EX_so4_e:
+    - 0.0
+    - 10.0
+    EX_urea_e:
+    - 0.0
+    - 10.0
+  product_scale: 8.135748229266916
+  objective_names:
+  - growth_constrained_product_flux
+  - carbon_efficiency
+  - oxygen_efficiency
+  objective_directions:
+  - maximize
+  - maximize
+  - maximize
+  carbon_feature: EX_glc__D_e
+  oxygen_feature: EX_o2_e
+  carbon_demand_formula: (x_carbon-L_carbon)/(U_carbon-L_carbon)
+  oxygen_demand_formula: (x_oxygen-L_oxygen)/(U_oxygen-L_oxygen)
+  carbon_efficiency_formula: 1 - normalized_carbon_demand
+  oxygen_efficiency_formula: 1 - normalized_oxygen_demand
+  archive_additional_fba_solves_for_efficiency: 0
+  hv_reference_normalized:
+  - 0.0
+  - 0.0
+  - 0.0
+  baseline_table: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0/prepared/cglutamicum_product_carbon_oxygen/baseline_compact.csv.gz
+  design_cache: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0/inputs/runs/cglutamicum_product_carbon_oxygen/design_cache/sobol_5884fb27365c057e52c1.npy
+  qd_feature: EX_o2_e

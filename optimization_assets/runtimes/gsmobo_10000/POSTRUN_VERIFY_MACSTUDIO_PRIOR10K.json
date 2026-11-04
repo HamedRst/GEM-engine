@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "worker": "MACSTUDIO",
+  "prior_label": "10K",
+  "landscape_prior_rows": 10000,
+  "rows": 375,
+  "cases": 25,
+  "methods": 5,
+  "checkpoints": [
+    32,
+    64,
+    128
+  ],
+  "no_prior_audit_rows": 25
+}

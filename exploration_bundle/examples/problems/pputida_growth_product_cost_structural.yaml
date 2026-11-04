@@ -1,0 +1,38 @@
+schema_version: '1.0'
+problem_type: exploration.network_visualization
+problem_id: pputida_growth_product_cost_emp_structural
+description: ''
+model:
+  registry_id: pputida_growth_product_cost
+  sha256: 8f2713e575d677624683d9c9b3ab10fd2191a5a6c07273499e3b3a5801648395
+subject:
+  kind: recognized_pathway
+  entity_kind: metabolite
+  pathway_id: EMP_GLYCOLYSIS
+  variant_id: canonical_v1
+  branch_only: false
+  gene_ids: []
+analysis:
+  mode: structural
+  knockout_gene_ids: []
+  compare_to_wild_type: false
+pathway_library:
+  id: atlas_canonical
+  version: 1.0.0
+render:
+  style_preset: atlas_v023_publication
+  hide_currency_metabolites: true
+  max_display_reactions: 28
+  depth: 3
+  direction: upstream
+  label_mode: names
+  include_legend: true
+  show_flux_values: false
+  active_only: false
+  dpi: 300
+  export_formats:
+  - svg
+  - pdf
+  - png
+output: {}
+metadata: {}

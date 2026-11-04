@@ -1,0 +1,47 @@
+schema_version: '1.0'
+problem_type: exploration.network_visualization
+problem_id: NETWORK_G6P_BRANCH
+description: 'Glucose-6-phosphate branch-point neighborhood: glycolysis and PPP'
+model:
+  registry_id: cglutamicum_growth_product_cost
+  sha256: 0e92b450de71e640cf649be67e8ba38f3df02884e42ff7d6e760291819708439
+subject:
+  kind: target_neighborhood
+  target_id: M_g6p_c
+  entity_kind: metabolite
+  variant_id: canonical_v1
+  branch_only: false
+  gene_ids: []
+analysis:
+  mode: structural
+  knockout_gene_ids: []
+  compare_to_wild_type: false
+pathway_library:
+  id: atlas_canonical
+  version: 1.0.0
+render:
+  style_preset: atlas_v023_publication
+  hide_currency_metabolites: true
+  max_display_reactions: 60
+  depth: 2
+  direction: both
+  label_mode: names
+  include_legend: true
+  show_flux_values: false
+  active_only: false
+  dpi: 300
+  export_formats:
+  - svg
+  - pdf
+  - png
+output: {}
+metadata:
+  si_expected:
+    kind: network
+    target_id: M_g6p_c
+    must_exist_model_reactions:
+    - R_PGI
+    - R_G6PDH2r
+  reference_urls:
+  - https://www.kegg.jp/pathway/cgl00030
+  scope: Graph neighborhood, not a reconstructed pathway or proof of metabolic activity

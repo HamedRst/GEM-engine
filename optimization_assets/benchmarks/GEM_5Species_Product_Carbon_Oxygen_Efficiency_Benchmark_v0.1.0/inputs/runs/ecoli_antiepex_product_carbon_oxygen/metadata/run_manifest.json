@@ -1,0 +1,29 @@
+{
+  "created_at_utc": "2026-07-22T16:08:40.039689+00:00",
+  "engine_version": "1.0.4",
+  "config_hash": "b2459014137055adb0a3",
+  "model_fingerprint": "90707eee31f26dc81416fb575c7a0040f6ab0673014642f3dd4a306220b6a2f6",
+  "model_summary": {
+    "model_id": "iJO1366_producing_antiEpEX-scFv",
+    "n_reactions": 2588,
+    "n_metabolites": 1808,
+    "n_genes": 1367,
+    "n_exchanges": 324,
+    "n_variable_medium_components": 6,
+    "n_fixed_medium_components": 19,
+    "biomass_reaction_id": "BIOMASS_Ec_iJO1366_core_53p95M",
+    "product_reaction_id": "DM_scFvAA_c",
+    "optimization_mode": "growth_constrained_product",
+    "minimum_growth_fraction": 0.9
+  },
+  "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+  "packages": {
+    "cobra": "0.30.0",
+    "numpy": "2.5.1",
+    "pandas": "2.3.3",
+    "pyarrow": "25.0.0",
+    "scipy": "1.18.0",
+    "optlang": "1.9.1"
+  }
+}

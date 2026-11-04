@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "code_lineage": "GEM Landscape-Knowledge Figure v1.5.1 (historical) adapted to archived 3-seed scientific reader",
+  "reader_path": "/Users/bboghli/Desktop/GEM_Publication_Archive/Figures_and_Tables/Main/Figure_03_ThreeSeed_Optimization_Aggregate/scripts/figure_3_seeds.py",
+  "reader_sha256": "c704c2e198d4991f5ec674114889a5da12a0931c806070b195b1c5a609c45299",
+  "historical_source_provenance": "V1 identified GEM_Landscape_Knowledge_Figure_v1.5.1; exact original source not included in generator",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "sizes": [
+    5000,
+    10000,
+    25000,
+    50000
+  ],
+  "biological_case_count": 25,
+  "total_case_seed_size_comparisons": 300,
+  "method_case_observations": 1500,
+  "endpoint_calls": 128,
+  "species_order": [
+    "yeast",
+    "pputida",
+    "cglutamicum",
+    "cho",
+    "ecoli_antiepex"
+  ],
+  "new_order": "A gsMOBO trend; B NSGA-II trend; C 5K; D 10K; E 25K; F 50K",
+  "trend_denominator": "own seed-case 50K frozen landscape HV",
+  "species_denominator": "own seed-case same-size frozen landscape HV",
+  "aggregation_trend": "25 species-problem cases per seed, then average 3 seed means (75 case-seed units per size)",
+  "aggregation_species": "5 problems per species per seed, then average 3 seed means (15 case-seed units per species/size)",
+  "no_prior_semantics": "gsMOBO from same seed/case 10K run final_self_hv (fallback audited); NSGA-II from same seed/case 5K; repeated across sizes",
+  "no_prior_saved_differences_above_1e_9": 0,
+  "historical_exact_baseline_field_fallbacks": 150,
+  "canonical_field_audit": "plot_data/CANONICAL_NO_PRIOR_EXACT_FIELD_AUDIT.csv",
+  "note_on_differences": "Independent no-prior job endpoints from other campaign sizes are exported in audit, not silently substituted.",
+  "sd_across_seeds": "Plotted error bars: sample SD across 3 independent landscape seed-level means, NOT SEM or pooled-case SD",
+  "fba_rerun": false,
+  "original_archive_results_modified": false,
+  "files": {
+    "figure": "Figure_Landscape_Knowledge_Three_Seeds_Trends_First.pdf",
+    "casewise_csv": "plot_data/CASEWISE_1500_METHOD_OBSERVATIONS.csv"
+  }
+}

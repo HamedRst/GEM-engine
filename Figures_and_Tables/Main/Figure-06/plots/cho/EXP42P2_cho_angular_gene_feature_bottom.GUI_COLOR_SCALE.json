@@ -1,0 +1,16 @@
+{
+  "colors": {
+    "title": "GPR-linked relative use",
+    "min": 0,
+    "max": 1,
+    "kind": "continuous",
+    "position": "canvas top band"
+  },
+  "regions": null,
+  "title": {
+    "heading": "100774878",
+    "detail": "G_100774878"
+  },
+  "width": 750,
+  "height": 560
+}

@@ -1,0 +1,292 @@
+version: GEM_NSGA2_ParametricPrior_v1.0.3
+worker: M5PRO
+provenance:
+  package_version: GEM_NSGA2_ParametricPrior_v1.0.3
+  core_source_fingerprint: 4cdc393a35d9e3a1d68589b33ed9401963714d9ab62ed363a3eea1f948bb28bb
+paths:
+  gem_hamed_root: ''
+  prepared_root: ''
+  output_root: ''
+  runtime_sources_root: ''
+  results_root: ''
+study:
+  seed: 20260822
+  batch_size: 4
+  screen_total_calls: 128
+  common_initial_calls: 16
+  exact_cache_round_decimals: 12
+  exact_source_batch_timeout_seconds: 30.0
+  exact_source_candidate_timeout_seconds: 30.0
+  exact_source_fallback_timeout_seconds: 600.0
+  exact_source_fallback_solver: glpk_exact
+  min_distance_within_method: 1.0e-08
+  pool_rows: 4096
+  gp_subset_rows: 1024
+  reference_semantics_rows: 50000
+  budget: 128
+  checkpoints:
+  - 32
+  - 64
+  - 128
+  prior_selection: first_N_authoritative_sobol_designs_by_design_index
+  no_prior_evaluation: self_front_live_calls_only_no_landscape_union
+  new_landscape_fba_calls: 0
+  exact_source_terminal_timeout_policy: technical_timeout_infeasible_consume_call_no_replacement_continue
+  min_distance_to_prior: 1.0e-08
+preflight:
+  required_archive_rows: 50000
+  min_problem_feasible_rows: 50
+  min_problem_feasible_fraction: 0.001
+surrogate:
+  generic_n_estimators: 160
+  generic_min_samples_leaf: 2
+  generic_max_features: 1.0
+  generic_n_jobs: -1
+  generic_oof_folds: 5
+  infeasible_probability_threshold: 0.1
+nsga_dev:
+  initial_calls: 16
+  population_size: 16
+  sbx_probability: 0.9
+  sbx_eta: 20.0
+  mutation_eta: 20.0
+  guided_fraction: 0.5
+  protected_parent_slots_per_batch: 2
+  structure_archive_rows: 6000
+  structure_pool_rows: 768
+  legacy_structure_pool_rows: 768
+  legacy_infeasibility_penalty: 0.35
+  legacy_gate_tolerance: 1.0e-08
+  systematic_noninferiority_tolerance: 1.0e-06
+methods_primary:
+- BASE_NSGA2_NO50K
+- BASE_NSGA2_50K
+- DEV_NSGA50K_GHOST_A
+- DEV_NSGA50K_SPARC_LEGACY_OPERATOR
+- DEV_NSGA50K_TRAIL_LEGACY_OPERATOR
+cases:
+  cglutamicum__constrained_product:
+    job_id: CELL001
+    worker_assignment: M5PRO
+    predicted_weight: 0.9775
+    species: cglutamicum
+    problem_key: constrained_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: cglutamicum_growth_product_cost
+  cglutamicum__growth_product:
+    job_id: CELL002
+    worker_assignment: M5PRO
+    predicted_weight: 1.15
+    species: cglutamicum
+    problem_key: growth_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: cglutamicum_growth_product_cost
+  cglutamicum__growth_robustness:
+    job_id: CELL002
+    worker_assignment: M5PRO
+    predicted_weight: 1.15
+    species: cglutamicum
+    problem_key: growth_robustness
+    source_benchmark: GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0
+    source_kind: growth_robustness
+    source_case: cglutamicum_growth_robustness
+  cglutamicum__product_carbon_oxygen:
+    job_id: CELL003
+    worker_assignment: M5PRO
+    predicted_weight: 1.5525
+    species: cglutamicum
+    problem_key: product_carbon_oxygen
+    source_benchmark: GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0
+    source_kind: pco
+    source_case: cglutamicum_product_carbon_oxygen
+  cglutamicum__product_cost:
+    job_id: CELL004
+    worker_assignment: M5PRO
+    predicted_weight: 1.0924999999999998
+    species: cglutamicum
+    problem_key: product_cost
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: cglutamicum_growth_product_cost
+  cho__constrained_product:
+    job_id: CELL005
+    worker_assignment: M5PRO
+    predicted_weight: 2.21
+    species: cho
+    problem_key: constrained_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: cho_growth_product_cost
+  cho__growth_product:
+    job_id: CELL006
+    worker_assignment: M5PRO
+    predicted_weight: 2.6
+    species: cho
+    problem_key: growth_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: cho_growth_product_cost
+  cho__growth_robustness:
+    job_id: CELL006
+    worker_assignment: M5PRO
+    predicted_weight: 2.6
+    species: cho
+    problem_key: growth_robustness
+    source_benchmark: GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0
+    source_kind: growth_robustness
+    source_case: cho_growth_robustness
+  cho__product_carbon_oxygen:
+    job_id: CELL007
+    worker_assignment: M5PRO
+    predicted_weight: 3.51
+    species: cho
+    problem_key: product_carbon_oxygen
+    source_benchmark: GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0
+    source_kind: pco
+    source_case: cho_product_carbon_oxygen
+  cho__product_cost:
+    job_id: CELL008
+    worker_assignment: M5PRO
+    predicted_weight: 2.47
+    species: cho
+    problem_key: product_cost
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: cho_growth_product_cost
+  ecoli_antiepex__constrained_product:
+    job_id: CELL009
+    worker_assignment: M5PRO
+    predicted_weight: 1.02
+    species: ecoli_antiepex
+    problem_key: constrained_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: ecoli_antiepex_growth_product_cost
+  ecoli_antiepex__growth_product:
+    job_id: CELL010
+    worker_assignment: M5PRO
+    predicted_weight: 1.2
+    species: ecoli_antiepex
+    problem_key: growth_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: ecoli_antiepex_growth_product_cost
+  ecoli_antiepex__growth_robustness:
+    job_id: CELL010
+    worker_assignment: M5PRO
+    predicted_weight: 1.2
+    species: ecoli_antiepex
+    problem_key: growth_robustness
+    source_benchmark: GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0
+    source_kind: growth_robustness
+    source_case: ecoli_antiepex_growth_robustness
+  ecoli_antiepex__product_carbon_oxygen:
+    job_id: CELL011
+    worker_assignment: M5PRO
+    predicted_weight: 1.62
+    species: ecoli_antiepex
+    problem_key: product_carbon_oxygen
+    source_benchmark: GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0
+    source_kind: pco
+    source_case: ecoli_antiepex_product_carbon_oxygen
+  ecoli_antiepex__product_cost:
+    job_id: CELL012
+    worker_assignment: M5PRO
+    predicted_weight: 1.14
+    species: ecoli_antiepex
+    problem_key: product_cost
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: ecoli_antiepex_growth_product_cost
+  pputida__constrained_product:
+    job_id: CELL013
+    worker_assignment: M5PRO
+    predicted_weight: 0.85
+    species: pputida
+    problem_key: constrained_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: pputida_growth_product_cost
+  pputida__growth_product:
+    job_id: CELL014
+    worker_assignment: M5PRO
+    predicted_weight: 1.0
+    species: pputida
+    problem_key: growth_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: pputida_growth_product_cost
+  pputida__growth_robustness:
+    job_id: CELL014
+    worker_assignment: M5PRO
+    predicted_weight: 1.0
+    species: pputida
+    problem_key: growth_robustness
+    source_benchmark: GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0
+    source_kind: growth_robustness
+    source_case: pputida_growth_robustness
+  pputida__product_carbon_oxygen:
+    job_id: CELL020
+    worker_assignment: M5PRO
+    predicted_weight: 1.35
+    species: pputida
+    problem_key: product_carbon_oxygen
+    source_benchmark: GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0
+    source_kind: pco
+    source_case: pputida_product_carbon_oxygen
+  pputida__product_cost:
+    job_id: CELL015
+    worker_assignment: M5PRO
+    predicted_weight: 0.95
+    species: pputida
+    problem_key: product_cost
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: pputida_growth_product_cost
+  yeast__constrained_product:
+    job_id: CELL021
+    worker_assignment: M5PRO
+    predicted_weight: 0.85
+    species: yeast
+    problem_key: constrained_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: yeast_growth_product_cost
+  yeast__growth_product:
+    job_id: CELL022
+    worker_assignment: M5PRO
+    predicted_weight: 1.0
+    species: yeast
+    problem_key: growth_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: yeast_growth_product_cost
+  yeast__growth_robustness:
+    job_id: CELL022
+    worker_assignment: M5PRO
+    predicted_weight: 1.0
+    species: yeast
+    problem_key: growth_robustness
+    source_benchmark: GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0
+    source_kind: growth_robustness
+    source_case: yeast_growth_robustness
+  yeast__product_carbon_oxygen:
+    job_id: CELL024
+    worker_assignment: M5PRO
+    predicted_weight: 1.35
+    species: yeast
+    problem_key: product_carbon_oxygen
+    source_benchmark: GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0
+    source_kind: pco
+    source_case: yeast_product_carbon_oxygen
+  yeast__product_cost:
+    job_id: CELL025
+    worker_assignment: M5PRO
+    predicted_weight: 0.95
+    species: yeast
+    problem_key: product_cost
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: yeast_growth_product_cost

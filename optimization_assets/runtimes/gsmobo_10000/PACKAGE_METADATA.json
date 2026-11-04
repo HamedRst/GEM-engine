@@ -1,0 +1,29 @@
+{
+  "package_version": "GEM_GSMOBO_Systematic_Development_v0.4.2",
+  "experiment": "landscape_size_ablation",
+  "worker": "MACSTUDIO",
+  "all25": true,
+  "landscape_prior_rows": 10000,
+  "prior_label": "10K",
+  "reference_semantics_rows": 50000,
+  "live_budget": 128,
+  "seed": 20260822,
+  "methods": 5,
+  "canonical_gsmobo_algorithms_sha256": "df02dd309c8712525c7e9c7f915ce8a43d4b34a4e7cfeeb0fb271e855e9665b7",
+  "new_landscape_fba_calls": 0,
+  "exact_solver_timeout_fallback_integrated": true,
+  "selected_heuristics": [
+    "DEV_GSMOBO50K_GHOST_LEGACY_VB",
+    "DEV_GSMOBO50K_SPARC_A",
+    "DEV_GSMOBO50K_TRAIL_TRUE_NATIVE_V111"
+  ],
+  "scientific_reference_methods": [
+    "BASE_GSMOBO_QPAREGO_NO50K",
+    "BASE_GSMOBO_QPAREGO_50K"
+  ],
+  "no_prior_scoring_contract": "LIVE_SELF_FRONT_ONLY_NO_LANDSCAPE_UNION",
+  "algorithm_source_changed": false,
+  "hardened_fail_closed": true,
+  "postrun_verification": true,
+  "deep_preflight_before_live": true
+}

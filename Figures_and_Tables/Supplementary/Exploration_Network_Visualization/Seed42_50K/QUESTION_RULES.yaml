@@ -1,0 +1,8 @@
+seed: 42
+landscape_points: 50000
+mode: FBA
+num_questions: 5
+network_view: V6 clean Graphviz with visible edge flux values
+reused_FBA_configuration: same as existing V6 native questions
+network_new_FBA_calls: 5
+new_landscape_simulations: 0

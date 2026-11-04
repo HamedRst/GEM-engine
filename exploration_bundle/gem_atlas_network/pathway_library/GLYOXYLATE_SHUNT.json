@@ -1,0 +1,68 @@
+{
+  "template_id": "GLYOXYLATE_SHUNT",
+  "name": "Glyoxylate shunt branch",
+  "scope": "Two reactions only: isocitrate cleavage, followed by glyoxylate + acetyl-CoA to L-malate. Not the enclosing glyoxylate cycle.",
+  "variant_id": "canonical_v1",
+  "release_version": "1.0.0",
+  "curation_status": "provisional_source_checked",
+  "validation_status": "automated_positive_negative_controls; independent human expert review pending",
+  "complete_claims_enabled": false,
+  "license": "Original Atlas definitions; source references only, no KEGG/MetaCyc data redistributed",
+  "reference_urls": [
+    "https://iubmb.qmul.ac.uk/enzyme/EC2/3/3/9.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC4/1/3/1.html",
+    "https://www.genome.jp/module/M00012"
+  ],
+  "required_step_groups": [
+    "ICL",
+    "MS"
+  ],
+  "step_logic": "All groups AND; nested two-element group OR of direct step versus listed AND substeps",
+  "steps": {
+    "ICL": {
+      "step_id": "ICL",
+      "equation": "icit -> succ + glx",
+      "stoichiometry": {
+        "icit": -1,
+        "succ": 1,
+        "glx": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC4/1/3/1.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "MS": {
+      "step_id": "MS",
+      "equation": "glx + accoa + h2o -> mal__L + coa",
+      "stoichiometry": {
+        "glx": -1,
+        "accoa": -1,
+        "h2o": -1,
+        "mal__L": 1,
+        "coa": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC2/3/3/9.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    }
+  },
+  "key_discriminators": [
+    "ICL",
+    "MS"
+  ],
+  "compartment_policy": "All participating non-proton compounds in one compartment; exact model intermediate IDs shared between steps; transport routes not inferred",
+  "normalization": "Coefficients proportional; ignores only proton stoichiometry, retains water, carbon and redox cofactors",
+  "false_positive_controls": [
+    "No reaction-name or EC-only match",
+    "No currency-only connectivity",
+    "L-lactate identity required",
+    "No cross-compartment joins"
+  ],
+  "optional_steps": []
+}

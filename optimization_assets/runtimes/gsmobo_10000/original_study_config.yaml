@@ -1,0 +1,345 @@
+version: gsmobo-landscape-size-ablation/v0.4.2-selected3
+worker: MACSTUDIO
+provenance:
+  package_version: GEM_GSMOBO_Systematic_Development_v0.4.2
+  experiment: nested_sobol_prior_size_ablation
+  prior_label: 10K
+  landscape_prior_rows: 10000
+  reference_semantics_rows: 50000
+  canonical_gsmobo_algorithms_sha256: df02dd309c8712525c7e9c7f915ce8a43d4b34a4e7cfeeb0fb271e855e9665b7
+  worker_manifest_sha256: bab4c2fed0e16fa6ddf86103286cb08dcb9a7a9f735ae66215854a02b0b5f3ee
+  package_hash_manifest_sha256: 436e5bc0162ce6aa1da3676bda9727ede077321255c560b15d0e4ebfbcd0bb73
+  core_source_fingerprint: 6fadef04e04bffdd161b6075d4c32211468ac20aa06466c483f1ed8cdf4f76ba
+paths:
+  gem_hamed_root: /Users/smdoliveira/Desktop/GEM-Hamed
+  prepared_root: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/prepared
+  output_root: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/results_MACSTUDIO_PRIOR10K
+  runtime_sources_root: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/runtime_sources
+study:
+  seed: 20260822
+  batch_size: 4
+  screen_total_calls: 128
+  common_initial_calls: 16
+  landscape_prior_rows: 10000
+  prior_label: 10K
+  prior_tag: PRIOR10K
+  reference_semantics_rows: 50000
+  exact_cache_round_decimals: 12
+  exact_source_batch_timeout_seconds: 30.0
+  exact_source_candidate_timeout_seconds: 30.0
+  exact_source_fallback_timeout_seconds: 60.0
+  exact_source_fallback_solver: glpk_exact
+  min_distance_to_frozen_50k: 1.0e-08
+  min_distance_within_method: 1.0e-08
+  pool_rows: 4096
+  gp_subset_rows: 1024
+preflight:
+  required_source_archive_rows: 50000
+  min_problem_feasible_rows: 50
+  min_problem_feasible_fraction: 0.001
+surrogate:
+  generic_n_estimators: 160
+  generic_min_samples_leaf: 2
+  generic_max_features: 1.0
+  generic_n_jobs: -1
+  generic_oof_folds: 5
+  infeasible_probability_threshold: 0.1
+gsmobo_dev:
+  initial_calls: 16
+  min_feasible_live_for_no50k_gp: 2
+  num_restarts: 5
+  raw_samples: 512
+  maxiter: 200
+  safe_pool_rows: 2048
+  structure_archive_rows: 6000
+  structure_pool_rows: 640
+  structure_top_restarts: 10
+  structure_refine_maxiter: 120
+  protected_parent_slots: 1
+  guided_acq_noninferiority_tolerance: 1.0e-06
+  legacy_vb_min_live_feasible: 2
+  legacy_vb_infeasibility_penalty: 0.35
+  legacy_vb_gate_tolerance: 1.0e-08
+  legacy_structure_pool_rows: 256
+methods_primary:
+- BASE_GSMOBO_QPAREGO_NO50K
+- BASE_GSMOBO_QPAREGO_50K
+- DEV_GSMOBO50K_GHOST_LEGACY_VB
+- DEV_GSMOBO50K_SPARC_A
+- DEV_GSMOBO50K_TRAIL_TRUE_NATIVE_V111
+cases:
+  cglutamicum__constrained_product:
+    job_id: CELL001
+    worker_assignment: MACSTUDIO
+    predicted_weight: 0.9775
+    species: cglutamicum
+    problem_key: constrained_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: cglutamicum_growth_product_cost
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/constrained_product.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  cglutamicum__growth_product:
+    job_id: CELL002
+    worker_assignment: MACSTUDIO
+    predicted_weight: 1.15
+    species: cglutamicum
+    problem_key: growth_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: cglutamicum_growth_product_cost
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/growth_product.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  cglutamicum__product_carbon_oxygen:
+    job_id: CELL003
+    worker_assignment: MACSTUDIO
+    predicted_weight: 1.5525
+    species: cglutamicum
+    problem_key: product_carbon_oxygen
+    source_benchmark: GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0
+    source_kind: pco
+    source_case: cglutamicum_product_carbon_oxygen
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/product_carbon_oxygen.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  cglutamicum__product_cost:
+    job_id: CELL004
+    worker_assignment: MACSTUDIO
+    predicted_weight: 1.0924999999999998
+    species: cglutamicum
+    problem_key: product_cost
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: cglutamicum_growth_product_cost
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/product_cost.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  cho__constrained_product:
+    job_id: CELL005
+    worker_assignment: MACSTUDIO
+    predicted_weight: 2.21
+    species: cho
+    problem_key: constrained_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: cho_growth_product_cost
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/constrained_product.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  cho__growth_product:
+    job_id: CELL006
+    worker_assignment: MACSTUDIO
+    predicted_weight: 2.6
+    species: cho
+    problem_key: growth_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: cho_growth_product_cost
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/growth_product.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  cho__product_carbon_oxygen:
+    job_id: CELL007
+    worker_assignment: MACSTUDIO
+    predicted_weight: 3.51
+    species: cho
+    problem_key: product_carbon_oxygen
+    source_benchmark: GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0
+    source_kind: pco
+    source_case: cho_product_carbon_oxygen
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/product_carbon_oxygen.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  cho__product_cost:
+    job_id: CELL008
+    worker_assignment: MACSTUDIO
+    predicted_weight: 2.47
+    species: cho
+    problem_key: product_cost
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: cho_growth_product_cost
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/product_cost.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  ecoli_antiepex__constrained_product:
+    job_id: CELL009
+    worker_assignment: MACSTUDIO
+    predicted_weight: 1.02
+    species: ecoli_antiepex
+    problem_key: constrained_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: ecoli_antiepex_growth_product_cost
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/constrained_product.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  ecoli_antiepex__growth_product:
+    job_id: CELL010
+    worker_assignment: MACSTUDIO
+    predicted_weight: 1.2
+    species: ecoli_antiepex
+    problem_key: growth_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: ecoli_antiepex_growth_product_cost
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/growth_product.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  ecoli_antiepex__product_carbon_oxygen:
+    job_id: CELL011
+    worker_assignment: MACSTUDIO
+    predicted_weight: 1.62
+    species: ecoli_antiepex
+    problem_key: product_carbon_oxygen
+    source_benchmark: GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0
+    source_kind: pco
+    source_case: ecoli_antiepex_product_carbon_oxygen
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/product_carbon_oxygen.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  ecoli_antiepex__product_cost:
+    job_id: CELL012
+    worker_assignment: MACSTUDIO
+    predicted_weight: 1.14
+    species: ecoli_antiepex
+    problem_key: product_cost
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: ecoli_antiepex_growth_product_cost
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/product_cost.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  pputida__constrained_product:
+    job_id: CELL013
+    worker_assignment: MACSTUDIO
+    predicted_weight: 0.85
+    species: pputida
+    problem_key: constrained_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: pputida_growth_product_cost
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/constrained_product.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  pputida__growth_product:
+    job_id: CELL014
+    worker_assignment: MACSTUDIO
+    predicted_weight: 1.0
+    species: pputida
+    problem_key: growth_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: pputida_growth_product_cost
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/growth_product.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  pputida__product_cost:
+    job_id: CELL015
+    worker_assignment: MACSTUDIO
+    predicted_weight: 0.95
+    species: pputida
+    problem_key: product_cost
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: pputida_growth_product_cost
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/product_cost.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  cglutamicum__growth_robustness:
+    job_id: CELL016
+    worker_assignment: MACSTUDIO
+    predicted_weight: 1.6674999999999998
+    species: cglutamicum
+    problem_key: growth_robustness
+    source_benchmark: GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0
+    source_kind: robustness
+    source_case: cglutamicum_growth_robustness
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/growth_robustness.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  cho__growth_robustness:
+    job_id: CELL017
+    worker_assignment: MACSTUDIO
+    predicted_weight: 3.77
+    species: cho
+    problem_key: growth_robustness
+    source_benchmark: GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0
+    source_kind: robustness
+    source_case: cho_growth_robustness
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/growth_robustness.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  ecoli_antiepex__growth_robustness:
+    job_id: CELL018
+    worker_assignment: MACSTUDIO
+    predicted_weight: 1.74
+    species: ecoli_antiepex
+    problem_key: growth_robustness
+    source_benchmark: GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0
+    source_kind: robustness
+    source_case: ecoli_antiepex_growth_robustness
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/growth_robustness.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  pputida__growth_robustness:
+    job_id: CELL019
+    worker_assignment: MACSTUDIO
+    predicted_weight: 1.45
+    species: pputida
+    problem_key: growth_robustness
+    source_benchmark: GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0
+    source_kind: robustness
+    source_case: pputida_growth_robustness
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/growth_robustness.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  pputida__product_carbon_oxygen:
+    job_id: CELL020
+    worker_assignment: MACSTUDIO
+    predicted_weight: 1.35
+    species: pputida
+    problem_key: product_carbon_oxygen
+    source_benchmark: GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0
+    source_kind: pco
+    source_case: pputida_product_carbon_oxygen
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/product_carbon_oxygen.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  yeast__constrained_product:
+    job_id: CELL021
+    worker_assignment: MACSTUDIO
+    predicted_weight: 0.85
+    species: yeast
+    problem_key: constrained_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: yeast_growth_product_cost
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/constrained_product.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  yeast__growth_product:
+    job_id: CELL022
+    worker_assignment: MACSTUDIO
+    predicted_weight: 1.0
+    species: yeast
+    problem_key: growth_product
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: yeast_growth_product_cost
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/growth_product.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  yeast__growth_robustness:
+    job_id: CELL023
+    worker_assignment: MACSTUDIO
+    predicted_weight: 1.45
+    species: yeast
+    problem_key: growth_robustness
+    source_benchmark: GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0
+    source_kind: robustness
+    source_case: yeast_growth_robustness
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/growth_robustness.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  yeast__product_carbon_oxygen:
+    job_id: CELL024
+    worker_assignment: MACSTUDIO
+    predicted_weight: 1.35
+    species: yeast
+    problem_key: product_carbon_oxygen
+    source_benchmark: GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0
+    source_kind: pco
+    source_case: yeast_product_carbon_oxygen
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/product_carbon_oxygen.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml
+  yeast__product_cost:
+    job_id: CELL025
+    worker_assignment: MACSTUDIO
+    predicted_weight: 0.95
+    species: yeast
+    problem_key: product_cost
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    source_case: yeast_growth_product_cost
+    problem_definition: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/problems/product_cost.gemproblem.yaml
+    study_config_path: /Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/worker_state/MACSTUDIO_PRIOR10K/study_config.yaml

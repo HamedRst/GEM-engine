@@ -1,0 +1,18 @@
+{
+  "generator": "Figure 3 J-M illustrative QC-only Pareto expansion",
+  "generated_utc": "2026-10-27T05:41:25.870791+00:00",
+  "source_pooled_improvement_csv": "Figures_and_Tables/Main/Figure_03_ThreeSeed_Optimization_Aggregate/outputs/FIGURE3_ALL_NINE_PANELS_V4/run_20261019_134818_UTC/plot_data/GHI_POOLED_TOP_PCT_MAIN_297.csv",
+  "base_frontier": "10 points on the line from (0,1) to (1,0); endpoints unchanged",
+  "sizes": [
+    5000,
+    10000,
+    25000,
+    50000
+  ],
+  "methods": [
+    "QC-only selector"
+  ],
+  "construction": "For each of four sizes, keep the ten baseline x values unchanged and set y=1-x**q for the QC-only selector. The exponent q is determined by bisection to reproduce the pooled Panel H mean HV improvement calculated from exact discrete 10-point hypervolume. Both endpoints stay fixed; interior points bow outward when gain is positive.",
+  "curve_formula": "baseline y=1-x; QC-only y=1-x**q with q chosen by exact 10-point HV matching. q>1 expands; q<1 contracts if source gain is negative.",
+  "note": "Illustrative synthetic curves constrained to reproduce QC-only Panel H pooled HV improvements, not recovered native optimization Pareto coordinates."
+}

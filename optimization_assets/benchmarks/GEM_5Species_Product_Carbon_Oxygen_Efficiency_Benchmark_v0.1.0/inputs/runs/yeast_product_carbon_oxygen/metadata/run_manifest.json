@@ -1,0 +1,29 @@
+{
+  "created_at_utc": "2026-08-20T21:30:57.295249+00:00",
+  "engine_version": "1.0.4",
+  "config_hash": "7f13f89a1e2e471e5cb3",
+  "model_fingerprint": "a0ec8b807b5da80a2d3735ba5b70f0d750e2260db672ced78429cba3ff27a9e2",
+  "model_summary": {
+    "model_id": "yeastGEM_v9__46__1__46__0",
+    "n_reactions": 4102,
+    "n_metabolites": 2748,
+    "n_genes": 1143,
+    "n_exchanges": 270,
+    "n_variable_medium_components": 5,
+    "n_fixed_medium_components": 11,
+    "biomass_reaction_id": "r_2111",
+    "product_reaction_id": "r_1761",
+    "optimization_mode": "growth_constrained_product",
+    "minimum_growth_fraction": 0.9
+  },
+  "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+  "packages": {
+    "cobra": "0.30.0",
+    "numpy": "2.5.1",
+    "pandas": "2.3.3",
+    "pyarrow": "25.0.0",
+    "scipy": "1.18.0",
+    "optlang": "1.9.1"
+  }
+}

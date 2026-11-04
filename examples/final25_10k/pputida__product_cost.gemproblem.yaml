@@ -1,0 +1,26 @@
+format: gemproblem/v0.2
+problem:
+  id: product_resource_cost
+  title: Product x Resource Cost with Frozen Growth Viability
+  objectives:
+    - name: product_flux
+      source: exact_metric
+      metric: product_flux
+      direction: maximize
+      normalization: {method: frozen_minmax}
+    - name: normalized_resource_cost
+      source: design_metric
+      metric: normalized_mean
+      direction: minimize
+      normalization: {method: fixed_range, min: 0.0, max: 1.0}
+      validation_normalized_metric: resource_efficiency
+  constraints:
+    - name: growth_viability
+      source: exact_metric
+      metric: maximum_growth
+      operator: ">="
+      reference:
+        source: frozen_landscape
+        statistic: max
+        multiplier: 0.40
+      freeze_before_live_search: true

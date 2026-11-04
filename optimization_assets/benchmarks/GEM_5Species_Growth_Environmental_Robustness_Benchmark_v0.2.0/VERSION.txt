@@ -1,0 +1,2 @@
+GEM 5-Species Growth × Environmental Robustness Benchmark v0.2.0
+Built from exact v0.3.0 augmented-gsMOBO implementations; 2026-08-28.

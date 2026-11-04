@@ -1,0 +1,17 @@
+medium_feature_index,reaction_id,role,requested_min_uptake,requested_max_uptake,effective_min_uptake,effective_max_uptake,original_capacity,baseline_uptake,source,reason
+0,r_1654,variable,0.0,20.0,0.0,20.0,1000.0,1000.0,automatic_capped,
+1,r_1714,variable,0.0,1.0,0.0,1.0,1.0,1.0,automatic,
+2,r_1992,variable,0.0,20.0,0.0,20.0,1000.0,1000.0,automatic_capped,
+3,r_2005,variable,0.0,20.0,0.0,20.0,1000.0,1000.0,automatic_capped,
+4,r_2060,variable,0.0,20.0,0.0,20.0,1000.0,1000.0,automatic_capped,
+5,r_1832,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic inorganic background classification
+6,r_1861,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+7,r_2020,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+8,r_2049,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+9,r_2100,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic inorganic background classification
+10,r_4593,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+11,r_4594,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic inorganic background classification
+12,r_4595,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic inorganic background classification
+13,r_4596,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic inorganic background classification
+14,r_4597,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic inorganic background classification
+15,r_4600,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic inorganic background classification

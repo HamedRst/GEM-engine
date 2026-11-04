@@ -1,0 +1,30 @@
+# Local state, compiled files, developer environments
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.log
+*.tmp
+optimization_runs/
+exploration_bundle/outputs/
+# Large packaged applications belong in Releases (not Git history)
+*.app/
+*.dmg
+# Do not ignore inputs/runs: those are frozen benchmark scientific inputs.
+
+# Exclude local figure-generation environments and nested READMEs
+**/.plot_venv/
+**/.venv/
+**/__pycache__/
+**/.DS_Store
+**/README*
+!/README.md
+**/*.app/
+**/*.pyc

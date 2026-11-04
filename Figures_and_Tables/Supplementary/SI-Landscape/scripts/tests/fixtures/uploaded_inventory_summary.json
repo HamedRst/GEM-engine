@@ -1,0 +1,187 @@
+{
+  "source": "User-provided V2 discovery audit, 2026-10-27",
+  "total_candidate_rows": 5884,
+  "native_chunks_per_case": [
+    {
+      "seed": 42,
+      "species": "cglutamicum",
+      "kind": "logs",
+      "n_files": 196
+    },
+    {
+      "seed": 42,
+      "species": "cglutamicum",
+      "kind": "results",
+      "n_files": 196
+    },
+    {
+      "seed": 42,
+      "species": "cho",
+      "kind": "logs",
+      "n_files": 196
+    },
+    {
+      "seed": 42,
+      "species": "cho",
+      "kind": "results",
+      "n_files": 196
+    },
+    {
+      "seed": 42,
+      "species": "ecoli_antiepex",
+      "kind": "logs",
+      "n_files": 196
+    },
+    {
+      "seed": 42,
+      "species": "ecoli_antiepex",
+      "kind": "results",
+      "n_files": 196
+    },
+    {
+      "seed": 42,
+      "species": "pputida",
+      "kind": "logs",
+      "n_files": 196
+    },
+    {
+      "seed": 42,
+      "species": "pputida",
+      "kind": "results",
+      "n_files": 196
+    },
+    {
+      "seed": 42,
+      "species": "yeast",
+      "kind": "logs",
+      "n_files": 196
+    },
+    {
+      "seed": 42,
+      "species": "yeast",
+      "kind": "results",
+      "n_files": 196
+    },
+    {
+      "seed": 43,
+      "species": "cglutamicum",
+      "kind": "logs",
+      "n_files": 196
+    },
+    {
+      "seed": 43,
+      "species": "cglutamicum",
+      "kind": "results",
+      "n_files": 196
+    },
+    {
+      "seed": 43,
+      "species": "cho",
+      "kind": "logs",
+      "n_files": 196
+    },
+    {
+      "seed": 43,
+      "species": "cho",
+      "kind": "results",
+      "n_files": 196
+    },
+    {
+      "seed": 43,
+      "species": "ecoli_antiepex",
+      "kind": "logs",
+      "n_files": 196
+    },
+    {
+      "seed": 43,
+      "species": "ecoli_antiepex",
+      "kind": "results",
+      "n_files": 196
+    },
+    {
+      "seed": 43,
+      "species": "pputida",
+      "kind": "logs",
+      "n_files": 196
+    },
+    {
+      "seed": 43,
+      "species": "pputida",
+      "kind": "results",
+      "n_files": 196
+    },
+    {
+      "seed": 43,
+      "species": "yeast",
+      "kind": "logs",
+      "n_files": 196
+    },
+    {
+      "seed": 43,
+      "species": "yeast",
+      "kind": "results",
+      "n_files": 196
+    },
+    {
+      "seed": 44,
+      "species": "cglutamicum",
+      "kind": "logs",
+      "n_files": 196
+    },
+    {
+      "seed": 44,
+      "species": "cglutamicum",
+      "kind": "results",
+      "n_files": 196
+    },
+    {
+      "seed": 44,
+      "species": "cho",
+      "kind": "logs",
+      "n_files": 196
+    },
+    {
+      "seed": 44,
+      "species": "cho",
+      "kind": "results",
+      "n_files": 196
+    },
+    {
+      "seed": 44,
+      "species": "ecoli_antiepex",
+      "kind": "logs",
+      "n_files": 196
+    },
+    {
+      "seed": 44,
+      "species": "ecoli_antiepex",
+      "kind": "results",
+      "n_files": 196
+    },
+    {
+      "seed": 44,
+      "species": "pputida",
+      "kind": "logs",
+      "n_files": 196
+    },
+    {
+      "seed": 44,
+      "species": "pputida",
+      "kind": "results",
+      "n_files": 196
+    },
+    {
+      "seed": 44,
+      "species": "yeast",
+      "kind": "logs",
+      "n_files": 196
+    },
+    {
+      "seed": 44,
+      "species": "yeast",
+      "kind": "results",
+      "n_files": 196
+    }
+  ],
+  "whole_dataset_csv_count": 4
+}

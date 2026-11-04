@@ -1,0 +1,26 @@
+medium_feature_index,reaction_id,role,requested_min_uptake,requested_max_uptake,effective_min_uptake,effective_max_uptake,original_capacity,baseline_uptake,source,reason
+0,EX_cbl1_e,variable,0.0,0.01,0.0,0.01,0.01,0.01,automatic,
+1,EX_glc__D_e,variable,0.0,10.0,0.0,10.0,10.0,10.0,automatic,
+2,EX_nh4_e,variable,0.0,20.0,0.0,20.0,1000.0,1000.0,automatic_capped,
+3,EX_o2_e,variable,0.0,20.0,0.0,20.0,1000.0,1000.0,automatic_capped,
+4,EX_pi_e,variable,0.0,20.0,0.0,20.0,1000.0,1000.0,automatic_capped,
+5,EX_so4_e,variable,0.0,20.0,0.0,20.0,1000.0,1000.0,automatic_capped,
+6,EX_ca2_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+7,EX_cl_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+8,EX_co2_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+9,EX_cobalt2_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+10,EX_cu2_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+11,EX_fe2_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+12,EX_fe3_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+13,EX_h2o_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+14,EX_h_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+15,EX_k_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+16,EX_mg2_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+17,EX_mn2_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+18,EX_mobd_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+19,EX_na1_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+20,EX_ni2_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+21,EX_sel_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+22,EX_slnt_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+23,EX_tungs_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification
+24,EX_zn2_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,automatic background solvent/ion classification

@@ -1,0 +1,27 @@
+{
+  "worker": "MACSTUDIO",
+  "prior_label": "10K",
+  "landscape_prior_rows": 10000,
+  "assigned_cells": 25,
+  "completed_cells": 25,
+  "methods_per_cell": 5,
+  "scientific_reference_methods": [
+    "BASE_GSMOBO_QPAREGO_NO50K",
+    "BASE_GSMOBO_QPAREGO_50K"
+  ],
+  "selected_heuristics": [
+    "DEV_GSMOBO50K_GHOST_LEGACY_VB",
+    "DEV_GSMOBO50K_SPARC_A",
+    "DEV_GSMOBO50K_TRAIL_TRUE_NATIVE_V111"
+  ],
+  "no_prior_scoring_contract": "LIVE_SELF_FRONT_ONLY_NO_LANDSCAPE_UNION",
+  "selected_heuristic_wins_at_128": {
+    "DEV_GSMOBO50K_GHOST_LEGACY_VB": 9,
+    "DEV_GSMOBO50K_SPARC_A": 10,
+    "DEV_GSMOBO50K_TRAIL_TRUE_NATIVE_V111": 6
+  },
+  "heuristic_beats_plus_prior_rows_128": 36,
+  "heuristic_beats_no_prior_rows_128": 16,
+  "failures": [],
+  "csv": "/Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/ALL_RESULTS_MACSTUDIO_PRIOR10K_SELECTED3.csv"
+}

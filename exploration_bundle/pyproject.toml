@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gem-exploration-unified"
+version = "1.4.0"
+description = "Unified GEM Exploration: native v0.5.0 Calculator, native v0.3.8 Network Atlas, a shared YAML question pool and on-demand model-neutral gene/reaction/metabolite flux activity views"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "nicegui==2.24.2",
+    "numpy>=2,<3", "pandas>=2.3,<4", "scipy>=1.15,<2",
+    "scikit-learn>=1.7,<2", "matplotlib>=3.9,<4",
+    "PyYAML>=6,<7", "pyarrow>=20,<26", "joblib>=1.5,<2",
+    "cobra>=0.30,<0.33", "swiglpk>=5,<6", "networkx>=3.2,<4",
+    "lxml>=5,<7", "pydot>=2,<5", "pydantic>=2.8,<3",
+]
+[project.scripts]
+gem-exploration-unified = "gem_exploration_hub.app:main"
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["gem_exploration_tab", "gem_exploration_tab.*", "gem_exploration", "gem_exploration.*", "gem_exploration_gui", "gem_exploration_gui.*", "gem_atlas_network", "gem_atlas_network.*", "gem_exploration_hub", "gem_exploration_hub.*", "gem_exploration_activity", "gem_exploration_activity.*"]

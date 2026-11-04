@@ -1,0 +1,17 @@
+# Core numerical versions validated on Python 3.12. Torch wheel is platform-specific.
+cobra==0.30.0
+numpy==2.3.5
+pandas==2.2.3
+scipy==1.17.0
+pyarrow==25.0.1
+PyYAML==6.0.3
+fastapi==0.142.4
+uvicorn==0.54.0
+psutil==7.2.2
+typer>=0.12
+tqdm>=4.66
+torch>=2.9,<3
+botorch==0.17.2
+gpytorch==1.15.2
+scikit-learn==1.8.0
+joblib>=1.3

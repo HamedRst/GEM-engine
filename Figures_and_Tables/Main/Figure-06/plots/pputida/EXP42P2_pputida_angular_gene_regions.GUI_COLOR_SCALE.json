@@ -1,0 +1,28 @@
+{
+  "colors": null,
+  "regions": {
+    "count": 6,
+    "numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "colors": [
+      "#472f77",
+      "#3177ac",
+      "#6cc6a5",
+      "#c9df79",
+      "#b45d43",
+      "#cd3439"
+    ]
+  },
+  "title": {
+    "heading": "Angular Regions",
+    "detail": "Seed 42 · 50K"
+  },
+  "width": 750,
+  "height": 560
+}

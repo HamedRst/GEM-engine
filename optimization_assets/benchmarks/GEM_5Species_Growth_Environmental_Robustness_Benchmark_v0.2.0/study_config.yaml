@@ -1,0 +1,241 @@
+version: 0.2.0-five-species-growth-environmental-robustness
+paths:
+  prepared_root: ./prepared
+  output_root: ./results
+  input_runs_root: ./inputs/runs
+  input_models_root: ./inputs/models
+
+study:
+  seed: 20260822
+  canary_budget: 4
+  overnight_budget: 128
+  budget_milestones: [4, 16, 32, 64, 128]
+  batch_size: 4
+  gp_subset_rows: 1024
+  cold_start_initial_calls: 16
+  cold_start_min_feasible_for_bo: 8
+  cold_start_pool_rows: 8192
+  pool_rows: 16384
+  gp_pool_rows: 8192
+  static_pool_rows: 32768
+  predicted_hv_positive_tolerance: 1.0e-12
+  static_pareto_near_diversity_radius: 0.04
+  robust_pool_rows: 4096
+  graph_pool_rows: 8192
+  min_distance_to_frozen_50k: 1.0e-08
+  min_distance_within_method: 1.0e-08
+  exact_cache_round_decimals: 12
+  continue_on_method_error: true
+  continue_on_case_error: false
+  figure_dpi: 600
+  auto_escalate_after_canary: true
+
+robustness:
+  definition: worst_case_in_domain_environmental_growth
+  stress_classes: [carbon, oxygen, nitrogen, phosphate]
+  fraction_toward_lower_bound: 0.50
+  required_archive_rows: 50000
+  prior_source: frozen_50k_nominal_growth_surrogate
+  prior_note: >-
+    The existing 50k exact landscape is not re-simulated under stress. A frozen
+    growth surrogate is fitted only to the already-computed exact nominal-growth
+    landscape, then queried at in-domain transformed versions of each design.
+    Objective 2 in the prior is the minimum predicted growth across the four
+    predefined stress classes. This is prior knowledge, not exact stress truth.
+  live_candidate_evaluation: >-
+    Every new candidate is evaluated by exact FBA at the nominal condition and
+    under each of the four in-domain stress transformations. Objective 2 is the
+    minimum exact stressed growth. Stress-infeasible scenarios contribute zero
+    growth rather than removing the nominally feasible candidate.
+  save_retention_secondary_metric: true
+  enforce_monotone_prior: true
+
+prior_growth_surrogate:
+  regressor_trees: 500
+  classifier_trees: 350
+  min_samples_leaf: 2
+  infeasible_probability_threshold: 0.50
+  qc_folds: 5
+
+surrogate:
+  regressor_trees: 500
+  classifier_trees: 350
+  min_samples_leaf: 2
+  infeasible_probability_threshold: 0.01
+  crossfit_folds: 5
+
+surrogate_validation:
+  folds: 5
+  require_before_live: true
+  save_oof_predictions: true
+  reuse_final_model_for_optimizers: true
+
+bo:
+  fixed_noise: 1.0e-06
+  mc_samples: 128
+  discrete_max_batch_size: 2048
+
+gsmobo:
+  initial_calls: 16
+  min_feasible_for_bo: 2
+  mc_samples: 256
+  num_restarts: 5
+  raw_samples: 512
+  maxiter: 200
+  fallback_pool_rows: 8192
+  archive_rows: 1024
+
+nsga2:
+  initial_calls: 16
+  population_size: 16
+  crossover_probability: 0.9
+  eta_c: 20.0
+  eta_m: 20.0
+  fallback_pool_rows: 4096
+
+ideas:
+  fragility_radius: 0.05
+  robust_radius: 0.035
+  graph_pool_per_score: 500
+  meta_pairs: 120000
+  generator_samples_per_task: 384
+
+ghost:
+  blindspot_centers: 320
+  jitter_rows: 12288
+  live_rows: 2048
+  global_rows: 4096
+  jitter_scales: [0.008, 0.02, 0.05, 0.1]
+  residual_neighbors: 48
+  max_p_infeasible: 0.01
+  diversity_radius: 0.025
+
+sparc:
+  neighbor_rows: 64
+  elite_per_weight: 64
+  scalarization_weights: 13
+  min_rank: 2
+  max_rank: 4
+  energy_threshold: 0.88
+  subspace_rows: 14000
+  global_rows: 3000
+  step_scales: [0.012, 0.03, 0.06, 0.12, 0.2]
+  diversity_radius: 0.025
+
+trail:
+  neighbors: 96
+  chain_neighbors: 64
+  lines_per_anchor: 3
+  extrapolation_steps: [0.008, 0.018, 0.035, 0.06, 0.1, 0.16]
+  jitter_repeats: 3
+  orthogonal_jitter: 0.008
+  global_rows: 4096
+  diversity_radius: 0.022
+
+pace:
+  global_rows: 14000
+  frontier_jitter_rows: 5000
+  max_candidates: 18000
+  prefilter_candidates: 5000
+  residual_neighbors: 48
+  residual_samples: 20
+  max_targets: 24
+  design_diversity_radius: 0.02
+
+augmented_gsmobo:
+  proposal_max_rows: 768
+  restart_topk: 12
+  refine_maxiter: 90
+  min_logei_advantage: 0.035
+  protected_base_slots: 1
+  acq_score_batch: 512
+  mosaic:
+    weights: 15
+    elite_per_weight: 48
+    regimes: 12
+    reps_per_regime: 4
+    rows_per_center: 96
+    jitter_scales: [0.006, 0.015, 0.035, 0.07, 0.12]
+
+methods_primary: &methods
+  - BASE_GSMOBO_QPAREGO_NO50K
+  - BASE_GSMOBO_QPAREGO_50K
+  - BASE_NSGA2_NO50K
+  - BASE_NSGA2_50K
+  - NEW_GSMOBO50K_GHOST_RESTART
+  - NEW_GSMOBO50K_SPARC_RESTART
+  - NEW_GSMOBO50K_TRAIL_RESTART
+methods_all: *methods
+
+cases:
+  yeast_growth_robustness:
+    label: Saccharomyces cerevisiae / yeast-GEM / growth x environmental robustness
+    run_dir: ./inputs/runs/yeast_growth_robustness
+    model_glob: yeast_growth_robustness.*
+    qd_feature: r_1992
+    stress_groups:
+      carbon: [r_1714]
+      oxygen: [r_1992]
+      nitrogen: [r_1654]
+      phosphate: [r_2005]
+
+  pputida_growth_robustness:
+    label: Pseudomonas putida KT2440 / iJN1463 / growth x environmental robustness
+    run_dir: ./inputs/runs/pputida_growth_robustness
+    model_glob: pputida_growth_robustness.*
+    qd_feature: EX_o2_e
+    stress_groups:
+      carbon: [EX_glc__D_e]
+      oxygen: [EX_o2_e]
+      nitrogen: [EX_nh4_e]
+      phosphate: [EX_pi_e]
+
+  cglutamicum_growth_robustness:
+    label: Corynebacterium glutamicum / iCGB21FR / growth x environmental robustness
+    run_dir: ./inputs/runs/cglutamicum_growth_robustness
+    model_glob: cglutamicum_growth_robustness.*
+    qd_feature: EX_o2_e
+    stress_groups:
+      carbon: [EX_glc__D_e]
+      oxygen: [EX_o2_e]
+      nitrogen: [EX_nh4_e, EX_urea_e]
+      phosphate: [EX_pi_e]
+
+  cho_growth_robustness:
+    label: CHO / iCHO2441 / growth x environmental robustness
+    run_dir: ./inputs/runs/cho_growth_robustness
+    model_glob: cho_growth_robustness.*
+    qd_feature: EX_o2(e)
+    stress_groups:
+      carbon: [EX_glc(e)]
+      oxygen: [EX_o2(e)]
+      nitrogen:
+        - EX_arg_L(e)
+        - EX_asn_L(e)
+        - EX_asp_L(e)
+        - EX_cys_L(e)
+        - EX_gln_L(e)
+        - EX_his_L(e)
+        - EX_ile_L(e)
+        - EX_leu_L(e)
+        - EX_lys_L(e)
+        - EX_met_L(e)
+        - EX_phe_L(e)
+        - EX_pro_L(e)
+        - EX_ser_L(e)
+        - EX_thr_L(e)
+        - EX_trp_L(e)
+        - EX_tyr_L(e)
+        - EX_val_L(e)
+      phosphate: [EX_pi(e)]
+
+  ecoli_antiepex_growth_robustness:
+    label: Escherichia coli / iJO1366 antiEpEX-scFv / growth x environmental robustness
+    run_dir: ./inputs/runs/ecoli_antiepex_growth_robustness
+    model_glob: ecoli_antiepex_growth_robustness.*
+    qd_feature: EX_o2_e
+    stress_groups:
+      carbon: [EX_glc__D_e]
+      oxygen: [EX_o2_e]
+      nitrogen: [EX_nh4_e]
+      phosphate: [EX_pi_e]

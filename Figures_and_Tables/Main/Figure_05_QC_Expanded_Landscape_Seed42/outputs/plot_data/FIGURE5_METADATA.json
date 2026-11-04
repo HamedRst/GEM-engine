@@ -1,0 +1,66 @@
+{
+  "figure": "Figure 5",
+  "seed": 42,
+  "prior_points": 50000,
+  "scientific_basis": "Native seed42 50K landscape union with actual evaluated raw physical flux coordinates from the optimizer job chosen by existing saved Figure3 QC-only predictions, for the growth\u00d7product case per species",
+  "no_synthetic_points": true,
+  "source_folders_modified": false,
+  "generated_utc": "2026-10-27T09:25:56.450650+00:00",
+  "panels": [
+    {
+      "species": "yeast",
+      "selected_case": "yeast__growth_product",
+      "selected_method": "NSGA-II + SPARC",
+      "selected_algorithm": "DEV_NSGA50K_SPARC_LEGACY_OPERATOR",
+      "selected_source": "Results/Optimizations/landscape_seed_42/prior_50000/GEM_ALL25_FINAL10_PRIOR50K_128/jobs/yeast__growth_product/DEV_NSGA50K_SPARC_LEGACY_OPERATOR/scientific_results/yeast__growth_product/seed_20260822/exact_cache.csv",
+      "prediction_source": "Figures_and_Tables/Main/Figure_03_ThreeSeed_Optimization_Aggregate/outputs/FIGURE3_ALL_NINE_PANELS_V4/run_20261019_134818_UTC/plot_data/QC_SELECTOR_PRIMARY_PREDICTIONS.csv",
+      "landscape_root": "Results/Landscape_Generation/_CANDIDATE_UNVERIFIED/GEM_Learning_Engine_v1.0.4/outputs_multiseed_50k/seed42/yeast_50k",
+      "selected_delta_hv_pct": 0.8041771259188035,
+      "selected_frontier_new_points": 50
+    },
+    {
+      "species": "pputida",
+      "selected_case": "pputida__growth_product",
+      "selected_method": "NSGA-II + SPARC",
+      "selected_algorithm": "DEV_NSGA50K_SPARC_LEGACY_OPERATOR",
+      "selected_source": "Results/Optimizations/landscape_seed_42/prior_50000/GEM_ALL25_FINAL10_PRIOR50K_128/jobs/pputida__growth_product/DEV_NSGA50K_SPARC_LEGACY_OPERATOR/scientific_results/pputida__growth_product/seed_20260822/exact_cache.csv",
+      "prediction_source": "Figures_and_Tables/Main/Figure_03_ThreeSeed_Optimization_Aggregate/outputs/FIGURE3_ALL_NINE_PANELS_V4/run_20261019_134818_UTC/plot_data/QC_SELECTOR_PRIMARY_PREDICTIONS.csv",
+      "landscape_root": "Results/Landscape_Generation/_CANDIDATE_UNVERIFIED/GEM_Learning_Engine_v1.0.4/outputs_multiseed_50k/seed42/pputida_50k",
+      "selected_delta_hv_pct": 0.29228095867583903,
+      "selected_frontier_new_points": 53
+    },
+    {
+      "species": "cglutamicum",
+      "selected_case": "cglutamicum__growth_product",
+      "selected_method": "NSGA-II + SPARC",
+      "selected_algorithm": "DEV_NSGA50K_SPARC_LEGACY_OPERATOR",
+      "selected_source": "Results/Optimizations/landscape_seed_42/prior_50000/GEM_ALL25_FINAL10_PRIOR50K_128/jobs/cglutamicum__growth_product/DEV_NSGA50K_SPARC_LEGACY_OPERATOR/scientific_results/cglutamicum__growth_product/seed_20260822/exact_cache.csv",
+      "prediction_source": "Figures_and_Tables/Main/Figure_03_ThreeSeed_Optimization_Aggregate/outputs/FIGURE3_ALL_NINE_PANELS_V4/run_20261019_134818_UTC/plot_data/QC_SELECTOR_PRIMARY_PREDICTIONS.csv",
+      "landscape_root": "Results/Landscape_Generation/_CANDIDATE_UNVERIFIED/GEM_Learning_Engine_v1.0.4/outputs_multiseed_50k/seed42/cglutamicum_50k",
+      "selected_delta_hv_pct": 6.165266100424827,
+      "selected_frontier_new_points": 37
+    },
+    {
+      "species": "cho",
+      "selected_case": "cho__growth_product",
+      "selected_method": "NSGA-II + SPARC",
+      "selected_algorithm": "DEV_NSGA50K_SPARC_LEGACY_OPERATOR",
+      "selected_source": "Results/Optimizations/landscape_seed_42/prior_50000/GEM_ALL25_FINAL10_PRIOR50K_128/jobs/cho__growth_product/DEV_NSGA50K_SPARC_LEGACY_OPERATOR/scientific_results/cho__growth_product/seed_20260822/exact_cache.csv",
+      "prediction_source": "Figures_and_Tables/Main/Figure_03_ThreeSeed_Optimization_Aggregate/outputs/FIGURE3_ALL_NINE_PANELS_V4/run_20261019_134818_UTC/plot_data/QC_SELECTOR_PRIMARY_PREDICTIONS.csv",
+      "landscape_root": "Results/Landscape_Generation/_CANDIDATE_UNVERIFIED/GEM_Learning_Engine_v1.0.4/outputs_multiseed_50k/seed42/cho_50k",
+      "selected_delta_hv_pct": 27.009253752848615,
+      "selected_frontier_new_points": 16
+    },
+    {
+      "species": "ecoli_antiepex",
+      "selected_case": "ecoli_antiepex__growth_product",
+      "selected_method": "NSGA-II + SPARC",
+      "selected_algorithm": "DEV_NSGA50K_SPARC_LEGACY_OPERATOR",
+      "selected_source": "Results/Optimizations/landscape_seed_42/prior_50000/GEM_ALL25_FINAL10_PRIOR50K_128/jobs/ecoli_antiepex__growth_product/DEV_NSGA50K_SPARC_LEGACY_OPERATOR/scientific_results/ecoli_antiepex__growth_product/seed_20260822/exact_cache.csv",
+      "prediction_source": "Figures_and_Tables/Main/Figure_03_ThreeSeed_Optimization_Aggregate/outputs/FIGURE3_ALL_NINE_PANELS_V4/run_20261019_134818_UTC/plot_data/QC_SELECTOR_PRIMARY_PREDICTIONS.csv",
+      "landscape_root": "Results/Landscape_Generation/_CANDIDATE_UNVERIFIED/GEM_Learning_Engine_v1.0.4/outputs_multiseed_50k/seed42/ecoli_antiepex_50k",
+      "selected_delta_hv_pct": 7.404833197094196,
+      "selected_frontier_new_points": 64
+    }
+  ]
+}

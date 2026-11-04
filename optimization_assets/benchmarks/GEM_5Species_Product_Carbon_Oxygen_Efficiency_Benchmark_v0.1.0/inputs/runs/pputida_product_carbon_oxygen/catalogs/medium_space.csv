@@ -1,0 +1,49 @@
+medium_feature_index,reaction_id,role,requested_min_uptake,requested_max_uptake,effective_min_uptake,effective_max_uptake,original_capacity,baseline_uptake,source,reason
+0.0,EX_glc__D_e,variable,0.0,6.0,0.0,6.0,6.0,6.0,override,
+1.0,EX_nh4_e,variable,0.0,20.0,0.0,20.0,30.0,30.0,override,
+2.0,EX_o2_e,variable,0.0,20.0,0.0,20.0,100.0,100.0,override,
+3.0,EX_pi_e,variable,0.0,10.0,0.0,10.0,10.0,10.0,override,
+4.0,EX_so4_e,variable,0.0,10.0,0.0,10.0,10.0,10.0,override,
+5.0,EX___iJN1463__PHAg_c,fixed,999999.0,999999.0,999999.0,999999.0,,999999.0,baseline_or_override,explicit fixed-reaction override
+6.0,EX___iJN1463__acmtsoxin_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,
+7.0,EX___iJN1463__acpptrn_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,
+8.0,EX___iJN1463__d2one_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,
+9.0,EX___iJN1463__d3one_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,
+10.0,EX___iJN1463__d4one_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,
+11.0,EX___iJN1463__mtsoxin_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,
+12.0,EX___iJN1463__n2one_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,
+13.0,EX___iJN1463__pptrn_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,
+14.0,EX___iJN1463__pqqA_kt_c,fixed,1.0,1.0,1.0,1.0,,1.0,baseline_or_override,explicit fixed-reaction override
+15.0,EX___iJN1463__und2one_e,fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,
+16.0,EX_ca2_e,fixed,10.0,10.0,10.0,10.0,,10.0,baseline_or_override,explicit fixed-reaction override
+17.0,EX_cl_e,fixed,10.0,10.0,10.0,10.0,,10.0,baseline_or_override,explicit fixed-reaction override
+18.0,EX_co2_e,fixed,100.0,100.0,100.0,100.0,,100.0,baseline_or_override,explicit fixed-reaction override
+19.0,EX_cobalt2_e,fixed,10.0,10.0,10.0,10.0,,10.0,baseline_or_override,explicit fixed-reaction override
+20.0,EX_cu2_e,fixed,10.0,10.0,10.0,10.0,,10.0,baseline_or_override,explicit fixed-reaction override
+21.0,EX_fe2_e,fixed,10.0,10.0,10.0,10.0,,10.0,baseline_or_override,explicit fixed-reaction override
+22.0,EX_h2co3_e,fixed,10.0,10.0,10.0,10.0,,10.0,baseline_or_override,explicit fixed-reaction override
+23.0,EX_h2o_e,fixed,100.0,100.0,100.0,100.0,,100.0,baseline_or_override,explicit fixed-reaction override
+24.0,EX_h_e,fixed,100.0,100.0,100.0,100.0,,100.0,baseline_or_override,explicit fixed-reaction override
+25.0,EX_k_e,fixed,10.0,10.0,10.0,10.0,,10.0,baseline_or_override,explicit fixed-reaction override
+26.0,EX_mg2_e,fixed,10.0,10.0,10.0,10.0,,10.0,baseline_or_override,explicit fixed-reaction override
+27.0,EX_mn2_e,fixed,10.0,10.0,10.0,10.0,,10.0,baseline_or_override,explicit fixed-reaction override
+28.0,EX_mobd_e,fixed,10.0,10.0,10.0,10.0,,10.0,baseline_or_override,explicit fixed-reaction override
+29.0,EX_na1_e,fixed,10.0,10.0,10.0,10.0,,10.0,baseline_or_override,explicit fixed-reaction override
+30.0,EX_ni2_e,fixed,10.0,10.0,10.0,10.0,,10.0,baseline_or_override,explicit fixed-reaction override
+31.0,EX_sel_e,fixed,10.0,10.0,10.0,10.0,,10.0,baseline_or_override,explicit fixed-reaction override
+32.0,EX_tungs_e,fixed,10.0,10.0,10.0,10.0,,10.0,baseline_or_override,explicit fixed-reaction override
+33.0,EX_zn2_e,fixed,10.0,10.0,10.0,10.0,,10.0,baseline_or_override,explicit fixed-reaction override
+,EX___iJN1463__acmtsoxin_e,excluded,,,,,,,configuration_or_native_bounds,explicitly_excluded
+,EX___iJN1463__acpptrn_e,excluded,,,,,,,configuration_or_native_bounds,explicitly_excluded
+,EX___iJN1463__d2one_e,excluded,,,,,,,configuration_or_native_bounds,explicitly_excluded
+,EX___iJN1463__d3one_e,excluded,,,,,,,configuration_or_native_bounds,explicitly_excluded
+,EX___iJN1463__d4one_e,excluded,,,,,,,configuration_or_native_bounds,explicitly_excluded
+,EX___iJN1463__mtsoxin_e,excluded,,,,,,,configuration_or_native_bounds,explicitly_excluded
+,EX___iJN1463__n2one_e,excluded,,,,,,,configuration_or_native_bounds,explicitly_excluded
+,EX___iJN1463__pptrn_e,excluded,,,,,,,configuration_or_native_bounds,explicitly_excluded
+,EX___iJN1463__und2one_e,excluded,,,,,,,configuration_or_native_bounds,explicitly_excluded
+,EX_ac_e,excluded,,,,,,,configuration_or_native_bounds,explicitly_excluded
+,EX_cit_e,excluded,,,,,,,configuration_or_native_bounds,explicitly_excluded
+,EX_glcn_e,excluded,,,,,,,configuration_or_native_bounds,explicitly_excluded
+,EX_glyc_e,excluded,,,,,,,configuration_or_native_bounds,explicitly_excluded
+,EX_succ_e,excluded,,,,,,,configuration_or_native_bounds,explicitly_excluded

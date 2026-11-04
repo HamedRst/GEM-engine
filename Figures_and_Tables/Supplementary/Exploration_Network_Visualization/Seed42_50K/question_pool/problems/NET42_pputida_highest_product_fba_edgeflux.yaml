@@ -1,0 +1,224 @@
+schema_version: '1.0'
+problem_id: NET42_pputida_highest_product_fba_edgeflux
+problem_type: exploration.network_visualization
+payload:
+  schema_version: '1.0'
+  problem_type: exploration.network_visualization
+  problem_id: NET42_pputida_highest_product_fba_edgeflux
+  description: Seed42 50K highest-product feasible sampled condition; P. putida
+  model:
+    registry_id: pputida_growth_product_cost
+    sha256: 8f2713e575d677624683d9c9b3ab10fd2191a5a6c07273499e3b3a5801648395
+  subject:
+    kind: target_neighborhood
+    target_id: M___iJN1463__C80aPHA_c
+    entity_kind: metabolite
+    variant_id: canonical_v1
+    branch_only: false
+    gene_ids: []
+  analysis:
+    mode: fba
+    knockout_gene_ids: []
+    compare_to_wild_type: false
+  fba:
+    objective:
+      source: reaction
+      reaction_id: R_EX___iJN1463__C80aPHA_c
+    direction: max
+    medium:
+      source: custom
+      uptake_bounds: {}
+      close_unselected: false
+    flux_threshold: 1.0e-08
+    bounds_overrides:
+      R_EX_glc__D_e:
+      - -5.98745584487915
+      - 1000.0
+      R_EX_nh4_e:
+      - -0.06794821470975876
+      - 1000.0
+      R_EX_o2_e:
+      - -17.428926467895508
+      - 0.0
+      R_EX_pi_e:
+      - -4.819342613220215
+      - 999999.0
+      R_EX_so4_e:
+      - -5.599977970123291
+      - 999999.0
+      R_BIOMASS_KT2440_WT3:
+      - 0.005745249868876673
+      - 999999.0
+  pathway_library:
+    id: atlas_canonical
+    version: 1.0.0
+  render:
+    style_preset: atlas_v023_publication
+    hide_currency_metabolites: true
+    max_display_reactions: 28
+    depth: 6
+    direction: upstream
+    label_mode: names
+    include_legend: true
+    show_flux_values: true
+    active_only: false
+    gene_context_depth: 1
+    gene_context_max_reactions: 16
+    dpi: 300
+    export_formats:
+    - png
+    - svg
+    - pdf
+  output:
+    subdirectory: pputida
+  metadata:
+    species: pputida
+    landscape_seed: 42
+    landscape_size: 50000
+    source: /Users/bboghli/Desktop/GEM_Publication_Archive/Results/Landscape_Generation/_CANDIDATE_UNVERIFIED/GEM_Learning_Engine_v1.0.4/outputs_multiseed_50k/seed42/pputida_50k
+    sample_id: '33733'
+    product_flux: 3.1285590485869927
+    maximum_growth: 0.006383610965418525
+    product_reaction_id_saved: EX___iJN1463__C80aPHA_c
+    product_reaction_id_native: R_EX___iJN1463__C80aPHA_c
+    biomass_reaction_id_saved: BIOMASS_KT2440_WT3
+    biomass_reaction_id_native: R_BIOMASS_KT2440_WT3
+    target_id: R_EX___iJN1463__C80aPHA_c
+    recorded_input_bounds:
+    - landscape_variable: requested_medium__EX_glc__D_e
+      saved_reaction_id: EX_glc__D_e
+      native_reaction_id: R_EX_glc__D_e
+      capacity: 5.98745584487915
+    - landscape_variable: requested_medium__EX_nh4_e
+      saved_reaction_id: EX_nh4_e
+      native_reaction_id: R_EX_nh4_e
+      capacity: 0.06794821470975876
+    - landscape_variable: requested_medium__EX_o2_e
+      saved_reaction_id: EX_o2_e
+      native_reaction_id: R_EX_o2_e
+      capacity: 17.428926467895508
+    - landscape_variable: requested_medium__EX_pi_e
+      saved_reaction_id: EX_pi_e
+      native_reaction_id: R_EX_pi_e
+      capacity: 4.819342613220215
+    - landscape_variable: requested_medium__EX_so4_e
+      saved_reaction_id: EX_so4_e
+      native_reaction_id: R_EX_so4_e
+      capacity: 5.599977970123291
+    model_sha256: 8f2713e575d677624683d9c9b3ab10fd2191a5a6c07273499e3b3a5801648395
+    original_fba_protocol:
+      minimum_growth_fraction: 0.9
+      growth_floor: 0.005745249868876673
+      growth_floor_basis: recorded_growth_floor
+      biomass_saved_id: BIOMASS_KT2440_WT3
+      biomass_native_id: R_BIOMASS_KT2440_WT3
+      fixed_boundary_capacities_original_ids:
+        EX___iJN1463__PHAg_c: 999999.0
+        EX___iJN1463__pqqA_kt_c: 1.0
+        EX_ca2_e: 10.0
+        EX_cl_e: 10.0
+        EX_co2_e: 100.0
+        EX_cobalt2_e: 10.0
+        EX_cu2_e: 10.0
+        EX_fe2_e: 10.0
+        EX_h2co3_e: 10.0
+        EX_h2o_e: 100.0
+        EX_h_e: 100.0
+        EX_k_e: 10.0
+        EX_mg2_e: 10.0
+        EX_mn2_e: 10.0
+        EX_mobd_e: 10.0
+        EX_na1_e: 10.0
+        EX_ni2_e: 10.0
+        EX_sel_e: 10.0
+        EX_tungs_e: 10.0
+        EX_zn2_e: 10.0
+    medium_replay:
+      original_cobra_medium_count: 34
+      original_fixed_reactions:
+        EX___iJN1463__PHAg_c: 999999.0
+        EX___iJN1463__pqqA_kt_c: 1.0
+        EX_ca2_e: 10.0
+        EX_cl_e: 10.0
+        EX_co2_e: 100.0
+        EX_cobalt2_e: 10.0
+        EX_cu2_e: 10.0
+        EX_fe2_e: 10.0
+        EX_h2co3_e: 10.0
+        EX_h2o_e: 100.0
+        EX_h_e: 100.0
+        EX_k_e: 10.0
+        EX_mg2_e: 10.0
+        EX_mn2_e: 10.0
+        EX_mobd_e: 10.0
+        EX_na1_e: 10.0
+        EX_ni2_e: 10.0
+        EX_sel_e: 10.0
+        EX_tungs_e: 10.0
+        EX_zn2_e: 10.0
+      selected_design_reactions:
+        EX_glc__D_e: 5.98745584487915
+        EX_nh4_e: 0.06794821470975876
+        EX_o2_e: 17.428926467895508
+        EX_pi_e: 4.819342613220215
+        EX_so4_e: 5.599977970123291
+      replayed_medium_count: 34
+      changed_reaction_count: 5
+      changed_nonextracellular_count: 0
+      modified_boundaries:
+      - cobra_reaction_id: EX_glc__D_e
+        native_reaction_id: R_EX_glc__D_e
+        before:
+        - -6.0
+        - 1000.0
+        after:
+        - -5.98745584487915
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_nh4_e
+        native_reaction_id: R_EX_nh4_e
+        before:
+        - -30.0
+        - 1000.0
+        after:
+        - -0.06794821470975876
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_o2_e
+        native_reaction_id: R_EX_o2_e
+        before:
+        - -100.0
+        - 0.0
+        after:
+        - -17.428926467895508
+        - 0.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_pi_e
+        native_reaction_id: R_EX_pi_e
+        before:
+        - -10.0
+        - 999999.0
+        after:
+        - -4.819342613220215
+        - 999999.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_so4_e
+        native_reaction_id: R_EX_so4_e
+        before:
+        - -10.0
+        - 999999.0
+        after:
+        - -5.599977970123291
+        - 999999.0
+        is_native_extracellular_exchange: true
+      method: exact_worker.py COBRApy model.medium replay; FBA network bounds_overrides
+    note: Native FBA rerun at existing maximum-product condition, with original seed-42
+      growth floor. No new landscape simulation.
+    original_v5_problem_id: NET42_pputida_highest_product_fba
+    presentation_revision: 'V7.1: V6 clean Graphviz network, edge flux values ON'
+    selected_target_name: C80 Medium chain length aliphatic Polyhydroxyalkanoate
+    selected_target_compartment: c
+    original_problem_id: NET42_pputida_highest_product_fba_clean
+execution:
+  new_fba_policy: native_per_query
+  landscape_copy: not_applicable

@@ -1,0 +1,25 @@
+format: gemproblem/v0.2
+problem:
+  id: product_carbon_oxygen
+  title: Product x Carbon Efficiency x Oxygen Efficiency
+  objectives:
+    - name: growth_constrained_product_flux
+      source: exact_metric
+      metric: product_flux
+      direction: maximize
+      normalization: {method: zero_to_frozen_max}
+    - name: carbon_efficiency
+      source: design_feature
+      feature_from_source_problem: carbon_feature
+      transform: one_minus_normalized
+      direction: maximize
+      normalization: {method: fixed_range, min: 0.0, max: 1.0}
+      validation_normalized_metric: carbon_efficiency
+    - name: oxygen_efficiency
+      source: design_feature
+      feature_from_source_problem: oxygen_feature
+      transform: one_minus_normalized
+      direction: maximize
+      normalization: {method: fixed_range, min: 0.0, max: 1.0}
+      validation_normalized_metric: oxygen_efficiency
+  constraints: []

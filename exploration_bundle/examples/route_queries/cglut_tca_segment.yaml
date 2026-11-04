@@ -1,0 +1,62 @@
+schema_version: '1.0'
+problem_type: exploration.network_visualization
+problem_id: cglut_tca_segment
+description: TCA-related intermediate connectivity (citrate to malate; NOT a verified oxidative TCA route)
+model:
+  registry_id: cglutamicum_growth_product_cost
+  sha256: 0e92b450de71e640cf649be67e8ba38f3df02884e42ff7d6e760291819708439
+subject:
+  kind: route_search
+  entity_kind: metabolite
+  variant_id: canonical_v1
+  branch_only: false
+  gene_ids: []
+  route:
+    substrate: M_cit_c
+    product: M_mal__L_c
+    required_metabolites:
+    - M_icit_c
+    - M_akg_c
+    - M_succ_c
+    - M_fum_c
+    required_reactions: []
+    excluded_metabolites: []
+    excluded_reactions: []
+    ordered_intermediates: true
+    hide_currency: true
+    feasibility: topology
+    max_reaction_steps: 11
+    min_reaction_steps: 2
+    max_results: 10
+    max_candidates: 600
+    max_frontier: 12000
+    timeout_seconds: 12.0
+    lp_time_limit_seconds: 4.0
+    min_flux: 0.001
+analysis:
+  mode: structural
+  knockout_gene_ids: []
+  compare_to_wild_type: false
+pathway_library:
+  id: atlas_canonical
+  version: 1.0.0
+render:
+  style_preset: atlas_v023_publication
+  hide_currency_metabolites: true
+  max_display_reactions: 28
+  depth: 3
+  direction: upstream
+  label_mode: names
+  include_legend: true
+  show_flux_values: false
+  active_only: false
+  dpi: 300
+  export_formats:
+  - svg
+  - pdf
+  - png
+output: {}
+metadata:
+  biochemical_reference: https://www.kegg.jp/entry/map00020
+  validation_claim: User-constrained reaction trace only. Not verified carbon atom
+    provenance or canonical process completeness.

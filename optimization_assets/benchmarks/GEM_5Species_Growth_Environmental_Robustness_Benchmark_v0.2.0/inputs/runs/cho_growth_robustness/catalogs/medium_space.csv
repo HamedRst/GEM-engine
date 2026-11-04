@@ -1,0 +1,30 @@
+medium_feature_index,reaction_id,role,requested_min_uptake,requested_max_uptake,effective_min_uptake,effective_max_uptake,original_capacity,baseline_uptake,source,reason
+0,EX_arg_L(e),variable,0.0,0.01978022,0.0,0.01978022,0.01978022,0.01978022,override,
+1,EX_asn_L(e),variable,0.0,0.040384615,0.0,0.040384615,0.040384615,0.040384615,override,
+2,EX_asp_L(e),variable,0.0,0.009340659,0.0,0.009340659,0.009340659,0.009340659,override,
+3,EX_chol(e),variable,0.0,0.0202871525,0.0,0.0202871524709346,0.0202871524709346,0.0202871524709346,override,
+4,EX_cys_L(e),variable,0.0,0.00521978,0.0,0.00521978,0.00521978,0.00521978,override,
+5,EX_glc(e),variable,0.0,0.198351648,0.0,0.198351648,0.198351648,0.198351648,override,
+6,EX_gln_L(e),variable,0.0,0.067032967,0.0,0.067032967,0.067032967,0.067032967,override,
+7,EX_his_L(e),variable,0.0,0.003296703,0.0,0.003296703,0.003296703,0.003296703,override,
+8,EX_hxan(e),variable,0.0,0.0061945503,0.0,0.0061945503,0.00619455034338034,0.00619455034338034,override,
+9,EX_ile_L(e),variable,0.0,0.010164835,0.0,0.010164835,0.010164835,0.010164835,override,
+10,EX_leu_L(e),variable,0.0,0.014835165,0.0,0.014835165,0.014835165,0.014835165,override,
+11,EX_lys_L(e),variable,0.0,0.013461538,0.0,0.013461538,0.013461538,0.013461538,override,
+12,EX_met_L(e),variable,0.0,0.006043956,0.0,0.006043956,0.006043956,0.006043956,override,
+13,EX_o2(e),variable,0.0,1.127472527,0.0,1.127472527,1.127472527,1.127472527,override,
+14,EX_phe_L(e),variable,0.0,0.006043956,0.0,0.006043956,0.006043956,0.006043956,override,
+15,EX_pi(e),variable,0.0,20.0,0.0,20.0,1000.0,1000.0,override,
+16,EX_pro_L(e),variable,0.0,0.007967033,0.0,0.007967033,0.007967033,0.007967033,override,
+17,EX_ser_L(e),variable,0.0,0.047802198,0.0,0.047802198,0.047802198,0.047802198,override,
+18,EX_so4(e),variable,0.0,20.0,0.0,20.0,1000.0,1000.0,override,
+19,EX_thr_L(e),variable,0.0,0.010164835,0.0,0.010164835,0.010164835,0.010164835,override,
+20,EX_trp_L(e),variable,0.0,0.0040773196,0.0,0.0040773196,0.00407731961272637,0.00407731961272637,override,
+21,EX_tyr_L(e),variable,0.0,0.009340659,0.0,0.009340659,0.009340659,0.009340659,override,
+22,EX_val_L(e),variable,0.0,0.012087912,0.0,0.012087912,0.012087912,0.012087912,override,
+23,EX_fe2(e),fixed,1.0,1.0,1.0,1.0,,1.0,baseline_or_override,explicit fixed-reaction override
+24,EX_fol(e),fixed,0.0004566608,0.0004566608,0.0004566608,0.0004566608,,0.0004566608,baseline_or_override,explicit fixed-reaction override
+25,EX_h(e),fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,explicit fixed-reaction override
+26,EX_h2o(e),fixed,1000.0,1000.0,1000.0,1000.0,,1000.0,baseline_or_override,explicit fixed-reaction override
+27,EX_hco3(e),fixed,1.0,1.0,1.0,1.0,,1.0,baseline_or_override,explicit fixed-reaction override
+28,EX_pydxn(e),fixed,0.000170553368925846,0.000170553368925846,0.000170553368925846,0.000170553368925846,,0.000170553368925846,baseline_or_override,explicit fixed-reaction override

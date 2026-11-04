@@ -1,0 +1,218 @@
+schema_version: '1.0'
+problem_id: NET42_cglutamicum_highest_product_fba_edgeflux
+problem_type: exploration.network_visualization
+payload:
+  schema_version: '1.0'
+  problem_type: exploration.network_visualization
+  problem_id: NET42_cglutamicum_highest_product_fba_edgeflux
+  description: Seed42 50K highest-product feasible sampled condition; C. glutamicum
+  model:
+    registry_id: cglutamicum_growth_product_cost
+    sha256: 0e92b450de71e640cf649be67e8ba38f3df02884e42ff7d6e760291819708439
+  subject:
+    kind: target_neighborhood
+    target_id: M_glu__L_c
+    entity_kind: metabolite
+    variant_id: canonical_v1
+    branch_only: false
+    gene_ids: []
+  analysis:
+    mode: fba
+    knockout_gene_ids: []
+    compare_to_wild_type: false
+  fba:
+    objective:
+      source: reaction
+      reaction_id: R_EX_glu__L_e
+    direction: max
+    medium:
+      source: custom
+      uptake_bounds: {}
+      close_unselected: false
+    flux_threshold: 1.0e-08
+    bounds_overrides:
+      R_EX_glc__D_e:
+      - -9.915933609008789
+      - 1000.0
+      R_EX_pi_e:
+      - -0.036964863538742065
+      - 1000.0
+      R_EX_nh4_e:
+      - -5.012484550476074
+      - 1000.0
+      R_EX_o2_e:
+      - -9.762581825256348
+      - 1000.0
+      R_EX_so4_e:
+      - -5.162465572357178
+      - 1000.0
+      R_EX_urea_e:
+      - -9.185981750488281
+      - 1000.0
+      R_EX_34dhbz_e:
+      - -6.947259902954102
+      - 1000.0
+      R_Growth:
+      - 0.03977911705685651
+      - 1000.0
+  pathway_library:
+    id: atlas_canonical
+    version: 1.0.0
+  render:
+    style_preset: atlas_v023_publication
+    hide_currency_metabolites: true
+    max_display_reactions: 28
+    depth: 6
+    direction: upstream
+    label_mode: names
+    include_legend: true
+    show_flux_values: true
+    active_only: false
+    gene_context_depth: 1
+    gene_context_max_reactions: 16
+    dpi: 300
+    export_formats:
+    - png
+    - svg
+    - pdf
+  output:
+    subdirectory: cglutamicum
+  metadata:
+    species: cglutamicum
+    landscape_seed: 42
+    landscape_size: 50000
+    source: /Users/bboghli/Desktop/GEM_Publication_Archive/Results/Landscape_Generation/_CANDIDATE_UNVERIFIED/GEM_Learning_Engine_v1.0.4/outputs_multiseed_50k/seed42/cglutamicum_50k
+    sample_id: '40002'
+    product_flux: 11.23191592372534
+    maximum_growth: 0.04419901895206278
+    product_reaction_id_saved: EX_glu__L_e
+    product_reaction_id_native: R_EX_glu__L_e
+    biomass_reaction_id_saved: Growth
+    biomass_reaction_id_native: R_Growth
+    target_id: M_glu__L_c
+    recorded_input_bounds:
+    - landscape_variable: requested_medium__EX_34dhbz_e
+      saved_reaction_id: EX_34dhbz_e
+      native_reaction_id: R_EX_34dhbz_e
+      capacity: 6.947259902954102
+    - landscape_variable: requested_medium__EX_glc__D_e
+      saved_reaction_id: EX_glc__D_e
+      native_reaction_id: R_EX_glc__D_e
+      capacity: 9.915933609008789
+    - landscape_variable: requested_medium__EX_nh4_e
+      saved_reaction_id: EX_nh4_e
+      native_reaction_id: R_EX_nh4_e
+      capacity: 5.012484550476074
+    - landscape_variable: requested_medium__EX_o2_e
+      saved_reaction_id: EX_o2_e
+      native_reaction_id: R_EX_o2_e
+      capacity: 9.762581825256348
+    - landscape_variable: requested_medium__EX_pi_e
+      saved_reaction_id: EX_pi_e
+      native_reaction_id: R_EX_pi_e
+      capacity: 0.036964863538742065
+    - landscape_variable: requested_medium__EX_so4_e
+      saved_reaction_id: EX_so4_e
+      native_reaction_id: R_EX_so4_e
+      capacity: 5.162465572357178
+    - landscape_variable: requested_medium__EX_urea_e
+      saved_reaction_id: EX_urea_e
+      native_reaction_id: R_EX_urea_e
+      capacity: 9.185981750488281
+    model_sha256: 0e92b450de71e640cf649be67e8ba38f3df02884e42ff7d6e760291819708439
+    original_fba_protocol:
+      minimum_growth_fraction: 0.9
+      growth_floor: 0.03977911705685651
+      growth_floor_basis: recorded_growth_floor
+      biomass_saved_id: Growth
+      biomass_native_id: R_Growth
+      fixed_boundary_capacities_original_ids: {}
+    medium_replay:
+      original_cobra_medium_count: 21
+      original_fixed_reactions: {}
+      selected_design_reactions:
+        EX_34dhbz_e: 6.947259902954102
+        EX_glc__D_e: 9.915933609008789
+        EX_nh4_e: 5.012484550476074
+        EX_o2_e: 9.762581825256348
+        EX_pi_e: 0.036964863538742065
+        EX_so4_e: 5.162465572357178
+        EX_urea_e: 9.185981750488281
+      replayed_medium_count: 21
+      changed_reaction_count: 7
+      changed_nonextracellular_count: 0
+      modified_boundaries:
+      - cobra_reaction_id: EX_glc__D_e
+        native_reaction_id: R_EX_glc__D_e
+        before:
+        - -10.0
+        - 1000.0
+        after:
+        - -9.915933609008789
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_pi_e
+        native_reaction_id: R_EX_pi_e
+        before:
+        - -10.0
+        - 1000.0
+        after:
+        - -0.036964863538742065
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_nh4_e
+        native_reaction_id: R_EX_nh4_e
+        before:
+        - -10.0
+        - 1000.0
+        after:
+        - -5.012484550476074
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_o2_e
+        native_reaction_id: R_EX_o2_e
+        before:
+        - -10.0
+        - 1000.0
+        after:
+        - -9.762581825256348
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_so4_e
+        native_reaction_id: R_EX_so4_e
+        before:
+        - -10.0
+        - 1000.0
+        after:
+        - -5.162465572357178
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_urea_e
+        native_reaction_id: R_EX_urea_e
+        before:
+        - -10.0
+        - 1000.0
+        after:
+        - -9.185981750488281
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: EX_34dhbz_e
+        native_reaction_id: R_EX_34dhbz_e
+        before:
+        - -10.0
+        - 1000.0
+        after:
+        - -6.947259902954102
+        - 1000.0
+        is_native_extracellular_exchange: true
+      method: exact_worker.py COBRApy model.medium replay; FBA network bounds_overrides
+    note: Native FBA rerun at existing maximum-product condition, with original seed-42
+      growth floor. No new landscape simulation.
+    original_v5_problem_id: NET42_cglutamicum_highest_product_fba
+    presentation_revision: 'V7.1: V6 clean Graphviz network, edge flux values ON'
+    selected_target_name: L-Glutamate
+    selected_target_compartment: c
+    original_problem_id: NET42_cglutamicum_highest_product_fba_clean
+execution:
+  new_fba_policy: native_per_query
+  landscape_copy: not_applicable

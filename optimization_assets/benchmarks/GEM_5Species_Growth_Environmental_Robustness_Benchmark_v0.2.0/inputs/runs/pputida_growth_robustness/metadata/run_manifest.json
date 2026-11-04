@@ -1,0 +1,29 @@
+{
+  "created_at_utc": "2026-08-21T01:22:26.630487+00:00",
+  "engine_version": "1.0.4",
+  "config_hash": "167cf668363fd1d4781d",
+  "model_fingerprint": "6a3bfcb87685041579b2bed16a84db236221e9a29b4345eb8613bedbfa71d753",
+  "model_summary": {
+    "model_id": "iJN1463",
+    "n_reactions": 2929,
+    "n_metabolites": 2155,
+    "n_genes": 1462,
+    "n_exchanges": 381,
+    "n_variable_medium_components": 5,
+    "n_fixed_medium_components": 29,
+    "biomass_reaction_id": "BIOMASS_KT2440_WT3",
+    "product_reaction_id": "EX___iJN1463__C80aPHA_c",
+    "optimization_mode": "growth_constrained_product",
+    "minimum_growth_fraction": 0.9
+  },
+  "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+  "packages": {
+    "cobra": "0.30.0",
+    "numpy": "2.5.1",
+    "pandas": "2.3.3",
+    "pyarrow": "25.0.0",
+    "scipy": "1.18.0",
+    "optlang": "1.9.1"
+  }
+}

@@ -1,0 +1,16 @@
+format: gemproblem/v0.2
+problem:
+  id: growth_oxygen_robustness
+  title: Growth x Oxygen-Limitation Robustness
+  objectives:
+    - name: nominal_maximum_growth
+      source: exact_metric
+      metric: maximum_growth
+      direction: maximize
+      normalization: {method: frozen_minmax}
+    - name: oxygen_limitation_growth_retention
+      source: exact_metric
+      metric: stress_tolerance
+      direction: maximize
+      normalization: {method: fixed_range, min: 0.0, max: 1.0}
+  constraints: []

@@ -1,0 +1,19 @@
+{
+  "generator": "Figure 3 V6 presentation-only repair",
+  "based_on": "original V4 saved numerical plot_data/ tables",
+  "science_recalculated": false,
+  "qc_selector_retrained": false,
+  "optimizers_rerun": false,
+  "source_A_F_csv": "Figures_and_Tables/Main/Figure_03_ThreeSeed_Optimization_Aggregate/outputs/FIGURE3_ALL_NINE_PANELS_V4/run_20261019_134818_UTC/plot_data/ORIGINAL_AF_3SEED_AGGREGATE.csv",
+  "source_A_F_csv_sha256": "2ffab6caf151f67e14563e6cb38994a4298a12c24c1abe68ae23dd61aeecfa24",
+  "source_G_I_csv": "Figures_and_Tables/Main/Figure_03_ThreeSeed_Optimization_Aggregate/outputs/FIGURE3_ALL_NINE_PANELS_V4/run_20261019_134818_UTC/plot_data/GHI_POOLED_TOP_PCT_MAIN_297.csv",
+  "source_G_I_csv_sha256": "80808f76cf0e720999f750459e0dcc453b90e3c26f9c7bac7488197188d26d76",
+  "palette_A_F": {
+    "SPARC": "#009E73",
+    "TRAIL": "#F0B400"
+  },
+  "sort": "ascending within each size; A/D bottom-to-top, grouped B/C/E/F/G/H/I left-to-right",
+  "output": "overwrites exact existing V4 PDF PNG SVG in its current run directory; no new run",
+  "run_folder": "Figures_and_Tables/Main/Figure_03_ThreeSeed_Optimization_Aggregate/outputs/FIGURE3_ALL_NINE_PANELS_V4/run_20261019_134818_UTC",
+  "qc_dependency": "Not required for pure presentation redraw"
+}

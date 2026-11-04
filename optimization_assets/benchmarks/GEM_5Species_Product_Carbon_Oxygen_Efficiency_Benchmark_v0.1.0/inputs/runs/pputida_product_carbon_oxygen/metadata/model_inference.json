@@ -1,0 +1,247 @@
+{
+  "model_id": "iJN1463",
+  "model_name": null,
+  "biomass": {
+    "reaction_id": "BIOMASS_KT2440_WT3",
+    "confidence": "explicit",
+    "score": 1000000000.0,
+    "margin": 1000000000.0,
+    "source": "user override"
+  },
+  "product": {
+    "reaction_id": "EX___iJN1463__C80aPHA_c",
+    "confidence": "explicit",
+    "score": 1000000000.0,
+    "margin": 1000000000.0,
+    "source": "user override"
+  },
+  "embedded_objective": {
+    "BIOMASS_KT2440_WT3": 1.0
+  },
+  "selected_optimization_mode": "growth_constrained_product",
+  "biomass_candidates": [
+    {
+      "reaction_id": "BIOMASS_KT2440_WT3",
+      "reaction_name": "Biomass reaction",
+      "score": 214.0,
+      "reasons": [
+        "embedded biomass-like model objective",
+        "biomass term in reaction identifier/name",
+        "large biomass-like stoichiometry",
+        "consumes many amino acids",
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "BIOMASS_KT2440_Core2",
+      "reaction_name": "Biomass reaction",
+      "score": 114.0,
+      "reasons": [
+        "biomass term in reaction identifier/name",
+        "large biomass-like stoichiometry",
+        "consumes many amino acids",
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "__iJN1463__RBFK",
+      "reaction_name": "R_riboflavin_kinase",
+      "score": 35.0,
+      "reasons": [
+        "growth-related term",
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "EX_rib__D_e",
+      "reaction_name": "Exchange of D-ribofuranose.",
+      "score": 30.0,
+      "reasons": [
+        "growth-related term"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "RBFSa_1",
+      "reaction_name": "riboflavin synthase",
+      "score": 30.0,
+      "reasons": [
+        "growth-related term"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "RBFSb",
+      "reaction_name": "riboflavin synthase",
+      "score": 30.0,
+      "reasons": [
+        "growth-related term"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "13DAMPPabcpp",
+      "reaction_name": "R_1_3_diaminopromane_transport_via_ABC_system__periplasm_",
+      "score": 5.0,
+      "reasons": [
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "15DAPabcpp",
+      "reaction_name": "R_cadaverine_transport_via_ABC_system__periplasm_",
+      "score": 5.0,
+      "reasons": [
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "2DHGLCK",
+      "reaction_name": "R_dehydrogluconokinase",
+      "score": 5.0,
+      "reasons": [
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "4ABUTabcpp",
+      "reaction_name": "R_GABA_transport_via_ABC_system__periplasm_",
+      "score": 5.0,
+      "reasons": [
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    }
+  ],
+  "product_candidates": [
+    {
+      "reaction_id": "EX___iJN1463__tripeptide_c",
+      "reaction_name": "R_tripeptide_demand",
+      "score": 51.0,
+      "reasons": [
+        "generic product terms: peptide",
+        "demand reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "__iJN1463__PQQFEP"
+      ]
+    },
+    {
+      "reaction_id": "EX_acgam_c",
+      "reaction_name": "Exchange of N-acetyl-D-glucosamine.",
+      "score": 40.0,
+      "reasons": [
+        "exchange reaction",
+        "linked synthesis reaction contains generic product terms",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "__iJN1463__AGM3PH",
+        "__iJN1463__AGM4PH",
+        "__iJN1463__AGMH"
+      ]
+    },
+    {
+      "reaction_id": "EX___iJN1463__pqqA_kt_c",
+      "reaction_name": "R_sink_pqqA_kt",
+      "score": 36.0,
+      "reasons": [
+        "generic product terms: peptide",
+        "sink reaction"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "EX___iJN1463__C100aPHA_c",
+      "reaction_name": "R_C100aPHA_demand",
+      "score": 33.0,
+      "reasons": [
+        "demand reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "__iJN1463__PHAP2C100"
+      ]
+    },
+    {
+      "reaction_id": "EX___iJN1463__C100pPHA_c",
+      "reaction_name": "R_C100pPHA_demand",
+      "score": 33.0,
+      "reasons": [
+        "demand reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "__iJN1463__PHAPCP100"
+      ]
+    },
+    {
+      "reaction_id": "EX___iJN1463__C101PAH_c",
+      "reaction_name": "R_C101PHA_demand",
+      "score": 33.0,
+      "reasons": [
+        "demand reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "__iJN1463__PHAP2C101"
+      ]
+    },
+    {
+      "reaction_id": "EX___iJN1463__C120aPHA_c",
+      "reaction_name": "R_C120aPHA_demand",
+      "score": 33.0,
+      "reasons": [
+        "demand reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "__iJN1463__PHAP2C120"
+      ]
+    },
+    {
+      "reaction_id": "EX___iJN1463__C121aPHA_c",
+      "reaction_name": "R_C121aPHA_demand",
+      "score": 33.0,
+      "reasons": [
+        "demand reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "__iJN1463__PHAP2C121"
+      ]
+    },
+    {
+      "reaction_id": "EX___iJN1463__C121d6PHA_c",
+      "reaction_name": "R_C121d6PHA_demand",
+      "score": 33.0,
+      "reasons": [
+        "demand reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "__iJN1463__PHAP2C121d6"
+      ]
+    },
+    {
+      "reaction_id": "EX___iJN1463__C140aPHA_c",
+      "reaction_name": "R_C140aPHA_demand",
+      "score": 33.0,
+      "reasons": [
+        "demand reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "__iJN1463__PHAP2C140"
+      ]
+    }
+  ],
+  "warnings": []
+}

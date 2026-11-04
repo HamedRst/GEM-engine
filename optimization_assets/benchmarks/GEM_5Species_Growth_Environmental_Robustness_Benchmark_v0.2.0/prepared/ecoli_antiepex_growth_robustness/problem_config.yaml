@@ -1,0 +1,75 @@
+problem:
+  case_name: ecoli_antiepex_growth_robustness
+  case_label: Escherichia coli / iJO1366 antiEpEX-scFv / growth x environmental robustness
+  run_dir: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0/inputs/runs/ecoli_antiepex_growth_robustness
+  model_path: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0/inputs/models/ecoli_antiepex_growth_robustness.json
+  model_id: iJO1366_producing_antiEpEX-scFv
+  model_fingerprint: 90707eee31f26dc81416fb575c7a0040f6ab0673014642f3dd4a306220b6a2f6
+  config_hash: b2459014137055adb0a3
+  biomass_reaction_id: BIOMASS_Ec_iJO1366_core_53p95M
+  features:
+  - EX_cbl1_e
+  - EX_glc__D_e
+  - EX_nh4_e
+  - EX_o2_e
+  - EX_pi_e
+  - EX_so4_e
+  feature_labels:
+    EX_cbl1_e: Cob(I)alamin exchange
+    EX_glc__D_e: D-Glucose exchange
+    EX_nh4_e: Ammonia exchange
+    EX_o2_e: O2 exchange
+    EX_pi_e: Phosphate exchange
+    EX_so4_e: Sulfate exchange
+  bounds:
+    EX_cbl1_e:
+    - 0.0
+    - 0.01
+    EX_glc__D_e:
+    - 0.0
+    - 10.0
+    EX_nh4_e:
+    - 0.0
+    - 20.0
+    EX_o2_e:
+    - 0.0
+    - 20.0
+    EX_pi_e:
+    - 0.0
+    - 20.0
+    EX_so4_e:
+    - 0.0
+    - 20.0
+  growth_scale: 0.9654057799145532
+  product_scale: 0.4673616248616613
+  objective_1_name: exact_nominal_maximum_growth
+  objective_2_name: exact_worst_case_environmental_stressed_growth_live__surrogate_derived_in_50k_prior
+  objective_2_formula: min_s growth(T_s(x)); s in {carbon, oxygen, nitrogen, phosphate}
+  legacy_objective_2_column: product_flux
+  raw_robust_growth_column: robust_growth
+  stress_classes:
+  - carbon
+  - oxygen
+  - nitrogen
+  - phosphate
+  stress_groups:
+    carbon:
+    - EX_glc__D_e
+    oxygen:
+    - EX_o2_e
+    nitrogen:
+    - EX_nh4_e
+    phosphate:
+    - EX_pi_e
+  stress_fraction_toward_lower_bound: 0.5
+  stress_definition: in-domain reduction of only variables already represented in
+    the frozen landscape; objective 2 is worst-case growth across the four classes
+  prior_robustness_is_surrogate_derived: true
+  live_robustness_is_exact_fba: true
+  hv_reference_normalized:
+  - 0.0
+  - 0.0
+  baseline_table: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0/prepared/ecoli_antiepex_growth_robustness/baseline_compact.csv.gz
+  design_cache: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0/inputs/runs/ecoli_antiepex_growth_robustness/design_cache/sobol_5a43007b5b132ab7702c.npy
+  qd_feature: EX_o2_e
+  case_key: ecoli_antiepex_growth_robustness

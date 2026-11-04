@@ -1,0 +1,187 @@
+project:
+  name: iCHO2441_1_20260821T025958679669Z_3f7425
+  output_dir: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_Learning_Engine_v1.0.4/outputs/iCHO2441_1/run_20260821T025958679669Z_3f7425_50k
+  overwrite: false
+  resume: true
+  pause_file: PAUSE_REQUESTED
+  verify_chunk_checksums_on_resume: true
+model:
+  path: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_Learning_Engine_v1.0.4/data/models/uploads/iCHO2441.xml
+  format: auto
+  objective_reaction_id: biomass_cho_prod
+  objective_direction: max
+  biomass_reaction_id: biomass_cho_prod
+  product_reaction_id: DM_igg[g]
+optimization:
+  mode: growth_constrained_product
+  minimum_growth_fraction: 0.9
+  require_high_confidence_product: false
+  allow_medium_confidence_product: true
+experiment:
+  analysis_type: random_medium
+  design_stage: automatic_initial_space_filling
+  sampling_batch: 0
+  parent_query_id: null
+  notes: Automatically configured from model path and run count.
+solver:
+  name: glpk
+  timeout_seconds: 60
+  feasibility_tolerance: null
+  optimality_tolerance: null
+simulation:
+  n_simulations: 50000
+  chunk_size: 256
+  seed: 42
+  method: fba
+  processes: 2
+  max_in_flight_chunks: 2
+  chunk_retry_attempts: 1
+  close_unlisted_exchanges: false
+  respect_original_exchange_bounds: true
+  feasible_statuses:
+  - optimal
+  simulation_log_every: 100
+  fail_fast: false
+sampling:
+  strategy: sobol
+  discovery_scope: model_medium
+  automatic_medium_policy: nutrients
+  auto_min_fraction: 0.0
+  auto_max_fraction: 1.0
+  auto_max_uptake_cap: 20
+  closed_exchange_max_uptake: 10.0
+  bounds:
+    EX_arg_L(e):
+      min: 0.0
+      max: 0.01978022
+    EX_asn_L(e):
+      min: 0.0
+      max: 0.040384615
+    EX_asp_L(e):
+      min: 0.0
+      max: 0.009340659
+    EX_chol(e):
+      min: 0.0
+      max: 0.0202871525
+    EX_cys_L(e):
+      min: 0.0
+      max: 0.00521978
+    EX_glc(e):
+      min: 0.0
+      max: 0.198351648
+    EX_gln_L(e):
+      min: 0.0
+      max: 0.067032967
+    EX_his_L(e):
+      min: 0.0
+      max: 0.003296703
+    EX_hxan(e):
+      min: 0.0
+      max: 0.0061945503
+    EX_ile_L(e):
+      min: 0.0
+      max: 0.010164835
+    EX_leu_L(e):
+      min: 0.0
+      max: 0.014835165
+    EX_lys_L(e):
+      min: 0.0
+      max: 0.013461538
+    EX_met_L(e):
+      min: 0.0
+      max: 0.006043956
+    EX_o2(e):
+      min: 0.0
+      max: 1.127472527
+    EX_phe_L(e):
+      min: 0.0
+      max: 0.006043956
+    EX_pi(e):
+      min: 0.0
+      max: 20.0
+    EX_pro_L(e):
+      min: 0.0
+      max: 0.007967033
+    EX_ser_L(e):
+      min: 0.0
+      max: 0.047802198
+    EX_so4(e):
+      min: 0.0
+      max: 20.0
+    EX_thr_L(e):
+      min: 0.0
+      max: 0.010164835
+    EX_trp_L(e):
+      min: 0.0
+      max: 0.0040773196
+    EX_tyr_L(e):
+      min: 0.0
+      max: 0.009340659
+    EX_val_L(e):
+      min: 0.0
+      max: 0.012087912
+  fixed_reactions:
+    EX_fe2(e): 1.0
+    EX_fol(e): 0.0004566608
+    EX_h(e): 1000.0
+    EX_h2o(e): 1000.0
+    EX_hco3(e): 1.0
+    EX_pydxn(e): 0.0001705534
+  include_reaction_ids:
+  - EX_arg_L(e)
+  - EX_asn_L(e)
+  - EX_asp_L(e)
+  - EX_chol(e)
+  - EX_cys_L(e)
+  - EX_glc(e)
+  - EX_gln_L(e)
+  - EX_his_L(e)
+  - EX_hxan(e)
+  - EX_ile_L(e)
+  - EX_leu_L(e)
+  - EX_lys_L(e)
+  - EX_met_L(e)
+  - EX_o2(e)
+  - EX_phe_L(e)
+  - EX_pi(e)
+  - EX_pro_L(e)
+  - EX_ser_L(e)
+  - EX_so4(e)
+  - EX_thr_L(e)
+  - EX_trp_L(e)
+  - EX_tyr_L(e)
+  - EX_val_L(e)
+  exclude_reaction_ids: []
+  include_zero_probability: 0.0
+  sobol_scramble: true
+  sobol_skip: 0
+  cache_dtype: float32
+  max_design_generation_memory_mb: 2048
+outputs:
+  compression: zstd
+  store_conditions: true
+  store_requested_media: true
+  store_applied_media: true
+  store_exchange_fluxes: all
+  selected_exchange_fluxes: []
+  store_reaction_fluxes: all
+  selected_reaction_fluxes: []
+  flux_table_format: long
+  flux_zero_tolerance: 1.0e-09
+  max_dense_flux_memory_mb: 512
+diagnostics:
+  store_shadow_prices: none
+  selected_shadow_price_metabolites: []
+  store_reduced_costs: none
+  selected_reduced_cost_reactions: []
+  store_active_constraints: exchanges
+  selected_active_constraint_reactions: []
+  dual_zero_tolerance: 1.0e-09
+  bound_activity_tolerance: 1.0e-07
+logging:
+  level: INFO
+  log_to_console: true
+  log_to_file: true
+  structured_jsonl: true
+  max_file_mb: 25
+  backup_count: 5

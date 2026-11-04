@@ -1,0 +1,1300 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GEM Learning Engine</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #071019;
+      --panel: rgba(14, 29, 43, .86);
+      --panel-2: rgba(18, 38, 56, .9);
+      --line: rgba(164, 207, 226, .16);
+      --text: #eef8fb;
+      --muted: #91a9b6;
+      --cyan: #62d9ee;
+      --green: #75e0a7;
+      --amber: #f3c56b;
+      --red: #ff8991;
+      --shadow: 0 24px 70px rgba(0,0,0,.34);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 12% -10%, rgba(54, 188, 215, .20), transparent 34rem),
+        radial-gradient(circle at 100% 10%, rgba(68, 120, 255, .14), transparent 34rem),
+        linear-gradient(160deg, #071019 0%, #08141e 48%, #050b11 100%);
+      color: var(--text);
+    }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    .shell { display: grid; grid-template-columns: 270px minmax(0, 1fr); min-height: 100vh; }
+    aside {
+      position: sticky; top: 0; height: 100vh; overflow: auto;
+      border-right: 1px solid var(--line); padding: 24px 18px;
+      background: rgba(5, 15, 23, .78); backdrop-filter: blur(18px);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+    .mark { width: 42px; height: 42px; border-radius: 13px; display: grid; place-items: center; font-weight: 800;
+      background: linear-gradient(145deg, rgba(98,217,238,.24), rgba(117,224,167,.12)); border: 1px solid rgba(98,217,238,.35); box-shadow: inset 0 0 24px rgba(98,217,238,.08); }
+    .brand strong { display:block; letter-spacing: -.02em; }
+    .brand small { color: var(--muted); }
+    .nav button { width: 100%; text-align: left; border: 0; color: var(--muted); padding: 11px 12px; margin: 3px 0; border-radius: 11px; background: transparent; }
+    .nav button:hover, .nav button.active { color: var(--text); background: rgba(98,217,238,.09); }
+    .sidebar-block { border-top: 1px solid var(--line); margin-top: 20px; padding-top: 20px; }
+    .sidebar-block label { font-size: 12px; color: var(--muted); display:block; margin-bottom: 8px; }
+    .token-row { display:flex; gap:8px; }
+    main { padding: 26px; min-width: 0; }
+    .topbar { display:flex; align-items:center; justify-content:space-between; gap:20px; margin-bottom:22px; }
+    .topbar h1 { margin:0; font-size: clamp(24px, 3vw, 38px); letter-spacing:-.04em; }
+    .topbar p { margin:6px 0 0; color: var(--muted); }
+    .status-pill { border:1px solid var(--line); background:rgba(255,255,255,.035); padding:8px 12px; border-radius:999px; color:var(--muted); white-space:nowrap; }
+    .status-pill.ok { color:var(--green); border-color:rgba(117,224,167,.25); }
+    .status-pill.warn { color:var(--amber); border-color:rgba(243,197,107,.25); }
+    .page { display:none; }
+    .page.active { display:block; }
+    .grid { display:grid; gap:16px; }
+    .grid.cards { grid-template-columns: repeat(4, minmax(0,1fr)); }
+    .grid.two { grid-template-columns: minmax(0,1.1fr) minmax(340px,.9fr); }
+    .card { background: var(--panel); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; }
+    .card-head { padding:17px 18px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:14px; }
+    .card-head h2, .card-head h3 { margin:0; font-size:15px; letter-spacing:-.01em; }
+    .card-body { padding:18px; }
+    .metric { padding:18px; min-height:118px; }
+    .metric .label { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.08em; }
+    .metric .value { margin-top:12px; font-size:31px; font-weight:760; letter-spacing:-.04em; }
+    .metric .sub { margin-top:7px; color:var(--muted); font-size:12px; }
+    .progress { height:10px; border-radius:999px; background:rgba(255,255,255,.07); overflow:hidden; margin-top:13px; }
+    .progress > div { height:100%; width:0; background:linear-gradient(90deg,var(--cyan),var(--green)); transition:width .35s ease; }
+    .form-grid { display:grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap:13px; }
+    .field label { display:block; color:var(--muted); font-size:12px; margin:0 0 7px 2px; }
+    input, select, textarea { width:100%; color:var(--text); background:rgba(4,14,21,.66); border:1px solid var(--line); border-radius:11px; padding:10px 12px; outline:none; }
+    input:focus, select:focus, textarea:focus { border-color:rgba(98,217,238,.48); box-shadow:0 0 0 3px rgba(98,217,238,.08); }
+    textarea { min-height:430px; resize:vertical; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:12px; line-height:1.55; }
+    .actions { display:flex; flex-wrap:wrap; gap:9px; }
+    .btn { border:1px solid var(--line); border-radius:11px; padding:10px 14px; color:var(--text); background:rgba(255,255,255,.045); }
+    .btn:hover { transform:translateY(-1px); background:rgba(255,255,255,.075); }
+    .btn.primary { color:#05212a; font-weight:760; border:0; background:linear-gradient(135deg,var(--cyan),#9ce7d1); }
+    .btn.green { color:#062115; border-color:transparent; font-weight:760; background:var(--green); }
+    .btn.amber { color:#2b1c02; border-color:transparent; font-weight:760; background:var(--amber); }
+    .btn.red { color:#2d0609; border-color:transparent; font-weight:760; background:var(--red); }
+    .btn:disabled { opacity:.45; cursor:not-allowed; transform:none; }
+    .console { background:#02070b; color:#bee5ef; border-radius:12px; padding:15px; min-height:410px; max-height:610px; overflow:auto; white-space:pre-wrap; word-break:break-word; font:12px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .table-wrap { overflow:auto; max-height:560px; }
+    table { width:100%; border-collapse:collapse; font-size:12px; }
+    th { position:sticky; top:0; z-index:1; background:#102231; color:#b9d0da; text-align:left; font-weight:650; }
+    th, td { border-bottom:1px solid var(--line); padding:9px 10px; white-space:nowrap; }
+    tr:hover td { background:rgba(98,217,238,.035); }
+    .badge { display:inline-flex; align-items:center; border:1px solid var(--line); border-radius:999px; padding:4px 8px; color:var(--muted); font-size:11px; }
+    .badge.running { color:var(--cyan); border-color:rgba(98,217,238,.28); }
+    .badge.completed { color:var(--green); border-color:rgba(117,224,167,.28); }
+    .badge.failed { color:var(--red); border-color:rgba(255,137,145,.28); }
+    .notice { padding:12px 14px; border:1px solid var(--line); border-radius:11px; color:var(--muted); background:rgba(255,255,255,.03); }
+    .notice.error { color:#ffd4d7; border-color:rgba(255,137,145,.3); background:rgba(255,137,145,.06); }
+    .notice.success { color:#ccffe1; border-color:rgba(117,224,167,.28); background:rgba(117,224,167,.06); }
+    .stack { display:flex; flex-direction:column; gap:13px; }
+    .summary-list { display:grid; grid-template-columns:145px minmax(0,1fr); gap:8px 14px; font-size:13px; }
+    .summary-list div:nth-child(odd) { color:var(--muted); }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; word-break:break-all; }
+    dialog { width:min(520px,90vw); color:var(--text); border:1px solid var(--line); border-radius:18px; padding:0; background:#0d1d2a; box-shadow:var(--shadow); }
+    dialog::backdrop { background:rgba(0,0,0,.7); backdrop-filter:blur(5px); }
+    .toast { position:fixed; right:22px; bottom:22px; max-width:420px; padding:13px 15px; border-radius:12px; background:#173044; border:1px solid var(--line); box-shadow:var(--shadow); opacity:0; transform:translateY(10px); pointer-events:none; transition:.25s; z-index:20; }
+    .toast.show { opacity:1; transform:translateY(0); }
+    .general-options { display:grid;grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .general-options .field {min-width:0;}
+    .general-actions {display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+    .general-pill {display:inline-block;border:1px solid var(--line);border-radius:7px;padding:4px 8px;margin:3px 5px 3px 0;color:var(--muted);font-size:12px;}
+    [hidden] {display:none!important;}
+    #optGeneralBounds {min-height:95px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+    #optGeneralMetrics {display:none;font-size:12px;margin-top:9px;}
+    #optGeneralPanel {border-color:rgba(98,217,238,.28);margin-bottom:17px;}
+    #optGeneralPreviewResults {white-space:pre-wrap;overflow:auto;max-height:300px;}
+    @media(max-width:760px){.general-options {grid-template-columns:1fr;}}
+    .gem-exploration-shell { border-color:rgba(98,217,238,.24); }
+    .gem-exploration-caption { font-size:12px; color:var(--muted); margin-top:6px; }
+    #gemExplorationFrame { width:100%; height:max(1000px,calc(100vh - 185px)); min-height:850px; border:0; display:none; background:#071019; }
+    #gemExplorationUnavailable { color:var(--amber); }
+    .landscape-head-copy { color:var(--muted); font-size:12px; margin-top:5px; }
+    .landscape-toolbar { display:grid; grid-template-columns:minmax(260px,1fr) auto auto; gap:9px; align-items:end; }
+    .landscape-toolbar .field { min-width:0; }
+    .landscape-table td.component { white-space:normal; min-width:180px; max-width:320px; }
+    .landscape-table td.reason { white-space:normal; min-width:240px; max-width:420px; color:var(--muted); }
+    .landscape-table select { min-width:150px; padding:7px 9px; }
+    .landscape-table input { min-width:92px; padding:7px 9px; }
+    .landscape-table input:disabled { opacity:.48; }
+    .landscape-meta { display:flex; flex-wrap:wrap; gap:8px; align-items:center; color:var(--muted); font-size:12px; }
+    .landscape-meta strong { color:var(--text); }
+    @media (max-width: 1080px) { .grid.cards { grid-template-columns:repeat(2,minmax(0,1fr)); } .grid.two { grid-template-columns:1fr; } }
+    @media (max-width: 760px) { .shell { display:block; } aside { position:relative; height:auto; } .nav { display:flex; overflow:auto; } .nav button { width:auto; white-space:nowrap; } main { padding:18px; } .grid.cards, .form-grid { grid-template-columns:1fr; } .topbar { align-items:flex-start; flex-direction:column; } .landscape-toolbar { grid-template-columns:1fr; } }
+    .opt-steps{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;border-bottom:1px solid var(--line);padding-bottom:12px}
+    .opt-steps button{padding:10px 17px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--text);font-weight:600;cursor:pointer}
+    .opt-steps button[aria-selected="true"]{background:rgba(98,217,238,.16);border-color:var(--cyan);color:var(--cyan)}
+    .opt-step-panel[hidden]{display:none!important}
+    .opt-step-panel{display:grid;gap:16px}
+    .opt-step-panel>.card{margin:0!important}
+    .opt-step-panel>.grid{margin:0!important}
+  </style>
+</head>
+<body>
+<div class="shell">
+  <aside>
+    <div class="brand"><div class="mark">G</div><div><strong>GEM Learning Engine</strong><small>Automatic exact FBA platform</small></div></div>
+    <nav class="nav">
+      <button class="active" data-page="dashboard">Quick Run</button>
+      <button data-page="configuration">Configuration</button>
+      <button data-page="operations">Operations</button>
+      <button data-page="optimization">Optimization</button>
+      <button data-page="exploration">Exploration</button>
+      <button data-page="results">Results</button>
+      <button data-page="catalogs">Catalogs</button>
+    </nav>
+    <div class="sidebar-block stack">
+      <div class="field"><label>Configuration</label><select id="configSelect"></select></div>
+      <div class="actions"><button class="btn" id="refreshConfigs">Refresh</button><button class="btn primary" id="loadConfig">Load</button></div>
+      <div class="field"><label>Or enter a config path</label><input id="configPath" value="configs/anti_epex_reference.yaml" /></div>
+    </div>
+    <div class="sidebar-block">
+      <label>GUI token</label>
+      <div class="token-row"><input id="token" type="password" placeholder="Only needed when configured" /><button class="btn" id="saveToken">Set</button></div>
+    </div>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div><h1 id="projectTitle">GEM simulation workspace</h1><p id="projectSubtitle">Load a YAML configuration to begin.</p></div>
+      <div id="serverStatus" class="status-pill">Connecting…</div>
+    </header>
+
+    <section id="dashboard" class="page active">
+      <article class="card" style="margin-bottom:16px;border-color:rgba(98,217,238,.3)">
+        <div class="card-head"><div><h2>Prepare a model run</h2><div style="color:var(--muted);font-size:12px;margin-top:5px">Upload a GEM and create a run configuration. Review the inferred objective and editable medium design space before preflight or a large exact-FBA run.</div></div><span class="badge running">recommended</span></div>
+        <div class="card-body stack">
+          <div class="form-grid">
+            <div class="field" style="grid-column:1/-1"><label>GEM model file (.json, .xml, .sbml, .mat)</label><input id="quickModel" type="file" accept=".json,.xml,.sbml,.mat" /></div>
+            <div class="field"><label>Number of simulations</label><input id="quickRuns" type="number" min="1" value="1024" /></div>
+            <div class="field"><label>Minimum growth fraction</label><input id="quickGrowth" type="number" min="0" max="1" step="0.05" value="0.5" /></div>
+            <div class="field"><label>Processes (blank = automatic)</label><input id="quickProcesses" type="number" min="1" placeholder="Automatic" /></div>
+            <div class="field"><label>Output group (optional)</label><input id="quickOutput" placeholder="Automatic under outputs/; each run gets its own folder" /></div>
+          </div>
+          <div class="actions"><button class="btn primary" id="quickStart">Upload and prepare configuration</button></div>
+          <div id="quickNotice" class="notice">This creates a separate timestamped run configuration but does not start FBA. Review Configuration → objective and landscape design space, then run Preflight before starting the landscape.</div>
+        </div>
+      </article>
+      <div class="grid cards">
+        <div class="card metric"><div class="label">Progress</div><div class="value" id="metricProgress">0%</div><div class="progress"><div id="progressBar"></div></div><div class="sub" id="metricChunks">0 / 0 chunks</div></div>
+        <div class="card metric"><div class="label">Saved simulations</div><div class="value" id="metricSaved">0</div><div class="sub" id="metricTarget">Target: —</div></div>
+        <div class="card metric"><div class="label">Feasible</div><div class="value" id="metricFeasible">0</div><div class="sub" id="metricFeasiblePct">—</div></div>
+        <div class="card metric"><div class="label">Run state</div><div class="value" style="font-size:24px" id="metricState">Idle</div><div class="sub" id="metricPid">No active process</div></div>
+        <div class="card metric"><div class="label">All active jobs</div><div class="value" id="metricAllJobs">0</div><div class="sub" id="metricJobTypes">No active jobs</div></div>
+      </div>
+      <div class="grid two" style="margin-top:16px">
+        <article class="card"><div class="card-head"><h2>Run controls</h2><span id="runBadge" class="badge">idle</span></div><div class="card-body stack">
+          <div class="actions">
+            <button class="btn primary" id="startRun">Start run</button>
+            <button class="btn amber" id="pauseRun">Pause at chunk boundary</button>
+            <button class="btn green" id="resumeRun">Resume</button>
+            <button class="btn red" id="terminateRun">Terminate process</button>
+          </div>
+          <div class="notice">Use <strong>Pause</strong> for a clean checkpoint. Terminate is reserved for a stuck solver or an incorrect configuration.</div>
+        </div></article>
+        <article class="card"><div class="card-head"><h2>Current configuration</h2></div><div class="card-body"><div class="summary-list" id="configSummary"><div>Status</div><div>Not loaded</div></div></div></article>
+      </div>
+      <article class="card" style="margin-top:16px"><div class="card-head"><h2>Active and recent jobs</h2><button class="btn" id="refreshJobs">Refresh</button></div><div class="table-wrap"><table><thead><tr><th>Job</th><th>Type</th><th>Status</th><th>Started</th><th>Progress</th><th>Open</th></tr></thead><tbody id="jobsBody"></tbody></table></div></article>
+    </section>
+
+    <section id="configuration" class="page">
+      <div class="grid two">
+        <article class="card"><div class="card-head"><h2>Guided settings</h2><button class="btn primary" id="saveGuided">Apply and save</button></div><div class="card-body"><div class="form-grid">
+          <div class="field"><label>Project name</label><input data-key="project.name" id="fProject" /></div>
+          <div class="field"><label>Output directory</label><input data-key="project.output_dir" id="fOutput" /></div>
+          <div class="field" style="grid-column:1/-1"><label>Model path</label><input data-key="model.path" id="fModel" /></div>
+          <div class="field"><label>Biomass reaction</label><input data-key="model.biomass_reaction_id" id="fBiomass" list="reactionOptions" placeholder="Automatically detected" /></div>
+          <div class="field"><label>Product reaction</label><input data-key="model.product_reaction_id" id="fProduct" list="reactionOptions" placeholder="Automatically detected" /></div>
+          <div class="field"><label>Number of simulations</label><input type="number" min="1" data-key="simulation.n_simulations" id="fN" /></div>
+          <div class="field"><label>Chunk size</label><input type="number" min="1" data-key="simulation.chunk_size" id="fChunk" /></div>
+          <div class="field"><label>Processes</label><input type="number" min="1" data-key="simulation.processes" id="fProcesses" /></div>
+          <div class="field"><label>Log every N FBA runs</label><input type="number" min="1" data-key="simulation.simulation_log_every" id="fLogEvery" /></div>
+          <div class="field"><label>Optimization mode</label><select data-key="optimization.mode" id="fOptimization"><option value="auto">Automatic</option><option value="growth_constrained_product">Growth-constrained product</option><option value="native_objective">Native model objective</option><option value="maximize_biomass">Maximize biomass</option><option value="maximize_product">Maximize product</option></select></div>
+          <div class="field"><label>Minimum growth fraction</label><input type="number" min="0" max="1" step="0.05" data-key="optimization.minimum_growth_fraction" id="fGrowthFraction" /></div>
+          <div class="field"><label>Method</label><select data-key="simulation.method" id="fMethod"><option value="fba">FBA</option><option value="pfba">pFBA</option></select></div>
+          <div class="field"><label>Sampling strategy</label><select data-key="sampling.strategy" id="fSampling"><option value="sobol">Scrambled Sobol</option><option value="latin_hypercube">Latin hypercube</option><option value="uniform">Uniform baseline</option></select></div>
+          <div class="field"><label>Exchange discovery scope</label><select data-key="sampling.discovery_scope" id="fScope"><option value="model_medium">Model medium</option><option value="all_uptake_capable">All uptake-capable</option><option value="all_exchanges">All exchanges</option></select></div>
+          <div class="field"><label>Automatic medium policy</label><select data-key="sampling.automatic_medium_policy" id="fMediumPolicy"><option value="nutrients">Nutrients + gases only</option><option value="all_baseline">All baseline uptakes</option></select></div>
+          <div class="field"><label>Automatic uptake cap</label><input type="number" min="0.001" step="1" data-key="sampling.auto_max_uptake_cap" id="fUptakeCap" /></div>
+          <div class="field"><label>Solver</label><input data-key="solver.name" id="fSolver" /></div>
+          <div class="field"><label>Solver timeout (seconds)</label><input type="number" min="1" data-key="solver.timeout_seconds" id="fTimeout" /></div>
+        </div>
+        <datalist id="reactionOptions"></datalist>
+        <div id="objectiveNames" class="notice" style="margin-top:13px">Load the design space to resolve biomass and product reaction names.</div>
+        </div></article>
+        <article class="card"><div class="card-head"><h2>Raw YAML</h2><div class="actions"><button class="btn" id="reloadYaml">Reload</button><button class="btn primary" id="saveYaml">Validate and save</button></div></div><div class="card-body"><textarea id="yamlEditor" spellcheck="false"></textarea><div id="yamlNotice" class="notice" style="margin-top:12px">Edits are validated before the original file is replaced.</div></div></article>
+      </div>
+
+      <article class="card" style="margin-top:16px">
+        <div class="card-head">
+          <div>
+            <h2>Landscape design space</h2>
+            <div class="landscape-head-copy">Automatic medium discovery is shown as an editable proposal. Keep a component variable, hold it fixed at baseline, exclude it from the design, add another model exchange, or change its uptake bounds.</div>
+          </div>
+          <div class="actions">
+            <span class="badge running" id="landscapeDimBadge">— dimensions</span>
+            <button class="btn" id="loadLandscape">Refresh from model</button>
+            <button class="btn primary" id="saveLandscape">Apply objective + space</button>
+          </div>
+        </div>
+        <div class="card-body stack">
+          <div id="landscapeNotice" class="notice">Load a configuration to inspect its inferred medium design space.</div>
+
+          <div class="landscape-meta">
+            <span>Objective:</span>
+            <strong id="landscapeObjectiveSummary">—</strong>
+            <span>·</span>
+            <span>Variable dimensions:</span>
+            <strong id="landscapeDimensionCount">—</strong>
+          </div>
+
+          <div class="landscape-toolbar">
+            <div class="field">
+              <label>Add an exchange to the design space</label>
+              <input id="landscapeAddExchange" list="exchangeOptions" placeholder="Search reaction ID or exchange name" />
+              <datalist id="exchangeOptions"></datalist>
+            </div>
+            <button class="btn" id="landscapeAddBtn">Add as variable</button>
+            <select id="landscapeFilter" style="width:auto">
+              <option value="all">All current rows</option>
+              <option value="variable">Variables only</option>
+              <option value="fixed">Fixed only</option>
+              <option value="excluded">Excluded only</option>
+            </select>
+          </div>
+
+          <div class="notice">
+            <strong>Variable</strong> contributes one continuous search dimension.
+            <strong>Fixed</strong> removes it from the search and holds the listed baseline uptake.
+            <strong>Excluded (native)</strong> removes it from this design specification without claiming the biological exchange is closed.
+          </div>
+
+          <div class="table-wrap">
+            <table class="landscape-table">
+              <thead>
+                <tr>
+                  <th>Role</th>
+                  <th>Medium component</th>
+                  <th>Reaction</th>
+                  <th>Baseline</th>
+                  <th>Min uptake</th>
+                  <th>Max uptake</th>
+                  <th>Native cap</th>
+                  <th>Source / reason</th>
+                </tr>
+              </thead>
+              <tbody id="landscapeBody">
+                <tr><td colspan="8">No design space loaded.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="operations" class="page">
+      <div class="grid two">
+        <article class="card"><div class="card-head"><h2>Preparation and validation</h2></div><div class="card-body stack">
+          <div class="actions"><button class="btn" id="inspectModel">Inspect model</button><button class="btn" id="runPreflight">Run preflight</button><button class="btn" id="runValidation">Validate pipeline</button></div>
+          <div id="operationNotice" class="notice">Each operation runs in its own process and writes a dedicated log.</div>
+          <div class="summary-list" id="preflightSummary"><div>Preflight</div><div>No report available</div></div>
+        </div></article>
+        <article class="card"><div class="card-head"><h2>Live logs</h2><div class="actions"><select id="logJob" aria-label="Select job for live logs" style="min-width:220px;max-width:350px"><option value="">Latest job</option></select><button class="btn" id="refreshLogs">Refresh</button><label class="badge"><input id="autoLogs" type="checkbox" checked style="width:auto;margin-right:6px"> Auto</label></div></div><div class="card-body"><div class="console" id="console">No log data.</div></div></article>
+      </div>
+    </section>
+
+    <section id="results" class="page">
+      <article class="card" style="margin-bottom:16px">
+        <div class="card-head"><div><h2>Job results</h2><div class="landscape-head-copy">Choose a completed landscape, optimization or exploration job. Figures and data remain in their original result folders.</div></div><button class="btn" id="refreshJobResults">Refresh jobs</button></div>
+        <div class="card-body stack">
+          <div class="field"><label>Job</label><select id="resultJob" style="width:100%"><option value="">Select a job to view its results</option></select></div>
+          <div id="jobResultDetails" class="notice">Select a job above.</div>
+          <div id="jobResultFigures" class="grid two"></div>
+          <div id="jobResultTables"></div>
+        </div>
+      </article>
+      <article class="card" style="margin-bottom:16px;border-color:rgba(117,224,167,.28)">
+        <div class="card-head"><div><h2>Complete dataset CSV</h2><div style="color:var(--muted);font-size:12px;margin-top:5px">Creates one row per FBA analysis with result values, exact conditions, requested/applied media, and all saved reaction and exchange fluxes.</div></div><div class="actions"><button class="btn green" id="generateCsv">Generate CSV</button><button class="btn primary" id="downloadCsv" disabled>Download CSV</button></div></div>
+        <div class="card-body"><div id="csvNotice" class="notice">Available after the selected run reaches 100% and all chunks are valid. The CSV is written inside that run's own <span class="mono">exports/</span> folder.</div></div>
+      </article>
+      <article class="card"><div class="card-head"><h2>Recent exact results</h2><div class="actions"><select id="resultLimit" style="width:auto"><option>50</option><option selected>100</option><option>250</option><option>500</option></select><button class="btn primary" id="refreshResults">Refresh</button></div></div><div class="table-wrap"><table><thead id="resultsHead"></thead><tbody id="resultsBody"></tbody></table></div></article>
+    </section>
+
+    <section id="catalogs" class="page">
+      <article class="card"><div class="card-head"><h2>Model catalogs</h2><div class="actions"><select id="catalogSelect" style="min-width:220px"></select><button class="btn primary" id="loadCatalog">Open</button></div></div><div class="table-wrap"><table><thead id="catalogHead"></thead><tbody id="catalogBody"></tbody></table></div></article>
+    </section>
+
+    <section id="optimization" class="page">
+      <div class="card" id="optGeneralPanel" style="margin-bottom:18px">
+        <div class="card-head"><h2>GEM model and landscape</h2><span class="badge">Exact FBA</span></div>
+        <div class="card-body">
+          <div class="field"><label for="optStudySelect">Previously registered model + landscape (optional)</label>
+            <select id="optStudySelect"><option value="new">Load a new model + landscape</option></select></div>
+          <div id="optGeneralPane">
+            <p class="muted">Load a GEM and its matching landscape. Read the original configuration to restore the exact-FBA settings and design bounds; any missing settings must be reviewed.</p>
+            <div class="general-options">
+              <div class="field"><label>GEM model (SBML/XML, COBRA JSON, MAT)</label><input id="optGeneralModel" list="optGeneralModelOptions" placeholder="data/models/my_model.xml"><datalist id="optGeneralModelOptions"></datalist><input type="file" id="optGeneralModelFile" accept=".sbml,.xml,.json,.mat" hidden><button class="btn" id="optGeneralModelUpload">Upload GEM</button></div>
+              <div class="field"><label>Landscape (CSV, CSV.GZ, Parquet)</label><input id="optGeneralLandscape" list="optGeneralLandscapeOptions" placeholder="optimization_inputs/landscape/my_landscape.csv"><datalist id="optGeneralLandscapeOptions"></datalist><input type="file" id="optGeneralLandscapeFile" accept=".csv,.gz,.parquet" hidden><button class="btn" id="optGeneralLandscapeUpload">Upload landscape</button></div>
+            </div>
+            <div class="general-actions"><button class="btn" id="optGeneralRefreshFiles">Find workspace files</button><button class="btn" id="optGeneralInspect">Inspect model and columns</button></div>
+            <div id="optGeneralInspection" class="notice">Choose two files, then inspect them.</div>
+            <details id="optGeneralDetails" open>
+              <summary>Landscape configuration and model agreement</summary>
+              <div class="field" style="margin-top:12px"><label>Landscape generation configuration (YAML; recommended)</label><input id="optGeneralConfig" placeholder="configs/my_run.yaml" list="optGeneralConfigOptions"><datalist id="optGeneralConfigOptions"></datalist><input id="optGeneralConfigFile" type="file" accept=".yaml,.yml" hidden><div class="general-actions"><button class="btn" id="optGeneralConfigUpload">Upload configuration</button><button class="btn" id="optGeneralReadConfig">Read configuration and design bounds</button></div></div>
+              <div class="general-options" style="margin-top:10px">
+                <div class="field"><label>Registration name</label><input id="optGeneralLabel" value="New GEM study"></div>
+                <div class="field"><label>Design reaction IDs (comma-separated, ordered)</label><input id="optGeneralFeatures" placeholder="EX_glc__D_e, EX_o2_e"></div>
+                <div class="field"><label>Biomass reaction</label><input id="optGeneralBiomass" placeholder="BIOMASS_RXN"></div>
+                <div class="field"><label>Product reaction</label><input id="optGeneralProduct" placeholder="EX_product_e"></div>
+                <div class="field"><label>Recorded exact-FBA mode</label><select id="optGeneralFbaMode"><option value="growth_constrained_product">Growth constrained product</option><option value="maximize_biomass">Maximize biomass</option><option value="maximize_product">Maximize product</option><option value="native_objective">Native GEM objective</option><option value="maximize_reaction">Maximize a reaction</option><option value="growth_constrained_reaction">Growth constrained reaction</option></select></div>
+                <div class="field"><label>Design control</label><select id="optGeneralFeatureMode"><option value="medium_uptake">Medium uptake</option><option value="reaction_lower_bound">Reaction lower bound</option><option value="reaction_upper_bound">Reaction upper bound</option></select></div>
+                <div class="field"><label>FBA objective reaction (if applicable)</label><input id="optGeneralObjectiveRxn" placeholder="REACTION_ID"></div>
+                <div class="field"><label>FBA objective direction</label><select id="optGeneralObjectiveDirection"><option value="max">Maximize</option><option value="min">Minimize</option></select></div>
+                <div class="field"><label>Minimum growth fraction (0 to 1)</label><input type="number" id="optGeneralGrowthFraction" value="0.9" min="0" max="1" step="0.01"></div>
+              </div>
+              <div class="field" style="margin-top:12px"><label>Physical design bounds — JSON with each reaction ID</label><textarea id="optGeneralBounds" spellcheck="false" placeholder='{"EX_glc__D_e":[0,20],"EX_o2_e":[0,20]}'></textarea></div>
+              <div class="field"><label>Optional metric aliases (JSON: label → model reaction ID)</label><input id="optGeneralAliases" value="{}"></div>
+            </details>
+            <div class="general-actions"><button class="btn primary" id="optGeneralRegister">Register model and landscape</button><button class="btn" id="optGeneralReload">Refresh saved studies</button></div>
+            <div class="field" hidden><label>Registered model + landscape</label><select id="optGeneralBinding"><option value="">Select a registered source</option></select></div>
+            <div id="optGeneralBindingInfo" class="notice">Register a source to continue.</div>
+            <label class="muted" style="display:block;margin-top:10px"><input type="checkbox" id="optGeneralConfirm" style="width:auto;margin-right:8px">I confirm the GEM, landscape's exact-FBA procedure, design bounds, and original row order refer to the same experiment.</label>
+            <div id="optGeneralMetrics" class="field" aria-label="Recorded landscape columns"></div>
+            <div class="general-actions"><button class="btn" id="optGeneralPreview">Validate model, landscape and problem (no FBA calls)</button></div>
+            <div id="optGeneralPreviewResults" class="notice">Create or import the YAML problem below, then preview before adding an optimization job.</div>
+          </div>
+        </div>
+      </div>
+      <div class="grid two">
+        <div class="card"><div class="card-head"><h2>Optimization assignment</h2><span class="badge">Exact FBA</span></div><div class="card-body">
+          <div class="form-grid">
+            <div class="field" id="optPresetPane" hidden><label>Species</label><select id="optSpecies"></select></div>
+            <div class="field"><label>Landscape prior rows</label><input id="optPrior" type="number" value="5000" min="5000" max="50000" step="1" list="optSizes"><datalist id="optSizes"><option>5000</option><option>10000</option><option>25000</option><option>50000</option></datalist></div>
+            <div class="field"><label>Exact LP solver</label><select id="optSolver"><option value="glpk">GLPK · original benchmark route</option><option value="glpk_presolve">GLPK with presolve · same FBA formulation</option></select></div>
+            <div class="field"><label>Optimizer seed</label><input id="optSeed" type="number" value="20260822"></div>
+            <div class="field"><label>Exact evaluation budget per method</label><input id="optBudget" type="number" value="128" min="4" max="4096" step="4"></div>
+            <div class="field"><label>Method / heuristic variant</label><select id="optMethod"></select></div>
+          </div>
+          <p class="muted" id="optContract">Saved prior ordering and normalization remain frozen.</p>
+          <div class="field"><label>Bound model</label><input id="optModel" readonly></div>
+          <div class="field" style="margin-top:12px"><label>Bound landscape</label><input id="optLandscape" readonly></div>
+          <div class="actions" style="margin-top:15px"><button class="btn primary" id="optAssign">Add to queue</button><button class="btn" id="optRefreshCatalog">Refresh bindings</button></div>
+          <p class="notice" id="optNotice">Choose a problem YAML, validate compatibility, then queue a method.</p>
+          <details id="optNativePanel" hidden><summary>Use a previously generated landscape</summary><p class="muted">Bind a completed 50K Growth-Constrained Product run from this workspace.</p><input id="optNativeConfig" placeholder="configs/my_model.yaml"><button class="btn" id="optBindNative">Bind generated landscape</button></details>
+        </div></div>
+        <div class="card"><div class="card-head"><h2>Optimization question</h2><button class="btn" id="optValidate">Validate YAML</button></div><div class="card-body">
+          <div class="field"><label for="optProblemMode">Problem YAML</label><select id="optProblemMode"><option value="generate">Build problem YAML</option><option value="upload">Import problem YAML</option></select></div>
+          <div id="optGenerateControls" class="field" style="margin-top:12px"><label>Question type (existing YAML generator)</label><select id="optProblem"></select><button class="btn" id="optReset" style="margin-top:8px">Generate from selected template</button></div>
+          <div id="optImportControls" class="actions" style="margin-top:12px"><button class="btn primary" id="optImport">Upload YAML file</button><input id="optImportFile" type="file" accept=".yaml,.yml" hidden></div>
+          <div class="field" style="margin-top:12px"><label for="optYaml">Problem YAML preview and editor</label><textarea id="optYaml" spellcheck="false" aria-label="Optimization problem YAML"></textarea></div>
+          <div class="actions" style="margin-top:12px"><button class="btn" id="optExportYaml">Download YAML</button></div>
+          <div class="field" style="margin-top:12px"><label>Workspace problem path</label><input id="optYamlPath" value="problems/custom.gemproblem.yaml"></div>
+          <div class="actions" style="margin-top:10px"><button class="btn" id="optSaveYaml">Save / update file</button><button class="btn" id="optLoadYaml">Load existing file</button></div>
+          <details id="optCustomBuilder" style="margin-top:16px"><summary>Build a new question</summary>
+            <div class="form-grid" style="margin-top:12px"><input id="optCustomId" placeholder="Problem ID" value="custom_problem"><input id="optCustomTitle" placeholder="Title" value="Custom metabolic problem"></div>
+            <div class="field" style="margin-top:12px"><label>Metric</label><input id="optMetric" value="product_flux" list="optMetrics"><datalist id="optMetrics"><option>maximum_growth</option><option>product_flux</option><option>resource_cost</option><option>stress_tolerance</option></datalist></div>
+            <div class="form-grid" style="margin-top:12px"><select id="optDirection"><option value="maximize">Maximize</option><option value="minimize">Minimize</option></select><button class="btn" id="optAddObjective">Add objective</button></div>
+            <div id="optObjectiveList" class="muted"></div>
+            <div class="form-grid" style="margin-top:12px"><input id="optConstraintMetric" placeholder="Constraint metric" value="maximum_growth"><select id="optOperator"><option>&gt;=</option><option>&lt;=</option></select><input id="optThreshold" type="number" step="any" value="0"><button class="btn" id="optAddConstraint">Add constraint</button></div>
+            <div id="optConstraintList" class="muted"></div>
+            <div class="actions" style="margin-top:12px"><button class="btn primary" id="optBuildCustom">Create YAML</button><button class="btn" id="optClearCustom">Clear rows</button></div>
+          </details>
+        </div></div>
+      </div>
+      <div class="card" style="margin-top:18px"><div class="card-head"><h2>Sequential execution queue</h2><div class="actions"><button class="btn green" id="optStart">Start / continue queue</button><button class="btn amber" id="optPause">Pause after current job</button><button class="btn" id="optRefresh">Refresh</button></div></div><div class="card-body"><p id="optQueueState" class="muted"></p><div class="table-wrap"><table><thead><tr><th>Problem</th><th>Method</th><th>Prior</th><th>Status / calls</th><th>Actions</th></tr></thead><tbody id="optQueue"></tbody></table></div></div></div>
+      <div class="grid two" style="margin-top:18px"><div class="card"><div class="card-head"><h2>Selected result</h2><button class="btn" id="optExportRun">Export complete run ZIP</button></div><div class="card-body"><pre id="optSummary" class="muted" style="white-space:pre-wrap">Select a queued job to see results.</pre><svg id="optHvPlot" viewBox="0 0 650 250" role="img" aria-label="Hypervolume by exact evaluation" style="width:100%"></svg><svg id="optParetoPlot" viewBox="0 0 650 250" role="img" aria-label="Pareto front" style="width:100%"></svg><p id="optPlotLabel" class="muted"></p></div></div><div class="card"><div class="card-head"><h2>Optimization log</h2></div><div class="card-body"><pre id="optLog" class="console"></pre></div></div></div>
+    </section>
+    <section id="exploration" class="page" aria-label="GEM Exploration workspace">
+      <div class="card gem-exploration-shell">
+        <div class="card-head">
+          <div><h2>Exploration · metabolic activity, Calculator &amp; Network Atlas</h2>
+          <div class="gem-exploration-caption">Define question → Preview YAML → Save → Run → Inspect results · no automatic computation</div></div>
+          <span class="badge">On demand</span>
+        </div>
+        <div id="gemExplorationUnavailable" class="notice" role="status" style="margin:16px;display:none"></div>
+        <iframe id="gemExplorationFrame" title="GEM Exploration: Network Atlas, Calculator, Activity and shared YAML questions" loading="lazy" referrerpolicy="same-origin" aria-label="Integrated Exploration interface"></iframe>
+      </div>
+    </section>
+  </main>
+</div>
+<div id="toast" class="toast"></div>
+<script>
+const state = { configPath: '', config: null, summary: null, status: null, timer: null, landscape: { path: '', rows: [], exchangeById: new Map(), reactionNames: new Map() } };
+const $ = id => document.getElementById(id);
+const token = () => localStorage.getItem('gle_token') || '';
+
+async function api(url, options={}) {
+  const headers = {...(options.headers||{}), 'Content-Type':'application/json'};
+  if (token()) headers['X-GLE-Token'] = token();
+  const response = await fetch(url, {...options, headers});
+  let data = null;
+  try { data = await response.json(); } catch { data = {detail: await response.text()}; }
+  if (!response.ok) throw new Error(data.detail || `Request failed: ${response.status}`);
+  return data;
+}
+async function apiBinary(url, data) {
+  const headers = {'Content-Type':'application/octet-stream'};
+  if (token()) headers['X-GLE-Token'] = token();
+  const response = await fetch(url,{method:'POST',headers,body:data});
+  let payload=null; try{payload=await response.json();}catch{payload={detail:await response.text()};}
+  if(!response.ok) throw new Error(payload.detail||`Request failed: ${response.status}`);
+  return payload;
+}
+function toast(message, error=false) {
+  const el=$('toast'); el.textContent=message; el.style.borderColor=error?'rgba(255,137,145,.5)':'rgba(117,224,167,.35)'; el.classList.add('show');
+  clearTimeout(el._t); el._t=setTimeout(()=>el.classList.remove('show'),3500);
+}
+function esc(v) { return String(v ?? '').replace(/[&<>'"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
+function currentPath() { return state.configPath || $('configPath').value.trim(); }
+function setNotice(id, text, kind='') { const el=$(id); el.textContent=text; el.className=`notice ${kind}`; }
+
+async function health() {
+  try { const d=await api('/api/health'); $('serverStatus').textContent='Connected'; $('serverStatus').className='status-pill ok'; }
+  catch(e) { $('serverStatus').textContent=e.message.includes('token')?'Token required':'Disconnected'; $('serverStatus').className='status-pill warn'; }
+}
+async function refreshConfigs() {
+  try { const d=await api('/api/configs'); const s=$('configSelect'); s.innerHTML=d.configs.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join(''); if(d.configs.length && !state.configPath) $('configPath').value=d.configs[0]; }
+  catch(e){ toast(e.message,true); }
+}
+async function loadConfig(path=currentPath()) {
+  if(!path) return toast('Choose a configuration first.',true);
+  try {
+    const d=await api('/api/config/load',{method:'POST',body:JSON.stringify({path})});
+    state.configPath=d.path; state.config=d.config; state.summary=d.summary; $('configPath').value=d.path; $('yamlEditor').value=d.content;
+    // The page heading follows the active navigation, not the loaded project.
+    const activePage=document.querySelector('.page.active'); if(activePage) openPage(activePage.id);
+    fillGuided(d.config); renderConfigSummary(d.summary); setNotice('yamlNotice','Configuration loaded and validated.','success');
+    await Promise.all([refreshStatus(), refreshJobs(), refreshCatalogs(), refreshPreflight()]);
+    await refreshLandscape();
+    toast('Configuration loaded.');
+  } catch(e){ setNotice('yamlNotice',e.message,'error'); toast(e.message,true); }
+}
+function fillGuided(c) {
+  const map={fProject:c.project.name,fOutput:c.project.output_dir,fModel:c.model.path,fBiomass:c.model.biomass_reaction_id||'',fProduct:c.model.product_reaction_id||'',fOptimization:c.optimization.mode,fGrowthFraction:c.optimization.minimum_growth_fraction,fN:c.simulation.n_simulations,fChunk:c.simulation.chunk_size,fProcesses:c.simulation.processes,fMethod:c.simulation.method,fSampling:c.sampling.strategy,fScope:c.sampling.discovery_scope,fMediumPolicy:c.sampling.automatic_medium_policy,fUptakeCap:c.sampling.auto_max_uptake_cap??'',fSolver:c.solver.name,fTimeout:c.solver.timeout_seconds||''};
+  Object.entries(map).forEach(([id,v])=>$(id).value=v);
+  updateObjectiveNames();
+}
+
+function reactionName(id) {
+  return state.landscape.reactionNames.get(String(id || '')) || '';
+}
+function updateObjectiveNames() {
+  const biomass=$('fBiomass').value.trim();
+  const product=$('fProduct').value.trim();
+  const biomassName=reactionName(biomass);
+  const productName=reactionName(product);
+  const parts=[
+    `Biomass: ${biomass || 'automatic'}${biomassName ? ` — ${biomassName}` : ''}`,
+    `Product: ${product || 'automatic'}${productName ? ` — ${productName}` : ''}`,
+  ];
+  $('objectiveNames').textContent=parts.join(' | ');
+  $('landscapeObjectiveSummary').textContent=
+    `${$('fOptimization').value || 'auto'} · growth ${$('fGrowthFraction').value || '—'} · ` +
+    `${biomass || 'auto biomass'} → ${product || 'auto product'}`;
+}
+function normalizeLandscapeRow(row) {
+  const exchange=state.landscape.exchangeById.get(String(row.reaction_id)) || {};
+  return {
+    reaction_id:String(row.reaction_id),
+    component_name:row.component_name || exchange.component_name || row.reaction_name || exchange.reaction_name || '',
+    reaction_name:row.reaction_name || exchange.reaction_name || '',
+    role:row.role || 'fixed',
+    baseline_uptake:Number(row.baseline_uptake ?? exchange.baseline_uptake ?? 0),
+    min:Number(row.effective_min_uptake ?? row.requested_min_uptake ?? 0),
+    max:Number(row.effective_max_uptake ?? row.requested_max_uptake ?? row.baseline_uptake ?? 0),
+    native_capacity:Number(row.original_capacity ?? exchange.native_uptake_capacity ?? 0),
+    source:row.source || '',
+    reason:row.reason || '',
+  };
+}
+function landscapeRoleLabel(role) {
+  return role === 'excluded' ? 'excluded (native)' : role;
+}
+function renderLandscape() {
+  const filter=$('landscapeFilter').value || 'all';
+  const rows=state.landscape.rows.filter(row => filter === 'all' || row.role === filter);
+  const body=$('landscapeBody');
+
+  if(!rows.length) {
+    body.innerHTML='<tr><td colspan="8">No rows match this view.</td></tr>';
+  } else {
+    body.innerHTML=rows.map(row=>{
+      const disabled=row.role==='variable'?'':'disabled';
+      const nativeMax=Number.isFinite(row.native_capacity)&&row.native_capacity>0?`max="${row.native_capacity}"`:'';
+      return `<tr data-landscape-row="${esc(row.reaction_id)}">
+        <td>
+          <select data-landscape-role="${esc(row.reaction_id)}">
+            <option value="variable" ${row.role==='variable'?'selected':''}>variable</option>
+            <option value="fixed" ${row.role==='fixed'?'selected':''}>fixed at baseline</option>
+            <option value="excluded" ${row.role==='excluded'?'selected':''}>excluded (native)</option>
+          </select>
+        </td>
+        <td class="component">${esc(row.component_name || row.reaction_name || '—')}</td>
+        <td class="mono">${esc(row.reaction_id)}</td>
+        <td>${Number.isFinite(row.baseline_uptake)?esc(row.baseline_uptake):'—'}</td>
+        <td><input type="number" min="0" step="any" ${disabled} value="${esc(row.min)}" data-landscape-min="${esc(row.reaction_id)}"></td>
+        <td><input type="number" min="0" step="any" ${nativeMax} ${disabled} value="${esc(row.max)}" data-landscape-max="${esc(row.reaction_id)}"></td>
+        <td>${Number.isFinite(row.native_capacity)?esc(row.native_capacity):'—'}</td>
+        <td class="reason">${esc([row.source,row.reason].filter(Boolean).join(' · ') || '—')}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  document.querySelectorAll('[data-landscape-role]').forEach(el=>{
+    el.onchange=()=>{
+      const row=state.landscape.rows.find(r=>r.reaction_id===el.dataset.landscapeRole);
+      if(!row) return;
+      row.role=el.value;
+      renderLandscape();
+    };
+  });
+  document.querySelectorAll('[data-landscape-min]').forEach(el=>{
+    el.onchange=()=>{
+      const row=state.landscape.rows.find(r=>r.reaction_id===el.dataset.landscapeMin);
+      if(row) row.min=Number(el.value);
+    };
+  });
+  document.querySelectorAll('[data-landscape-max]').forEach(el=>{
+    el.onchange=()=>{
+      const row=state.landscape.rows.find(r=>r.reaction_id===el.dataset.landscapeMax);
+      if(row) row.max=Number(el.value);
+    };
+  });
+
+  const dimensions=state.landscape.rows.filter(row=>row.role==='variable').length;
+  $('landscapeDimBadge').textContent=`${dimensions} dimensions`;
+  $('landscapeDimensionCount').textContent=String(dimensions);
+  updateObjectiveNames();
+}
+async function refreshLandscape() {
+  if(!currentPath()) return;
+  setNotice('landscapeNotice','Loading model objective and medium design space…');
+  try {
+    const data=await api(`/api/landscape/setup?path=${encodeURIComponent(currentPath())}`);
+    state.landscape.path=currentPath();
+    state.landscape.reactionNames=new Map((data.reactions||[]).map(r=>[String(r.reaction_id),r.reaction_name||'']));
+    state.landscape.exchangeById=new Map((data.exchanges||[]).map(r=>[String(r.reaction_id),r]));
+
+    const reactionOptions=$('reactionOptions');
+    reactionOptions.innerHTML=(data.reactions||[]).map(r=>
+      `<option value="${esc(r.reaction_id)}" label="${esc(r.reaction_name||'')}"></option>`
+    ).join('');
+    const exchangeOptions=$('exchangeOptions');
+    exchangeOptions.innerHTML=(data.exchanges||[]).map(r=>
+      `<option value="${esc(r.reaction_id)}" label="${esc(r.component_name||r.reaction_name||'')}"></option>`
+    ).join('');
+
+    // Show explicit overrides when present; otherwise show the model-inferred suggestion
+    // so the user can inspect the name before accepting or changing it.
+    $('fBiomass').value=data.model.biomass_reaction_id || data.inference?.biomass?.reaction_id || '';
+    $('fProduct').value=data.model.product_reaction_id || data.inference?.product?.reaction_id || '';
+    $('fOptimization').value=data.optimization.mode || 'auto';
+    $('fGrowthFraction').value=data.optimization.minimum_growth_fraction ?? 0.5;
+
+    state.landscape.rows=(data.medium_space||[]).map(normalizeLandscapeRow);
+    renderLandscape();
+
+    const variableIds=state.landscape.rows.filter(row=>row.role==='variable').map(row=>row.reaction_id);
+    const inferredProduct=data.inference?.product;
+    const inferredBiomass=data.inference?.biomass;
+    const inferenceText=[
+      inferredBiomass?.reaction_id ? `biomass suggestion ${inferredBiomass.reaction_id} (${inferredBiomass.confidence})` : '',
+      inferredProduct?.reaction_id ? `product suggestion ${inferredProduct.reaction_id} (${inferredProduct.confidence})` : '',
+    ].filter(Boolean).join(' · ');
+    setNotice(
+      'landscapeNotice',
+      `Loaded ${state.landscape.rows.length} current medium rows; ${variableIds.length} variable dimensions: ${variableIds.join(', ') || 'none'}.${inferenceText ? ' ' + inferenceText + '.' : ''}`,
+      'success'
+    );
+  } catch(e) {
+    setNotice('landscapeNotice',e.message,'error');
+  }
+}
+function addLandscapeExchange() {
+  const rid=$('landscapeAddExchange').value.trim();
+  if(!rid) return toast('Choose an exchange reaction first.',true);
+
+  const existing=state.landscape.rows.find(row=>row.reaction_id===rid);
+  if(existing) {
+    existing.role='variable';
+    renderLandscape();
+    $('landscapeAddExchange').value='';
+    return;
+  }
+
+  const exchange=state.landscape.exchangeById.get(rid);
+  if(!exchange) return toast('That reaction is not a model exchange.',true);
+
+  const capacity=Number(exchange.native_uptake_capacity ?? 0);
+  const baseline=Number(exchange.baseline_uptake ?? 0);
+  let maximum=baseline>0?baseline:Math.min(10,capacity);
+  if(maximum<=0 && capacity>0) maximum=Math.min(10,capacity);
+
+  state.landscape.rows.push({
+    reaction_id:rid,
+    component_name:exchange.component_name || exchange.reaction_name || '',
+    reaction_name:exchange.reaction_name || '',
+    role:'variable',
+    baseline_uptake:baseline,
+    min:0,
+    max:maximum,
+    native_capacity:capacity,
+    source:'GUI explicit include',
+    reason:capacity<=0?'Native model currently permits no uptake; saving may reject or collapse this range.':'',
+  });
+  $('landscapeAddExchange').value='';
+  renderLandscape();
+}
+async function saveLandscape() {
+  if(!currentPath()) return toast('Load a configuration first.',true);
+
+  const variable_bounds={};
+  const fixed_reactions={};
+  const exclude_reaction_ids=[];
+
+  for(const row of state.landscape.rows) {
+    if(row.role==='variable') {
+      if(!Number.isFinite(row.min)||!Number.isFinite(row.max)||row.min<0||row.max<0||row.min>row.max) {
+        return setNotice('landscapeNotice',`Invalid bounds for ${row.reaction_id}: ${row.min} to ${row.max}`,'error');
+      }
+      if(Number.isFinite(row.native_capacity)&&row.native_capacity>0&&row.max>row.native_capacity+1e-12) {
+        return setNotice('landscapeNotice',`Max uptake for ${row.reaction_id} exceeds the model's native uptake capacity ${row.native_capacity}.`,'error');
+      }
+      variable_bounds[row.reaction_id]={min:Number(row.min),max:Number(row.max)};
+    } else if(row.role==='fixed') {
+      fixed_reactions[row.reaction_id]=Number(row.baseline_uptake ?? 0);
+    } else {
+      exclude_reaction_ids.push(row.reaction_id);
+    }
+  }
+
+  const payload={
+    path:currentPath(),
+    biomass_reaction_id:$('fBiomass').value.trim()||null,
+    product_reaction_id:$('fProduct').value.trim()||null,
+    optimization_mode:$('fOptimization').value,
+    minimum_growth_fraction:Number($('fGrowthFraction').value),
+    variable_bounds,
+    fixed_reactions,
+    exclude_reaction_ids,
+  };
+
+  setNotice('landscapeNotice','Validating objective and design space against the GEM…');
+  try {
+    const data=await api('/api/landscape/setup',{method:'POST',body:JSON.stringify(payload)});
+    toast('Objective and landscape design space saved.');
+    await loadConfig(data.path);
+    setNotice('landscapeNotice','Objective and landscape design space saved and revalidated.','success');
+  } catch(e) {
+    setNotice('landscapeNotice',e.message,'error');
+    toast(e.message,true);
+  }
+}
+
+function renderConfigSummary(s) {
+  if(!s) return;
+  const rows=[['Model',s.model_path],['Output',s.output_dir],['Simulations',s.n_simulations.toLocaleString()],['Chunk / processes',`${s.chunk_size} / ${s.processes}`],['Sampling',s.sampling_strategy],['Optimization',`${s.optimization_mode} · growth ${s.minimum_growth_fraction}`],['Method / solver',`${s.method} / ${s.solver}`],['Biomass',s.biomass_reaction_id||'automatic'],['Product',s.product_reaction_id||'automatic'],['Config hash',s.config_hash]];
+  $('configSummary').innerHTML=rows.map(([a,b])=>`<div>${esc(a)}</div><div class="${a==='Config hash'?'mono':''}">${esc(b)}</div>`).join('');
+  $('metricTarget').textContent=`Target: ${s.n_simulations.toLocaleString()}`;
+}
+async function saveYaml() {
+  try { const d=await api('/api/config/save',{method:'POST',body:JSON.stringify({path:currentPath(),content:$('yamlEditor').value})}); setNotice('yamlNotice','Saved and validated.','success'); toast('Configuration saved.'); await loadConfig(d.path); }
+  catch(e){ setNotice('yamlNotice',e.message,'error'); toast(e.message,true); }
+}
+async function saveGuided() {
+  const updates={}; document.querySelectorAll('[data-key]').forEach(el=>{ let v=el.value; if(el.type==='number') v=v===''?null:Number(v); updates[el.dataset.key]=v===''?null:v; });
+  try { await api('/api/config/update',{method:'POST',body:JSON.stringify({path:currentPath(),updates})}); toast('Guided settings saved.'); await loadConfig(); }
+  catch(e){ toast(e.message,true); }
+}
+async function quickStart() {
+  const file=$('quickModel').files[0];
+  if(!file) return setNotice('quickNotice','Choose a model file first.','error');
+  const runs=Number($('quickRuns').value);
+  if(!Number.isInteger(runs)||runs<1) return setNotice('quickNotice','Enter a valid positive run count.','error');
+  const button=$('quickStart'); button.disabled=true;
+  try {
+    setNotice('quickNotice','Uploading model…');
+    const uploaded=await apiBinary(`/api/model/upload?filename=${encodeURIComponent(file.name)}`,file);
+    setNotice('quickNotice','Creating automatic configuration…');
+    const processes=$('quickProcesses').value?Number($('quickProcesses').value):null;
+    const configured=await api('/api/quick/configure',{method:'POST',body:JSON.stringify({model_path:uploaded.model_path,runs,processes,minimum_growth_fraction:Number($('quickGrowth').value),output_dir:$('quickOutput').value.trim()||null})});
+    $('configPath').value=configured.path; state.configPath=configured.path; await loadConfig(configured.path); await refreshConfigs();
+    setNotice('quickNotice','Configuration prepared. Review the objective and editable landscape design space, then run Preflight before starting exact FBA.','success');
+    openPage('configuration');
+  } catch(e) { setNotice('quickNotice',e.message,'error'); toast(e.message,true); }
+  finally { button.disabled=false; }
+}
+
+async function action(endpoint, body, success) {
+  try { const d=await api(endpoint,{method:'POST',body:JSON.stringify(body)}); toast(success); await Promise.all([refreshJobs(),refreshStatus()]); return d; }
+  catch(e){ toast(e.message,true); throw e; }
+}
+async function startRun(){ await action('/api/run/start',{path:currentPath()},'Run process started.'); }
+async function pauseRun(){ await action('/api/run/pause',{path:currentPath(),reason:'Requested from web GUI'},'Pause requested at the next chunk boundary.'); }
+async function resumeRun(){ await action('/api/run/resume',{path:currentPath()},'Resume process started.'); }
+async function terminateRun(){ const job=state.status?.active_job; if(!job) return toast('No active run process.',true); if(!confirm('Terminate the solver process? Prefer Pause for a clean checkpoint.')) return; await action('/api/job/terminate',{job_id:job.job_id},'Termination requested.'); }
+async function inspectModel(){ const d=await action('/api/inspect',{path:currentPath()},'Model inspection started.'); setNotice('operationNotice',`Inspection job ${d.job_id} started. Output: ${d.output_dir}`,'success'); }
+async function runPreflight(){ const d=await action('/api/preflight',{path:currentPath()},'Preflight started.'); setNotice('operationNotice',`Preflight job ${d.job_id} started.`,'success'); }
+async function runValidation(){ const d=await action('/api/validate',{output_dir:'outputs/gui_validation'},'Validation started.'); setNotice('operationNotice',`Validation job ${d.job_id} started.`,'success'); }
+
+async function refreshStatus() {
+  if(!currentPath()) return;
+  try {
+    const d=await api(`/api/status?path=${encodeURIComponent(currentPath())}`); state.status=d;
+    $('metricProgress').textContent=`${d.progress_percent.toFixed(1)}%`; $('progressBar').style.width=`${d.progress_percent}%`;
+    $('metricChunks').textContent=`${d.complete_chunks.length} / ${d.expected_chunks} chunks`; $('metricSaved').textContent=Number(d.saved_simulations).toLocaleString(); $('metricFeasible').textContent=Number(d.feasible_simulations).toLocaleString();
+    $('metricFeasiblePct').textContent=d.saved_simulations?`${(100*d.feasible_simulations/d.saved_simulations).toFixed(1)}% of saved conditions`:'No completed conditions';
+    const job=d.active_job||d.latest_job; const status=d.active_job?'Running':d.pause_requested?'Paused':(job?.status||'Idle');
+    $('metricState').textContent=status; $('metricPid').textContent=d.active_job?`PID ${d.active_job.pid}`:d.pause_requested?'Pause file present':'No active process';
+    $('runBadge').textContent=status.toLowerCase(); $('runBadge').className=`badge ${d.active_job?'running':job?.status||''}`;
+    $('terminateRun').disabled=!d.active_job; $('pauseRun').disabled=!d.active_job; $('startRun').disabled=!!d.active_job; $('resumeRun').disabled=!!d.active_job;
+  } catch(e){ if(!e.message.includes('not found')) console.warn(e); }
+}
+let allEngineJobs=[];
+let selectedJobKey='';
+function labelJob(job){return `${job.category.toUpperCase()} · ${job.label} [${job.status}]`;}
+function updateJobOptions(selectId,placeholder){
+  const select=$(selectId);if(!select)return;
+  const before=select.value;
+  select.innerHTML=`<option value="">${esc(placeholder)}</option>`+allEngineJobs.map(j=>`<option value="${esc(j.key)}">${esc(labelJob(j))}</option>`).join('');
+  if(allEngineJobs.some(j=>j.key===before))select.value=before;
+  else if(selectId==='resultJob' && selectedJobKey && allEngineJobs.some(j=>j.key===selectedJobKey))select.value=selectedJobKey;
+}
+async function refreshUnifiedJobs(){
+  try{
+    const data=await api('/api/unified/jobs');allEngineJobs=data.jobs||[];
+    updateJobOptions('logJob','Latest job');updateJobOptions('resultJob','Select a job to view its results');
+    const active=allEngineJobs.filter(j=>['running','queued','cancelling','terminating'].includes(j.status));
+    const recent=allEngineJobs.filter(j=>!active.includes(j));
+    $('metricAllJobs').textContent=String(active.length);
+    $('metricJobTypes').textContent=active.length?active.map(j=>j.category).filter((x,i,a)=>a.indexOf(x)===i).join(' · '):'No active jobs';
+    const displayed=[...active,...recent].slice(0,35);
+    $('jobsBody').innerHTML=displayed.map(j=>`<tr><td>${esc(j.label)}</td><td>${esc(j.category)}</td><td><span class="badge ${esc(j.status)}">${esc(j.status)}</span></td><td>${esc(String(j.started_at||'').replace('T',' ').slice(0,19))}</td><td>${j.budget?`${esc(j.calls||0)} / ${esc(j.budget)}`:'—'}</td><td><button class="btn" data-open-result="${esc(j.key)}">View</button></td></tr>`).join('')||'<tr><td colspan="6">No jobs yet.</td></tr>';
+    document.querySelectorAll('[data-open-result]').forEach(b=>b.onclick=()=>{
+      selectedJobKey=b.dataset.openResult;openPage('results');$('resultJob').value=selectedJobKey;loadSelectedResult();
+    });
+  }catch(e){console.warn('Job index:',e);}
+}
+async function refreshJobs(){return refreshUnifiedJobs();}
+async function refreshLogs(){
+  try{
+    if(!allEngineJobs.length)await refreshUnifiedJobs();
+    const requested=$('logJob').value;
+    const target=requested?allEngineJobs.find(j=>j.key===requested):
+      (allEngineJobs.find(j=>['running','cancelling','terminating'].includes(j.status))||allEngineJobs[0]);
+    const output=target?await api('/api/unified/job/'+encodeURIComponent(target.key)):null;
+    const text=output?.log||'No log data for the selected job.';
+    const c=$('console');const atEnd=c.scrollHeight-c.scrollTop-c.clientHeight<80;
+    c.textContent=(target?`=== ${labelJob(target)} ===\n`:'')+text;
+    if(atEnd)c.scrollTop=c.scrollHeight;
+  }catch(e){$('console').textContent=e.message;}
+}
+async function refreshResults(){return loadSelectedResult();}
+function presentNumericTable(items,maxRows=35){
+  if(!Array.isArray(items)||!items.length)return '<p class="landscape-head-copy">No saved rows for this table.</p>';
+  const cols=Object.keys(items[0]).slice(0,16);
+  return `<div class="table-wrap"><table><thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${items.slice(0,maxRows).map(r=>`<tr>${cols.map(c=>`<td>${esc(r[c]??'')}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+}
+function resultChart(rows,mode){
+  if(!Array.isArray(rows)||rows.length<2)return '';
+  const keys=Object.keys(rows[0]||{});
+  const numeric=keys.filter(k=>rows.every(r=>r[k]!==null&&r[k]!==''&&Number.isFinite(Number(r[k]))));
+  const prefer=(names)=>names.find(k=>numeric.includes(k));
+  const x=prefer(mode==='line'?['call','iteration','evaluation','step','generation']:['growth','objective_0','objective1'])||numeric[0];
+  const y=prefer(mode==='line'?['hv','hypervolume','hv_self','hv_current','hypervolume_value']:['product','objective_1','objective2'])||numeric.find(k=>k!==x);
+  if(!x||!y||x===y)return '';
+  const values=rows.slice(0,300).map(r=>[Number(r[x]),Number(r[y])]);
+  const xmin=Math.min(...values.map(v=>v[0])),xmax=Math.max(...values.map(v=>v[0]));
+  const ymin=Math.min(...values.map(v=>v[1])),ymax=Math.max(...values.map(v=>v[1]));
+  const XX=v=>50+(v-xmin)/(xmax-xmin||1)*590;
+  const YY=v=>183-(v-ymin)/(ymax-ymin||1)*155;
+  const pts=values.map(v=>[XX(v[0]),YY(v[1])]);
+  const path=pts.map(v=>v.map(a=>a.toFixed(1)).join(',')).join(' ');
+  const marks=mode==='line'?`<polyline points="${path}" fill="none" stroke="#62d9ee" stroke-width="2.5"/>`:
+    pts.map(v=>`<circle cx="${v[0].toFixed(1)}" cy="${v[1].toFixed(1)}" r="3.8" fill="#75e0a7" opacity=".8"/>`).join('');
+  return `<svg viewBox="0 0 680 230" role="img" aria-label="Saved ${esc(y)} against ${esc(x)}" style="max-width:800px;width:100%;background:rgba(8,24,35,.5);border:1px solid var(--line);border-radius:10px">
+    <path d="M 50 28 V 183 H 640" fill="none" stroke="#91a9b6" stroke-width="1"/>
+    ${marks}<text x="344" y="216" fill="#eef8fb" font-size="12" text-anchor="middle">${esc(x)}</text>
+    <text x="12" y="20" fill="#eef8fb" font-size="12">${esc(y)}</text>
+    <text x="48" y="201" fill="#91a9b6" font-size="10">${esc(xmin.toPrecision(4))}</text>
+    <text x="640" y="201" fill="#91a9b6" font-size="10" text-anchor="end">${esc(xmax.toPrecision(4))}</text>
+    <text x="43" y="35" fill="#91a9b6" font-size="10" text-anchor="end">${esc(ymax.toPrecision(4))}</text>
+    <text x="43" y="181" fill="#91a9b6" font-size="10" text-anchor="end">${esc(ymin.toPrecision(4))}</text></svg>`;
+}
+async function loadSelectedResult(){
+  const key=$('resultJob').value;selectedJobKey=key;
+  if(!key){$('jobResultDetails').textContent='Select a job above.';$('jobResultFigures').innerHTML='';$('jobResultTables').innerHTML='';return;}
+  $('jobResultDetails').textContent='Loading saved results…';
+  try{
+    const j=await api('/api/unified/job/'+encodeURIComponent(key));
+    const d=j.details||{};const items=j.artifacts||[];
+    const status=esc(j.status), output=esc(d.output_directory||'Not yet available');
+    $('jobResultDetails').innerHTML=`<strong>${esc(j.label)}</strong><div>Type: ${esc(j.category)} · Status: ${status}</div><div class="mono">Output: ${output}</div>${d.error?'<div>'+esc(d.error)+'</div>':''}`;
+    const link=i=>`<a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.name)}</a>`;
+    $('jobResultFigures').innerHTML=items.filter(i=>i.url&&i.kind==='png').slice(0,8).map(i=>`<div class="card" style="padding:10px"><a href="${esc(i.url)}" target="_blank" rel="noopener"><img src="${esc(i.url)}" loading="lazy" alt="${esc(i.name)}" style="width:100%;object-fit:contain" /></a><div>${link(i)}</div></div>`).join('');
+    let html=items.filter(i=>i.url&&i.kind!=='png').map(link).join(' · ');
+    if(items.some(i=>i.url&&i.kind==='html'))html+='<p>Open the HTML viewer above for interactive result inspection.</p>';
+    if(d.export_url)html+=`<p><a href="${esc(d.export_url)}" target="_blank" rel="noopener">Download optimization job ZIP</a></p>`;
+    if(j.category==='landscape'){
+      html+=`<p>Saved simulation records for this landscape:</p>`;
+      if(j.config_path){
+        try{const table=await api('/api/results?path='+encodeURIComponent(j.config_path)+'&limit=100');html+=presentNumericTable(table.rows||[]);}catch(e){html+='<p>'+esc(e.message)+'</p>';}
+      }
+    }
+    if(j.category==='optimization'){
+      html+='<h3>Hypervolume history</h3>'+resultChart(d.hv_trajectory||[],'line')+presentNumericTable(d.hv_trajectory||[]);
+      html+='<h3>Pareto frontier</h3>'+resultChart(d.pareto_front||[],'scatter')+presentNumericTable(d.pareto_front||[]);
+      if(d.summary)html+='<h3>Summary</h3><pre class="console">'+esc(JSON.stringify(d.summary,null,2))+'</pre>';
+    }
+    if(j.category==='exploration'&&d.summary)html+='<h3>Run summary</h3><pre class="console">'+esc(JSON.stringify(d.summary,null,2))+'</pre>';
+    $('jobResultTables').innerHTML=html||'<p class="landscape-head-copy">This job has not saved a result yet.</p>';
+  }catch(e){$('jobResultDetails').textContent=e.message;}
+}
+function renderTable(headId, bodyId, columns, rows) {
+  $(headId).innerHTML=columns.length?`<tr>${columns.map(c=>`<th>${esc(c)}</th>`).join('')}</tr>`:'';
+  $(bodyId).innerHTML=rows.length?rows.map(r=>`<tr>${columns.map(c=>`<td>${esc(r[c]??'')}</td>`).join('')}</tr>`).join(''):`<tr><td>No data available.</td></tr>`;
+}
+function humanBytes(value){ const n=Number(value||0); if(n<1024)return `${n} B`; if(n<1024**2)return `${(n/1024).toFixed(1)} KB`; if(n<1024**3)return `${(n/1024**2).toFixed(1)} MB`; return `${(n/1024**3).toFixed(2)} GB`; }
+async function refreshCsvStatus(){
+  if(!currentPath()) return;
+  try {
+    const d=await api(`/api/export/csv/status?path=${encodeURIComponent(currentPath())}`);
+    const active=d.active_job; const latest=d.latest_job; const button=$('generateCsv'); const download=$('downloadCsv');
+    const incomplete=!state.status || state.status.invalid_chunks?.length || state.status.complete_chunks.length!==state.status.expected_chunks || Number(state.status.saved_simulations)!==Number(state.summary?.n_simulations||0);
+    button.disabled=!!active || !!state.status?.active_job || !!incomplete;
+    button.textContent=active?'Generating…':'Generate CSV';
+    download.disabled=!d.available;
+    if(active){ setNotice('csvNotice',`CSV generation is running in process ${active.pid}. The export uses one completed Parquet chunk at a time.`); }
+    else if(d.available){ const m=d.manifest||{}; setNotice('csvNotice',`Ready: ${d.csv_path} · ${Number(m.rows||0).toLocaleString()} simulations · ${Number(m.columns||0).toLocaleString()} columns · ${humanBytes(d.size_bytes)}`,'success'); }
+    else if(latest?.status==='failed'){ setNotice('csvNotice','The last CSV export failed. Open Operations → Live logs to see the exact error.','error'); }
+    else { setNotice('csvNotice',"Available after the selected run reaches 100% and all chunks are valid. The CSV will be saved in this run's exports/ folder."); }
+  } catch(e){ setNotice('csvNotice',e.message,'error'); }
+}
+async function generateCsv(){
+  try {
+    const d=await api('/api/export/csv',{method:'POST',body:JSON.stringify({path:currentPath()})});
+    setNotice('csvNotice',`CSV export started (PID ${d.pid}). Output: ${d.csv_path}`,'success'); toast('Complete CSV export started.'); await Promise.all([refreshJobs(),refreshCsvStatus()]);
+  } catch(e){ setNotice('csvNotice',e.message,'error'); toast(e.message,true); }
+}
+async function downloadCsv(){
+  try {
+    const headers={}; if(token())headers['X-GLE-Token']=token();
+    const response=await fetch(`/api/export/csv/download?path=${encodeURIComponent(currentPath())}`,{headers});
+    if(!response.ok){ let detail='Download failed.'; try{detail=(await response.json()).detail||detail;}catch{} throw new Error(detail); }
+    const blob=await response.blob(); const disposition=response.headers.get('Content-Disposition')||''; const match=disposition.match(/filename="?([^";]+)"?/i); const filename=match?match[1]:'whole_dataset.csv';
+    const url=URL.createObjectURL(blob); const anchor=document.createElement('a'); anchor.href=url; anchor.download=filename; document.body.appendChild(anchor); anchor.click(); anchor.remove(); setTimeout(()=>URL.revokeObjectURL(url),1000);
+  } catch(e){ toast(e.message,true); }
+}
+async function refreshCatalogs(){ if(!currentPath()) return; try { const d=await api(`/api/catalogs?path=${encodeURIComponent(currentPath())}`); $('catalogSelect').innerHTML=d.catalogs.map(x=>`<option>${esc(x)}</option>`).join(''); } catch(e){ console.warn(e); } }
+async function loadCatalog(){ const name=$('catalogSelect').value; if(!name)return toast('Run model inspection or a simulation first.',true); try { const d=await api(`/api/catalog?path=${encodeURIComponent(currentPath())}&name=${encodeURIComponent(name)}&limit=200`); renderTable('catalogHead','catalogBody',d.columns,d.rows); } catch(e){ toast(e.message,true); } }
+async function refreshPreflight(){ if(!currentPath())return; try { const d=await api(`/api/preflight/report?path=${encodeURIComponent(currentPath())}`); if(!d.available){$('preflightSummary').innerHTML='<div>Preflight</div><div>No report available</div>';return;} const r=d.report; const rows=[['Ready',r.ready],['Model',r.model_id||r.model_name||'—'],['Biomass',`${r.biomass_reaction_id||'not detected'} (${r.biomass_inference_confidence||'—'})`],['Product',`${r.product_reaction_id||'not detected'} (${r.product_inference_confidence||'—'})`],['Optimization',r.optimization_mode],['Baseline status',r.baseline_solver_status],['Max growth',r.maximum_growth??'—'],['Growth floor',r.growth_floor??'—'],['Baseline product',r.baseline_product_flux??'—'],['Reactions',r.n_reactions],['Genes',r.n_genes],['Exchanges',r.n_exchanges],['Variable medium',`${r.n_variable_medium_components}: ${(r.variable_medium_reaction_ids||[]).join(', ')}`],['Design cache',`${Number(r.estimated_design_cache_mb).toFixed(1)} MB`],['Warnings',(r.warnings||[]).join(' · ')||'None']]; $('preflightSummary').innerHTML=rows.map(([a,b])=>`<div>${esc(a)}</div><div>${esc(b)}</div>`).join(''); } catch(e){ console.warn(e); } }
+
+
+let explorationFramePromise=null;
+async function openExplorationFrame() {
+  const frame=$('gemExplorationFrame');
+  const info=$('gemExplorationUnavailable');
+  if (frame.dataset.loaded==='yes' || explorationFramePromise) return explorationFramePromise;
+  explorationFramePromise=(async()=>{
+    try {
+      const status=await api('/api/exploration/status');
+      if (!status.available) throw new Error(status.message || 'Exploration is unavailable. Open GEM Engine.app to start the integrated interface.');
+      frame.src='/exploration/';
+      frame.style.display='block';
+      frame.dataset.loaded='yes';
+      info.style.display='none';
+    } catch(error) {
+      info.textContent=error.message;
+      info.style.display='block';
+    } finally { explorationFramePromise=null; }
+  })();
+  return explorationFramePromise;
+}
+const mainPageTitles={
+ dashboard:['Quick Run','Prepare and monitor a metabolic simulation'],
+ configuration:['Configuration','Model setup, objectives and saved run settings'],
+ operations:['Operations','Preflight, job controls and live logs'],
+ optimization:['Metabolic optimization','YAML problems · exact FBA · sequential experiments'],
+ exploration:['Metabolic exploration','Landscape View · Calculator · Network Visualization · Saved Questions'],
+ results:['Results','Browse completed simulation, optimization and exploration jobs'],
+ catalogs:['Catalogs','Inspect model and simulation catalogs']
+};
+function openPage(name) {
+  document.querySelectorAll('.nav button').forEach(button=>button.classList.toggle('active',button.dataset.page===name));
+  document.querySelectorAll('.page').forEach(page=>page.classList.toggle('active',page.id===name));
+  const heading=mainPageTitles[name]||['GEM Engine',''];
+  $('projectTitle').textContent=heading[0];
+  $('projectSubtitle').textContent=heading[1];
+  if(name==='exploration')openExplorationFrame();
+  if(name==='configuration')refreshLandscape();
+  if(name==='results'){refreshUnifiedJobs();refreshCsvStatus();}
+  if(name==='catalogs')refreshCatalogs();
+}
+function bind() {
+  document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>openPage(b.dataset.page));
+  $('quickStart').onclick=quickStart;
+  $('saveToken').onclick=()=>{localStorage.setItem('gle_token',$('token').value);health();refreshConfigs();toast('Token stored in this browser.');}; $('token').value=token();
+  $('refreshConfigs').onclick=refreshConfigs; $('loadConfig').onclick=()=>loadConfig($('configSelect').value||$('configPath').value); $('configSelect').onchange=e=>$('configPath').value=e.target.value;
+  $('saveYaml').onclick=saveYaml; $('reloadYaml').onclick=()=>loadConfig(); $('saveGuided').onclick=saveGuided;
+  $('loadLandscape').onclick=refreshLandscape; $('saveLandscape').onclick=saveLandscape; $('landscapeAddBtn').onclick=addLandscapeExchange; $('landscapeFilter').onchange=renderLandscape;
+  $('fBiomass').oninput=updateObjectiveNames; $('fProduct').oninput=updateObjectiveNames; $('fOptimization').onchange=updateObjectiveNames; $('fGrowthFraction').oninput=updateObjectiveNames;
+  $('startRun').onclick=startRun; $('pauseRun').onclick=pauseRun; $('resumeRun').onclick=resumeRun; $('terminateRun').onclick=terminateRun;
+  $('inspectModel').onclick=inspectModel; $('runPreflight').onclick=runPreflight; $('runValidation').onclick=runValidation; $('refreshLogs').onclick=refreshLogs; $('refreshJobs').onclick=refreshJobs;
+  $('refreshResults').onclick=refreshResults; $('refreshJobResults').onclick=refreshUnifiedJobs; $('resultJob').onchange=loadSelectedResult; $('logJob').onchange=refreshLogs; $('generateCsv').onclick=generateCsv; $('downloadCsv').onclick=downloadCsv; $('loadCatalog').onclick=loadCatalog;
+}
+async function boot(){ bind(); openPage('dashboard'); await health(); await refreshConfigs(); if($('configSelect').value){$('configPath').value=$('configSelect').value; await loadConfig($('configSelect').value);} setInterval(async()=>{await refreshStatus();await refreshJobs();if($('autoLogs').checked)await refreshLogs();await refreshPreflight();if($('results').classList.contains('active'))await refreshCsvStatus();},2500); }
+
+const optState={catalog:null,selectedJob:null,objectives:[],constraints:[],sourceType:'new',generalPreviewSignature:null};
+async function optCatalog(){
+ const n=Number($('optPrior').value);const c=await api('/api/optimization/catalog?prior_rows='+n);optState.catalog=c;
+ {const oldSpecies=$('optSpecies').value;const oldProblem=$('optProblem').value;$('optSpecies').innerHTML=Object.entries(c.species).map(([k,v])=>`<option value="${esc(k)}">${esc(v)}</option>`).join('');$('optProblem').innerHTML=Object.entries(c.problems).map(([k,v])=>`<option value="${esc(k)}">${esc(v)}</option>`).join('');if(oldSpecies)$('optSpecies').value=oldSpecies;if(oldProblem)$('optProblem').value=oldProblem;}
+ $('optMethod').innerHTML='<option value="LANDSCAPE_ONLY">Landscape-only analysis · zero optimizer calls</option><option value="ALL">All Algorithms · separate sequential jobs</option>'+c.methods.map(m=>`<option value="${esc(m.id)}">${esc(m.label)}</option>`).join('');
+ optRenderStudies();optBinding();
+}
+function optBinding(){if(optState.sourceType!=='benchmark')return;const c=optState.catalog?.cases.find(c=>c.case===optState.benchmarkCase);if(c){$('optModel').value=c.model_path;$('optLandscape').value=c.landscape_path;}}
+async function optTemplate(){const d=await api('/api/optimization/template?key='+$('optProblem').value);$('optYaml').value=d.yaml;optBinding();}
+async function optValidate(){const d=await api('/api/optimization/problem/validate',{method:'POST',body:JSON.stringify({yaml:$('optYaml').value})});setNotice('optNotice',`Valid problem: ${d.title} · ${d.objectives.length} objectives · ${d.constraints.length} constraints`,'ok');return d;}
+async function optAssign(){await optValidate();if(optState.sourceType==='benchmark')await optGeneralPreview();if(optState.sourceType!=='benchmark')return await optAssignGeneral();if(!optState.benchmarkCase)throw Error('Choose an example study or register a model and landscape.');const payload={case:optState.benchmarkCase,prior_rows:Number($('optPrior').value),seed:Number($('optSeed').value),budget:Number($('optBudget').value),exact_solver:$('optSolver').value,methods:[$('optMethod').value],problem_yaml:$('optYaml').value,model_path:$('optModel').value,landscape_path:$('optLandscape').value};const d=await api('/api/optimization/queue',{method:'POST',body:JSON.stringify(payload)});toast(`${d.jobs.length} jobs assigned`);await optRefresh();}
+async function optRefresh(){const d=await api('/api/optimization/queue');$('optQueueState').textContent=d.enabled?'Queue enabled · jobs execute one at a time':'Queue paused · current job may finish';$('optQueue').innerHTML=d.jobs.map(j=>`<tr><td>${esc(j.case)}</td><td>${esc(j.meta?.label||j.method)}</td><td>${j.prior_rows.toLocaleString()}</td><td>${esc(j.status)} · ${j.calls||0}/${j.method==='LANDSCAPE_ONLY'?0:j.budget}<div class="progress"><div style="width:${Math.min(100,100*(j.calls||0)/j.budget)}%"></div></div></td><td><button class="btn" data-opt-view="${j.id}">View</button>${['queued','running'].includes(j.status)?`<button class="btn red" data-opt-action="cancel" data-id="${j.id}">Cancel</button>`:''}${['cancelled','interrupted','failed'].includes(j.status)?`<button class="btn" data-opt-action="resume" data-id="${j.id}">Resume</button>`:''}</td></tr>`).join('');document.querySelectorAll('[data-opt-view]').forEach(b=>b.onclick=()=>optView(b.dataset.optView));document.querySelectorAll('[data-opt-action]').forEach(b=>b.onclick=async()=>{try{await api(`/api/optimization/job/${b.dataset.id}/${b.dataset.optAction}`,{method:'POST'});await optRefresh();}catch(e){toast(e.message,true);}});if(optState.selectedJob)await optView(optState.selectedJob);}
+function optPlot(svg,points,xkey,ykey,label,line){
+ const el=$(svg);if(!points.length){el.innerHTML='';return;}const xs=points.map(p=>Number(p[xkey])),ys=points.map(p=>Number(p[ykey]));const xmin=Math.min(...xs),xmax=Math.max(...xs),ymin=Math.min(...ys),ymax=Math.max(...ys);const x=v=>55+560*(v-xmin)/Math.max(1e-12,xmax-xmin),y=v=>210-170*(v-ymin)/Math.max(1e-12,ymax-ymin);
+ el.innerHTML=`<text x="55" y="20" fill="#91a9b6">${esc(label)}</text><path d="M55 40V210H620" fill="none" stroke="#91a9b6"/><text x="55" y="237" fill="#91a9b6">${xmin.toPrecision(4)}</text><text x="560" y="237" fill="#91a9b6">${xmax.toPrecision(4)}</text><text x="4" y="48" fill="#91a9b6">${ymax.toPrecision(3)}</text><text x="4" y="210" fill="#91a9b6">${ymin.toPrecision(3)}</text>`+(line?`<polyline fill="none" stroke="#62d9ee" stroke-width="2" points="${points.map(p=>`${x(p[xkey])},${y(p[ykey])}`).join(' ')}"/>`:points.map(p=>`<circle cx="${x(p[xkey])}" cy="${y(p[ykey])}" r="3" fill="#75e0a7"/>`).join(''));
+}
+async function optView(id){optState.selectedJob=id;const d=await api('/api/optimization/job/'+id);$('optSummary').textContent=d.summary?JSON.stringify(d.summary,null,2):JSON.stringify(d.worker_state||{status:'Queued'},null,2);$('optLog').textContent=d.log;$('optLog').scrollTop=$('optLog').scrollHeight;optPlot('optHvPlot',d.hv_trajectory,'call','hv','Hypervolume · all exact evaluations',true);const cols=d.summary?.objective_columns||[];if(cols.length>=2)optPlot('optParetoPlot',d.pareto_front,cols[0],cols[1],'Pareto front · normalized objective coordinates',false);else $('optParetoPlot').innerHTML='';$('optPlotLabel').textContent=cols.length>2?'Plot shows the first two coordinates of the full multidimensional front. All coordinates are included in the export.':'';}
+async function optDownload(url,name){const headers={};if(token())headers['X-GLE-Token']=token();const r=await fetch(url,{headers});if(!r.ok){const d=await r.json();throw Error(d.detail);}const u=URL.createObjectURL(await r.blob());const a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
+function optBind(){
+ const wrap=fn=>async()=>{try{await fn();}catch(e){toast(e.message,true);setNotice('optNotice',e.message,'warn');}};
+ $('optProblem').onchange=wrap(async()=>{if($('optProblemMode').value==='generate')await optTemplate();});$('optPrior').onchange=wrap(async()=>{if(optState.sourceType==='benchmark'){await optCatalog();}else{optResetGeneralPreview();}});$('optRefreshCatalog').onclick=wrap(optCatalog);$('optReset').onclick=wrap(optTemplate);$('optValidate').onclick=wrap(optValidate);$('optAssign').onclick=wrap(optAssign);$('optRefresh').onclick=wrap(optRefresh);
+ $('optStart').onclick=wrap(async()=>{await api('/api/optimization/queue/start',{method:'POST'});await optRefresh();});$('optPause').onclick=wrap(async()=>{await api('/api/optimization/queue/pause',{method:'POST'});await optRefresh();});
+ $('optImport').onclick=()=>$('optImportFile').click();$('optImportFile').onchange=wrap(async()=>{const f=$('optImportFile').files?.[0];if(!f)return;$('optProblemMode').value='upload';optProblemMode();$('optYaml').value=await f.text();optResetGeneralPreview();await optValidate();});
+ $('optExportYaml').onclick=wrap(async()=>{await optValidate();const u=URL.createObjectURL(new Blob([$('optYaml').value],{type:'text/yaml'}));const a=document.createElement('a');a.href=u;a.download='problem.gemproblem.yaml';a.click();URL.revokeObjectURL(u);});
+ $('optSaveYaml').onclick=wrap(async()=>{await api('/api/optimization/problem/save',{method:'POST',body:JSON.stringify({yaml:$('optYaml').value,path:$('optYamlPath').value,overwrite:true})});toast('Problem saved');});$('optLoadYaml').onclick=wrap(async()=>{$('optYaml').value=(await api('/api/optimization/problem/load?path='+encodeURIComponent($('optYamlPath').value))).yaml;$('optProblemMode').value='upload';optProblemMode();optResetGeneralPreview();await optValidate();});
+ $('optAddObjective').onclick=()=>{optState.objectives.push({name:$('optMetric').value,source:'exact_metric',metric:$('optMetric').value,direction:$('optDirection').value,normalization:{method:'frozen_minmax'}});$('optObjectiveList').textContent=optState.objectives.map(o=>`${o.direction} ${o.metric}`).join(' · ');};
+ $('optAddConstraint').onclick=()=>{optState.constraints.push({name:'constraint_'+optState.constraints.length,source:'exact_metric',metric:$('optConstraintMetric').value,operator:$('optOperator').value,value:Number($('optThreshold').value)});$('optConstraintList').textContent=optState.constraints.map(c=>`${c.metric} ${c.operator} ${c.value}`).join(' · ');};
+ $('optBuildCustom').onclick=wrap(async()=>{$('optYaml').value=(await api('/api/optimization/problem/custom',{method:'POST',body:JSON.stringify({id:$('optCustomId').value,title:$('optCustomTitle').value,objectives:optState.objectives,constraints:optState.constraints})})).yaml;await optValidate();});$('optClearCustom').onclick=()=>{optState.objectives=[];optState.constraints=[];$('optObjectiveList').textContent='';$('optConstraintList').textContent='';};
+ $('optExportRun').onclick=wrap(async()=>{if(!optState.selectedJob)throw Error('Select a job first');await optDownload(`/api/optimization/job/${optState.selectedJob}/export`,'GEM_optimization_'+optState.selectedJob+'.zip');});
+ $('optBindNative').onclick=wrap(async()=>{const d=await api('/api/optimization/bind-native',{method:'POST',body:JSON.stringify({config_path:$('optNativeConfig').value})});await optCatalog();await optUseStudy('benchmark:'+d.case);if($('optProblemMode').value==='generate')await optTemplate();toast('Landscape bound: '+d.case);});
+}
+// Source selection and on-demand registration for the existing generalized engine.
+function optGeneralWarn(text){setNotice('optGeneralPreviewResults',text,'warn');}
+function optResetGeneralPreview(){optState.generalPreviewSignature=null;optGeneralWarn('Compatibility preview required before assigning this model and problem.');}
+function optGeneralSignature(){return JSON.stringify([$('optGeneralBinding').value,Number($('optPrior').value),$('optYaml').value]);}
+function optProblemMode(){
+ const generate=$('optProblemMode').value==='generate';
+ $('optGenerateControls').hidden=!generate;
+ $('optImportControls').hidden=false;
+ $('optCustomBuilder').hidden=!generate;
+}
+function optRenderStudies(){
+ const sel=$('optStudySelect');if(!sel||!optState.catalog)return;
+ const old=sel.value;
+ const all=optState.catalog.cases||[];
+ sel.innerHTML='<option value="new">Load a new model + landscape</option>'+
+ (optState.generalBindings||[]).map(b=>`<option value="registered:${esc(b.id)}">${esc(b.label)}</option>`).join('');
+ if([...sel.options].some(o=>o.value===old))sel.value=old;
+ else if(optState.sourceType==='new')sel.value='new';
+}
+function optSetNewSource(expand=true){
+ optState.sourceType='new';optState.benchmarkCase=null;
+ $('optGeneralBinding').value='';$('optModel').value='';$('optLandscape').value='';
+ $('optPrior').min=4;$('optPrior').max=50000;
+ $('optStudySelect').value='new';
+ $('optGeneralConfirm').checked=false;
+ $('optGeneralDetails').open=expand;
+ $('optContract').textContent='Register your model and recorded landscape before optimization. The validation step never runs FBA.';
+ setNotice('optGeneralBindingInfo','Choose a GEM and its matching landscape. Load the recorded configuration when available.');
+ optResetGeneralPreview();
+}
+async function optUseStudy(value){
+ if(!value||value==='new'){
+   optSetNewSource();return;
+ }
+ $('optGeneralConfirm').checked=false;
+ if(value.startsWith('benchmark:')){
+   const key=value.slice('benchmark:'.length);
+   const c=optState.catalog?.cases?.find(x=>x.case===key);
+   if(!c)throw Error('Example source not found in the original model catalog.');
+   optState.sourceType='benchmark';optState.benchmarkCase=key;
+   $('optSpecies').value=c.species;
+   $('optGeneralBinding').value='';
+   $('optGeneralModel').value=c.model_path;
+   $('optGeneralLandscape').value=c.landscape_path;
+   $('optGeneralConfig').value='';
+   $('optModel').value=c.model_path;$('optLandscape').value=c.landscape_path;
+   $('optPrior').min=5000;$('optPrior').max=50000;
+   if(Number($('optPrior').value)<5000||Number($('optPrior').value)>50000)$('optPrior').value=5000;
+   if(c.problem_key&&$('optProblemMode').value==='generate'){
+     $('optProblem').value=c.problem_key;await optTemplate();
+   }
+   $('optContract').textContent='Included example uses the original frozen benchmark source and optimizer adapter.';
+   setNotice('optGeneralBindingInfo','Included example loaded. Model and landscape use the frozen benchmark configuration.','ok');
+   $('optStudySelect').value=value;
+   $('optGeneralDetails').open=false;
+ }else if(value.startsWith('registered:')){
+   const id=value.slice('registered:'.length);
+   const b=optState.generalBindings?.find(x=>x.id===id);
+   if(!b)throw Error('Registered source not found. Reload the source list.');
+   optState.sourceType='registered';optState.benchmarkCase=null;
+   $('optGeneralBinding').value=id;
+   $('optGeneralModel').value=b.model_path;$('optGeneralLandscape').value=b.landscape_path;
+   optGeneralSelected();$('optStudySelect').value=value;
+   $('optGeneralDetails').open=false;
+ }else throw Error('Unrecognized study source');
+ optResetGeneralPreview();
+}
+async function optGeneralSources(){
+ for(const [kind,input,list] of [['model','optGeneralModel','optGeneralModelOptions'],['landscape','optGeneralLandscape','optGeneralLandscapeOptions'],['problem','optGeneralConfig','optGeneralConfigOptions']]){
+   const d=await api('/api/optimization/files?kind='+kind);
+   $(list).innerHTML=(d.files||[]).filter(p=>kind!=='problem'||(!p.startsWith('problems/')&&!/\.gemproblem\.ya?ml$/i.test(p))).map(p=>`<option value="${esc(p)}"></option>`).join('');
+ }
+ await optGeneralReload();
+}
+async function optGeneralUpload(kind, fileId, target){
+ const file=$(fileId).files?.[0];if(!file)throw Error('Select a file.');
+ const isModel=kind==='model';
+ const url=isModel?'/api/model/upload?filename=':'/api/optimization/general/upload/'+kind+'?filename=';
+ setNotice('optGeneralInspection','Uploading '+file.name+'…');
+ // Binary, not multipart: large inputs are received as bytes without rewriting their content.
+ const d=await apiBinary(url+encodeURIComponent(file.name),file);
+ optSetNewSource();$(target).value=isModel?d.model_path:d.path;
+ setNotice('optGeneralInspection',`Uploaded ${file.name} (${(file.size/1024/1024).toFixed(1)} MB). Inspect the inputs before registration.`,'ok');
+ optResetGeneralPreview();await optGeneralSources();
+}
+async function optGeneralInspect(){
+ const m=$('optGeneralModel').value.trim(),l=$('optGeneralLandscape').value.trim();
+ if(!m||!l)throw Error('Provide a model and matching landscape.');
+ setNotice('optGeneralInspection','Inspecting input files; no solver evaluations are performed.');
+ const d=await api('/api/optimization/general/inspect',{method:'POST',body:JSON.stringify({model_path:m,landscape_path:l})});
+ optState.generalInspection=d;
+ const exchanges=(d.exchange_reactions||[]).slice(0,12).join(', ');
+ setNotice('optGeneralInspection',`${d.model_id||'Model'} · ${d.reaction_count??'unknown'} reactions · ${d.preview_rows} sampled landscape rows · ${d.columns.length} columns. ${d.cobra_model_inspected?'Model inspected.':'COBRApy not available; full validation awaits native runtime.'} ${exchanges?'Exchange reactions: '+exchanges+'.':''}${d.warning?' '+d.warning:''}`,'ok');
+ $('optGeneralMetrics').style.display='block'; $('optGeneralMetrics').replaceChildren(...d.columns.slice(0,120).map(k=>{const span=document.createElement('span');span.className='general-pill';span.textContent=k;return span;}));
+ $('optMetrics').innerHTML=[...new Set(['maximum_growth','product_flux','biomass_flux','objective_value','resource_cost','resource_efficiency',...d.columns])].map(x=>`<option value="${esc(x)}"></option>`).join('');
+ $('optGeneralModel').value=d.model_path||m;$('optGeneralLandscape').value=d.landscape_path||l;
+ optResetGeneralPreview();
+}
+async function optGeneralConfigRead(){
+ const path=$('optGeneralConfig').value.trim();if(!path)throw Error('Select an existing landscape configuration, or leave the field empty and enter settings manually.');
+ const d=await api('/api/optimization/general/from-landscape-config',{method:'POST',body:JSON.stringify({config_path:path})});
+ optSetNewSource();if(d.model_available)$('optGeneralModel').value=d.model_path;
+ $('optGeneralFeatures').value=(d.features||[]).join(', ');
+ $('optGeneralBounds').value=JSON.stringify(d.bounds||{},null,2);
+ $('optGeneralBiomass').value=d.biomass_reaction_id||'';
+ $('optGeneralProduct').value=d.product_reaction_id||'';
+ if(d.fba_mode)$('optGeneralFbaMode').value=d.fba_mode;
+ $('optGeneralFeatureMode').value=d.feature_mode||'medium_uptake';
+ $('optGeneralGrowthFraction').value=d.minimum_growth_fraction??0.9;
+ $('optGeneralObjectiveRxn').value=d.objective_reaction_id||'';
+ $('optGeneralObjectiveDirection').value=d.objective_direction||'max';
+ $('optGeneralLabel').value=d.source_label||'New GEM study';
+ optState.generalSavedConfig=d;
+ setNotice('optGeneralInspection',`Recorded design: ${(d.features||[]).length} features, ${d.landscape_rows} intended rows, FBA ${d.recorded_fba_mode||d.fba_mode}. ${d.completed?'Original run marked complete.':'Completion not established.'} ${(d.warnings||[]).join(' ')}`,(d.warnings||[]).length?'warn':'ok');
+ optResetGeneralPreview();
+}
+async function optGeneralRegister(){
+ if(!$('optGeneralModel').value.trim()||!$('optGeneralLandscape').value.trim())throw Error('Choose a GEM and landscape first.');
+ const payload={model_path:$('optGeneralModel').value.trim(),landscape_path:$('optGeneralLandscape').value.trim(),label:$('optGeneralLabel').value.trim()||'New GEM study'};
+ const config=$('optGeneralConfig').value.trim();
+ if(config){
+   // The saved configuration is authoritative; the scientific adapter rejects overrides.
+   payload.landscape_config_path=config;
+ }else{
+   payload.features=$('optGeneralFeatures').value.split(',').map(s=>s.trim()).filter(Boolean);
+   if(!payload.features.length)throw Error('Enter the design-variable reaction IDs in landscape column order.');
+   try{payload.bounds=JSON.parse($('optGeneralBounds').value);}catch{throw Error('Bounds must be valid JSON with [minimum,maximum] for every design variable.');}
+   try{payload.metric_reactions=JSON.parse($('optGeneralAliases').value||'{}');}catch{throw Error('Metric aliases must be a valid JSON mapping.');}
+   Object.assign(payload,{biomass_reaction_id:$('optGeneralBiomass').value.trim(),product_reaction_id:$('optGeneralProduct').value.trim(),
+     feature_mode:$('optGeneralFeatureMode').value,fba_mode:$('optGeneralFbaMode').value,
+     minimum_growth_fraction:Number($('optGeneralGrowthFraction').value),
+     objective_reaction_id:$('optGeneralObjectiveRxn').value.trim(),objective_direction:$('optGeneralObjectiveDirection').value});
+ }
+ setNotice('optGeneralBindingInfo','Checking model, exact-FBA configuration, and landscape coordinates…');
+ const d=await api('/api/optimization/general/register',{method:'POST',body:JSON.stringify(payload)});
+ await optGeneralReload();await optUseStudy('registered:'+d.id);
+ toast('Registered source: '+d.label);optResetGeneralPreview();
+}
+async function optGeneralReload(){
+ const c=await api('/api/optimization/catalog?prior_rows=5000');
+ const b=c.general_bindings||[];optState.generalBindings=b;
+ const old=$('optGeneralBinding').value;
+ $('optGeneralBinding').innerHTML='<option value="">Select a registered source</option>'+b.map(x=>`<option value="${esc(x.id)}">${esc(x.label)} · ${Number(x.rows||0).toLocaleString()} rows</option>`).join('');
+ if(b.some(x=>x.id===old))$('optGeneralBinding').value=old;
+ optRenderStudies();
+ if(optState.sourceType==='registered')optGeneralSelected();
+}
+function optGeneralSelected(){
+ if(optState.sourceType!=='registered')return;
+ const b=optState.generalBindings?.find(x=>x.id===$('optGeneralBinding').value);
+ if(!b){$('optModel').value='';$('optLandscape').value='';setNotice('optGeneralBindingInfo','Choose an existing binding or register a new model/landscape.');return;}
+ $('optModel').value=b.model_path;$('optLandscape').value=b.landscape_path;
+ $('optPrior').min=4;$('optPrior').max=b.rows;
+ if(Number($('optPrior').value)>b.rows||Number($('optPrior').value)<4)$('optPrior').value=Math.min(b.rows,5000);
+ $('optContract').textContent='Registered model and landscape source hashes are verified before execution. No prior observations are used by no-prior optimizers.';
+ setNotice('optGeneralBindingInfo',`${b.label}: ${b.features.length} design variables · ${b.rows.toLocaleString()} landscape rows · ${b.fba_mode} · source hashes saved.`, 'ok');
+ optResetGeneralPreview();
+}
+async function optGeneralPreview(){
+ if(optState.sourceType==='benchmark'){
+   const info=await optValidate();
+   const b=optState.catalog?.cases?.find(x=>x.case===optState.benchmarkCase);
+   if(!b||info.benchmark_template!==b.problem_key)throw Error('This included example uses its original benchmark question. Choose the matching template, or register a model and landscape for a different question.');
+   setNotice('optGeneralPreviewResults','Included example and canonical question match. Frozen benchmark adapter and references are unchanged.','ok');
+   return;
+ }
+ const b=$('optGeneralBinding').value;if(!b)throw Error('Register or select a model and landscape first.');
+ if(!$('optGeneralConfirm').checked)throw Error('Confirm that the landscape and GEM use the same exact-FBA experiment and frozen row order.');
+ await optValidate();
+ setNotice('optGeneralPreviewResults','Checking this YAML against the registered input data (no new FBA evaluations).');
+ const d=await api('/api/optimization/general/preview',{method:'POST',body:JSON.stringify({general_binding_id:b,problem_yaml:$('optYaml').value,prior_rows:Number($('optPrior').value)})});
+ const message=`Reference: ${d.reference_rows} rows; chosen prior: ${d.prior_rows} rows; feasible in prior: ${d.prior_feasible}; feasible overall: ${d.total_feasible}; objectives: ${(d.objectives||[]).join(', ')}; exact FBA solves: ${d.fba_solves}.`;
+ if(d.prior_feasible<4){optResetGeneralPreview();throw Error(message+' At least 4 feasible prior designs are required.');}
+ optState.generalPreviewSignature=optGeneralSignature();
+ setNotice('optGeneralPreviewResults','Compatible. '+message,'ok');
+}
+async function optAssignGeneral(){
+ if(optState.sourceType!=='registered')throw Error('Register or select a model and landscape before adding a job.');
+ const b=$('optGeneralBinding').value;
+ if(!b)throw Error('Select a registered GEM/landscape first.');
+ if(optState.generalPreviewSignature!==optGeneralSignature())throw Error('Run the compatibility preview again after changing the source, prior size, or problem YAML.');
+ const payload={general_binding_id:b,prior_rows:Number($('optPrior').value),seed:Number($('optSeed').value),budget:Number($('optBudget').value),exact_solver:$('optSolver').value,methods:[$('optMethod').value],problem_yaml:$('optYaml').value};
+ const d=await api('/api/optimization/queue',{method:'POST',body:JSON.stringify(payload)});
+ toast(`${d.jobs.length} generalized optimization jobs added`);
+ setNotice('optNotice',`${d.jobs.length} jobs assigned for the registered GEM. The queue starts only when enabled.`, 'ok');
+ await optRefresh();return d;
+}
+function optGeneralBind(){
+ const wrap=fn=>async()=>{try{await fn();}catch(e){toast(e.message,true);setNotice('optGeneralPreviewResults',e.message,'warn');}};
+ $('optStudySelect').onchange=wrap(()=>optUseStudy($('optStudySelect').value));
+ $('optProblemMode').onchange=optProblemMode;
+ optProblemMode();
+ $('optGeneralModelUpload').onclick=()=>$('optGeneralModelFile').click();
+ $('optGeneralLandscapeUpload').onclick=()=>$('optGeneralLandscapeFile').click();
+ $('optGeneralConfigUpload').onclick=()=>$('optGeneralConfigFile').click();
+ $('optGeneralModelFile').onchange=wrap(()=>optGeneralUpload('model','optGeneralModelFile','optGeneralModel'));
+ $('optGeneralLandscapeFile').onchange=wrap(()=>optGeneralUpload('landscape','optGeneralLandscapeFile','optGeneralLandscape'));
+ $('optGeneralConfigFile').onchange=wrap(async()=>{await optGeneralUpload('configuration','optGeneralConfigFile','optGeneralConfig');await optGeneralConfigRead();});
+ $('optGeneralRefreshFiles').onclick=wrap(optGeneralSources);
+ $('optGeneralInspect').onclick=wrap(optGeneralInspect);
+ $('optGeneralReadConfig').onclick=wrap(optGeneralConfigRead);
+ $('optGeneralRegister').onclick=wrap(optGeneralRegister);
+ $('optGeneralReload').onclick=wrap(optGeneralReload);
+ $('optGeneralBinding').onchange=()=>{if($('optGeneralBinding').value)optUseStudy('registered:'+$('optGeneralBinding').value);};
+ $('optGeneralPreview').onclick=wrap(optGeneralPreview);
+
+ $('optGeneralConfirm').onchange=optResetGeneralPreview;
+ $('optGeneralConfig').onchange=wrap(async()=>{optState.generalSavedConfig=null;optResetGeneralPreview();if($('optGeneralConfig').value.trim())await optGeneralConfigRead();});
+ $('optGeneralModel').onchange=optSetNewSource;
+ $('optGeneralLandscape').onchange=optSetNewSource;
+ $('optYaml').addEventListener('input',optResetGeneralPreview);
+}
+
+// Presentation-only Optimization sections. The original YAML generation and solver calls stay in place.
+const optSections={};
+function showOptSection(name){
+ for(const [key,panel] of Object.entries(optSections))panel.hidden=key!==name;
+ document.querySelectorAll('#optStepNavigation button').forEach(button=>{
+   const current=button.dataset.optStep===name;
+   button.setAttribute('aria-selected',String(current));button.tabIndex=current?0:-1;
+ });
+ if(name==='run') {
+   const current=$('optYaml').value.trim();
+   $('optCurrentQuestionInfo').textContent=current?`Question ready in editor · ${$('optYamlPath').value||'not saved'}`:'No question is loaded yet. Build or upload a YAML first.';
+   optRefresh().catch(e=>console.warn('Queue refresh',e));optListSavedYaml().catch(e=>console.warn('Problem list',e));
+ }
+}
+async function optListSavedYaml(){
+ const output=$('optSavedYamlFiles');if(!output)return;
+ const response=await api('/api/optimization/files?kind=problem');
+ const saved=(response.files||[]).filter(name=>name.startsWith('problems/')||/\.gemproblem\.ya?ml$/i.test(name));
+ const former=output.value;
+ output.innerHTML='<option value="">Choose a saved YAML question</option>'+saved.map(path=>`<option value="${esc(path)}">${esc(path)}</option>`).join('');
+ if(saved.includes(former))output.value=former;
+}
+function optInitializeSections(){
+ const root=$('optimization');
+ const source=$('optGeneralPanel');
+ const assignment=$('optAssign').closest('.card');
+ const builder=$('optYaml').closest('.card');
+ const queue=$('optQueue').closest('.card');
+ const result=$('optSummary').closest('.grid.two');
+ if(!root||!source||!assignment||!builder||!queue||!result)throw Error('Optimization layout sections missing');
+ const navigation=document.createElement('div');navigation.className='opt-steps';navigation.id='optStepNavigation';
+ navigation.setAttribute('role','tablist');navigation.setAttribute('aria-label','Optimization workflow');
+ const stages=[['setup','1. Setup'],['build','2. Build Problem'],['run','3. Saved Questions & Run']];
+ for(const [name,label] of stages){
+   const button=document.createElement('button');button.type='button';button.textContent=label;
+   button.dataset.optStep=name;button.setAttribute('role','tab');button.onclick=()=>showOptSection(name);
+   navigation.appendChild(button);
+   const panel=document.createElement('div');panel.className='opt-step-panel';panel.id='optStep_'+name;
+   panel.setAttribute('role','tabpanel');optSections[name]=panel;
+ }
+ root.prepend(navigation);
+ for(const [name] of stages)root.appendChild(optSections[name]);
+ // Existing controls (including handlers and IDs) are moved, never recreated.
+ // Show the recorded landscape configuration next to the model/landscape uploads,
+ // not inside advanced fields where a researcher might miss it.
+ const configField=$('optGeneralConfig').closest('.field');
+ const sourceFields=source.querySelector('#optGeneralPane > .general-options');
+ if(configField&&sourceFields)sourceFields.after(configField);
+ optSections.setup.appendChild(source);
+ optSections.build.appendChild(builder);
+ // The saved question picker reads YAML via the existing original Load action.
+ const saved=document.createElement('article');saved.className='card';
+ saved.innerHTML=`<div class="card-head"><h2>Saved optimization questions</h2><button class="btn" id="optRefreshSavedYaml">Refresh</button></div>
+ <div class="card-body"><p class="muted">Load a saved YAML from this workspace, or return to Build Problem to upload a YAML from your computer.</p>
+ <div class="general-actions"><select id="optSavedYamlFiles" aria-label="Saved optimization question"><option value="">Choose a saved YAML question</option></select>
+ <button class="btn primary" id="optOpenSavedYaml">Load selected question</button><button class="btn" id="optBuildAnother">Build or upload YAML</button></div>
+ <div class="notice" id="optCurrentQuestionInfo">Use Build Problem to generate or upload a question. Save it to make it available here.</div></div>`;
+ optSections.run.appendChild(saved);
+ // Load existing workspace file through the original load+validate route; preserve YAML bytes.
+ $('optRefreshSavedYaml').onclick=()=>optListSavedYaml().catch(e=>toast(e.message,true));
+ $('optOpenSavedYaml').onclick=()=>{
+   if(!$('optSavedYamlFiles').value){toast('Choose a saved question first',true);return;}
+   $('optYamlPath').value=$('optSavedYamlFiles').value;
+   $('optLoadYaml').click();
+ };
+ $('optBuildAnother').onclick=()=>showOptSection('build');
+ const validator=document.createElement('article');validator.className='card';
+ validator.innerHTML='<div class="card-head"><h2>Check compatibility</h2></div><div class="card-body"><p class="muted">Check the YAML against the registered GEM and its recorded landscape before assigning any method. This preview runs no FBA evaluations.</p></div>';
+ const validatorBody=validator.querySelector('.card-body');
+ validatorBody.appendChild($('optGeneralConfirm').closest('label'));
+ validatorBody.appendChild($('optGeneralPreview').parentElement);
+ validatorBody.appendChild($('optGeneralPreviewResults'));
+ optSections.run.appendChild(validator);
+ optSections.run.appendChild(assignment);
+ optSections.run.appendChild(queue);
+ optSections.run.appendChild(result);
+ // Remove only now-empty layout wrappers.
+ root.querySelectorAll(':scope > .grid.two').forEach(grid=>{
+   if(!grid.querySelector('.card'))grid.remove();
+ });
+ // Source selector only shows registered bindings; historical benchmarks remain intact on disk.
+ showOptSection('setup');
+}
+async function optBoot(){optInitializeSections();optBind();optGeneralBind();try{await optCatalog();await optTemplate();await optRefresh();await optGeneralSources();optSetNewSource(false);}catch(e){setNotice('optNotice',e.message,'warn');}setInterval(async()=>{if($('optimization').classList.contains('active'))try{await optRefresh();}catch(e){setNotice('optNotice',e.message,'warn');}},2500);}
+optBoot();
+
+const browserSessionId='browser-'+(globalThis.crypto?.randomUUID?.()||String(Date.now())+Math.random());
+async function sessionMessage(kind){
+ try{await fetch('/api/session/'+kind,{method:'POST',headers:{'Content-Type':'application/json'},
+ body:JSON.stringify({session_id:browserSessionId}),keepalive:true});}catch(e){console.warn('Session:',e);}
+}
+sessionMessage('open');
+setInterval(()=>sessionMessage('heartbeat'),4000);
+window.addEventListener('pagehide',()=>{
+ try{navigator.sendBeacon('/api/session/close',new Blob([JSON.stringify({session_id:browserSessionId})],{type:'application/json'}));}catch(e){}
+});
+boot();
+</script>
+</body>
+</html>

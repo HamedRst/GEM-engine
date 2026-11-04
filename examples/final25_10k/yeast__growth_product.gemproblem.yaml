@@ -1,0 +1,16 @@
+format: gemproblem/v0.2
+problem:
+  id: growth_product
+  title: Growth x Product
+  objectives:
+    - name: maximum_growth
+      source: exact_metric
+      metric: maximum_growth
+      direction: maximize
+      normalization: {method: frozen_minmax}
+    - name: product_flux
+      source: exact_metric
+      metric: product_flux
+      direction: maximize
+      normalization: {method: frozen_minmax}
+  constraints: []

@@ -1,0 +1,184 @@
+schema_version: '1.0'
+problem_id: NET42_yeast_highest_product_fba_edgeflux
+problem_type: exploration.network_visualization
+payload:
+  schema_version: '1.0'
+  problem_type: exploration.network_visualization
+  problem_id: NET42_yeast_highest_product_fba_edgeflux
+  description: Seed42 50K highest-product feasible sampled condition; S. cerevisiae
+  model:
+    registry_id: yeast_growth_product_cost
+    sha256: 05d33f3e82c2e2d072e229e7588f06d33b7df9daa806288db548c140149fc8bb
+  subject:
+    kind: target_neighborhood
+    target_id: s_0680
+    entity_kind: metabolite
+    variant_id: canonical_v1
+    branch_only: false
+    gene_ids: []
+  analysis:
+    mode: fba
+    knockout_gene_ids: []
+    compare_to_wild_type: false
+  fba:
+    objective:
+      source: reaction
+      reaction_id: r_1761
+    direction: max
+    medium:
+      source: custom
+      uptake_bounds: {}
+      close_unselected: false
+    flux_threshold: 1.0e-08
+    bounds_overrides:
+      r_1654:
+      - -0.0051766447722911835
+      - 1000.0
+      r_1714:
+      - -0.9953145980834961
+      - 1000.0
+      r_1992:
+      - -12.690078735351562
+      - 1000.0
+      r_2005:
+      - -6.3956475257873535
+      - 1000.0
+      r_2060:
+      - -18.760089874267578
+      - 1000.0
+      r_2111:
+      - 0.0007166309527608599
+      - 1000.0
+  pathway_library:
+    id: atlas_canonical
+    version: 1.0.0
+  render:
+    style_preset: atlas_v023_publication
+    hide_currency_metabolites: true
+    max_display_reactions: 28
+    depth: 6
+    direction: upstream
+    label_mode: names
+    include_legend: true
+    show_flux_values: true
+    active_only: false
+    gene_context_depth: 1
+    gene_context_max_reactions: 16
+    dpi: 300
+    export_formats:
+    - png
+    - svg
+    - pdf
+  output:
+    subdirectory: yeast
+  metadata:
+    species: yeast
+    landscape_seed: 42
+    landscape_size: 50000
+    source: /Users/bboghli/Desktop/GEM_Publication_Archive/Results/Landscape_Generation/_CANDIDATE_UNVERIFIED/GEM_Learning_Engine_v1.0.4/outputs_multiseed_50k/seed42/yeast_50k
+    sample_id: '2892'
+    product_flux: 1.9782981835939215
+    maximum_growth: 0.0007962566141787332
+    product_reaction_id_saved: r_1761
+    product_reaction_id_native: r_1761
+    biomass_reaction_id_saved: r_2111
+    biomass_reaction_id_native: r_2111
+    target_id: s_0681
+    recorded_input_bounds:
+    - landscape_variable: requested_medium__r_1654
+      saved_reaction_id: r_1654
+      native_reaction_id: r_1654
+      capacity: 0.0051766447722911835
+    - landscape_variable: requested_medium__r_1714
+      saved_reaction_id: r_1714
+      native_reaction_id: r_1714
+      capacity: 0.9953145980834961
+    - landscape_variable: requested_medium__r_1992
+      saved_reaction_id: r_1992
+      native_reaction_id: r_1992
+      capacity: 12.690078735351562
+    - landscape_variable: requested_medium__r_2005
+      saved_reaction_id: r_2005
+      native_reaction_id: r_2005
+      capacity: 6.3956475257873535
+    - landscape_variable: requested_medium__r_2060
+      saved_reaction_id: r_2060
+      native_reaction_id: r_2060
+      capacity: 18.760089874267578
+    model_sha256: 05d33f3e82c2e2d072e229e7588f06d33b7df9daa806288db548c140149fc8bb
+    original_fba_protocol:
+      minimum_growth_fraction: 0.9
+      growth_floor: 0.0007166309527608599
+      growth_floor_basis: recorded_growth_floor
+      biomass_saved_id: r_2111
+      biomass_native_id: r_2111
+      fixed_boundary_capacities_original_ids: {}
+    medium_replay:
+      original_cobra_medium_count: 16
+      original_fixed_reactions: {}
+      selected_design_reactions:
+        r_1654: 0.0051766447722911835
+        r_1714: 0.9953145980834961
+        r_1992: 12.690078735351562
+        r_2005: 6.3956475257873535
+        r_2060: 18.760089874267578
+      replayed_medium_count: 16
+      changed_reaction_count: 5
+      changed_nonextracellular_count: 0
+      modified_boundaries:
+      - cobra_reaction_id: r_1654
+        native_reaction_id: r_1654
+        before:
+        - -1000.0
+        - 1000.0
+        after:
+        - -0.0051766447722911835
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: r_1714
+        native_reaction_id: r_1714
+        before:
+        - -1.0
+        - 1000.0
+        after:
+        - -0.9953145980834961
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: r_1992
+        native_reaction_id: r_1992
+        before:
+        - -1000.0
+        - 1000.0
+        after:
+        - -12.690078735351562
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: r_2005
+        native_reaction_id: r_2005
+        before:
+        - -1000.0
+        - 1000.0
+        after:
+        - -6.3956475257873535
+        - 1000.0
+        is_native_extracellular_exchange: true
+      - cobra_reaction_id: r_2060
+        native_reaction_id: r_2060
+        before:
+        - -1000.0
+        - 1000.0
+        after:
+        - -18.760089874267578
+        - 1000.0
+        is_native_extracellular_exchange: true
+      method: exact_worker.py COBRApy model.medium replay; FBA network bounds_overrides
+    note: Native FBA rerun at existing maximum-product condition, with original seed-42
+      growth floor. No new landscape simulation.
+    original_v5_problem_id: NET42_yeast_highest_product_fba
+    presentation_revision: 'V7.1: V6 clean Graphviz network, edge flux values ON'
+    selected_target_name: ethanol
+    selected_target_compartment: c
+    original_problem_id: NET42_yeast_highest_product_fba_clean
+execution:
+  new_fba_policy: native_per_query
+  landscape_copy: not_applicable

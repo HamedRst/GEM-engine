@@ -1,0 +1,50 @@
+{
+  "generator": "Unified single-command Figure 3 A-I V4",
+  "source": "frozen original A-F figure_3_seeds.py + frozen one-feature selector_ghi.py",
+  "source_qc_sha256_verified": true,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "landscape_sizes": [
+    5000,
+    10000,
+    25000,
+    50000
+  ],
+  "endpoint_exact_calls": 128,
+  "figure_file": "Figure_3_All_Nine_Panels_ThreeSeeds_V4.pdf",
+  "C_F_I_identical_ylabel": "Runtime (min)",
+  "C_F_I_identical_title": "Runtime",
+  "C_F_I_identical_yaxis_max": true,
+  "A_D_win_policy": "Unmodified original fractional wins, average of three seed-level counts; original panels preserved",
+  "B_E_HV_policy": "100*(official final method HV/own frozen landscape HV), mean \u00b1 SD of three seed means",
+  "G_top_cases_policy": "100*(number of seed+case observations tied for best official final HV among five methods)/(number of eligible pooled seed+case observations), full credit per tied method, NO per-seed averaging and NO fractional winner share",
+  "G_tie_policy": "full_credit_all_tied_methods",
+  "G_main_denominators_by_size": {
+    "5000": 72,
+    "10000": 75,
+    "25000": 75,
+    "50000": 75
+  },
+  "G_methods": [
+    "QC-only selector",
+    "gsMOBO + SPARC",
+    "NSGA-II + SPARC",
+    "gsMOBO (with knowledge)",
+    "NSGA-II (with knowledge)"
+  ],
+  "H_delta_policy": "100*(final HV - same seed+case+size frozen landscape HV)/that same frozen landscape HV",
+  "H_I_aggregate_policy": "mean\u00b1sample SD of the three seed-level case means",
+  "I_runtime_status": "QC computation overhead not measured; I reports measured optimizer runtime only.",
+  "I_end_to_end_QC_overhead_measured": false,
+  "I_runtime_cohort_matched_cases": 24,
+  "AF_runtime_cohort_matched_cases": 25,
+  "primary_selector_observations": 297,
+  "full_untouched_selector_observations": 300,
+  "CHO_5K_exclusion": "Excluded from primary in each of 3 seeds based on historical sensitivity; full-data separate sensitivity output remains",
+  "method_selection": "QC alone only; Ridge alpha6; train label clipping +/-20 pp; positive 0.5 pp gsMOBO threshold",
+  "prior_figures_sources_modified": false,
+  "caution": "If no measured source-audited QC training timings, C/F/I present optimizer runtime only; figure itself has no inaccurate end-to-end claim."
+}

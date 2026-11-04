@@ -1,0 +1,247 @@
+{
+  "model_id": "iJO1366_producing_antiEpEX-scFv",
+  "model_name": "Escherichia coli str. K-12 substr. MG1655 producing antiEpEX-scFv",
+  "biomass": {
+    "reaction_id": "BIOMASS_Ec_iJO1366_core_53p95M",
+    "confidence": "explicit",
+    "score": 1000000000.0,
+    "margin": 1000000000.0,
+    "source": "user override"
+  },
+  "product": {
+    "reaction_id": "DM_scFvAA_c",
+    "confidence": "explicit",
+    "score": 1000000000.0,
+    "margin": 1000000000.0,
+    "source": "user override"
+  },
+  "embedded_objective": {
+    "BIOMASS_Ec_iJO1366_core_53p95M": 1.0
+  },
+  "selected_optimization_mode": "growth_constrained_product",
+  "biomass_candidates": [
+    {
+      "reaction_id": "BIOMASS_Ec_iJO1366_core_53p95M",
+      "reaction_name": "E. coli biomass objective function (iJO1366) - core - with 53.95 GAM estimate",
+      "score": 214.0,
+      "reasons": [
+        "embedded biomass-like model objective",
+        "biomass term in reaction identifier/name",
+        "large biomass-like stoichiometry",
+        "consumes many amino acids",
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "RBFK",
+      "reaction_name": "Riboflavin kinase",
+      "score": 35.0,
+      "reasons": [
+        "growth-related term",
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "RBFSa",
+      "reaction_name": "Riboflavin synthase",
+      "score": 30.0,
+      "reasons": [
+        "growth-related term"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "RBFSb",
+      "reaction_name": "Riboflavin synthase",
+      "score": 30.0,
+      "reasons": [
+        "growth-related term"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "Recombinant_protein",
+      "reaction_name": "Recombinant protein",
+      "score": 29.0,
+      "reasons": [
+        "large biomass-like stoichiometry",
+        "consumes many amino acids",
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "ampicilin",
+      "reaction_name": "ampicilin",
+      "score": 29.0,
+      "reasons": [
+        "large biomass-like stoichiometry",
+        "consumes many amino acids",
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "14GLUCANabcpp",
+      "reaction_name": "1,4-alpha-D-glucan transport via ABC system (periplasm)",
+      "score": 5.0,
+      "reasons": [
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "3KGK",
+      "reaction_name": "3-keto-L-gulonate kinase",
+      "score": 5.0,
+      "reasons": [
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "3PEPTabcpp",
+      "reaction_name": "Tripeptide (LalaDgluMdap) transport via ABC system (periplasm)",
+      "score": 5.0,
+      "reasons": [
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "4PEPTabcpp",
+      "reaction_name": "Tetrapeptide (LalaDgluMdapDala) transport via ABC system (periplasm)",
+      "score": 5.0,
+      "reasons": [
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    }
+  ],
+  "product_candidates": [
+    {
+      "reaction_id": "DM_scFvAA_c",
+      "reaction_name": "DM_scFvAA[c]",
+      "score": 118.0,
+      "reasons": [
+        "strong product terms: scfv",
+        "demand reaction",
+        "linked synthesis reaction contains strong product terms",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "Recombinant_protein"
+      ]
+    },
+    {
+      "reaction_id": "Recombinant_protein",
+      "reaction_name": "Recombinant protein",
+      "score": 38.0,
+      "reasons": [
+        "strong product terms: recombinant, scfv",
+        "generic product terms: protein",
+        "technical/biomass boundary penalty"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "DM_ampicilin_c",
+      "reaction_name": "DM_ampicilin[c]",
+      "score": 33.0,
+      "reasons": [
+        "demand reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "ampicilin"
+      ]
+    },
+    {
+      "reaction_id": "DM_plasmid_c",
+      "reaction_name": "DM_plasmid[c]",
+      "score": 33.0,
+      "reasons": [
+        "demand reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "PLASMID"
+      ]
+    },
+    {
+      "reaction_id": "EX_acolipa_e",
+      "reaction_name": "4-Amino-4-deoxy-L-arabinose modified core oligosaccharide lipid A exchange",
+      "score": 20.0,
+      "reasons": [
+        "exchange reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "ACOLIPAabctex"
+      ]
+    },
+    {
+      "reaction_id": "EX_ag_e",
+      "reaction_name": "Silver exchange",
+      "score": 20.0,
+      "reasons": [
+        "exchange reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "AGt3"
+      ]
+    },
+    {
+      "reaction_id": "EX_arbtn_e",
+      "reaction_name": "Aerobactin minus Fe3 exchange",
+      "score": 20.0,
+      "reasons": [
+        "exchange reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "ARBTNtex"
+      ]
+    },
+    {
+      "reaction_id": "EX_arbtn_fe3_e",
+      "reaction_name": "Aerobactin exchange",
+      "score": 20.0,
+      "reasons": [
+        "exchange reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "ARBTNexs"
+      ]
+    },
+    {
+      "reaction_id": "EX_cm_e",
+      "reaction_name": "Chloramphenicol exchange",
+      "score": 20.0,
+      "reasons": [
+        "exchange reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "CMtpp"
+      ]
+    },
+    {
+      "reaction_id": "EX_colipa_e",
+      "reaction_name": "Core oligosaccharide lipid A exchange",
+      "score": 20.0,
+      "reasons": [
+        "exchange reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "COLIPAabctex"
+      ]
+    }
+  ],
+  "warnings": []
+}

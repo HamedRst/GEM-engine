@@ -1,0 +1,181 @@
+schema_version: '1.0'
+problem_id: SURF42_cho_product_surface
+problem_type: exploration.calculator
+payload:
+  public_question:
+    exploration_spec_version: '0.4'
+    name: SURF42_cho_product_surface
+    source:
+      landscape: /Users/bboghli/Desktop/GEM_Publication_Archive/Results/Landscape_Generation/_CANDIDATE_UNVERIFIED/GEM_Learning_Engine_v1.0.4/outputs_multiseed_50k/seed42/cho_50k
+      gem_model: /Users/bboghli/Downloads/GEM_Engine_v2.1_Unified_Optimization_Exploration_Mac_QA/GEM
+        Engine.app/Contents/Resources/GEM_Learning_Engine_Optimization/exploration_bundle/examples/models/cho_growth_product_cost.xml
+    observables:
+      targets:
+      - name: product_flux
+        value: result:product_flux
+        direction: maximize
+        label: Product Flux
+      derived: []
+    exploration:
+      primitive: vary
+      detail: surface
+      over:
+        mode: list
+        variables:
+        - requested_medium__EX_thr_L(e)
+        - requested_medium__EX_val_L(e)
+      compact_expression: vary(Product Flux, over=L-Threonine exchange, L-Valine exchange,
+        mode=surface, under=the full resolved landscape)
+      calculator_function: vary
+    conditions:
+      logic: all
+      filters: []
+    regions: {}
+    context: {}
+    parameters: {}
+    evidence:
+      backend: auto
+      surrogate_qc:
+        model: extra_trees
+        n_estimators: 300
+        cv_folds: 5
+        min_r2: 0.5
+        min_auc: 0.65
+        max_train_rows: 50000
+        n_jobs: -1
+      new_fba_calls: 0
+    question:
+      title: How does Product Flux vary over L-Threonine exchange, L-Valine exchange
+        under the full landscape
+      text: How does Product Flux vary over L-Threonine exchange, L-Valine exchange
+        under the full landscape?
+    compiled_execution:
+      internal_operator: response_surface
+      note: The internal operator is an execution detail. The public scientific contract
+        is the four-field exploration calculator.
+    calculator:
+      observe: product
+      explore: vary
+      variables: requested_medium__EX_thr_L(e), requested_medium__EX_val_L(e)
+      conditions: ''
+  internal_problem:
+    spec_version: '1.0'
+    name: SURF42_cho_product_surface
+    question:
+      title: How does Product Flux vary over L-Threonine exchange, L-Valine exchange
+        under the full landscape
+      text: How does Product Flux vary over L-Threonine exchange, L-Valine exchange
+        under the full landscape?
+      why_it_matters: Joint response across two exploration variables.
+    landscape:
+      path: /Users/bboghli/Desktop/GEM_Publication_Archive/Results/Landscape_Generation/_CANDIDATE_UNVERIFIED/GEM_Learning_Engine_v1.0.4/outputs_multiseed_50k/seed42/cho_50k
+      include_fluxes: false
+    variables:
+      mode: all_design
+    targets:
+    - name: product_flux
+      value: result:product_flux
+      direction: maximize
+    scope:
+      filter_logic: all
+    backend:
+      mode: auto
+    surrogate:
+      model: extra_trees
+      n_estimators: 300
+      cv_folds: 5
+      min_r2: 0.5
+      min_auc: 0.65
+      max_train_rows: 50000
+      n_jobs: -1
+    operator:
+      name: response_surface
+      parameters:
+        variables:
+        - requested_medium__EX_thr_L(e)
+        - requested_medium__EX_val_L(e)
+        grid_points: 41
+    semantics:
+      target_labels:
+        product_flux: Product Flux
+      target_units: {}
+      variable_labels:
+        applied_medium__EX_hco3(e): Bicarbonate exchange
+        applied_medium__EX_glc(e): D-Glucose exchange
+        requested_medium__EX_glc(e): D-Glucose exchange
+        applied_medium__EX_fe2(e): EX fe2(u)
+        applied_medium__EX_chol(e): exchange reaction for Choline
+        requested_medium__EX_chol(e): exchange reaction for Choline
+        applied_medium__EX_fol(e): exchange reaction for Folate
+        applied_medium__EX_asn_L(e): exchange reaction for L-asparagine
+        requested_medium__EX_asn_L(e): exchange reaction for L-asparagine
+        applied_medium__EX_cys_L(e): exchange reaction for L-cysteine
+        requested_medium__EX_cys_L(e): exchange reaction for L-cysteine
+        applied_medium__EX_gln_L(e): exchange reaction for L-glutamine
+        requested_medium__EX_gln_L(e): exchange reaction for L-glutamine
+        applied_medium__EX_his_L(e): exchange reaction for L-histidine
+        requested_medium__EX_his_L(e): exchange reaction for L-histidine
+        applied_medium__EX_phe_L(e): exchange reaction for L-phenylalanine
+        requested_medium__EX_phe_L(e): exchange reaction for L-phenylalanine
+        applied_medium__EX_ser_L(e): exchange reaction for L-serine
+        requested_medium__EX_ser_L(e): exchange reaction for L-serine
+        applied_medium__EX_o2(e): exchange reaction for oxygen
+        requested_medium__EX_o2(e): exchange reaction for oxygen
+        applied_medium__EX_h(e): exchange reaction for proton
+        applied_medium__EX_pydxn(e): exchange reaction for Pyridoxine
+        applied_medium__EX_h2o(e): H2O exchange
+        applied_medium__EX_hxan(e): Hypoxanthine exchange
+        requested_medium__EX_hxan(e): Hypoxanthine exchange
+        applied_medium__EX_arg_L(e): L-Arginine exchange
+        requested_medium__EX_arg_L(e): L-Arginine exchange
+        applied_medium__EX_asp_L(e): L-Aspartate exchange
+        requested_medium__EX_asp_L(e): L-Aspartate exchange
+        applied_medium__EX_ile_L(e): L-Isoleucine exchange
+        requested_medium__EX_ile_L(e): L-Isoleucine exchange
+        applied_medium__EX_leu_L(e): L-Leucine exchange
+        requested_medium__EX_leu_L(e): L-Leucine exchange
+        applied_medium__EX_lys_L(e): L-Lysine exchange
+        requested_medium__EX_lys_L(e): L-Lysine exchange
+        applied_medium__EX_met_L(e): L-Methionine exchange
+        requested_medium__EX_met_L(e): L-Methionine exchange
+        applied_medium__EX_pro_L(e): L-Proline exchange
+        requested_medium__EX_pro_L(e): L-Proline exchange
+        applied_medium__EX_thr_L(e): L-Threonine exchange
+        requested_medium__EX_thr_L(e): L-Threonine exchange
+        applied_medium__EX_trp_L(e): L-Tryptophan exchange
+        requested_medium__EX_trp_L(e): L-Tryptophan exchange
+        applied_medium__EX_tyr_L(e): L-Tyrosine exchange
+        requested_medium__EX_tyr_L(e): L-Tyrosine exchange
+        applied_medium__EX_val_L(e): L-Valine exchange
+        requested_medium__EX_val_L(e): L-Valine exchange
+        applied_medium__EX_pi(e): Phosphate exchange
+        requested_medium__EX_pi(e): Phosphate exchange
+        applied_medium__EX_so4(e): Sulfate exchange
+        requested_medium__EX_so4(e): Sulfate exchange
+      variable_units: {}
+    visualization:
+      mode: auto
+    outputs:
+      save_figures: true
+      publication_formats:
+      - png
+      - pdf
+      - svg
+      dpi: 450
+    unified_exploration:
+      spec_version: '0.5'
+      primitive: vary
+      detail: surface
+      compact_expression: vary(Product Flux, over=L-Threonine exchange, L-Valine exchange,
+        mode=surface, under=the full resolved landscape)
+      gem_model_path: /Users/bboghli/Downloads/GEM_Engine_v2.1_Unified_Optimization_Exploration_Mac_QA/GEM
+        Engine.app/Contents/Resources/GEM_Learning_Engine_Optimization/exploration_bundle/examples/models/cho_growth_product_cost.xml
+    calculator_exploration:
+      spec_version: '0.5'
+      observe: product
+      explore: vary
+      variables: requested_medium__EX_thr_L(e), requested_medium__EX_val_L(e)
+      conditions: ''
+execution:
+  new_fba_policy: never
+  landscape_copy: only_if_new_fba

@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gem-learning-engine"
+version = "1.0.4"
+description = "Genome-scale metabolic model simulation, optimization, and exploration"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "cobra>=0.29,<0.31",
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "pyarrow>=14",
+  "scipy>=1.10",
+  "PyYAML>=6",
+  "typer>=0.12",
+  "tqdm>=4.66",
+  "psutil>=5.9",
+  "fastapi>=0.115",
+  "uvicorn>=0.30",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "build>=1.2", "httpx>=0.27"]
+optimization = ["torch>=2.9,<3", "botorch==0.17.2", "gpytorch==1.15.2", "scikit-learn>=1.5,<2", "joblib>=1.3"]
+exploration = [
+  "nicegui==2.24.2", "scikit-learn>=1.7,<2", "matplotlib>=3.9,<4",
+  "swiglpk>=5,<6", "networkx>=3.2,<4", "lxml>=5,<7", "pydot>=2,<5",
+  "joblib>=1.5,<2", "pydantic>=2.8,<3",
+]
+
+[project.scripts]
+gem-learning-engine = "gem_learning_engine.cli:app"
+gem-learning-engine-gui = "gem_learning_engine.gui:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["gem_learning_engine*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.setuptools.package-data]
+gem_learning_engine = ["gui_assets/*.html", "optimization/templates/*.yaml", "optimization/FROZEN_INPUT_HASHES.json"]

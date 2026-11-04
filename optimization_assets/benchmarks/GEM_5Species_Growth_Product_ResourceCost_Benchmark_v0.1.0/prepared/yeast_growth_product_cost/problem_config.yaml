@@ -1,0 +1,61 @@
+problem:
+  case_name: yeast_growth_product_cost
+  case_label: Saccharomyces cerevisiae / yeast-GEM / growth + ethanol + resource efficiency
+  run_dir: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0/inputs/runs/yeast_growth_product_cost
+  model_path: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0/inputs/models/yeast_growth_product_cost.xml
+  case_key: yeast_growth_product_cost
+  model_id: yeastGEM_v9__46__1__46__0
+  model_fingerprint: a0ec8b807b5da80a2d3735ba5b70f0d750e2260db672ced78429cba3ff27a9e2
+  config_hash: 7f13f89a1e2e471e5cb3
+  biomass_reaction_id: r_2111
+  product_reaction_id: r_1761
+  minimum_growth_fraction: 0.9
+  features:
+  - r_1654
+  - r_1714
+  - r_1992
+  - r_2005
+  - r_2060
+  feature_labels:
+    r_1654: ammonium exchange
+    r_1714: D-glucose exchange
+    r_1992: oxygen exchange
+    r_2005: phosphate exchange
+    r_2060: sulphate exchange
+  bounds:
+    r_1654:
+    - 0.0
+    - 20.0
+    r_1714:
+    - 0.0
+    - 1.0
+    r_1992:
+    - 0.0
+    - 20.0
+    r_2005:
+    - 0.0
+    - 20.0
+    r_2060:
+    - 0.0
+    - 20.0
+  growth_scale: 0.08093528181108933
+  product_scale: 1.9782981835939215
+  objective_names:
+  - maximum_growth
+  - growth_constrained_product_flux
+  - resource_efficiency
+  objective_directions:
+  - maximize
+  - maximize
+  - maximize
+  reported_cost_objective: normalized_resource_burden (minimize)
+  resource_cost_formula: mean_j((x_j-L_j)/(U_j-L_j))
+  resource_efficiency_formula: 1 - normalized_resource_burden
+  archive_additional_fba_solves_for_cost: 0
+  hv_reference_normalized:
+  - 0.0
+  - 0.0
+  - 0.0
+  baseline_table: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0/prepared/yeast_growth_product_cost/baseline_compact.csv.gz
+  design_cache: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0/inputs/runs/yeast_growth_product_cost/design_cache/sobol_b2589e6126dd2e82ce09.npy
+  qd_feature: r_1992

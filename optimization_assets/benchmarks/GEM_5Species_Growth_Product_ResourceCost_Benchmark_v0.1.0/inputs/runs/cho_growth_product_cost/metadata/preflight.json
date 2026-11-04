@@ -1,0 +1,559 @@
+{
+  "ready": true,
+  "optimization_mode": "growth_constrained_product",
+  "baseline_solver_status": "optimal",
+  "baseline_objective": 1.5109889999999971e-05,
+  "maximum_growth": 0.02560466682765019,
+  "growth_floor": 0.02304420014488517,
+  "production_status": "optimal",
+  "baseline_biomass_flux": 0.02304420014488517,
+  "baseline_product_flux": 1.5109889999999971e-05,
+  "model_id": "iCHO2291",
+  "model_name": "iCHO2441",
+  "model_path": "/Users/smdoliveira/Desktop/GEM-Hamed/GEM_Learning_Engine_v1.0.4/data/models/uploads/iCHO2441.xml",
+  "model_fingerprint": "9124e9c62d482fe448fe911f420a909118077d932177055c3db12ace497bed45",
+  "biomass_reaction_id": "biomass_cho_prod",
+  "product_reaction_id": "DM_igg[g]",
+  "biomass_inference_confidence": "explicit",
+  "product_inference_confidence": "explicit",
+  "n_reactions": 6337,
+  "n_metabolites": 4174,
+  "n_genes": 2441,
+  "n_exchanges": 545,
+  "n_variable_medium_components": 23,
+  "variable_medium_reaction_ids": [
+    "EX_arg_L(e)",
+    "EX_asn_L(e)",
+    "EX_asp_L(e)",
+    "EX_chol(e)",
+    "EX_cys_L(e)",
+    "EX_glc(e)",
+    "EX_gln_L(e)",
+    "EX_his_L(e)",
+    "EX_hxan(e)",
+    "EX_ile_L(e)",
+    "EX_leu_L(e)",
+    "EX_lys_L(e)",
+    "EX_met_L(e)",
+    "EX_o2(e)",
+    "EX_phe_L(e)",
+    "EX_pi(e)",
+    "EX_pro_L(e)",
+    "EX_ser_L(e)",
+    "EX_so4(e)",
+    "EX_thr_L(e)",
+    "EX_trp_L(e)",
+    "EX_tyr_L(e)",
+    "EX_val_L(e)"
+  ],
+  "n_fixed_medium_components": 6,
+  "fixed_medium_reasons": {
+    "EX_fol(e)": "explicit fixed-reaction override",
+    "EX_h2o(e)": "explicit fixed-reaction override",
+    "EX_pydxn(e)": "explicit fixed-reaction override",
+    "EX_fe2(e)": "explicit fixed-reaction override",
+    "EX_h(e)": "explicit fixed-reaction override",
+    "EX_hco3(e)": "explicit fixed-reaction override"
+  },
+  "n_simulations": 50000,
+  "n_chunks": 196,
+  "sampling_strategy": "sobol",
+  "estimated_design_cache_mb": 4.38690185546875,
+  "estimated_design_generation_peak_mb": 18.269936561584473,
+  "generated_design_rows": 65536,
+  "design_generation_memory_guard_mb": 2048,
+  "estimated_selected_dense_flux_array_mb_per_chunk": 13.44140625,
+  "processes": 2,
+  "estimated_model_copies_in_memory": 2,
+  "sobol_power_of_two": false,
+  "next_power_of_two": 65536,
+  "inference": {
+    "model_id": "iCHO2291",
+    "model_name": "iCHO2441",
+    "biomass": {
+      "reaction_id": "biomass_cho_prod",
+      "confidence": "explicit",
+      "score": 1000000000.0,
+      "margin": 1000000000.0,
+      "source": "user override"
+    },
+    "product": {
+      "reaction_id": "DM_igg[g]",
+      "confidence": "explicit",
+      "score": 1000000000.0,
+      "margin": 1000000000.0,
+      "source": "user override"
+    },
+    "embedded_objective": {
+      "biomass_cho": 1.0
+    },
+    "selected_optimization_mode": "growth_constrained_product",
+    "biomass_candidates": [
+      {
+        "reaction_id": "biomass_cho",
+        "reaction_name": "biomass function of CHO non-producing cell line",
+        "score": 197.0,
+        "reasons": [
+          "embedded biomass-like model objective",
+          "biomass term in reaction identifier/name",
+          "large biomass-like stoichiometry"
+        ],
+        "linked_reactions": []
+      },
+      {
+        "reaction_id": "biomass_cho_prod",
+        "reaction_name": "biomass function of CHO producing cell line",
+        "score": 97.0,
+        "reasons": [
+          "biomass term in reaction identifier/name",
+          "large biomass-like stoichiometry"
+        ],
+        "linked_reactions": []
+      },
+      {
+        "reaction_id": "EX_prpp(e)",
+        "reaction_name": "Exchange of 5-O-phosphonato-alpha-D-ribofuranosyl diphosphate(5-)",
+        "score": 30.0,
+        "reasons": [
+          "growth-related term"
+        ],
+        "linked_reactions": []
+      },
+      {
+        "reaction_id": "EX_ribflv(e)",
+        "reaction_name": "exchange reaction for Riboflavin",
+        "score": 30.0,
+        "reasons": [
+          "growth-related term"
+        ],
+        "linked_reactions": []
+      },
+      {
+        "reaction_id": "RBFK",
+        "reaction_name": "riboflavin kinase",
+        "score": 30.0,
+        "reasons": [
+          "growth-related term"
+        ],
+        "linked_reactions": []
+      },
+      {
+        "reaction_id": "RIBFLVt3",
+        "reaction_name": "riboflavin transport (ATP dependent)",
+        "score": 30.0,
+        "reasons": [
+          "growth-related term"
+        ],
+        "linked_reactions": []
+      },
+      {
+        "reaction_id": "RIBFLVt4",
+        "reaction_name": "release of riboflavin into the portal blood.",
+        "score": 30.0,
+        "reasons": [
+          "growth-related term"
+        ],
+        "linked_reactions": []
+      },
+      {
+        "reaction_id": "RIBFLVt6",
+        "reaction_name": "riboflavin transport inout via proton symport",
+        "score": 30.0,
+        "reasons": [
+          "growth-related term"
+        ],
+        "linked_reactions": []
+      },
+      {
+        "reaction_id": "RIBFLVte",
+        "reaction_name": "Riboflavin postulated transport reaction, extracellular",
+        "score": 30.0,
+        "reasons": [
+          "growth-related term"
+        ],
+        "linked_reactions": []
+      },
+      {
+        "reaction_id": "ICproduct_TRANSLATION_protein",
+        "reaction_name": "ICproduct_TRANSLATION_protein",
+        "score": 24.0,
+        "reasons": [
+          "large biomass-like stoichiometry",
+          "consumes many amino acids"
+        ],
+        "linked_reactions": []
+      }
+    ],
+    "product_candidates": [
+      {
+        "reaction_id": "DM_igg[g]",
+        "reaction_name": "DM_igg[g]",
+        "score": 118.0,
+        "reasons": [
+          "strong product terms: igg",
+          "demand reaction",
+          "linked synthesis reaction contains strong product terms",
+          "terminal boundary for a produced metabolite"
+        ],
+        "linked_reactions": [
+          "igg_formation"
+        ]
+      },
+      {
+        "reaction_id": "DM_n5m2masn[g]",
+        "reaction_name": "DM_n5m2masn[g]",
+        "score": 71.0,
+        "reasons": [
+          "generic product terms: protein",
+          "demand reaction",
+          "linked synthesis reaction contains generic product terms",
+          "terminal boundary for a produced metabolite"
+        ],
+        "linked_reactions": [
+          "M16N4Tg"
+        ]
+      },
+      {
+        "reaction_id": "ICproduct_Final_demand",
+        "reaction_name": "ICproduct_Final_demand",
+        "score": 71.0,
+        "reasons": [
+          "generic product terms: product",
+          "demand reaction",
+          "linked synthesis reaction contains generic product terms",
+          "terminal boundary for a produced metabolite"
+        ],
+        "linked_reactions": [
+          "ICproduct_Final_location_[e]"
+        ]
+      },
+      {
+        "reaction_id": "igg_formation",
+        "reaction_name": "igg_formation",
+        "score": 68.0,
+        "reasons": [
+          "strong product terms: igg",
+          "generic product terms: protein"
+        ],
+        "linked_reactions": []
+      },
+      {
+        "reaction_id": "DM_corem1[g]",
+        "reaction_name": "CORE M1 demand",
+        "score": 53.0,
+        "reasons": [
+          "demand reaction",
+          "linked synthesis reaction contains generic product terms",
+          "terminal boundary for a produced metabolite"
+        ],
+        "linked_reactions": [
+          "GNOFGALTg"
+        ]
+      },
+      {
+        "reaction_id": "DM_corem2[g]",
+        "reaction_name": "CORE M2 demand",
+        "score": 53.0,
+        "reasons": [
+          "demand reaction",
+          "linked synthesis reaction contains generic product terms",
+          "terminal boundary for a produced metabolite"
+        ],
+        "linked_reactions": [
+          "GNOFPGALT2g"
+        ]
+      },
+      {
+        "reaction_id": "DM_Asn_X_Ser/Thr[ly]",
+        "reaction_name": "DM Asn-X-Ser/Thr(ly)",
+        "score": 51.0,
+        "reasons": [
+          "generic product terms: protein",
+          "demand reaction",
+          "terminal boundary for a produced metabolite"
+        ],
+        "linked_reactions": [
+          "Asn_X_Ser/Thrtr",
+          "GASNASE2ly",
+          "GASNASE3ly",
+          "GASNASEly"
+        ]
+      },
+      {
+        "reaction_id": "DM_Ser/Thr[ly]",
+        "reaction_name": "DM Ser/Thr(ly)",
+        "score": 51.0,
+        "reasons": [
+          "generic product terms: protein",
+          "demand reaction",
+          "terminal boundary for a produced metabolite"
+        ],
+        "linked_reactions": [
+          "NAGA2ly",
+          "Ser/Thrtg"
+        ]
+      },
+      {
+        "reaction_id": "DM_Ser_Gly/Ala_X_Gly[ly]",
+        "reaction_name": "DM Ser-Gly/Ala-X-Gly(ly)",
+        "score": 51.0,
+        "reasons": [
+          "generic product terms: protein",
+          "demand reaction",
+          "terminal boundary for a produced metabolite"
+        ],
+        "linked_reactions": [
+          "CSAPASEly",
+          "CSBPASEly",
+          "CSCPASEly",
+          "CSDPASEly",
+          "CSEPASEly",
+          "HSPASEly"
+        ]
+      },
+      {
+        "reaction_id": "DM_dgpi_prot_cho[r]",
+        "reaction_name": "DM_dgpi_prot_cho[r]",
+        "score": 51.0,
+        "reasons": [
+          "generic product terms: protein",
+          "demand reaction",
+          "terminal boundary for a produced metabolite"
+        ],
+        "linked_reactions": [
+          "GPIDAer"
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "resolved_config": {
+    "project": {
+      "name": "iCHO2441_1_20260821T025958679669Z_3f7425",
+      "output_dir": "/Users/smdoliveira/Desktop/GEM-Hamed/GEM_Learning_Engine_v1.0.4/outputs/iCHO2441_1/run_20260821T025958679669Z_3f7425_50k",
+      "overwrite": false,
+      "resume": true,
+      "pause_file": "PAUSE_REQUESTED",
+      "verify_chunk_checksums_on_resume": true
+    },
+    "model": {
+      "path": "/Users/smdoliveira/Desktop/GEM-Hamed/GEM_Learning_Engine_v1.0.4/data/models/uploads/iCHO2441.xml",
+      "format": "auto",
+      "objective_reaction_id": "biomass_cho_prod",
+      "objective_direction": "max",
+      "biomass_reaction_id": "biomass_cho_prod",
+      "product_reaction_id": "DM_igg[g]"
+    },
+    "optimization": {
+      "mode": "growth_constrained_product",
+      "minimum_growth_fraction": 0.9,
+      "require_high_confidence_product": false,
+      "allow_medium_confidence_product": true
+    },
+    "experiment": {
+      "analysis_type": "random_medium",
+      "design_stage": "automatic_initial_space_filling",
+      "sampling_batch": 0,
+      "parent_query_id": null,
+      "notes": "Automatically configured from model path and run count."
+    },
+    "solver": {
+      "name": "glpk",
+      "timeout_seconds": 60,
+      "feasibility_tolerance": null,
+      "optimality_tolerance": null
+    },
+    "simulation": {
+      "n_simulations": 50000,
+      "chunk_size": 256,
+      "seed": 42,
+      "method": "fba",
+      "processes": 2,
+      "max_in_flight_chunks": 2,
+      "chunk_retry_attempts": 1,
+      "close_unlisted_exchanges": false,
+      "respect_original_exchange_bounds": true,
+      "feasible_statuses": [
+        "optimal"
+      ],
+      "simulation_log_every": 100,
+      "fail_fast": false
+    },
+    "sampling": {
+      "strategy": "sobol",
+      "discovery_scope": "model_medium",
+      "automatic_medium_policy": "nutrients",
+      "auto_min_fraction": 0.0,
+      "auto_max_fraction": 1.0,
+      "auto_max_uptake_cap": 20,
+      "closed_exchange_max_uptake": 10.0,
+      "bounds": {
+        "EX_arg_L(e)": {
+          "min": 0.0,
+          "max": 0.01978022
+        },
+        "EX_asn_L(e)": {
+          "min": 0.0,
+          "max": 0.040384615
+        },
+        "EX_asp_L(e)": {
+          "min": 0.0,
+          "max": 0.009340659
+        },
+        "EX_chol(e)": {
+          "min": 0.0,
+          "max": 0.0202871525
+        },
+        "EX_cys_L(e)": {
+          "min": 0.0,
+          "max": 0.00521978
+        },
+        "EX_glc(e)": {
+          "min": 0.0,
+          "max": 0.198351648
+        },
+        "EX_gln_L(e)": {
+          "min": 0.0,
+          "max": 0.067032967
+        },
+        "EX_his_L(e)": {
+          "min": 0.0,
+          "max": 0.003296703
+        },
+        "EX_hxan(e)": {
+          "min": 0.0,
+          "max": 0.0061945503
+        },
+        "EX_ile_L(e)": {
+          "min": 0.0,
+          "max": 0.010164835
+        },
+        "EX_leu_L(e)": {
+          "min": 0.0,
+          "max": 0.014835165
+        },
+        "EX_lys_L(e)": {
+          "min": 0.0,
+          "max": 0.013461538
+        },
+        "EX_met_L(e)": {
+          "min": 0.0,
+          "max": 0.006043956
+        },
+        "EX_o2(e)": {
+          "min": 0.0,
+          "max": 1.127472527
+        },
+        "EX_phe_L(e)": {
+          "min": 0.0,
+          "max": 0.006043956
+        },
+        "EX_pi(e)": {
+          "min": 0.0,
+          "max": 20.0
+        },
+        "EX_pro_L(e)": {
+          "min": 0.0,
+          "max": 0.007967033
+        },
+        "EX_ser_L(e)": {
+          "min": 0.0,
+          "max": 0.047802198
+        },
+        "EX_so4(e)": {
+          "min": 0.0,
+          "max": 20.0
+        },
+        "EX_thr_L(e)": {
+          "min": 0.0,
+          "max": 0.010164835
+        },
+        "EX_trp_L(e)": {
+          "min": 0.0,
+          "max": 0.0040773196
+        },
+        "EX_tyr_L(e)": {
+          "min": 0.0,
+          "max": 0.009340659
+        },
+        "EX_val_L(e)": {
+          "min": 0.0,
+          "max": 0.012087912
+        }
+      },
+      "fixed_reactions": {
+        "EX_fe2(e)": 1.0,
+        "EX_fol(e)": 0.0004566608,
+        "EX_h(e)": 1000.0,
+        "EX_h2o(e)": 1000.0,
+        "EX_hco3(e)": 1.0,
+        "EX_pydxn(e)": 0.0001705534
+      },
+      "include_reaction_ids": [
+        "EX_arg_L(e)",
+        "EX_asn_L(e)",
+        "EX_asp_L(e)",
+        "EX_chol(e)",
+        "EX_cys_L(e)",
+        "EX_glc(e)",
+        "EX_gln_L(e)",
+        "EX_his_L(e)",
+        "EX_hxan(e)",
+        "EX_ile_L(e)",
+        "EX_leu_L(e)",
+        "EX_lys_L(e)",
+        "EX_met_L(e)",
+        "EX_o2(e)",
+        "EX_phe_L(e)",
+        "EX_pi(e)",
+        "EX_pro_L(e)",
+        "EX_ser_L(e)",
+        "EX_so4(e)",
+        "EX_thr_L(e)",
+        "EX_trp_L(e)",
+        "EX_tyr_L(e)",
+        "EX_val_L(e)"
+      ],
+      "exclude_reaction_ids": [],
+      "include_zero_probability": 0.0,
+      "sobol_scramble": true,
+      "sobol_skip": 0,
+      "cache_dtype": "float32",
+      "max_design_generation_memory_mb": 2048
+    },
+    "outputs": {
+      "compression": "zstd",
+      "store_conditions": true,
+      "store_requested_media": true,
+      "store_applied_media": true,
+      "store_exchange_fluxes": "all",
+      "selected_exchange_fluxes": [],
+      "store_reaction_fluxes": "all",
+      "selected_reaction_fluxes": [],
+      "flux_table_format": "long",
+      "flux_zero_tolerance": 1e-09,
+      "max_dense_flux_memory_mb": 512
+    },
+    "diagnostics": {
+      "store_shadow_prices": "none",
+      "selected_shadow_price_metabolites": [],
+      "store_reduced_costs": "none",
+      "selected_reduced_cost_reactions": [],
+      "store_active_constraints": "exchanges",
+      "selected_active_constraint_reactions": [],
+      "dual_zero_tolerance": 1e-09,
+      "bound_activity_tolerance": 1e-07
+    },
+    "logging": {
+      "level": "INFO",
+      "log_to_console": true,
+      "log_to_file": true,
+      "structured_jsonl": true,
+      "max_file_mb": 25,
+      "backup_count": 5
+    }
+  },
+  "warnings": [
+    "Full reaction-flux storage may dominate memory and disk usage."
+  ]
+}

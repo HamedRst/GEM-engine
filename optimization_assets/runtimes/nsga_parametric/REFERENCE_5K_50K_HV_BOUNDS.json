@@ -1,0 +1,31 @@
+{
+  "source": "prior validated 5K all-25 audit; QC reference only",
+  "tolerance_note": "Values are rounded display references. They are not used to alter or fabricate data.",
+  "cases": {
+    "cglutamicum__constrained_product": {"prior_5k_hv": 0.805046, "full50k_hv": 1.0},
+    "cglutamicum__growth_product": {"prior_5k_hv": 0.622383, "full50k_hv": 0.703955},
+    "cglutamicum__growth_robustness": {"prior_5k_hv": 0.929912, "full50k_hv": 0.950783},
+    "cglutamicum__product_carbon_oxygen": {"prior_5k_hv": 0.192282, "full50k_hv": 0.224812},
+    "cglutamicum__product_cost": {"prior_5k_hv": 0.489978, "full50k_hv": 0.640386},
+    "cho__constrained_product": {"prior_5k_hv": 0.889620, "full50k_hv": 1.0},
+    "cho__growth_product": {"prior_5k_hv": 0.316817, "full50k_hv": 0.398973},
+    "cho__growth_robustness": {"prior_5k_hv": 0.795332, "full50k_hv": 0.982337},
+    "cho__product_carbon_oxygen": {"prior_5k_hv": 0.663145, "full50k_hv": 0.816803},
+    "cho__product_cost": {"prior_5k_hv": 0.460537, "full50k_hv": 0.560632},
+    "ecoli_antiepex__constrained_product": {"prior_5k_hv": 0.512212, "full50k_hv": 1.0},
+    "ecoli_antiepex__growth_product": {"prior_5k_hv": 0.417513, "full50k_hv": 0.516279},
+    "ecoli_antiepex__growth_robustness": {"prior_5k_hv": 0.939003, "full50k_hv": 0.945044},
+    "ecoli_antiepex__product_carbon_oxygen": {"prior_5k_hv": 0.073514, "full50k_hv": 0.122673},
+    "ecoli_antiepex__product_cost": {"prior_5k_hv": 0.374835, "full50k_hv": 0.598869},
+    "pputida__constrained_product": {"prior_5k_hv": 0.963872, "full50k_hv": 1.0},
+    "pputida__growth_product": {"prior_5k_hv": 0.531872, "full50k_hv": 0.550070},
+    "pputida__growth_robustness": {"prior_5k_hv": 0.989108, "full50k_hv": 0.991669},
+    "pputida__product_carbon_oxygen": {"prior_5k_hv": 0.168702, "full50k_hv": 0.184680},
+    "pputida__product_cost": {"prior_5k_hv": 0.638104, "full50k_hv": 0.697022},
+    "yeast__constrained_product": {"prior_5k_hv": 0.637441, "full50k_hv": 1.0},
+    "yeast__growth_product": {"prior_5k_hv": 0.545039, "full50k_hv": 0.574814},
+    "yeast__growth_robustness": {"prior_5k_hv": 0.999854, "full50k_hv": 0.999999},
+    "yeast__product_carbon_oxygen": {"prior_5k_hv": 0.222350, "full50k_hv": 0.244150},
+    "yeast__product_cost": {"prior_5k_hv": 0.658826, "full50k_hv": 0.756870}
+  }
+}

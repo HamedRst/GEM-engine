@@ -1,0 +1,35 @@
+schema_version: '1.0'
+problem_type: exploration.network_visualization
+problem_id: yeast_emp_fba
+description: Example standard-FBA overlay using encoded yeast objective and medium.
+model:
+  path: ../models/yeast_growth_product_cost.xml
+  sha256: 05d33f3e82c2e2d072e229e7588f06d33b7df9daa806288db548c140149fc8bb
+subject:
+  kind: recognized_pathway
+  pathway_id: EMP_GLYCOLYSIS
+analysis:
+  mode: fba
+  knockout_gene_ids: []
+  compare_to_wild_type: false
+pathway_library:
+  id: atlas_canonical
+  version: 1.0.0
+render:
+  style_preset: atlas_v023_publication
+  hide_currency_metabolites: true
+  max_display_reactions: 90
+  include_legend: true
+  export_formats:
+  - svg
+  - pdf
+  - png
+output:
+  subdirectory: yeast_emp_fba
+fba:
+  objective:
+    source: model
+  direction: max
+  medium:
+    source: model_encoded
+  flux_threshold: 1.0e-08

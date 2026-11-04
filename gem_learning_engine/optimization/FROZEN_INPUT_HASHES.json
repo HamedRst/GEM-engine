@@ -1,0 +1,11 @@
+{
+  "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "templates/constrained_product.gemproblem.yaml": "9ea765c69f12a8fae1abc09167c672d9592e9e9a339a6d6dfbe85e5024145511",
+  "templates/product_carbon_oxygen.gemproblem.yaml": "930199697fc58951e23edc7a1896b0c730b63772b80738d0b2f5ddb9f1f5ac26",
+  "templates/growth_robustness.gemproblem.yaml": "68edc9866b8ebad99cb6570fcd988385f6264fe81215f3df97b500340e11ed99",
+  "templates/product_cost.gemproblem.yaml": "97ce67994b54046781c96277b0a83212e1b26434bfaf5ec3b2a68dba356db1d2",
+  "templates/growth_product.gemproblem.yaml": "e9eb90d783b3b80f201d3d677201e58989e03011b3140409333d2bd2ef6d2a17",
+  "vendor/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "vendor/generic_problem.py": "5fac5e0852a4af5cfa24f31d1a5a6f7f5f30f2ff31a34390b173224ab193f983",
+  "vendor/generic_core.py": "7995f9f0cc910f14d68f1d877e922d45c49177b999c3c8f549541fa009a3df4d"
+}

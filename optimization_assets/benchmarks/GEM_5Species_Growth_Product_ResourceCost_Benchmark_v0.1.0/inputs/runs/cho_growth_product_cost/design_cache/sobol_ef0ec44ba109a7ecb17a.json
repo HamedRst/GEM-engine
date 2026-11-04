@@ -1,0 +1,37 @@
+{
+  "cache_key": "ef0ec44ba109a7ecb17a",
+  "strategy": "sobol",
+  "shape": [
+    50000,
+    23
+  ],
+  "dtype": "float32",
+  "seed": 42,
+  "reaction_ids": [
+    "EX_arg_L(e)",
+    "EX_asn_L(e)",
+    "EX_asp_L(e)",
+    "EX_chol(e)",
+    "EX_cys_L(e)",
+    "EX_glc(e)",
+    "EX_gln_L(e)",
+    "EX_his_L(e)",
+    "EX_hxan(e)",
+    "EX_ile_L(e)",
+    "EX_leu_L(e)",
+    "EX_lys_L(e)",
+    "EX_met_L(e)",
+    "EX_o2(e)",
+    "EX_phe_L(e)",
+    "EX_pi(e)",
+    "EX_pro_L(e)",
+    "EX_ser_L(e)",
+    "EX_so4(e)",
+    "EX_thr_L(e)",
+    "EX_trp_L(e)",
+    "EX_tyr_L(e)",
+    "EX_val_L(e)"
+  ],
+  "sobol_scramble": true,
+  "sobol_skip": 0
+}

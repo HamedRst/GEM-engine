@@ -1,0 +1,20 @@
+GEM SI-Landscape V3 — native landscape-generation chunks only
+
+1) cd ~/Downloads
+2) unzip -o GEM_SI_LANDSCAPE_V3_CLEAN.zip
+3) bash ~/Downloads/GEM_SI_LANDSCAPE_V3_CLEAN/INSTALL_AND_GENERATE.command
+
+ONE canonical folder, replaces previous SI-Landscape, no optimizer and no new FBA:
+~/Desktop/GEM_Publication_Archive/Figures_and_Tables/Supplementary/SI-Landscape/
+
+Figure: SI-Landscape/outputs/SI-Landscape.pdf (also PNG and SVG).
+Source audit: SI-Landscape/metadata/SOURCE_AND_METRIC_AUDIT.csv
+If it fails: upload metadata/INCOMPLETE_SOURCES.txt plus inputs/SOURCE_MAP.csv and metadata/SOURCE_AND_METRIC_AUDIT.csv.
+
+Note: The old source tree is named _CANDIDATE_UNVERIFIED; output carries a provenance warning.
+Measured worker seconds summed across evaluations are NOT elapsed parallel wall time.
+Original archived Mac /usr/bin/time endpoints retained separately.
+
+## V3 clean appearance
+
+Only the two on-figure notices were removed. The seed 42/43/44 datasets, original checkpoint sizes, logarithmic X axes, native timing definitions, and metadata/audits remain the same as V3.

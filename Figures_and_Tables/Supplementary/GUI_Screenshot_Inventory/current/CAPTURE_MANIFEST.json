@@ -1,0 +1,827 @@
+{
+  "status": "PASS",
+  "type": "unedited native browser screenshot inventory; no final SI figures",
+  "captured_at_utc": "2026-10-20T07:15:38.115566+00:00",
+  "gui_server_url": "http://127.0.0.1:8081",
+  "connection_method": "launched_by_capture",
+  "health": {
+    "ok": true,
+    "engine_version": "1.0.4",
+    "workspace": "/Users/bboghli/Documents/GEM Engine Workspace"
+  },
+  "exploration_service": {
+    "available": true,
+    "message": "Ready: one Exploration tab, YAML-driven and on-demand",
+    "url": "/exploration/"
+  },
+  "no_scientific_jobs_started": true,
+  "no_post_processing": true,
+  "screenshots": [
+    {
+      "section": "landscape",
+      "id": "00_navigation_and_quick_run",
+      "description": "Main application navigation, quick-run preparation and status",
+      "file": "screenshots/landscape/00_navigation_and_quick_run.png",
+      "source": "running GUI",
+      "required": true,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 1229605,
+      "sha256": "f6d29c260d5217e8a0d0fddc89cfb5b3e6748d874c5ad2e4bc428a17b1880fef",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "landscape",
+      "id": "01_quick_run_model_and_sampling",
+      "description": "Model upload, simulation count, growth fraction, and run preparation",
+      "file": "screenshots/landscape/01_quick_run_model_and_sampling.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "element",
+      "result": "CAPTURED",
+      "bytes": 249682,
+      "sha256": "7bf500edfefe7994981f3758614cb853a0394569559fe19a1abca3afcd718e75",
+      "pixels": [
+        3156,
+        874
+      ]
+    },
+    {
+      "section": "landscape",
+      "id": "02_progress_controls_and_jobs",
+      "description": "Live simulation progress, pause/resume, and active job list",
+      "file": "screenshots/landscape/02_progress_controls_and_jobs.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 1224941,
+      "sha256": "5aee7d2b0c18172c42296d610f3d2c83da86ba55099f5585bdc7577912137d61",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "landscape",
+      "id": "03_guided_configuration",
+      "description": "Editable model, objectives, sampling, solver, and simulation configuration",
+      "file": "screenshots/landscape/03_guided_configuration.png",
+      "source": "running GUI",
+      "required": true,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 1081576,
+      "sha256": "ef7c3d0b167d8f584c683848eb367714c8c034765ded06a4845d75d0229668d4",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "landscape",
+      "id": "04_guided_settings_detail",
+      "description": "Full guided settings panel for landscape generation",
+      "file": "screenshots/landscape/04_guided_settings_detail.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "element",
+      "result": "CAPTURED",
+      "bytes": 212801,
+      "sha256": "c5be9a8b6e467b28b95d0b2df380305cfd58a8ce9110afac7e395bfa400adc9c",
+      "pixels": [
+        1720,
+        1822
+      ]
+    },
+    {
+      "section": "landscape",
+      "id": "05_raw_yaml_editor",
+      "description": "Native YAML configuration editor and validation controls",
+      "file": "screenshots/landscape/05_raw_yaml_editor.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "element",
+      "result": "CAPTURED",
+      "bytes": 130829,
+      "sha256": "5d85d79b7c1da104413f5582f2f6f8c3401fd5ccaaaa0ad4c2e3d059ea605946",
+      "pixels": [
+        1406,
+        1822
+      ]
+    },
+    {
+      "section": "landscape",
+      "id": "06_medium_design_space",
+      "description": "Landscape medium/exchange design table with variable, fixed, and excluded choices",
+      "file": "screenshots/landscape/06_medium_design_space.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "element",
+      "result": "CAPTURED",
+      "bytes": 272439,
+      "sha256": "a6625b22d6701ea60a5bd69c6456535a8a32f43262fcc11168ca4823f44b56de",
+      "pixels": [
+        3156,
+        926
+      ]
+    },
+    {
+      "section": "landscape",
+      "id": "07_preflight_and_logs",
+      "description": "Preflight, validation, operation status, and live job log viewer",
+      "file": "screenshots/landscape/07_preflight_and_logs.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 1095951,
+      "sha256": "465f301606ff86c644d55b32b54fa7ef93487ec64d298ddbe288c3837d3eeb34",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "landscape",
+      "id": "08_live_log_detail",
+      "description": "Recent server/workflow log panel",
+      "file": "screenshots/landscape/08_live_log_detail.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "element",
+      "result": "CAPTURED",
+      "bytes": 65177,
+      "sha256": "3aa050112a4920b628cba57daf6fbc4ea9fbb1f528f883b894221dea7cce648c",
+      "pixels": [
+        1406,
+        1148
+      ]
+    },
+    {
+      "section": "landscape",
+      "id": "09_model_catalogs",
+      "description": "Model reaction/exchange catalog browser",
+      "file": "screenshots/landscape/09_model_catalogs.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 1423249,
+      "sha256": "e1989840114b4453adfced3e72b7684cc6d6e7277c8c731c178748bb0cfe4eea",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "results",
+      "id": "01_job_result_browser",
+      "description": "Read-only native result browser and selected job view",
+      "file": "screenshots/results/01_job_result_browser.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 1230187,
+      "sha256": "6b75730573c31d789e8298509959e6b99f4a7a9625b4f5cd0fe2aa38c06b7ee4",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "results",
+      "id": "03_dataset_export_controls",
+      "description": "Full dataset CSV export controls and explanation (not executed)",
+      "file": "screenshots/results/03_dataset_export_controls.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 1230187,
+      "sha256": "6b75730573c31d789e8298509959e6b99f4a7a9625b4f5cd0fe2aa38c06b7ee4",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "results",
+      "id": "04_exact_result_table",
+      "description": "Recent exact-FBA result table",
+      "file": "screenshots/results/04_exact_result_table.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 1230187,
+      "sha256": "6b75730573c31d789e8298509959e6b99f4a7a9625b4f5cd0fe2aa38c06b7ee4",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "optimization",
+      "id": "00_three_step_workflow",
+      "description": "Optimization workflow navigation with its three stages",
+      "file": "screenshots/optimization/00_three_step_workflow.png",
+      "source": "running GUI",
+      "required": true,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 1153291,
+      "sha256": "7a7850730580fdfa2bb113149329c509e6c68d057e188d9b8fa7282bd8c04247",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "optimization",
+      "id": "01_setup_overview",
+      "description": "Optimization setup stage with native controls",
+      "file": "screenshots/optimization/01_setup_overview.png",
+      "source": "running GUI",
+      "required": true,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 1153291,
+      "sha256": "7a7850730580fdfa2bb113149329c509e6c68d057e188d9b8fa7282bd8c04247",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "optimization",
+      "id": "02_setup_model_landscape_details",
+      "description": "Model, landscape, YAML configuration and physical design bounds",
+      "file": "screenshots/optimization/02_setup_model_landscape_details.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "element",
+      "result": "CAPTURED",
+      "bytes": 515319,
+      "sha256": "0491cf14bf36d3a64c4ba612128516878b3db5eb91a3fb9fd156c72651b7e94b",
+      "pixels": [
+        3156,
+        2428
+      ]
+    },
+    {
+      "section": "optimization",
+      "id": "03_build_overview",
+      "description": "Optimization build stage with native controls",
+      "file": "screenshots/optimization/03_build_overview.png",
+      "source": "running GUI",
+      "required": true,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 989651,
+      "sha256": "517279652c88f29705ed8ba8c1c3a0318442f31925dfc5189297b74096906ed2",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "optimization",
+      "id": "04_question_yaml_builder",
+      "description": "Optimization question builder, exact objectives/constraints and YAML",
+      "file": "screenshots/optimization/04_question_yaml_builder.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 989651,
+      "sha256": "517279652c88f29705ed8ba8c1c3a0318442f31925dfc5189297b74096906ed2",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "optimization",
+      "id": "05_objectives_constraints",
+      "description": "Objective and constraint selection tools",
+      "file": "screenshots/optimization/05_objectives_constraints.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 918454,
+      "sha256": "54da5071fad26ed7ce803b1f28eb86e9e85aca4e14ef25750f18d243abd5bb7b",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "optimization",
+      "id": "06_run_overview",
+      "description": "Optimization run stage with native controls",
+      "file": "screenshots/optimization/06_run_overview.png",
+      "source": "running GUI",
+      "required": true,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 913915,
+      "sha256": "e1a75fef9f8caafd58febfeae27fab2a2adc7a6625032412986e03b2b12c7de7",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "optimization",
+      "id": "07_saved_questions_selector",
+      "description": "Saved YAML questions and native load controls",
+      "file": "screenshots/optimization/07_saved_questions_selector.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 913915,
+      "sha256": "e1a75fef9f8caafd58febfeae27fab2a2adc7a6625032412986e03b2b12c7de7",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "optimization",
+      "id": "08_queue_and_algorithms",
+      "description": "Optimizer run queue and algorithm configuration",
+      "file": "screenshots/optimization/08_queue_and_algorithms.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 989849,
+      "sha256": "7fa3d513a10c13d615df6de47dddc017b8dd43ce6db032a1bec8beb77c1f0ecd",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "optimization",
+      "id": "09_optimization_results_panel",
+      "description": "Optimization summary/results display (when existing results are available)",
+      "file": "screenshots/optimization/09_optimization_results_panel.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 989849,
+      "sha256": "7fa3d513a10c13d615df6de47dddc017b8dd43ce6db032a1bec8beb77c1f0ecd",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "exploration",
+      "id": "01_setup",
+      "description": "Shared source setup: matching GEM model, landscape and configuration",
+      "file": "screenshots/exploration/01_setup.png",
+      "source": "running GUI",
+      "required": true,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 826347,
+      "sha256": "5aa0ae54ba1ced71e8ce7e72560a0297e2245ae4f06f41ae4f88ab52ad7eca1e",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "exploration",
+      "id": "01b_source_file_controls",
+      "description": "Existing GEM, landscape and config inputs used by Exploration",
+      "file": "screenshots/exploration/01b_source_file_controls.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "element",
+      "result": "CAPTURED",
+      "bytes": 187269,
+      "sha256": "c1e22c751325a802ab0f0eaca07bf32008fef752b1aca795fbb036f5636cd832",
+      "pixels": [
+        3152,
+        2030
+      ]
+    },
+    {
+      "section": "exploration",
+      "id": "02_landscape_activity_builder",
+      "description": "Landscape activity question builder for genes, reactions and metabolites",
+      "file": "screenshots/exploration/02_landscape_activity_builder.png",
+      "source": "running GUI",
+      "required": true,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 913740,
+      "sha256": "e3e31fa6bb48ae351ce35cc7a079fa37068f98928818d2d7c398d51de2ba3905",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "exploration",
+      "id": "03_activity_yaml_and_region_settings",
+      "description": "Angular/circular region count, biological-layer choice and YAML preview",
+      "file": "screenshots/exploration/03_activity_yaml_and_region_settings.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 913740,
+      "sha256": "e3e31fa6bb48ae351ce35cc7a079fa37068f98928818d2d7c398d51de2ba3905",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "exploration",
+      "id": "04_calculator",
+      "description": "Native calculator question language, conditions, and visualization configuration",
+      "file": "screenshots/exploration/04_calculator.png",
+      "source": "running GUI",
+      "required": true,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 954976,
+      "sha256": "274b64a279765e902bf20cad887e1ea83e9e808c6c0249cb9e85c771ccb42b16",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "exploration",
+      "id": "05_calculator_expression_and_preflight",
+      "description": "Calculator expression editor, evidence controls and preflight (no execution)",
+      "file": "screenshots/exploration/05_calculator_expression_and_preflight.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 954976,
+      "sha256": "274b64a279765e902bf20cad887e1ea83e9e808c6c0249cb9e85c771ccb42b16",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "exploration",
+      "id": "05b_calculator_examples",
+      "description": "Native Calculator language example questions (not executed)",
+      "file": "screenshots/exploration/05b_calculator_examples.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 977477,
+      "sha256": "f8656155347e40c755ec4b5884df7d4fa8189288a39c0323756591e64fa6341e",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "exploration",
+      "id": "05c_calculator_evidence_policy",
+      "description": "Calculator reproducibility, evidence and workspace policies",
+      "file": "screenshots/exploration/05c_calculator_evidence_policy.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 960404,
+      "sha256": "3491b3440917e64b1483acf4c920a7cc13625784b5923c381b2a625318cc768c",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "exploration",
+      "id": "06_network_overview",
+      "description": "Network and pathway visualization builder",
+      "file": "screenshots/exploration/06_network_overview.png",
+      "source": "running GUI",
+      "required": true,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 897338,
+      "sha256": "c91d8568163356a70f31817b17f8a82ba303b163d5eb439194edd08b0cd94353",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "exploration",
+      "id": "07_pathway_route_search",
+      "description": "Pathway/route discovery with native evidence-level options",
+      "file": "screenshots/exploration/07_pathway_route_search.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 906369,
+      "sha256": "d41383df612ba9ece7ded5a31b5bfe80ac928668b037e85629e4aa6119de2e41",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "exploration",
+      "id": "08_gene_knockout_controls",
+      "description": "Gene-associated network and knockout controls",
+      "file": "screenshots/exploration/08_gene_knockout_controls.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 892357,
+      "sha256": "82a48c5671a4d85dba5eeb52bfd92d5bdb6660fd13f58029c51e8605eb718f03",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "exploration",
+      "id": "09_metabolic_network_controls",
+      "description": "Reaction/metabolite network visualization controls",
+      "file": "screenshots/exploration/09_metabolic_network_controls.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 897474,
+      "sha256": "f3814fe98f618061ca1d32ae0d40053ce67ac36c63b654a3dd9607fe8b691845",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "exploration",
+      "id": "10_fba_network_configuration",
+      "description": "Native FBA network settings and objective (not executed)",
+      "file": "screenshots/exploration/10_fba_network_configuration.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 948276,
+      "sha256": "181e37f7ab601d8355a52aa53f700cd8fc995d37f3bf67c34bb74ceb6dbc56d8",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "exploration",
+      "id": "10b_network_advanced_figure_settings",
+      "description": "Native network graph depth, labeling, flux threshold, and export formats",
+      "file": "screenshots/exploration/10b_network_advanced_figure_settings.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 835500,
+      "sha256": "7fe3c8a1ff3b3fb23a78ee93f355a80c8875d441a555fc4c2862d76ad4cad630",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "exploration",
+      "id": "11_saved_queries",
+      "description": "Shared native YAML question pool and existing run results",
+      "file": "screenshots/exploration/11_saved_queries.png",
+      "source": "running GUI",
+      "required": true,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 821096,
+      "sha256": "0e25e8b0aaaf854654bcf015e70e678ad17039d32199c5376d6e3901a4e67f8f",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "exploration",
+      "id": "12_adaptive_qc_and_run_controls",
+      "description": "Saved question run controls, optional adaptive exact-FBA QC policy (not executed)",
+      "file": "screenshots/exploration/12_adaptive_qc_and_run_controls.png",
+      "source": "running GUI",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "bytes": 887812,
+      "sha256": "20fd49820b900c9168c73ca3ae8ebf578f068a18ff523c7d2a66ee518f41998d",
+      "pixels": [
+        3800,
+        2400
+      ]
+    },
+    {
+      "section": "results",
+      "id": "native_gene_overview",
+      "description": "Previously executed gene native Exploration overview viewer",
+      "file": "screenshots/results/native_gene_overview.png",
+      "source": "previously saved native GUI output",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "note": "Existing run viewer opened read-only. No analysis or FBA started.",
+      "bytes": 407747,
+      "sha256": "ff8273f1abb46f1d80f72670413a4106a2835682ce0fc7a7202b7e06463f8c9e",
+      "pixels": [
+        3040,
+        2240
+      ]
+    },
+    {
+      "section": "results",
+      "id": "native_gene_regions",
+      "description": "Previously executed gene native Exploration regions viewer",
+      "file": "screenshots/results/native_gene_regions.png",
+      "source": "previously saved native GUI output",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "note": "Existing run viewer opened read-only. No analysis or FBA started.",
+      "bytes": 826358,
+      "sha256": "b8864e273f6503470723c5f55814c4293ed3a42bf3f6974d8f7ac06236bba120",
+      "pixels": [
+        3040,
+        2240
+      ]
+    },
+    {
+      "section": "results",
+      "id": "native_gene_feature",
+      "description": "Previously executed gene native Exploration feature viewer",
+      "file": "screenshots/results/native_gene_feature.png",
+      "source": "previously saved native GUI output",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "note": "Existing run viewer opened read-only. No analysis or FBA started.",
+      "bytes": 847186,
+      "sha256": "2c1e429bd802b25749e949aa505ad7f3f5d734ac3b5f6ca5bfeb6d3b1692185c",
+      "pixels": [
+        3040,
+        2240
+      ]
+    },
+    {
+      "section": "results",
+      "id": "native_reaction_overview",
+      "description": "Previously executed reaction native Exploration overview viewer",
+      "file": "screenshots/results/native_reaction_overview.png",
+      "source": "previously saved native GUI output",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "note": "Existing run viewer opened read-only. No analysis or FBA started.",
+      "bytes": 347881,
+      "sha256": "48140bf057de7dceadfdc065c490bb2852924722eda7ea750c04fc63b5a922c2",
+      "pixels": [
+        3040,
+        2240
+      ]
+    },
+    {
+      "section": "results",
+      "id": "native_reaction_regions",
+      "description": "Previously executed reaction native Exploration regions viewer",
+      "file": "screenshots/results/native_reaction_regions.png",
+      "source": "previously saved native GUI output",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "note": "Existing run viewer opened read-only. No analysis or FBA started.",
+      "bytes": 826358,
+      "sha256": "b8864e273f6503470723c5f55814c4293ed3a42bf3f6974d8f7ac06236bba120",
+      "pixels": [
+        3040,
+        2240
+      ]
+    },
+    {
+      "section": "results",
+      "id": "native_reaction_feature",
+      "description": "Previously executed reaction native Exploration feature viewer",
+      "file": "screenshots/results/native_reaction_feature.png",
+      "source": "previously saved native GUI output",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "note": "Existing run viewer opened read-only. No analysis or FBA started.",
+      "bytes": 807677,
+      "sha256": "090229fe78177fabc38358b69c04b9dc3f692fb1cec8181416a4c4f2a0012efc",
+      "pixels": [
+        3040,
+        2240
+      ]
+    },
+    {
+      "section": "results",
+      "id": "native_metabolite_overview",
+      "description": "Previously executed metabolite native Exploration overview viewer",
+      "file": "screenshots/results/native_metabolite_overview.png",
+      "source": "previously saved native GUI output",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "note": "Existing run viewer opened read-only. No analysis or FBA started.",
+      "bytes": 351999,
+      "sha256": "44fff1c0958b7875e6a8d57a145d96bad9104731287a326a4c2ce8db52cda2a9",
+      "pixels": [
+        3040,
+        2240
+      ]
+    },
+    {
+      "section": "results",
+      "id": "native_metabolite_regions",
+      "description": "Previously executed metabolite native Exploration regions viewer",
+      "file": "screenshots/results/native_metabolite_regions.png",
+      "source": "previously saved native GUI output",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "note": "Existing run viewer opened read-only. No analysis or FBA started.",
+      "bytes": 826358,
+      "sha256": "b8864e273f6503470723c5f55814c4293ed3a42bf3f6974d8f7ac06236bba120",
+      "pixels": [
+        3040,
+        2240
+      ]
+    },
+    {
+      "section": "results",
+      "id": "native_metabolite_feature",
+      "description": "Previously executed metabolite native Exploration feature viewer",
+      "file": "screenshots/results/native_metabolite_feature.png",
+      "source": "previously saved native GUI output",
+      "required": false,
+      "capture_kind": "browser viewport",
+      "result": "CAPTURED",
+      "note": "Existing run viewer opened read-only. No analysis or FBA started.",
+      "bytes": 805209,
+      "sha256": "ce7ff75a74ffcc0bd74ed3196e0bb22b146151e3e0af9a2a17c32d3ce5b8afb6",
+      "pixels": [
+        3040,
+        2240
+      ]
+    }
+  ],
+  "counts": {
+    "landscape": {
+      "captured": 10,
+      "skipped": 0
+    },
+    "optimization": {
+      "captured": 10,
+      "skipped": 0
+    },
+    "exploration": {
+      "captured": 16,
+      "skipped": 0
+    },
+    "results": {
+      "captured": 12,
+      "skipped": 0
+    }
+  },
+  "suggested_sections": {
+    "landscape": "Landscape Generation and common application navigation",
+    "optimization": "Optimization configuration, question definition, and execution workflow",
+    "exploration": "Exploration: setup, activity, calculator, network, questions",
+    "results": "Read-only result browsing and previously generated native viewers"
+  },
+  "limitations": [
+    "Native result screenshots appear only when existing viewer files can be found.",
+    "Unpopulated GUI controls are documented as such; no data or settings are fabricated.",
+    "Some advanced GUI options are expanded only; Execute/Run/Save buttons are never used."
+  ]
+}

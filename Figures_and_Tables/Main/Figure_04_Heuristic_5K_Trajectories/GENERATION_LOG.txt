@@ -1,0 +1,7 @@
+Validated source landscape seed 42: 25 cases × 8 knowledge-guided algorithms + landscapes
+Validated source landscape seed 43: 25 cases × 8 knowledge-guided algorithms + landscapes
+Validated source landscape seed 44: 25 cases × 8 knowledge-guided algorithms + landscapes
+PASS: /Users/bboghli/Desktop/GEM_Publication_Archive/Figures_and_Tables/Main/.Figure_04_Heuristic_5K_Trajectories.staging_ebfca8066/outputs
+Figure versions: 5 | Source jobs: 600
+Runtime coverage: {'MEASURED_CUMULATIVE': 0, 'ENDPOINT_ONLY': 600, 'MISSING': 0}
+Runtime columns: measured final 128-call optimizer wall-time bars (no checkpoint reconstruction).

@@ -1,0 +1,70 @@
+problem:
+  case_name: yeast_growth_robustness
+  case_label: Saccharomyces cerevisiae / yeast-GEM / growth x environmental robustness
+  run_dir: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0/inputs/runs/yeast_growth_robustness
+  model_path: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0/inputs/models/yeast_growth_robustness.xml
+  model_id: yeastGEM_v9__46__1__46__0
+  model_fingerprint: a0ec8b807b5da80a2d3735ba5b70f0d750e2260db672ced78429cba3ff27a9e2
+  config_hash: 7f13f89a1e2e471e5cb3
+  biomass_reaction_id: r_2111
+  features:
+  - r_1654
+  - r_1714
+  - r_1992
+  - r_2005
+  - r_2060
+  feature_labels:
+    r_1654: ammonium exchange
+    r_1714: D-glucose exchange
+    r_1992: oxygen exchange
+    r_2005: phosphate exchange
+    r_2060: sulphate exchange
+  bounds:
+    r_1654:
+    - 0.0
+    - 20.0
+    r_1714:
+    - 0.0
+    - 1.0
+    r_1992:
+    - 0.0
+    - 20.0
+    r_2005:
+    - 0.0
+    - 20.0
+    r_2060:
+    - 0.0
+    - 20.0
+  growth_scale: 0.08093528181108933
+  product_scale: 0.03893329822016122
+  objective_1_name: exact_nominal_maximum_growth
+  objective_2_name: exact_worst_case_environmental_stressed_growth_live__surrogate_derived_in_50k_prior
+  objective_2_formula: min_s growth(T_s(x)); s in {carbon, oxygen, nitrogen, phosphate}
+  legacy_objective_2_column: product_flux
+  raw_robust_growth_column: robust_growth
+  stress_classes:
+  - carbon
+  - oxygen
+  - nitrogen
+  - phosphate
+  stress_groups:
+    carbon:
+    - r_1714
+    oxygen:
+    - r_1992
+    nitrogen:
+    - r_1654
+    phosphate:
+    - r_2005
+  stress_fraction_toward_lower_bound: 0.5
+  stress_definition: in-domain reduction of only variables already represented in
+    the frozen landscape; objective 2 is worst-case growth across the four classes
+  prior_robustness_is_surrogate_derived: true
+  live_robustness_is_exact_fba: true
+  hv_reference_normalized:
+  - 0.0
+  - 0.0
+  baseline_table: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0/prepared/yeast_growth_robustness/baseline_compact.csv.gz
+  design_cache: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0/inputs/runs/yeast_growth_robustness/design_cache/sobol_b2589e6126dd2e82ce09.npy
+  qd_feature: r_1992
+  case_key: yeast_growth_robustness

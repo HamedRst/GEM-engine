@@ -1,0 +1,19 @@
+schema_version: '1.0'
+problem_id: EXP42P2_cho_angular_reaction_feature_top
+problem_type: exploration.activity
+payload:
+  source: matched_npz
+  model_path: /Users/bboghli/Downloads/GEM_Engine_v2.1_Unified_Optimization_Exploration_Mac_QA/GEM
+    Engine.app/Contents/Resources/GEM_Learning_Engine_Optimization/exploration_bundle/examples/models/cho_growth_product_cost.xml
+  matrix_path: /Users/bboghli/Desktop/GEM_Publication_Archive/Results/Exploration/Matched_Flux_Matrices/seed42/cho_50k_flux.npz
+  view: feature
+  region_method: angular
+  n_regions: 6
+  sample_size: 12000
+  feature_type: reaction
+  new_fba_policy: never
+  feature_id: DM_igg[g]
+  model_sha256: fa8f41ccf17cc664bd5b15a085343d88f6a4c5d7375914084067be9ecf6f6f93
+execution:
+  new_fba_policy: never
+  landscape_copy: only_if_new_fba

@@ -1,0 +1,11 @@
+{
+  "strategy": "sobol",
+  "seed": 42,
+  "n_simulations": 50000,
+  "dimension": 5,
+  "cache_path": "/Users/smdoliveira/Desktop/GEM-Hamed/GEM_Learning_Engine_v1.0.4/outputs/iJN1463.biggr_1/run_2/design_cache/sobol_d21667fee5f4931b05e1.npy",
+  "analysis_type": "random_medium",
+  "design_stage": "automatic_initial_space_filling",
+  "sampling_batch": 0,
+  "note": "Scrambled Sobol is the default initial space-filling design. Active-learning and perturbation generators use the same ConditionBatch schema in later layers."
+}

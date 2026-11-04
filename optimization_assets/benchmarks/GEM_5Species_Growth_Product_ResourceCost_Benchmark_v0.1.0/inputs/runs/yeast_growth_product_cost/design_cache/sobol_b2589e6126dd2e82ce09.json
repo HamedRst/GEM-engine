@@ -1,0 +1,19 @@
+{
+  "cache_key": "b2589e6126dd2e82ce09",
+  "strategy": "sobol",
+  "shape": [
+    50000,
+    5
+  ],
+  "dtype": "float32",
+  "seed": 42,
+  "reaction_ids": [
+    "r_1654",
+    "r_1714",
+    "r_1992",
+    "r_2005",
+    "r_2060"
+  ],
+  "sobol_scramble": true,
+  "sobol_skip": 0
+}

@@ -1,0 +1,176 @@
+problem:
+  case_name: cho_growth_robustness
+  case_label: CHO / iCHO2441 / growth x environmental robustness
+  run_dir: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0/inputs/runs/cho_growth_robustness
+  model_path: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0/inputs/models/cho_growth_robustness.xml
+  model_id: iCHO2291
+  model_fingerprint: 9124e9c62d482fe448fe911f420a909118077d932177055c3db12ace497bed45
+  config_hash: 3177c3e4bfcd4e8fd748
+  biomass_reaction_id: biomass_cho_prod
+  features:
+  - EX_arg_L(e)
+  - EX_asn_L(e)
+  - EX_asp_L(e)
+  - EX_chol(e)
+  - EX_cys_L(e)
+  - EX_glc(e)
+  - EX_gln_L(e)
+  - EX_his_L(e)
+  - EX_hxan(e)
+  - EX_ile_L(e)
+  - EX_leu_L(e)
+  - EX_lys_L(e)
+  - EX_met_L(e)
+  - EX_o2(e)
+  - EX_phe_L(e)
+  - EX_pi(e)
+  - EX_pro_L(e)
+  - EX_ser_L(e)
+  - EX_so4(e)
+  - EX_thr_L(e)
+  - EX_trp_L(e)
+  - EX_tyr_L(e)
+  - EX_val_L(e)
+  feature_labels:
+    EX_arg_L(e): L-Arginine exchange
+    EX_asn_L(e): exchange reaction for L-asparagine
+    EX_asp_L(e): L-Aspartate exchange
+    EX_chol(e): exchange reaction for Choline
+    EX_cys_L(e): exchange reaction for L-cysteine
+    EX_glc(e): D-Glucose exchange
+    EX_gln_L(e): exchange reaction for L-glutamine
+    EX_his_L(e): exchange reaction for L-histidine
+    EX_hxan(e): Hypoxanthine exchange
+    EX_ile_L(e): L-Isoleucine exchange
+    EX_leu_L(e): L-Leucine exchange
+    EX_lys_L(e): L-Lysine exchange
+    EX_met_L(e): L-Methionine exchange
+    EX_o2(e): exchange reaction for oxygen
+    EX_phe_L(e): exchange reaction for L-phenylalanine
+    EX_pi(e): Phosphate exchange
+    EX_pro_L(e): L-Proline exchange
+    EX_ser_L(e): exchange reaction for L-serine
+    EX_so4(e): Sulfate exchange
+    EX_thr_L(e): L-Threonine exchange
+    EX_trp_L(e): L-Tryptophan exchange
+    EX_tyr_L(e): L-Tyrosine exchange
+    EX_val_L(e): L-Valine exchange
+  bounds:
+    EX_arg_L(e):
+    - 0.0
+    - 0.01978022
+    EX_asn_L(e):
+    - 0.0
+    - 0.040384615
+    EX_asp_L(e):
+    - 0.0
+    - 0.009340659
+    EX_chol(e):
+    - 0.0
+    - 0.0202871525
+    EX_cys_L(e):
+    - 0.0
+    - 0.00521978
+    EX_glc(e):
+    - 0.0
+    - 0.198351648
+    EX_gln_L(e):
+    - 0.0
+    - 0.067032967
+    EX_his_L(e):
+    - 0.0
+    - 0.003296703
+    EX_hxan(e):
+    - 0.0
+    - 0.0061945503
+    EX_ile_L(e):
+    - 0.0
+    - 0.010164835
+    EX_leu_L(e):
+    - 0.0
+    - 0.014835165
+    EX_lys_L(e):
+    - 0.0
+    - 0.013461538
+    EX_met_L(e):
+    - 0.0
+    - 0.006043956
+    EX_o2(e):
+    - 0.0
+    - 1.127472527
+    EX_phe_L(e):
+    - 0.0
+    - 0.006043956
+    EX_pi(e):
+    - 0.0
+    - 20.0
+    EX_pro_L(e):
+    - 0.0
+    - 0.007967033
+    EX_ser_L(e):
+    - 0.0
+    - 0.047802198
+    EX_so4(e):
+    - 0.0
+    - 20.0
+    EX_thr_L(e):
+    - 0.0
+    - 0.010164835
+    EX_trp_L(e):
+    - 0.0
+    - 0.0040773196
+    EX_tyr_L(e):
+    - 0.0
+    - 0.009340659
+    EX_val_L(e):
+    - 0.0
+    - 0.012087912
+  growth_scale: 0.023155461725713318
+  product_scale: 0.0097164405158665
+  objective_1_name: exact_nominal_maximum_growth
+  objective_2_name: exact_worst_case_environmental_stressed_growth_live__surrogate_derived_in_50k_prior
+  objective_2_formula: min_s growth(T_s(x)); s in {carbon, oxygen, nitrogen, phosphate}
+  legacy_objective_2_column: product_flux
+  raw_robust_growth_column: robust_growth
+  stress_classes:
+  - carbon
+  - oxygen
+  - nitrogen
+  - phosphate
+  stress_groups:
+    carbon:
+    - EX_glc(e)
+    oxygen:
+    - EX_o2(e)
+    nitrogen:
+    - EX_arg_L(e)
+    - EX_asn_L(e)
+    - EX_asp_L(e)
+    - EX_cys_L(e)
+    - EX_gln_L(e)
+    - EX_his_L(e)
+    - EX_ile_L(e)
+    - EX_leu_L(e)
+    - EX_lys_L(e)
+    - EX_met_L(e)
+    - EX_phe_L(e)
+    - EX_pro_L(e)
+    - EX_ser_L(e)
+    - EX_thr_L(e)
+    - EX_trp_L(e)
+    - EX_tyr_L(e)
+    - EX_val_L(e)
+    phosphate:
+    - EX_pi(e)
+  stress_fraction_toward_lower_bound: 0.5
+  stress_definition: in-domain reduction of only variables already represented in
+    the frozen landscape; objective 2 is worst-case growth across the four classes
+  prior_robustness_is_surrogate_derived: true
+  live_robustness_is_exact_fba: true
+  hv_reference_normalized:
+  - 0.0
+  - 0.0
+  baseline_table: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0/prepared/cho_growth_robustness/baseline_compact.csv.gz
+  design_cache: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0/inputs/runs/cho_growth_robustness/design_cache/sobol_ef0ec44ba109a7ecb17a.npy
+  qd_feature: EX_o2(e)
+  case_key: cho_growth_robustness

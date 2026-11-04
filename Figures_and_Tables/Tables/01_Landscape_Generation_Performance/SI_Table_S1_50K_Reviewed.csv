@@ -1,0 +1,6 @@
+species,label,seeds,points_per_seed,elapsed_wall_min_mean,elapsed_wall_min_sd,max_observed_worker_rss_gib_mean,max_observed_worker_rss_gib_sd,feasible_pct_mean,feasible_pct_sd,saved_rows_per_s_mean,saved_rows_per_s_sd,provenance
+yeast,S. cerevisiae,"42,43,44",50000,43.130,13.474,0.949,0.045,96.1860,0.0020,20.450,5.420,CANDIDATE_UNVERIFIED
+pputida,P. putida,"42,43,44",50000,25.425,8.356,0.719,0.064,98.1473,0.0012,34.888,9.638,CANDIDATE_UNVERIFIED
+cglutamicum,C. glutamicum,"42,43,44",50000,10.396,3.540,0.582,0.049,100.0000,0.0000,85.810,25.004,CANDIDATE_UNVERIFIED
+cho,CHO,"42,43,44",50000,64.493,18.905,0.859,0.170,100.0000,0.0000,13.587,3.407,CANDIDATE_UNVERIFIED
+ecoli_antiepex,E. coli (scFv),"42,43,44",50000,8.831,2.221,0.609,0.019,98.4733,0.0042,97.973,21.543,CANDIDATE_UNVERIFIED

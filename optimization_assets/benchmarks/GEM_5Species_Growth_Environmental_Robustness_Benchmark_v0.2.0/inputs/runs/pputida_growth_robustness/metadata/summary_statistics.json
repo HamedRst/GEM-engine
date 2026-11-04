@@ -1,0 +1,41 @@
+{
+  "saved_simulations": 50000,
+  "feasible_simulations": 49074,
+  "status_counts": {
+    "optimal": 49074,
+    "infeasible": 926
+  },
+  "runtime_seconds_sum": 4132.886587159126,
+  "mean_runtime_seconds": 0.08265773174318253,
+  "runtime_std_seconds": 0.0284840135960914,
+  "objective_value": {
+    "count": 50000,
+    "min": 0.0,
+    "max": 3.1285590485869927,
+    "mean": 0.3344696712791859
+  },
+  "biomass_flux": {
+    "count": 49074,
+    "min": 4.822479084121901e-06,
+    "max": 0.5274769118579825,
+    "mean": 0.19214985878127241
+  },
+  "product_flux": {
+    "count": 49074,
+    "min": 6.711580631626751e-06,
+    "max": 3.1285590485869927,
+    "mean": 0.3407809341802033
+  },
+  "maximum_growth": {
+    "count": 49074,
+    "min": 5.358310093468779e-06,
+    "max": 0.5860854576199805,
+    "mean": 0.21349984309030273
+  },
+  "growth_floor": {
+    "count": 49074,
+    "min": 4.822479084121901e-06,
+    "max": 0.5274769118579825,
+    "mean": 0.19214985878127241
+  }
+}

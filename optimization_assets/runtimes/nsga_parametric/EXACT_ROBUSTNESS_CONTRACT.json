@@ -1,0 +1,47 @@
+{
+  "benchmark_name": "GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0",
+  "engine_bridge_sha256": "573fedab092da2df4b99968b5c6adf452307a183fd4ccd73d5edb9228f631be3",
+  "problem_definition_sha256": "68edc9866b8ebad99cb6570fcd988385f6264fe81215f3df97b500340e11ed99",
+  "cases": {
+    "cglutamicum_growth_robustness": {
+      "baseline_sha256": "87b565003610595cd03c602e582e624170d482190a291a4239780182f696b13f",
+      "problem_config_sha256": "b48cd11856a1267dd36df382463c9b17ba2993dbf2205cfb0bc7ac0a21cab0e1",
+      "design_cache_sha256": "6fd724a5e26e11e398b326fcc69d568f249d6e1259f4020ab2769905b468737f",
+      "historical_prior5k_hv_reference_rounded": 0.929912,
+      "expected_full50k_hv_rounded": 0.950783,
+      "historical_prior5k_prefix_feature_matrix_sha256": "74461ee3da0ac953a0322ec39d0d704c8831d697ddf0dcf242bcdc9708b897d4"
+    },
+    "cho_growth_robustness": {
+      "baseline_sha256": "5a348f1e625daac50b0901ee2aedcb64776f80a4bfabc1241d355b73d7c02bd6",
+      "problem_config_sha256": "59781103f3c44333f87621a77997fd0daccad87f8d36cb080bf7288a66ffc384",
+      "design_cache_sha256": "3fb65403bf8bf8af39b269fb22e615d151b9b21c40146579b309b703a9554f22",
+      "historical_prior5k_hv_reference": 0.7953316256870802,
+      "expected_full50k_hv": 0.9823371409142836,
+      "historical_prior5k_prefix_feature_matrix_sha256": "67dd0a927cd708c41a7fff38ab49c2502533411ff8b15a449449c952c647635f"
+    },
+    "ecoli_antiepex_growth_robustness": {
+      "baseline_sha256": "66907babe56ac123c33b2bdf0083f139da6678a859ecb4384f1432ace987b0f9",
+      "problem_config_sha256": "0d39ec0bdf15a5e0f5e01530d2a3d63fa93d3f818a2dcafd3bf497a28affeba3",
+      "design_cache_sha256": "200553a741901c2aa50635210b379ea1bbfdb14a4545e721873db95f911d991b",
+      "historical_prior5k_hv_reference": 0.9390027714212231,
+      "expected_full50k_hv": 0.9450436498352375,
+      "historical_prior5k_prefix_feature_matrix_sha256": "28d84ecf0b47dce6bab871c289aa32578db3c654403b2f960b39ad02cfdb72d3"
+    },
+    "pputida_growth_robustness": {
+      "baseline_sha256": "53dff4f217824b8233203b1d3e8b911c97192aecfa0ff316fef69e0e1c539fbd",
+      "problem_config_sha256": "11bc99cbf22e2c3c7f450a0fc65d6fd9ec78a96e6651424fcde0f095fcb26f1a",
+      "design_cache_sha256": "36e67766856641c871ce6a3536d2731a04bbff46534ae09a83a325f5af64a7cf",
+      "historical_prior5k_hv_reference": 0.989108223387868,
+      "expected_full50k_hv": 0.9916685723976623,
+      "historical_prior5k_prefix_feature_matrix_sha256": "4acea0c3db8f1de2c86797e4b5a48962471208ab4aad406c9a16cef0c563f90f"
+    },
+    "yeast_growth_robustness": {
+      "baseline_sha256": "735f95dd832603039cbb2c87386a9ca1ce6b5f0d3ed2832f81238032fab004bd",
+      "problem_config_sha256": "e52209f955b119413159fc8a4e0b9efcb7b64096816fbfeb4cbd22468327b9e8",
+      "design_cache_sha256": "150a87e74a4c05ee8cd40297a2e5165d085a239b4951d76f59273df6b2144cea",
+      "historical_prior5k_hv_reference": 0.9998538144954348,
+      "expected_full50k_hv": 0.9999991105135724,
+      "historical_prior5k_prefix_feature_matrix_sha256": "16d9340b8a94c58ac496edf24f135f2ba9cd0ed292870f818e0821e0c231abad"
+    }
+  }
+}

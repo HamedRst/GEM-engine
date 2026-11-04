@@ -1,0 +1,150 @@
+schema_version: '1.0'
+problem_id: SURF42_yeast_product_surface
+problem_type: exploration.calculator
+payload:
+  public_question:
+    exploration_spec_version: '0.4'
+    name: SURF42_yeast_product_surface
+    source:
+      landscape: /Users/bboghli/Desktop/GEM_Publication_Archive/Results/Landscape_Generation/_CANDIDATE_UNVERIFIED/GEM_Learning_Engine_v1.0.4/outputs_multiseed_50k/seed42/yeast_50k
+      gem_model: /Users/bboghli/Downloads/GEM_Engine_v2.1_Unified_Optimization_Exploration_Mac_QA/GEM
+        Engine.app/Contents/Resources/GEM_Learning_Engine_Optimization/exploration_bundle/examples/models/yeast_growth_product_cost.xml
+    observables:
+      targets:
+      - name: product_flux
+        value: result:product_flux
+        direction: maximize
+        label: Product Flux
+      derived: []
+    exploration:
+      primitive: vary
+      detail: surface
+      over:
+        mode: list
+        variables:
+        - requested_medium__r_1714
+        - requested_medium__r_1992
+      compact_expression: vary(Product Flux, over=D-glucose exchange, oxygen exchange,
+        mode=surface, under=the full resolved landscape)
+      calculator_function: vary
+    conditions:
+      logic: all
+      filters: []
+    regions: {}
+    context: {}
+    parameters: {}
+    evidence:
+      backend: auto
+      surrogate_qc:
+        model: extra_trees
+        n_estimators: 300
+        cv_folds: 5
+        min_r2: 0.5
+        min_auc: 0.65
+        max_train_rows: 50000
+        n_jobs: -1
+      new_fba_calls: 0
+    question:
+      title: How does Product Flux vary over D-glucose exchange, oxygen exchange under
+        the full landscape
+      text: How does Product Flux vary over D-glucose exchange, oxygen exchange under
+        the full landscape?
+    compiled_execution:
+      internal_operator: response_surface
+      note: The internal operator is an execution detail. The public scientific contract
+        is the four-field exploration calculator.
+    calculator:
+      observe: product
+      explore: vary
+      variables: requested_medium__r_1714, requested_medium__r_1992
+      conditions: ''
+  internal_problem:
+    spec_version: '1.0'
+    name: SURF42_yeast_product_surface
+    question:
+      title: How does Product Flux vary over D-glucose exchange, oxygen exchange under
+        the full landscape
+      text: How does Product Flux vary over D-glucose exchange, oxygen exchange under
+        the full landscape?
+      why_it_matters: Joint response across two exploration variables.
+    landscape:
+      path: /Users/bboghli/Desktop/GEM_Publication_Archive/Results/Landscape_Generation/_CANDIDATE_UNVERIFIED/GEM_Learning_Engine_v1.0.4/outputs_multiseed_50k/seed42/yeast_50k
+      include_fluxes: false
+    variables:
+      mode: all_design
+    targets:
+    - name: product_flux
+      value: result:product_flux
+      direction: maximize
+    scope:
+      filter_logic: all
+    backend:
+      mode: auto
+    surrogate:
+      model: extra_trees
+      n_estimators: 300
+      cv_folds: 5
+      min_r2: 0.5
+      min_auc: 0.65
+      max_train_rows: 50000
+      n_jobs: -1
+    operator:
+      name: response_surface
+      parameters:
+        variables:
+        - requested_medium__r_1714
+        - requested_medium__r_1992
+        grid_points: 41
+    semantics:
+      target_labels:
+        product_flux: Product Flux
+      target_units: {}
+      variable_labels:
+        applied_medium__r_1654: ammonium exchange
+        requested_medium__r_1654: ammonium exchange
+        applied_medium__r_4600: Ca(2+) exchange
+        applied_medium__r_4593: chloride exchange
+        applied_medium__r_4594: Cu2(+) exchange
+        applied_medium__r_1714: D-glucose exchange
+        requested_medium__r_1714: D-glucose exchange
+        applied_medium__r_1832: H+ exchange
+        applied_medium__r_1861: iron(2+) exchange
+        applied_medium__r_4597: Mg(2+) exchange
+        applied_medium__r_4595: Mn(2+) exchange
+        applied_medium__r_1992: oxygen exchange
+        requested_medium__r_1992: oxygen exchange
+        applied_medium__r_2005: phosphate exchange
+        requested_medium__r_2005: phosphate exchange
+        applied_medium__r_2020: potassium exchange
+        applied_medium__r_2049: sodium exchange
+        applied_medium__r_2060: sulphate exchange
+        requested_medium__r_2060: sulphate exchange
+        applied_medium__r_2100: water exchange
+        applied_medium__r_4596: Zn(2+) exchange
+      variable_units: {}
+    visualization:
+      mode: auto
+    outputs:
+      save_figures: true
+      publication_formats:
+      - png
+      - pdf
+      - svg
+      dpi: 450
+    unified_exploration:
+      spec_version: '0.5'
+      primitive: vary
+      detail: surface
+      compact_expression: vary(Product Flux, over=D-glucose exchange, oxygen exchange,
+        mode=surface, under=the full resolved landscape)
+      gem_model_path: /Users/bboghli/Downloads/GEM_Engine_v2.1_Unified_Optimization_Exploration_Mac_QA/GEM
+        Engine.app/Contents/Resources/GEM_Learning_Engine_Optimization/exploration_bundle/examples/models/yeast_growth_product_cost.xml
+    calculator_exploration:
+      spec_version: '0.5'
+      observe: product
+      explore: vary
+      variables: requested_medium__r_1714, requested_medium__r_1992
+      conditions: ''
+execution:
+  new_fba_policy: never
+  landscape_copy: only_if_new_fba

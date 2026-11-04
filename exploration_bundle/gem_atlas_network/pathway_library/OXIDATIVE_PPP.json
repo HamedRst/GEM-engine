@@ -1,0 +1,86 @@
+{
+  "template_id": "OXIDATIVE_PPP",
+  "name": "Oxidative pentose phosphate phase",
+  "scope": "G6P to D-ribulose-5P with two NADPH-producing oxidations and lactone hydrolysis.",
+  "variant_id": "canonical_v1",
+  "release_version": "1.0.0",
+  "curation_status": "provisional_source_checked",
+  "validation_status": "automated_positive_negative_controls; independent human expert review pending",
+  "complete_claims_enabled": false,
+  "license": "Original Atlas definitions; source references only, no KEGG/MetaCyc data redistributed",
+  "reference_urls": [
+    "https://iubmb.qmul.ac.uk/enzyme/EC1/1/1/44.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC1/1/1/49.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC3/1/1/31.html",
+    "https://www.genome.jp/module/M00006"
+  ],
+  "required_step_groups": [
+    "G6PD",
+    "PGL",
+    "PGD"
+  ],
+  "step_logic": "All groups AND; nested two-element group OR of direct step versus listed AND substeps",
+  "steps": {
+    "G6PD": {
+      "step_id": "G6PD",
+      "equation": "g6p + nadp -> 6pgl + nadph",
+      "stoichiometry": {
+        "g6p": -1,
+        "nadp": -1,
+        "6pgl": 1,
+        "nadph": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC1/1/1/49.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "PGL": {
+      "step_id": "PGL",
+      "equation": "6pgl + h2o -> 6pgc",
+      "stoichiometry": {
+        "6pgl": -1,
+        "h2o": -1,
+        "6pgc": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC3/1/1/31.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "PGD": {
+      "step_id": "PGD",
+      "equation": "6pgc + nadp -> ru5p__D + nadph + co2",
+      "stoichiometry": {
+        "6pgc": -1,
+        "nadp": -1,
+        "ru5p__D": 1,
+        "nadph": 1,
+        "co2": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC1/1/1/44.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    }
+  },
+  "key_discriminators": [
+    "G6PD",
+    "PGD"
+  ],
+  "compartment_policy": "All participating non-proton compounds in one compartment; exact model intermediate IDs shared between steps; transport routes not inferred",
+  "normalization": "Coefficients proportional; ignores only proton stoichiometry, retains water, carbon and redox cofactors",
+  "false_positive_controls": [
+    "No reaction-name or EC-only match",
+    "No currency-only connectivity",
+    "L-lactate identity required",
+    "No cross-compartment joins"
+  ],
+  "optional_steps": []
+}

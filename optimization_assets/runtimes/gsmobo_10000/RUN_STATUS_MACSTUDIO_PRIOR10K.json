@@ -1,0 +1,14 @@
+{
+  "worker": "MACSTUDIO",
+  "prior_label": "10K",
+  "package_version": "GEM_GSMOBO_Systematic_Development_v0.4.2",
+  "status": "COMPLETE",
+  "failures": [],
+  "aggregation_returncode": 0,
+  "audit_returncode": 0,
+  "postrun_verify_returncode": 0,
+  "wall_seconds": 50489.33611392975,
+  "consolidated_csv": "/Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/ALL_RESULTS_MACSTUDIO_PRIOR10K_SELECTED3.csv",
+  "no_prior_audit_csv": "/Users/smdoliveira/Desktop/GEM-Hamed/25_Package/GEM_GSMOBO_PRIOR10K25K_SELECTED3_v0.4.2_MACSTUDIO/GEM_GSMOBO_Systematic_Development_v0.4.2_PRIOR10K_MACSTUDIO_ALL25_SELECTED3/NO_PRIOR_SELF_FRONT_PRIOR10K_AUDIT.csv",
+  "resume_instruction": "Run RUN_THIS.command again. Completed calls are never deleted."
+}

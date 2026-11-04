@@ -1,0 +1,31 @@
+schema_version: '1.0'
+problem_type: exploration.network_visualization
+problem_id: ecoli_b4036_gene_structural_ko
+description: Example structural GPR knockout (actual gene ID present in bundled E.
+  coli JSON); zero FBA.
+model:
+  path: ../models/ecoli_antiepex_growth_product_cost.json
+  sha256: 8a27ee3067b7a3f65d9bbbd60629ef03743e09ddd657e5320372c57ff8f6117d
+subject:
+  kind: genes
+  gene_ids:
+  - b4036
+analysis:
+  mode: structural
+  knockout_gene_ids:
+  - b4036
+  compare_to_wild_type: true
+pathway_library:
+  id: atlas_canonical
+  version: 1.0.0
+render:
+  style_preset: atlas_v023_publication
+  hide_currency_metabolites: true
+  max_display_reactions: 90
+  include_legend: true
+  export_formats:
+  - svg
+  - pdf
+  - png
+output:
+  subdirectory: ecoli_b4036_gene_structural_ko

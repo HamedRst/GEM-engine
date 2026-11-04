@@ -1,0 +1,32 @@
+species:
+  yeast: {prefix: "yeast_", display: "Yeast", weight: 1.00}
+  pputida: {prefix: "pputida_", display: "P. putida", weight: 1.00}
+  cglutamicum: {prefix: "cglutamicum_", display: "C. glutamicum", weight: 1.15}
+  cho: {prefix: "cho_", display: "CHO", weight: 2.60}
+  ecoli_antiepex: {prefix: "ecoli_antiepex_", display: "E. coli antiEpEX-scFv", weight: 1.20}
+problems:
+  growth_product:
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    definition: problems/growth_product.gemproblem.yaml
+    weight: 1.00
+  product_carbon_oxygen:
+    source_benchmark: GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0
+    source_kind: pco
+    definition: problems/product_carbon_oxygen.gemproblem.yaml
+    weight: 1.35
+  growth_robustness:
+    source_benchmark: GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0
+    source_kind: robustness
+    definition: problems/growth_robustness.gemproblem.yaml
+    weight: 1.45
+  product_cost:
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    definition: problems/product_cost.gemproblem.yaml
+    weight: 0.95
+  constrained_product:
+    source_benchmark: GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0
+    source_kind: growth_product
+    definition: problems/constrained_product.gemproblem.yaml
+    weight: 0.85

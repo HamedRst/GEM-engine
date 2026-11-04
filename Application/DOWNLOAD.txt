@@ -1,0 +1,2 @@
+Download the ready-to-use GEM Engine macOS application from the v1.0.0 GitHub Release:
+https://github.com/HamedRst/GEM-engine/releases

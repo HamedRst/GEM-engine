@@ -1,0 +1,354 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GEM Exploration · Biological Landscape Atlas</title><style>
+:root{--ink:#1b3246;--muted:#667b8c;--border:#dce6ed;--bg:#f5f8fb;--blue:#14758e;--navy:#133c53;--teal:#1c847e}*{box-sizing:border-box}body{margin:0;font:14px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}.shell{max-width:1530px;margin:0 auto;padding:24px}header{background:#142f42;color:#fff;padding:18px 26px}header .top{max-width:1530px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:15px}header h1{font-size:22px;margin:0 0 4px}header p{color:#b2ccd8;margin:0}header small{color:#d2e5ed}h2{font-size:17px;margin:0 0 7px}.sub{color:var(--muted);line-height:1.5;margin:0}.box{background:#fff;border:1px solid var(--border);box-shadow:0 2px 8px #122e3c08;border-radius:12px;padding:18px;margin-bottom:16px}.section-title{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:750;margin:0 0 9px}.strip{display:flex;gap:13px;align-items:flex-end;flex-wrap:wrap}.field{display:flex;flex-direction:column;gap:5px;min-width:130px}.field label{font-size:12px;color:#496278;font-weight:700}.field input,.field select{background:#fff;border:1px solid #cbdbe4;border-radius:8px;padding:10px 11px;color:var(--ink);font:inherit;height:40px}.field input[type=number]{width:96px}.seg{display:flex;gap:4px;padding:4px;border-radius:9px;background:#eaf1f5}.seg button{border:0;border-radius:7px;background:transparent;color:#466477;padding:10px 14px;font-weight:700;cursor:pointer}.seg button.on{background:var(--navy);color:white}.btn{padding:10px 13px;border:1px solid #c2d7e2;background:white;border-radius:8px;font-weight:650;color:#235b72;cursor:pointer}.btn:hover{background:#eaf4f9}button:disabled{opacity:.5;cursor:default}.layout{display:grid;grid-template-columns:1fr 1fr;gap:16px}.panel{min-width:0}.plot{width:100%;height:auto;aspect-ratio:750/560;background:white;display:block}.notice{border-left:3px solid #b2ccd9;padding:8px 12px;background:#f5f9fb;color:#4e687d;line-height:1.45;margin:11px 0 0}.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin-top:12px}.info{display:flex;gap:9px;flex-wrap:wrap;color:#496477;font-size:12px;margin-top:10px}.info span{padding:5px 8px;background:#edf5f9;border-radius:6px}.featTitle{font-weight:780;font-size:15px;margin-bottom:4px}.heatWrap{overflow:hidden;border:1px solid #dce6ed;border-radius:9px;margin-top:12px}.headrow,.heatrow{display:grid;grid-template-columns:minmax(225px,1.5fr) repeat(var(--regions),minmax(42px,1fr));align-items:stretch}.headrow{background:#eef4f7;color:#355568;font-weight:720}.headrow>div{padding:9px 6px;text-align:center;border-right:1px solid white}.headrow>div:first-child{text-align:left;padding-left:12px}.heatrow{cursor:pointer;border-top:1px solid #edf1f4;min-height:28px}.heatrow:hover{outline:1px solid #77a8bc;background:#f1f8fc}.heatrow.selected{background:#e3f4f9}.heatrow>div{padding:5px 7px;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.heatrow .entity{font-weight:650;border-right:1px solid #edf1f4}.heatrow .swatch{padding:0;border-right:1px solid #fff}.foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0 0}.legend{height:12px;width:180px;display:inline-block;vertical-align:middle;border-radius:8px;margin:0 9px;background:linear-gradient(90deg,#3178aa,#f6f7f8,#c34547)}.ramp{height:12px;width:180px;display:inline-block;vertical-align:middle;border-radius:8px;margin:0 9px;background:linear-gradient(90deg,#2166ac,#f7f7f7,#b2182b)}.tiny{font-size:12px;color:var(--muted)}.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.chips button{background:#eef5f8;color:#1d5772;border:1px solid #d8e6ed;border-radius:20px;padding:6px 10px;cursor:pointer}details summary{cursor:pointer;font-weight:700}#error{color:#b62636}footer{padding:18px 0;color:#7a8d99;line-height:1.6}.hidden{display:none!important}@media(max-width:950px){.layout{grid-template-columns:1fr}header .top{display:block}.shell{padding:12px}.headrow,.heatrow{grid-template-columns:minmax(150px,1.4fr) repeat(var(--regions),minmax(32px,1fr))}.heatrow>div{font-size:10px}}
+
+/* Full-model overview: three complete, independently ordered biological layers. */
+.overviewGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:14px}
+.overviewCard{min-width:0;padding:12px;border:1px solid var(--border);border-radius:10px;background:#fcfeff}
+.overviewCard h3{font-size:15px;margin:2px 0 6px}
+.overviewCanvas{display:block;width:100%;height:670px;background:#fff;border:1px solid #e0e9ee;border-radius:6px;cursor:crosshair}
+.overviewCard .field input,.overviewCard .field select{width:100%;height:36px}
+.overviewActions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.overviewRows{border:1px solid #dce6ed;border-radius:8px;overflow:hidden;background:white}
+.overviewRow{display:flex;justify-content:space-between;gap:8px;padding:8px 10px;font-size:12px;border-bottom:1px solid #edf3f6;cursor:pointer}
+.overviewRow:hover{background:#f0f7fa}.overviewRow.selected{background:#e0f2fa}
+.overviewRow .rowid{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.overviewRow small{color:#698092;flex-shrink:0}
+.overviewFooter{display:flex;gap:6px;align-items:center;justify-content:space-between;margin-top:9px}
+.overviewFooter .btn{padding:7px 9px;font-size:12px}
+@media(max-width:1150px){.overviewGrid{grid-template-columns:1fr 1fr}}
+@media(max-width:730px){.overviewGrid{grid-template-columns:1fr}}
+</style><style>
+/* An individual YAML result starts focused; other analyses stay hidden until requested. */
+body.yaml-overview .shell>section.box:nth-of-type(2),body.yaml-overview .layout .panel:nth-child(2),
+body.yaml-overview #panel-gene,body.yaml-overview #panel-reaction,body.yaml-overview #panel-metabolite,
+body.yaml-feature #all-feature-overviews,body.yaml-regions #all-feature-overviews,
+body.yaml-regions .shell>section.box:nth-of-type(2),body.yaml-regions .layout .panel:nth-child(2) {display:none!important}
+body.yaml-overview .layout,body.yaml-regions .layout{grid-template-columns:1fr}
+body.yaml-overview.focus-gene #panel-gene,body.yaml-overview.focus-reaction #panel-reaction,
+body.yaml-overview.focus-metabolite #panel-metabolite{display:block!important}
+body.yaml-overview #all-feature-overviews .overviewGrid{grid-template-columns:minmax(0,1fr);max-width:940px}
+body.yaml-overview .layout .panel:nth-child(1),body.yaml-regions .layout .panel:nth-child(1){max-width:780px}
+/* A YAML result shows ONLY the requested visualization; drilldown is user-initiated. */
+body.yaml-overview:not(.yaml-drilldown) .layout,body.yaml-feature .layout .panel:nth-child(1),body.yaml-regions .layout .panel:nth-child(2){display:none!important}
+body.yaml-feature .layout{grid-template-columns:1fr}
+body.yaml-feature .layout .panel:nth-child(2){max-width:880px}
+body.yaml-overview:not(.yaml-drilldown) .shell>section.box:nth-of-type(1),body.yaml-feature .shell>section.box:nth-of-type(1){display:none!important}
+#yaml-back-button{display:none;margin:8px 0 16px;background:#e9f3f7;border:1px solid #b6d1df;border-radius:7px;padding:9px 14px;cursor:pointer}
+body.yaml-feature #yaml-back-button{display:none}
+body.yaml-overview.yaml-drilldown #yaml-back-button{display:inline-block}
+body.yaml-overview.yaml-drilldown .shell>section.box:nth-of-type(2),body.yaml-overview.yaml-drilldown .layout .panel:nth-child(2){display:block!important}
+body.yaml-overview.yaml-drilldown .layout{grid-template-columns:1fr 1fr}
+</style></head><body><header><div class="top"><div><h1>GEM Exploration <span style="font-weight:400;color:#9cd5d3">/ Biological Landscape Atlas</span></h1><p>Explore every modeled gene, reaction, and metabolite; investigate one selected feature at a time.</p></div><small id="datasetName">Loading landscape…</small></div></header><main class="shell"><button id="yaml-back-button" type="button">← Return to full heatmap</button>
+<section class="box"><div class="section-title">1 · Organism and comparison</div><div class="strip"><div class="field" style="flex:1"><label>Landscape dataset</label><div id="dslabel" style="font-weight:750;padding:8px 0">Loading…</div></div><div class="field"><label>Landscape regions</label><div class="seg" id="modes"><button data-mode="angular" class="on">Angular · trade-off direction</button><button data-mode="circular">Circular · capability magnitude</button></div></div><div class="field"><label id="nlabel">Angular sectors</label><input id="regions" type="number" min="2" max="12" value="6"></div><button class="btn" id="save-region">Export region map</button></div><div class="info" id="statline"><span>Loading model features…</span></div></section>
+<section class="box"><div class="section-title">2 · Ask one biological question</div><div class="strip"><div class="field"><label>What are you examining?</label><div class="seg" id="types"><button data-type="gene" class="on">Gene</button><button data-type="reaction">Reaction</button><button data-type="metabolite">Metabolite</button></div></div><div class="field" style="flex:1;min-width:260px"><label id="feature-label">Find a gene (ID or function)</label><input id="search" type="search" placeholder="Search by ID or name" autocomplete="off" style="width:100%"></div><div class="field" style="min-width:230px"><label>Selected feature</label><select id="feature" style="width:100%"></select></div><button class="btn" id="save-activity">Export selected activity map</button></div><div class="info" id="feature-note"><span>Select a gene; the right map will color the same landscape by that gene's modeled reaction-use score.</span></div></section>
+<div class="layout"><section class="box panel"><div class="section-title">3a · Region map</div><h2 id="regionTitle">Six angular trade-off sectors</h2><p class="sub" id="regionSub">Growth-oriented → product-oriented, using normalized growth and product</p><canvas id="regionplot" class="plot" width="750" height="560"></canvas><div class="info" id="regionCounts"></div></section><section class="box panel"><div class="section-title">3b · Selected feature on the same landscape</div><h2 id="activityTitle">One selected biological activity</h2><p class="sub" id="activitySub">Each point keeps its original growth and product coordinates. Point color = selected feature's activity.</p><canvas id="activityplot" class="plot" width="750" height="560"></canvas><div class="info" id="activityLegend"><span>Select a feature above</span></div></section></div>
+<section class="box" id="all-feature-overviews"><div class="section-title">4 · Complete GEM overview · all genes, reactions, and metabolites</div>
+<h2>Requested biological activity heatmap</h2>
+<p class="sub">The requested gene, reaction, or metabolite activity heatmap uses one selected region definition; the other biological layers can be requested separately through YAML. Click a row to display that feature on the original growth–product landscape. Genes show modeled reaction-use scores; reactions show absolute reaction-flux magnitude here (signed flux in detail); metabolites show modeled processing, not concentrations.</p>
+<div class="overviewGrid">
+<article class="overviewCard" id="panel-gene"><h3>All mapped genes</h3><p class="sub" id="overview-caption-gene">Gene-linked reaction utilization</p>
+<canvas id="overview-gene" class="overviewCanvas" width="470" height="1020" aria-label="Complete gene activity heatmap, click to select a gene"></canvas>
+<div class="overviewActions"><div class="field"><label for="overview-search-gene">Search genes</label><input id="overview-search-gene" type="search" placeholder="Gene ID or function"/></div><div class="field"><label for="overview-sort-gene">Row ordering</label><select id="overview-sort-gene"><option value="progressive" selected>Progressive ↑↓</option><option value="progressive_strict">Strict monotonic ↑↓</option><option value="delta">Endpoint Δz (legacy)</option><option value="variation">Most variable</option><option value="alphabetical">Gene ID</option></select></div></div>
+<div id="overview-rows-gene" class="overviewRows"></div><div class="overviewFooter"><button class="btn" id="overview-prev-gene">Previous</button><span class="tiny" id="overview-page-gene">Page 1</span><button class="btn" id="overview-next-gene">Next</button></div></article>
+<article class="overviewCard" id="panel-reaction"><h3>All modeled reactions</h3><p class="sub" id="overview-caption-reaction">Absolute saved flux; signed flux on selection</p>
+<canvas id="overview-reaction" class="overviewCanvas" width="470" height="1020" aria-label="Complete reaction flux heatmap, click to select a reaction"></canvas>
+<div class="overviewActions"><div class="field"><label for="overview-search-reaction">Search reactions</label><input id="overview-search-reaction" type="search" placeholder="Reaction ID or name"/></div><div class="field"><label for="overview-sort-reaction">Row ordering</label><select id="overview-sort-reaction"><option value="progressive" selected>Progressive ↑↓</option><option value="progressive_strict">Strict monotonic ↑↓</option><option value="delta">Endpoint Δz (legacy)</option><option value="variation">Most variable</option><option value="alphabetical">Reaction ID</option></select></div></div>
+<div id="overview-rows-reaction" class="overviewRows"></div><div class="overviewFooter"><button class="btn" id="overview-prev-reaction">Previous</button><span class="tiny" id="overview-page-reaction">Page 1</span><button class="btn" id="overview-next-reaction">Next</button></div></article>
+<article class="overviewCard" id="panel-metabolite"><h3>All model metabolites</h3><p class="sub" id="overview-caption-metabolite">Modeled processing, not concentration</p>
+<canvas id="overview-metabolite" class="overviewCanvas" width="470" height="1020" aria-label="Complete metabolite processing heatmap, click to select a metabolite"></canvas>
+<div class="overviewActions"><div class="field"><label for="overview-search-metabolite">Search metabolites</label><input id="overview-search-metabolite" type="search" placeholder="Metabolite ID or name"/></div><div class="field"><label for="overview-sort-metabolite">Row ordering</label><select id="overview-sort-metabolite"><option value="progressive" selected>Progressive ↑↓</option><option value="progressive_strict">Strict monotonic ↑↓</option><option value="delta">Endpoint Δz (legacy)</option><option value="variation">Most variable</option><option value="alphabetical">Metabolite ID</option></select></div></div>
+<div id="overview-rows-metabolite" class="overviewRows"></div><div class="overviewFooter"><button class="btn" id="overview-prev-metabolite">Previous</button><span class="tiny" id="overview-page-metabolite">Page 1</span><button class="btn" id="overview-next-metabolite">Next</button></div></article>
+</div>
+<p class="notice">All three activity overviews default to progressive regional change: an all-region (six by default) slope of raw GPR-linked relative use, multiplied by six-region linear fit R², direction consistency and step evenness. Positive trends are first, negative trends last; near-flat and irregular trends lie between. “Strict monotonic ↑↓” excludes any local direction reversal from the ranking (score 0) without dropping the row. Choose the legacy endpoint ordering to reproduce existing exports; reaction and metabolite rankings use their own native regional means (reaction absolute relative flux use; metabolite processing), not gene-linked values. Region means and heatmap z-score colors are unchanged. This descriptive ranking is not proof of angular/radial specificity. Complete coverage: every supported feature is represented as a row in its overview. Genes without unambiguous GPR-based flux attribution are counted in the model inventory but are not falsely colored as inactive. Each overview has a searchable, readable row list below the full matrix. Activity summaries use the supplied saved FBA fluxes, not experimental measurements.</p>
+</section>
+<section class="box"><div class="section-title">5 · Optional network context</div><details id="links-section"><summary>Show reactions, genes, or metabolites associated with this selection</summary><p class="sub" style="margin-top:10px">Connections are model annotations, not measured regulation or causal proof. Click a connection to replace the active feature; the interface never mixes activity scales.</p><div id="links" class="chips"></div></details></section>
+<section class="box"><div class="section-title">Methods and limitations</div><p class="sub" id="methods">Angular: equal angles across normalized growth–production space. Circular: equal-occupancy bands in normalized radius. Circular distance is not Pareto-front distance. Gene scores describe GPR-linked reaction use, not gene expression; metabolites show processing proxies, not concentration; individual reactions show saved signed flux, not gene-level function.</p><p class="sub" style="margin-top:9px">Dataset loading is model-agnostic: use the included builder with any matched GEM JSON and exact precomputed reaction-flux matrix. No special antibody reaction IDs or species-specific analysis rules exist in the interface. The supplied antibody data are an example only.</p><p class="tiny" id="error"></p></section>
+<footer>This analysis explores saved FBA-optimal flux solutions across environmental conditions. It does not alone establish necessary pathways, regulation, or experimentally confirmed biology. The empirical frontier is across media, not a within-medium Pareto sweep.</footer>
+</main><script src="bundle.js"></script><script>
+'use strict';
+const $=id=>document.getElementById(id), B=window.GEM_BUNDLE;
+let ALL,XY,ACT,SIGNED,regionAll,regionSample,currentMode='angular',counts={angular:6,circular:6},currentType='gene',selected=null,ready=false;
+const featureTypes=['gene','reaction','metabolite'],overviewCache={},overviewPages={gene:0,reaction:0,metabolite:0},overviewVisible={},overviewPageSize=7;
+const blue='#94cbe8',ink='#1b3246';
+const palette=['#472f77','#3177ac','#24a39b','#6cc6a5','#c9df79','#f3cb46','#b45d43','#cd3439'];
+async function inflate64(s,type){const binary=atob(s),a=new Uint8Array(binary.length);for(let i=0;i<binary.length;i++)a[i]=binary.charCodeAt(i);const stream=new Blob([a]).stream().pipeThrough(new DecompressionStream('gzip'));const buffer=await new Response(stream).arrayBuffer();return new type(buffer)}
+function setButtons(parent,key,val){$(parent).querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset[key]===val))}
+function normpos(v,max){return max>0?v/max:0}
+function coord(arr,i){return [arr[2*i]/65535,arr[2*i+1]/65535]}
+function thresholds(mode,n){if(mode==='angular')return Array.from({length:n+1},(_,i)=>i*Math.PI/2/n);
+ const radii=[];for(let i=0;i<B.nall;i++){const [x,y]=coord(ALL,i);radii.push(Math.hypot(x,y))}radii.sort((a,b)=>a-b);return Array.from({length:n+1},(_,i)=>radii[Math.min(radii.length-1,Math.floor(i*radii.length/n))])}
+function bin(pt,edges){let i=0;while(i<edges.length-2&&pt>=edges[i+1])i++;return i}
+function classify(arr,mode,edges){let out=new Uint8Array(arr.length/2);for(let i=0;i<out.length;i++){const [x,y]=coord(arr,i);out[i]=bin(mode==='angular'?Math.atan2(y,x):Math.hypot(x,y),edges)}return out}
+function rgba(hex,alpha=1){let c=hex.replace('#','');return `rgba(${parseInt(c.slice(0,2),16)},${parseInt(c.slice(2,4),16)},${parseInt(c.slice(4,6),16)},${alpha})`}
+function regionColor(k,n){const t=n<2?0:k/(n-1);const c=palette[Math.round(t*(palette.length-1))];return c}
+/* Publication legend patch v6: typography + marker-size; native titles, clean overview; numeric values and ranks preserved. */
+function safeAxisLabel(label,fallback){
+ // Some released engine receipts contain generic placeholder strings, not actual units.
+ // Do not display or guess units; preserve model-supplied non-placeholder labels.
+ return (String(label||fallback).replace(/\s*\(\s*model (?:objective|flux) units\s*\)/gi,'').trim() || fallback);
+}
+// GUI-only, per-visible-plot color normalization; no alteration of native scores.
+function observedColor(value,range){
+ if(!Number.isFinite(value))return '#d8e0e4';
+ if(!range || !Number.isFinite(range.min) || !Number.isFinite(range.max))return '#f7f7f7';
+ const a=range.min,b=range.max,lo='#2166ac',mid='#f7f7f7',hi='#b2182b';
+ if(!(b>a))return mid;
+ if(a<0 && b>0){
+  return value<=0?interpolate(lo,mid,(value-a)/(0-a)):interpolate(mid,hi,value/b);
+ }
+ const t=Math.max(0,Math.min(1,(value-a)/(b-a)));
+ return t<=.5?interpolate(lo,mid,2*t):interpolate(mid,hi,2*t-1);
+}
+function scaleNumber(v){if(!Number.isFinite(v))return 'N/A';if(Math.abs(v)<1e-11)return '0';if(Math.abs(v)>=1e4||Math.abs(v)<.001)return v.toExponential(2);return String(Number(v.toPrecision(3)))}
+function nativeRange(values,lo=-Infinity,hi=Infinity){let min=Infinity,max=-Infinity;for(const val of values){if(!Number.isFinite(val))continue;const v=Math.max(lo,Math.min(hi,val));min=Math.min(min,v);max=Math.max(max,v)}return min===Infinity?null:{min,max}}
+function horizontalActivityScale(canvas,title,range,colorFn){
+ if(!range)return;const ctx=canvas.getContext('2d'),x=256,w=423,y=69,h=11;
+ ctx.save();ctx.font='bold 18px Arial';ctx.fillStyle='#38566b';ctx.textAlign='left';ctx.fillText(title,67,84);
+ for(let i=0;i<w;i++){const v=range.min+(range.max-range.min)*(i+.5)/w;ctx.fillStyle=colorFn(v);ctx.fillRect(x+i,y,1,h)}
+ ctx.lineWidth=.6;ctx.strokeStyle='#536b79';ctx.strokeRect(x,y,w,h);
+ ctx.fillStyle='#38566b';ctx.font='bold 18px Arial';ctx.textAlign='left';ctx.fillText(scaleNumber(range.min),x,106);
+ ctx.textAlign='right';ctx.fillText(scaleNumber(range.max),x+w,106);
+ if(range.min<0&&range.max>0){const zx=x+w*(-range.min)/(range.max-range.min);if(zx>x+35&&zx<x+w-35){ctx.textAlign='center';ctx.fillText('0',zx,106)}}
+ ctx.restore();canvas._colorScale={title,min:range.min,max:range.max,kind:'continuous',position:'canvas top band'};
+}
+function numberedRegionScale(canvas,n){
+ const ctx=canvas.getContext('2d'),x0=69,width=canvas.width-106,slot=width/n;
+ ctx.save();ctx.textAlign='center';ctx.font='bold 18px Arial';
+ for(let k=0;k<n;k++){const x=x0+slot*k;ctx.fillStyle=regionColor(k,n);ctx.fillRect(x,69,slot-2,12);ctx.fillStyle='#38566b';ctx.fillText(String(k+1),x+slot/2,106)}
+ ctx.restore();canvas._regionLegend={count:n,numbers:Array.from({length:n},(_,i)=>i+1),colors:Array.from({length:n},(_,i)=>regionColor(i,n))};
+}
+// All titles belong to the native canvas export, not HTML around it.
+// Store full identifiers and names as machine-readable GUI display metadata.
+function nativeCanvasHeader(canvas,heading,detail=''){
+ const ctx=canvas.getContext('2d');ctx.save();ctx.fillStyle='#38566b';ctx.textAlign='center';
+ ctx.font='bold 20px Arial';ctx.fillText(heading,canvas.width/2,26,canvas.width-30);
+ if(detail){ctx.font='bold 18px Arial';ctx.fillText(detail,canvas.width/2,50,canvas.width-30)}
+ ctx.restore();canvas._plotTitle={heading,detail};
+}
+function nameForCanvas(){return String(B.name||'GEM dataset').trim()}
+function regionModeName(){return currentMode==='angular'?'Angular':'Circular'}
+function mappedPoint(pt,canvas){const [x,y]=pt;return [67+x*(canvas.width-100),canvas.height-62-y*(canvas.height-168)]}
+function graphBase(canvas){const ctx=canvas.getContext('2d'),W=canvas.width,H=canvas.height;ctx.clearRect(0,0,W,H);ctx.fillStyle='white';ctx.fillRect(0,0,W,H);ctx.strokeStyle='#e6edf1';ctx.lineWidth=1;ctx.font='bold 18px Arial';ctx.fillStyle='#38566b';for(let t=0;t<=5;t++){const x=67+(W-100)*t/5,y=H-62-(H-168)*t/5;ctx.beginPath();ctx.moveTo(x,106);ctx.lineTo(x,H-62);ctx.stroke();ctx.beginPath();ctx.moveTo(67,y);ctx.lineTo(W-33,y);ctx.stroke();ctx.fillText((t*B.gmax/5).toFixed(2),x-12,H-42);ctx.fillText((t*B.pmax/5).toPrecision(2),20,y+5)}ctx.textAlign='center';ctx.fillStyle='#38566b';ctx.font='bold 18px Arial';ctx.fillText(safeAxisLabel(B.x_label,'Growth'),W/2,H-11);ctx.save();ctx.translate(15,H/2);ctx.rotate(-Math.PI/2);ctx.fillText(safeAxisLabel(B.y_label,'Product'),0,0);ctx.restore();ctx.textAlign='left';return ctx}
+function scatter(canvas,coords,region,cfn,size,alpha){const ctx=canvas.getContext('2d');for(let i=0;i<coords.length/2;i++){const [x,y]=mappedPoint(coord(coords,i),canvas);ctx.fillStyle=rgba(cfn(i),alpha);ctx.beginPath();ctx.arc(x,y,size,0,Math.PI*2);ctx.fill()}}
+function frontierIndices(){let xs=[];for(let i=0;i<B.nall;i++){const [x,y]=coord(ALL,i);xs.push([x,y,i])}xs.sort((a,b)=>b[0]-a[0]||b[1]-a[1]);let ymax=-1,fr=[];for(const [x,y,i] of xs)if(y>ymax+1e-5){fr.push(i);ymax=y}return fr}
+let frontier=[];
+function highlightFrontier(canvas,colorFn){const ctx=canvas.getContext('2d');for(const i of frontier){const [x,y]=mappedPoint(coord(ALL,i),canvas);ctx.fillStyle=colorFn(i);ctx.strokeStyle='#263746';ctx.lineWidth=1;ctx.beginPath();ctx.arc(x,y,5.4,0,Math.PI*2);ctx.fill();ctx.stroke()}}
+function drawRegions(){const c=$('regionplot'),ctx=graphBase(c),n=counts[currentMode],edges=thresholds(currentMode,n);regionAll=classify(ALL,currentMode,edges);regionSample=classify(XY,currentMode,edges);scatter(c,ALL,regionAll,i=>regionColor(regionAll[i],n),2.03,.44);
+ ctx.save();ctx.beginPath();ctx.rect(67,106,c.width-100,c.height-168);ctx.clip();
+ ctx.strokeStyle='rgba(80,96,108,.52)';ctx.lineWidth=1.15;ctx.beginPath();if(currentMode==='angular')for(let i=1;i<n;i++){const th=edges[i],mx=Math.max(Math.cos(th),Math.sin(th));const t=1.5/mx;const [x0,y0]=mappedPoint([0,0],c),[x1,y1]=mappedPoint([t*Math.cos(th),t*Math.sin(th)],c);ctx.moveTo(x0,y0);ctx.lineTo(x1,y1)}else for(let i=1;i<n;i++){const r=edges[i];for(let k=0;k<=80;k++){const th=k/80*Math.PI/2;const [x,y]=mappedPoint([r*Math.cos(th),r*Math.sin(th)],c);if(k===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)}}ctx.stroke();ctx.restore();highlightFrontier(c,i=>regionColor(regionAll[i],n));
+ $('regionTitle').textContent=currentMode==='angular'?`${n} angular trade-off sectors`:`${n} circular capability rings`;
+ $('regionSub').textContent=currentMode==='angular'?'Direction from growth-oriented (1) to product-oriented ('+n+'); not absolute performance':`Normalized radius, low combined capability (1) → higher combined capability (${n}); not Pareto distance`;
+ const tally=Array.from({length:n},(_,k)=>regionAll.filter(v=>v===k).length);$('regionCounts').replaceChildren(...tally.map((cnt,k)=>{const x=document.createElement('span');x.textContent=`${k+1}: ${cnt.toLocaleString()} conditions`;return x}));
+ // Native exported canvas legend: each discrete region has a numbered color swatch.
+ numberedRegionScale(c,n);
+ nativeCanvasHeader(c,`${regionModeName()} Regions`,`Seed 42 · 50K`);
+ }
+function featureRow(type,idx){return B.feature.filter(f=>f.type===type)[idx]}
+function rowIndex(type,idx){return type==='gene'?idx:type==='metabolite'?B.ng+idx:B.ng+B.nm+idx}
+function activeData(index){if(currentType==='reaction'){const off=index*B.n,a=SIGNED.subarray(off,off+B.n);return {rows:a,mode:'signed'}} const off=rowIndex(currentType,index)*B.n;return {rows:ACT.subarray(off,off+B.n),mode:'use'}}
+function getFeature(){return selected==null?null:B.feature.find(f=>f.type===currentType&&f.id===selected)}
+function seriesInfo(){let f=getFeature();if(!f)return null;let idx=B.feature.filter(x=>x.type===currentType).findIndex(x=>x.id===selected);return {f,idx,...activeData(idx)}}
+function indexName(f){return f.name&&f.name!==f.id?`${f.id} · ${f.name}`:f.id}
+function viridis(z){const stops=['#440154','#365c8d','#21918c','#5ec962','#fde725'];let p=Math.max(0,Math.min(1,z))*(stops.length-1),k=Math.min(stops.length-2,Math.floor(p)),t=p-k;const a=stops[k],b=stops[k+1];const comp=i=>Math.round(parseInt(a.slice(i,i+2),16)*(1-t)+parseInt(b.slice(i,i+2),16)*t).toString(16).padStart(2,'0');return '#'+comp(1)+comp(3)+comp(5)}
+function signedColor(v){if(v===-128)return '#9ea8b0';const t=v/127;return t>=0?interpolate('#f7f7f7','#b2182b',t):interpolate('#2166ac','#f7f7f7',t+1)}
+function interpolate(a,b,t){t=Math.max(0,Math.min(1,t));const out=[1,3,5].map(i=>Math.round(parseInt(a.slice(i,i+2),16)*(1-t)+parseInt(b.slice(i,i+2),16)*t).toString(16).padStart(2,'0'));return '#'+out.join('')}
+function drawActivity(){
+ const c=$('activityplot');graphBase(c);const info=seriesInfo();
+ if(!info){$('activityTitle').textContent='Select a feature from the list';return}
+ const {f,rows,mode}=info;
+ const seen=mode==='signed'?nativeRange(rows.filter(v=>v!==-128)):nativeRange(rows);
+ const s=Number(f.scale),fluxScale=(Number.isFinite(s)&&s>0)?s:1;
+ const range=seen?(mode==='signed'?{min:seen.min/127*fluxScale,max:seen.max/127*fluxScale}:{min:seen.min/255,max:seen.max/255}):null;
+ const colorForValue=val=>observedColor(mode==='signed'?val/127*fluxScale:val/255,range);
+ scatter(c,ALL,null,()=>blue,.95,.12);
+ const inds=Array.from({length:B.n},(_,i)=>i);inds.sort((a,b)=>rows[a]-rows[b]);
+ const ctx=c.getContext('2d');
+ for(const i of inds){const [x,y]=mappedPoint(coord(XY,i),c);const val=rows[i];if(mode==='signed'&&val===-128)continue;
+  ctx.fillStyle=colorForValue(val);ctx.globalAlpha=.94;ctx.beginPath();ctx.arc(x,y,3.1,0,Math.PI*2);ctx.fill()}
+ ctx.globalAlpha=1;
+ const fset=new Set(frontier.map(i=>ALL[2*i]+':'+ALL[2*i+1]));
+ for(let i=0;i<B.n;i++)if(fset.has(XY[2*i]+':'+XY[2*i+1])){
+  const val=rows[i];if(mode==='signed'&&val===-128)continue;
+  const [x,y]=mappedPoint(coord(XY,i),c);ctx.fillStyle=colorForValue(val);ctx.strokeStyle='#263746';ctx.lineWidth=1;
+  ctx.beginPath();ctx.arc(x,y,6,0,Math.PI*2);ctx.fill();ctx.stroke()}
+ $('activityTitle').textContent=indexName(f);$('activitySub').textContent=f.status;
+ const title=mode==='signed'?'Reaction flux':currentType==='gene'?'GPR-linked relative use':'Metabolite relative processing';
+ $('feature-note').innerHTML=`<span>${escapeHTML(f.status)}</span>`;
+ $('activityLegend').innerHTML=`<span><span class="ramp"></span> Low (blue) → high (red) within displayed range</span>`+
+   `<span>${B.n.toLocaleString()} sampled conditions; full background ${B.nall.toLocaleString()}</span>`;
+ if(range){
+  horizontalActivityScale(c,title,range,v=>observedColor(v,range));
+  $('activityLegend').innerHTML+=`<span>Displayed ${mode==='signed'?'flux':'relative-use'} range ${scaleNumber(range.min)} to ${scaleNumber(range.max)}</span>`;
+ }
+ nativeCanvasHeader(c,String(f.id||f.name||currentType),(f.name&&f.name!==f.id)?String(f.name):'');
+ const available=mode==='signed'?rows.filter(x=>x!==-128).length:rows.length;
+ if(available<rows.length){const sp=document.createElement('span');sp.textContent=(rows.length-available)+' unmatched conditions shown in gray';$('activityLegend').append(sp)}
+}
+function regionAverageForFeature(type,k){
+ const nregions=counts[currentMode],sum=new Float64Array(nregions),num=new Uint32Array(nregions);
+ let values,offset;if(type==='reaction'){values=SIGNED;offset=k*B.n;}else{values=ACT;offset=(type==='gene'?k:B.ng+k)*B.n;}
+ for(let i=0;i<B.n;i++){const v=values[offset+i];if(type==='reaction'&&v===-128)continue;const r=regionSample[i];sum[r]+=type==='reaction'?Math.abs(v)/127:v/255;num[r]++;}
+ return Array.from(sum,(v,i)=>num[i]?v/num[i]:NaN);
+}
+function standardized(vals){const valid=vals.filter(Number.isFinite);if(!valid.length)return vals.map(()=>NaN);const m=valid.reduce((a,b)=>a+b,0)/valid.length,sd=Math.sqrt(valid.reduce((a,b)=>a+(b-m)**2,0)/valid.length)||1;return vals.map(v=>Number.isFinite(v)?Math.max(-2.5,Math.min(2.5,(v-m)/sd)):NaN)}
+/* GEM GUI progressive ordering v2: all three layers, ranking only.
+   Each layer uses its own native unstandardized regional means.
+   Works for 2..12 regions; avoid inventing trends when a bin has no samples. */
+function progressiveStats(means){
+ const n=means.length,invalid={score:NaN,strictScore:NaN,slope:NaN,r2:NaN,consistency:NaN,evenness:NaN,net:NaN,reversals:0,monotonic:false};
+ if(n<2||means.some(v=>!Number.isFinite(v)))return invalid;
+ const EPS=1e-12,mid=(n-1)/2,avg=means.reduce((s,v)=>s+v,0)/n;
+ let xx=0,xy=0,tss=0;
+ for(let i=0;i<n;i++){const dx=i-mid,dy=means[i]-avg;xx+=dx*dx;xy+=dx*dy;tss+=dy*dy;}
+ if(!(xx>0)||tss<=EPS)return {score:0,strictScore:0,slope:0,r2:0,consistency:0,evenness:0,net:means[n-1]-means[0],reversals:0,monotonic:true};
+ const slope=xy/xx;
+ let sse=0,gross=0,sq=0,reversals=0;
+ const sign=Math.sign(slope);
+ for(let i=0;i<n;i++){const fitted=avg+slope*(i-mid);sse+=(means[i]-fitted)**2;}
+ for(let i=1;i<n;i++){
+  const d=means[i]-means[i-1];gross+=Math.abs(d);sq+=d*d;
+  if(sign*d < -EPS)reversals++;
+ }
+ const r2=Math.max(0,Math.min(1,1-sse/tss)),net=means[n-1]-means[0];
+ const consistency=gross>EPS?Math.max(0,sign*net)/gross:0;
+ const evenness=sq>EPS?Math.max(0,Math.min(1,gross*gross/((n-1)*sq))):0;
+ const score=slope*r2*consistency*evenness;
+ return {score:Math.abs(score)<EPS?0:score,strictScore:reversals?0:(Math.abs(score)<EPS?0:score),slope,r2,consistency,evenness,net,reversals,monotonic:reversals===0};
+}
+function overviewSortScore(row,sort){return sort==='progressive'?row.progressive.score:sort==='progressive_strict'?row.progressive.strictScore:sort==='variation'?row.variation:row.d;}
+function overviewSortDescription(type){const sort=$('overview-sort-'+type).value;
+ return sort==='progressive'?'signed full-region raw activity trend · all available regions':
+ sort==='progressive_strict'?'signed full-region raw activity trend · direction reversals set to zero':
+ sort==='delta'?'descending z-score change: final minus first region':
+ sort==='variation'?'descending sum of absolute z-score steps':'feature identifier';
+}
+function buildOverview(){
+ for(const type of featureTypes){let rows=[];let list=B.feature.filter(f=>f.type===type);
+  for(let k=0;k<list.length;k++){const f=list[k],vals=regionAverageForFeature(type,k),z=standardized(vals);
+    const d=Number.isFinite(z.at(-1))&&Number.isFinite(z[0])?z.at(-1)-z[0]:-Infinity;
+    const variation=z.slice(1).reduce((v,a,i)=>v+(Number.isFinite(a)&&Number.isFinite(z[i])?Math.abs(a-z[i]):0),0);
+    rows.push({f,vals,z,d,variation,progressive:progressiveStats(vals),index:k});}
+  overviewCache[type]=rows;
+  $('overview-caption-'+type).textContent=type==='gene'?`${rows.length.toLocaleString()} attributable of ${B.model_genes.toLocaleString()} model genes · GPR-linked utilization`:type==='reaction'?`${rows.length.toLocaleString()} reactions · absolute flux in overview; signed flux in detailed landscape`:`${rows.length.toLocaleString()} metabolites · model-predicted processing`;
+ }
+ redrawOverviews();
+}
+function orderedOverview(type){let q=$('overview-search-'+type).value.trim().toLowerCase(),sort=$('overview-sort-'+type).value;
+ let rows=[...(overviewCache[type]||[])];
+ if(sort==='progressive'||sort==='progressive_strict')rows.sort((a,b)=>{
+  const av=overviewSortScore(a,sort),bv=overviewSortScore(b,sort);
+  if(!Number.isFinite(av))return Number.isFinite(bv)?1:a.f.id.localeCompare(b.f.id);
+  if(!Number.isFinite(bv))return -1;
+  return bv-av||a.f.id.localeCompare(b.f.id);
+ });
+ else if(sort==='delta')rows.sort((a,b)=>b.d-a.d||a.f.id.localeCompare(b.f.id));
+ else if(sort==='variation')rows.sort((a,b)=>b.variation-a.variation||a.f.id.localeCompare(b.f.id));
+ else rows.sort((a,b)=>a.f.id.localeCompare(b.f.id));
+ overviewVisible[type]=q?rows.filter(r=>(r.f.id+' '+r.f.name).toLowerCase().includes(q)):rows;
+ return q?rows.filter(r=>(r.f.id+' '+r.f.name).toLowerCase().includes(q)):rows;
+}
+function drawOverviewMatrix(type){
+ const c=$('overview-'+type),ctx=c.getContext('2d'),W=c.width,H=c.height,all=overviewVisible[type]||[],n=counts[currentMode];
+ ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);if(!all.length){c._overviewPlot=null;return;}
+ const L=28,T=63,plotW=365,plotH=840,barX=409,barW=20;
+ // Fixed symmetric standardized scale for cross-organism comparison.
+ // Keep actual observed extrema as independent provenance; NEVER use them to
+ // rescale the colors of the standardized overview.
+ let observedMin=Infinity,observedMax=-Infinity;
+ for(const r of all)for(let j=0;j<n;j++){const z=r.z[j];if(Number.isFinite(z)){observedMin=Math.min(observedMin,z);observedMax=Math.max(observedMax,z)}}
+ const actual=observedMin===Infinity?null:{min:Math.max(-2.5,observedMin),max:Math.min(2.5,observedMax)};
+ const shown=actual?{min:-2.5,max:2.5}:null;
+ ctx.textAlign='center';ctx.font='bold 18px Arial';ctx.fillStyle='#38566b';
+ // region numbers are shown below the heatmap for easier left-to-right reading
+
+ const rowH=plotH/all.length;
+ for(let i=0;i<all.length;i++){const row=all[i],y=T+plotH*i/all.length;
+  for(let j=0;j<n;j++){ctx.fillStyle=observedColor(row.z[j],shown);ctx.fillRect(L+j*plotW/n,y,plotW/n+.15,Math.max(.35,rowH+.08))}
+  // Selected feature remains highlighted in the HTML list, not burned into the overview export.
+}
+ ctx.strokeStyle='#9eacb5';ctx.lineWidth=.6;ctx.strokeRect(L,T,plotW,plotH);
+ if(shown){for(let k=0;k<200;k++){const z=shown.max+(shown.min-shown.max)*k/199;ctx.fillStyle=observedColor(z,shown);ctx.fillRect(barX,T+plotH*k/200,barW,plotH/200+1)}}
+ ctx.strokeStyle='#acb9c1';ctx.strokeRect(barX,T,barW,plotH);
+ ctx.fillStyle='#38566b';ctx.font='bold 18px Arial';ctx.textAlign='left';
+ if(shown){ctx.fillText(scaleNumber(shown.max),barX+barW+5,T+4);ctx.fillText(scaleNumber(shown.min),barX+barW+5,T+plotH+4);
+  if(shown.min<0&&shown.max>0){let yy=T+plotH*shown.max/(shown.max-shown.min);if(yy>T+17&&yy<T+plotH-17)ctx.fillText('0',barX+barW+5,yy+4)}}
+ c._colorScale=shown?{title:'Within-feature standardized regional mean (z-score)',min:-2.5,max:2.5,kind:'continuous',type,normalization:'fixed symmetric ±2.5 for cross-organism comparison',observed_min:actual.min,observed_max:actual.max,feature_count:all.length,rank_order:overviewSortDescription(type)}:null;
+ ctx.save();ctx.translate(10,T+plotH/2);ctx.rotate(-Math.PI/2);ctx.textAlign='center';ctx.font='bold 18px Arial';ctx.fillText('Every supported '+type+' · '+all.length+' rows',0,0);ctx.restore();
+ ctx.textAlign='center';ctx.font='bold 18px Arial';
+ for(let j=0;j<n;j++){ctx.fillText(String(j+1),L+plotW*(j+.5)/n,T+plotH+16)}
+ ctx.fillText('Region',L+plotW/2,T+plotH+34);
+ ctx.fillText('Low (blue)     Standardized activity     High (red)',L+plotW/2,H-30);
+ ctx.fillText('Within-feature standardized regional means · scale −2.5 to +2.5',L+plotW/2,H-12);
+ nativeCanvasHeader(c,`${type.charAt(0).toUpperCase()+type.slice(1)}s`,`${regionModeName()} · ${n} regions`);
+ c._overviewPlot={top:T,height:plotH,order:all};
+}
+function redrawOverviewType(type){const searched=orderedOverview(type),pg=Math.max(0,Math.min(overviewPages[type],Math.ceil(searched.length/overviewPageSize)-1));overviewPages[type]=pg;
+ drawOverviewMatrix(type);
+ const start=pg*overviewPageSize,part=searched.slice(start,start+overviewPageSize);
+ const activeSort=$('overview-sort-'+type).value;
+ $('overview-rows-'+type).innerHTML=part.map(row=>{
+  const progressive=activeSort==='progressive'||activeSort==='progressive_strict';
+  const val=overviewSortScore(row,activeSort),label=progressive?'Trend':activeSort==='variation'?'Variation':activeSort==='alphabetical'?'Δz':'Δz';
+  const pretty=Number.isFinite(val)?(progressive?(val>=0?'+':'')+val.toFixed(5):val.toFixed(2)):'N/A';
+  const p=row.progressive;
+  const info=progressive?` · R² ${Number.isFinite(p.r2)?p.r2.toFixed(2):'N/A'} · reversals ${p.reversals}`:'';
+  return `<div class="overviewRow ${selected===row.f.id&&currentType===type?'selected':''}" data-id="${encodeURIComponent(row.f.id)}"><span class="rowid" title="${escapeHTML(indexName(row.f))}">${escapeHTML(indexName(row.f))}</span><small title="${escapeHTML(overviewSortDescription(type)+info)}">${label} ${pretty}${progressive&&p.reversals?' ↕':''}</small></div>`;
+ }).join('')||'<p class="tiny" style="padding:10px">No matching features</p>';
+ $('overview-rows-'+type).querySelectorAll('[data-id]').forEach(x=>x.addEventListener('click',()=>activateFromOverview(type,decodeURIComponent(x.dataset.id))));
+ $('overview-page-'+type).textContent=`${searched.length.toLocaleString()} matches · ${pg+1} / ${Math.max(1,Math.ceil(searched.length/overviewPageSize))}`;
+ $('overview-prev-'+type).disabled=pg<=0;$('overview-next-'+type).disabled=(pg+1)*overviewPageSize>=searched.length;
+}
+function redrawOverviews(){for(const type of featureTypes)redrawOverviewType(type)}
+function activateFromOverview(type,id){if(Q&&Q.view==='overview')document.body.classList.add('yaml-drilldown');if(!B.feature.some(f=>f.type===type&&f.id===id))return;currentType=type;selected=id;
+ $('search').value='';setButtons('types','type',type);$('feature-label').textContent=`Find a ${type} (ID or function)`;
+ syncSelect();drawActivity();drawLinks();redrawOverviews();$('activityplot').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function cellColor(z){if(!Number.isFinite(z))return '#d8e0e4';return z>=0?interpolate('#f7f7f7','#b2182b',Math.min(1,z/2.5)):interpolate('#2166ac','#f7f7f7',Math.max(0,1+z/2.5))}
+function escapeHTML(s){return String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;')}
+function syncSelect(){const list=B.feature.filter(f=>f.type===currentType),term=$('search').value.toLowerCase().trim(),filtered=list.filter(f=>(f.id+' '+f.name).toLowerCase().includes(term)).slice(0,300);const active=list.find(f=>f.id===selected);if(!term&&active&&!filtered.some(f=>f.id===active.id))filtered.unshift(active);$('feature').replaceChildren(...filtered.map(f=>{const o=document.createElement('option');o.value=f.id;o.textContent=indexName(f).slice(0,86);return o}));if(active&&filtered.some(f=>f.id===selected))$('feature').value=selected;else if(term){const exact=filtered.find(f=>f.id.toLowerCase()===term);if(exact)$('feature').value=exact.id;}}
+function selectFeature(id){const f=B.feature.find(f=>f.type===currentType&&f.id===id);if(!f)return;selected=id;syncSelect();drawActivity();drawLinks();redrawOverviews();}
+function selectType(type){currentType=type;selected=null;$('search').value='';setButtons('types','type',type);$('feature-label').textContent=`Find a ${type} (ID or function)`;syncSelect();if($('feature').options.length)selectFeature($('feature').value);else{drawActivity();drawLinks();redrawOverviews()}}
+function addLink(kind,id){const label=B.feature.find(f=>f.type===kind&&f.id===id);if(!label)return null;const b=document.createElement('button');b.textContent=id;b.title=label.name;b.addEventListener('click',()=>{selectType(kind);selectFeature(id);window.scrollTo({top:0,behavior:'smooth'})});return b}
+function drawLinks(){const d=B.links||{},id=selected;if(!id){$('links').textContent='';return}let relations=[];if(currentType==='gene'){relations=(d.gene_to_reaction||{})[id]||[];var target='reaction'}else if(currentType==='metabolite'){relations=(d.metabolite_to_reaction||{})[id]||[];var target='reaction'}else{relations=[...((d.reaction_to_gene||{})[id]||[]).map(x=>['gene',x]),...((d.reaction_to_metabolite||{})[id]||[]).map(x=>['metabolite',x])];var target=null}const arr=relations.map(x=>Array.isArray(x)?x:[target,x]);$('links').replaceChildren(...arr.slice(0,90).map(([type,rid])=>addLink(type,rid)).filter(Boolean));if(arr.length>90){const a=document.createElement('span');a.textContent=`+${arr.length-90} more connections`;a.className='tiny';$('links').append(a)}if(!arr.length)$('links').textContent='No supported model connections recorded for this feature.'}
+function refresh(){counts[currentMode]=Math.min(12,Math.max(2,Number($('regions').value)||6));$('regions').value=counts[currentMode];drawRegions();for(const type of featureTypes)overviewPages[type]=0;buildOverview()}
+function saveCanvas(c,name){const a=document.createElement('a');a.href=c.toDataURL('image/png');a.download=name;a.click()}
+const Q=window.GEM_QUERY_CONFIG||null;
+function applyYamlFocus(){if(!Q)return;let mode=Q.region_method;let type=Q.feature_type;
+ if(mode!=='angular'&&mode!=='circular')throw Error('Invalid YAML region method');
+ currentMode=mode;counts[mode]=Q.n_regions;setButtons('modes','mode',mode);$('nlabel').textContent=mode==='angular'?'Angular sectors':'Circular rings';$('regions').value=Q.n_regions;refresh();
+ document.body.classList.add('yaml-'+Q.view);
+ if(Q.view==='overview'){document.body.classList.add('focus-'+type);drawOverviewMatrix(type)}
+ if(Q.view==='feature'){selectType(type);selectFeature(Q.feature_id)}
+ if(Q.view==='regions'){document.querySelector('.shell>section.box:nth-of-type(2)')?.classList.add('hidden')}
+}
+async function init(){try{if(!B)throw Error('No dataset bundle loaded. Generate and place bundle.js next to index.html.');let [a,x,y,s]=await Promise.all([inflate64(B.allxy,Uint16Array),inflate64(B.samplexy,Uint16Array),inflate64(B.activity,Uint8Array),inflate64(B.signed,Int8Array)]);ALL=a;XY=x;ACT=y;SIGNED=s;
+ if(ALL.length!==2*B.nall||XY.length!==2*B.n||ACT.length!==(B.ng+B.nm)*B.n||SIGNED.length!==B.nr*B.n)throw Error('Dataset dimension mismatch.');
+ frontier=frontierIndices();$('datasetName').textContent=B.name;$('dslabel').textContent=B.name;$('statline').innerHTML=`<span>${B.nall.toLocaleString()} landscape conditions</span><span>${B.model_genes.toLocaleString()} model genes (${B.ng} mapped)</span><span>${B.nr.toLocaleString()} reactions</span><span>${B.nm.toLocaleString()} metabolites</span><span>${B.n.toLocaleString()} feature-sampled conditions</span>`;
+ ready=true;refresh();selectType('gene');applyYamlFocus();$('error').textContent='';
+}catch(e){$('error').textContent=e.message;console.error(e)}}
+$('modes').addEventListener('click',e=>{const b=e.target.closest('[data-mode]');if(!b)return;currentMode=b.dataset.mode;setButtons('modes','mode',currentMode);$('nlabel').textContent=currentMode==='angular'?'Angular sectors':'Circular rings';$('regions').value=counts[currentMode];refresh()});
+$('types').addEventListener('click',e=>{const b=e.target.closest('[data-type]');if(!b)return;selectType(b.dataset.type)});
+$('regions').addEventListener('change',refresh);
+$('search').addEventListener('input',()=>{syncSelect();});$('search').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if($('feature').options.length)selectFeature($('feature').value)}});
+$('feature').addEventListener('change',e=>selectFeature(e.target.value));
+for(const type of featureTypes){
+ $('overview-sort-'+type).addEventListener('change',()=>{overviewPages[type]=0;redrawOverviewType(type)});
+ $('overview-search-'+type).addEventListener('input',()=>{overviewPages[type]=0;redrawOverviewType(type)});
+ $('overview-search-'+type).addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();let wanted=$('overview-search-'+type).value.toLowerCase().trim();let candidates=orderedOverview(type).filter(r=>(r.f.id+' '+r.f.name).toLowerCase().includes(wanted));let exact=candidates.find(r=>r.f.id.toLowerCase()===wanted);let first=exact||candidates[0];if(first)activateFromOverview(type,first.f.id)}});
+ $('overview-prev-'+type).addEventListener('click',()=>{overviewPages[type]=Math.max(0,overviewPages[type]-1);redrawOverviewType(type)});
+ $('overview-next-'+type).addEventListener('click',()=>{overviewPages[type]++;redrawOverviewType(type)});
+ $('overview-'+type).addEventListener('click',e=>{let c=e.currentTarget,rect=c.getBoundingClientRect();let canvasY=(e.clientY-rect.top)*c.height/rect.height;let p=c._overviewPlot;if(!p||canvasY<p.top||canvasY>p.top+p.height)return;let i=Math.min(p.order.length-1,Math.floor((canvasY-p.top)/p.height*p.order.length));if(p.order[i])activateFromOverview(type,p.order[i].f.id)});
+}
+
+$('yaml-back-button').addEventListener('click',()=>{document.body.classList.remove('yaml-drilldown');$('all-feature-overviews').scrollIntoView({behavior:'smooth'})});
+$('save-region').addEventListener('click',()=>saveCanvas($('regionplot'),'GEM_'+currentMode+'_'+counts[currentMode]+'_regions.png'));
+$('save-activity').addEventListener('click',()=>saveCanvas($('activityplot'),'GEM_'+currentType+'_'+(selected||'none')+'_activity.png'));
+init();
+</script><script>
+// Allow NiceGUI to render the full biological Atlas as part of ONE scrolling page.
+(function(){if(window.parent===window)return;
+let last=0;
+function resize(){const h=Math.ceil(Math.max(document.documentElement.scrollHeight,document.body.scrollHeight));if(h!==last){last=h;window.parent.postMessage({type:'gem-exploration-iframe-height',height:h},window.location.origin==='null'?'*':window.location.origin)}}
+if('ResizeObserver' in window)new ResizeObserver(resize).observe(document.body);
+window.addEventListener('load',resize);setTimeout(resize,400);setTimeout(resize,1500);
+})();
+</script></body></html>

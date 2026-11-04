@@ -1,0 +1,67 @@
+problem:
+  case_name: pputida_product_carbon_oxygen
+  case_label: "Pseudomonas putida KT2440 / iJN1463 / C8:0 mcl-PHA \xD7 carbon efficiency\
+    \ \xD7 oxygen efficiency"
+  run_dir: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0/inputs/runs/pputida_product_carbon_oxygen
+  model_path: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0/inputs/models/pputida_product_carbon_oxygen.sbml
+  case_key: pputida_product_carbon_oxygen
+  model_id: iJN1463
+  model_fingerprint: 6a3bfcb87685041579b2bed16a84db236221e9a29b4345eb8613bedbfa71d753
+  config_hash: 167cf668363fd1d4781d
+  biomass_reaction_id: BIOMASS_KT2440_WT3
+  product_reaction_id: EX___iJN1463__C80aPHA_c
+  local_product_growth_fraction: 0.9
+  growth_constraint_fraction_of_archive_max: 0.5
+  archive_maximum_growth: 0.5860854576199805
+  growth_viability_floor: 0.29304272880999027
+  features:
+  - EX_glc__D_e
+  - EX_nh4_e
+  - EX_o2_e
+  - EX_pi_e
+  - EX_so4_e
+  feature_labels:
+    EX_glc__D_e: Exchange of D-glucopyranose.
+    EX_nh4_e: Exchange of ammonium.
+    EX_o2_e: Exchange of dioxygen.
+    EX_pi_e: Exchange of hydrogenphosphate.
+    EX_so4_e: Exchange of sulfate.
+  bounds:
+    EX_glc__D_e:
+    - 0.0
+    - 6.0
+    EX_nh4_e:
+    - 0.0
+    - 20.0
+    EX_o2_e:
+    - 0.0
+    - 20.0
+    EX_pi_e:
+    - 0.0
+    - 10.0
+    EX_so4_e:
+    - 0.0
+    - 10.0
+  product_scale: 1.7259923563773647
+  objective_names:
+  - growth_constrained_product_flux
+  - carbon_efficiency
+  - oxygen_efficiency
+  objective_directions:
+  - maximize
+  - maximize
+  - maximize
+  carbon_feature: EX_glc__D_e
+  oxygen_feature: EX_o2_e
+  carbon_demand_formula: (x_carbon-L_carbon)/(U_carbon-L_carbon)
+  oxygen_demand_formula: (x_oxygen-L_oxygen)/(U_oxygen-L_oxygen)
+  carbon_efficiency_formula: 1 - normalized_carbon_demand
+  oxygen_efficiency_formula: 1 - normalized_oxygen_demand
+  archive_additional_fba_solves_for_efficiency: 0
+  hv_reference_normalized:
+  - 0.0
+  - 0.0
+  - 0.0
+  baseline_table: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0/prepared/pputida_product_carbon_oxygen/baseline_compact.csv.gz
+  design_cache: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Product_Carbon_Oxygen_Efficiency_Benchmark_v0.1.0/inputs/runs/pputida_product_carbon_oxygen/design_cache/sobol_d21667fee5f4931b05e1.npy
+  qd_feature: EX_o2_e

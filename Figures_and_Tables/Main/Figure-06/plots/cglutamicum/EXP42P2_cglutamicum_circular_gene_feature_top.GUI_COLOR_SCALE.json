@@ -1,0 +1,16 @@
+{
+  "colors": {
+    "title": "GPR-linked relative use",
+    "min": 0,
+    "max": 1,
+    "kind": "continuous",
+    "position": "canvas top band"
+  },
+  "regions": null,
+  "title": {
+    "heading": "lcl_NC_006958_1_prot_WP_003854010_1_2470",
+    "detail": "G_lcl_NC_006958_1_prot_WP_003854010_1_2470"
+  },
+  "width": 750,
+  "height": 560
+}

@@ -1,0 +1,21 @@
+{
+  "colors": {
+    "title": "Within-feature standardized regional mean (z-score)",
+    "min": -2.5,
+    "max": 2.5,
+    "kind": "continuous",
+    "type": "gene",
+    "normalization": "fixed symmetric ±2.5 for cross-organism comparison",
+    "observed_min": -2.1181853133923783,
+    "observed_max": 2.23606797749979,
+    "feature_count": 919,
+    "rank_order": "signed full-region raw activity trend · all available regions"
+  },
+  "regions": null,
+  "title": {
+    "heading": "Genes",
+    "detail": "Angular · 6 regions"
+  },
+  "width": 470,
+  "height": 1020
+}

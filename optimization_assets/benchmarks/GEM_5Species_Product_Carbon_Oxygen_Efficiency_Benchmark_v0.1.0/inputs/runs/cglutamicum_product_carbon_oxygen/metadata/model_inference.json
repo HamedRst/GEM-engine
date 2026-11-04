@@ -1,0 +1,249 @@
+{
+  "model_id": "iCBG21FR",
+  "model_name": null,
+  "biomass": {
+    "reaction_id": "Growth",
+    "confidence": "explicit",
+    "score": 1000000000.0,
+    "margin": 1000000000.0,
+    "source": "user override"
+  },
+  "product": {
+    "reaction_id": "EX_glu__L_e",
+    "confidence": "explicit",
+    "score": 1000000000.0,
+    "margin": 1000000000.0,
+    "source": "user override"
+  },
+  "embedded_objective": {
+    "Growth": 1.0
+  },
+  "selected_optimization_mode": "growth_constrained_product",
+  "biomass_candidates": [
+    {
+      "reaction_id": "Growth",
+      "reaction_name": "",
+      "score": 159.0,
+      "reasons": [
+        "embedded biomass-like model objective",
+        "growth-related term",
+        "large biomass-like stoichiometry",
+        "consumes many amino acids",
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "RBFK",
+      "reaction_name": "Riboflavin kinase",
+      "score": 35.0,
+      "reasons": [
+        "growth-related term",
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "RBFSa",
+      "reaction_name": "Riboflavin synthase",
+      "score": 30.0,
+      "reasons": [
+        "growth-related term"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "RBFSb",
+      "reaction_name": "Riboflavin synthase",
+      "score": 30.0,
+      "reasons": [
+        "growth-related term"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "ACCOAC",
+      "reaction_name": "Acetyl-CoA carboxylase",
+      "score": 5.0,
+      "reasons": [
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "ACCOAL",
+      "reaction_name": "Acetate-CoA ligase (ADP-forming)",
+      "score": 5.0,
+      "reasons": [
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "ACGK",
+      "reaction_name": "Acetylglutamate kinase",
+      "score": 5.0,
+      "reasons": [
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "ACKr",
+      "reaction_name": "Acetate kinase",
+      "score": 5.0,
+      "reasons": [
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "ACTNabc",
+      "reaction_name": "Acetoin transport via ABC system",
+      "score": 5.0,
+      "reasons": [
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    },
+    {
+      "reaction_id": "ACTNabc1",
+      "reaction_name": "Acetoin efflux  via ABC system",
+      "score": 5.0,
+      "reasons": [
+        "ATP maintenance component"
+      ],
+      "linked_reactions": []
+    }
+  ],
+  "product_candidates": [
+    {
+      "reaction_id": "SK_lipopb_c",
+      "reaction_name": "",
+      "score": 44.0,
+      "reasons": [
+        "generic product terms: protein",
+        "sink reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "LIPOS"
+      ]
+    },
+    {
+      "reaction_id": "EX_murein5p5p5p_e",
+      "reaction_name": "Three linked disacharide pentapeptide murein units (uncrosslinked, middle of chain) exchange",
+      "score": 38.0,
+      "reasons": [
+        "generic product terms: peptide",
+        "exchange reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "MPTG2ex"
+      ]
+    },
+    {
+      "reaction_id": "EX_murein5p5p_e",
+      "reaction_name": "Two linked disacharide pentapeptide murein units (uncrosslinked, middle of chain) exchange",
+      "score": 38.0,
+      "reasons": [
+        "generic product terms: peptide",
+        "exchange reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "MPTGex"
+      ]
+    },
+    {
+      "reaction_id": "EX_murein5px3p_e",
+      "reaction_name": "Two disacharide linked murein units, pentapeptide corsslinked tripeptide (A2pm->A2pm) (middle of chain) exchange",
+      "score": 38.0,
+      "reasons": [
+        "generic product terms: peptide",
+        "exchange reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "MCTP1Bex"
+      ]
+    },
+    {
+      "reaction_id": "EX_murein5px4p_e",
+      "reaction_name": "Two disacharide linked murein units, pentapeptide crosslinked tetrapeptide (A2pm->D-ala) (middle of chain) exchange",
+      "score": 38.0,
+      "reasons": [
+        "generic product terms: peptide",
+        "exchange reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "MCTP1Aex"
+      ]
+    },
+    {
+      "reaction_id": "EX_murein5px4px4p_e",
+      "reaction_name": "Three disacharide linked murein units (pentapeptide crosslinked tetrapeptide (A2pm->D-ala) tetrapeptide corsslinked tetrapeptide (A2pm->D-ala)) (middle of chain) exchange",
+      "score": 38.0,
+      "reasons": [
+        "generic product terms: peptide",
+        "exchange reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "MCTP2Aex"
+      ]
+    },
+    {
+      "reaction_id": "SK_4hba_c",
+      "reaction_name": "",
+      "score": 26.0,
+      "reasons": [
+        "sink reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "THZPSN"
+      ]
+    },
+    {
+      "reaction_id": "SK_5drib_c",
+      "reaction_name": "",
+      "score": 26.0,
+      "reasons": [
+        "sink reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "5DOAN"
+      ]
+    },
+    {
+      "reaction_id": "SK_sheme_c",
+      "reaction_name": "",
+      "score": 26.0,
+      "reasons": [
+        "sink reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "SHCHF",
+        "SHCHF2"
+      ]
+    },
+    {
+      "reaction_id": "EX_actn__R_e",
+      "reaction_name": "EX actn R LPAREN e RPAREN",
+      "score": 20.0,
+      "reasons": [
+        "exchange reaction",
+        "terminal boundary for a produced metabolite"
+      ],
+      "linked_reactions": [
+        "ACTNabc1"
+      ]
+    }
+  ],
+  "warnings": []
+}

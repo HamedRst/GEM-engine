@@ -1,0 +1,11 @@
+schema_version: '1.0'
+document_type: exploration.batch_manifest
+batch_id: example_atlas_mixed_batch
+problem_files:
+- yeast_emp_structural.yaml
+- yeast_emp_fba.yaml
+- ecoli_b4036_gene_structural_ko.yaml
+execution:
+  order: listed
+  on_job_failure: continue
+  resume_completed: skip

@@ -1,0 +1,70 @@
+problem:
+  case_name: pputida_growth_robustness
+  case_label: Pseudomonas putida KT2440 / iJN1463 / growth x environmental robustness
+  run_dir: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0/inputs/runs/pputida_growth_robustness
+  model_path: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0/inputs/models/pputida_growth_robustness.sbml
+  model_id: iJN1463
+  model_fingerprint: 6a3bfcb87685041579b2bed16a84db236221e9a29b4345eb8613bedbfa71d753
+  config_hash: 167cf668363fd1d4781d
+  biomass_reaction_id: BIOMASS_KT2440_WT3
+  features:
+  - EX_glc__D_e
+  - EX_nh4_e
+  - EX_o2_e
+  - EX_pi_e
+  - EX_so4_e
+  feature_labels:
+    EX_glc__D_e: Exchange of D-glucopyranose.
+    EX_nh4_e: Exchange of ammonium.
+    EX_o2_e: Exchange of dioxygen.
+    EX_pi_e: Exchange of hydrogenphosphate.
+    EX_so4_e: Exchange of sulfate.
+  bounds:
+    EX_glc__D_e:
+    - 0.0
+    - 6.0
+    EX_nh4_e:
+    - 0.0
+    - 20.0
+    EX_o2_e:
+    - 0.0
+    - 20.0
+    EX_pi_e:
+    - 0.0
+    - 10.0
+    EX_so4_e:
+    - 0.0
+    - 10.0
+  growth_scale: 0.5860854576199805
+  product_scale: 0.2909727127630133
+  objective_1_name: exact_nominal_maximum_growth
+  objective_2_name: exact_worst_case_environmental_stressed_growth_live__surrogate_derived_in_50k_prior
+  objective_2_formula: min_s growth(T_s(x)); s in {carbon, oxygen, nitrogen, phosphate}
+  legacy_objective_2_column: product_flux
+  raw_robust_growth_column: robust_growth
+  stress_classes:
+  - carbon
+  - oxygen
+  - nitrogen
+  - phosphate
+  stress_groups:
+    carbon:
+    - EX_glc__D_e
+    oxygen:
+    - EX_o2_e
+    nitrogen:
+    - EX_nh4_e
+    phosphate:
+    - EX_pi_e
+  stress_fraction_toward_lower_bound: 0.5
+  stress_definition: in-domain reduction of only variables already represented in
+    the frozen landscape; objective 2 is worst-case growth across the four classes
+  prior_robustness_is_surrogate_derived: true
+  live_robustness_is_exact_fba: true
+  hv_reference_normalized:
+  - 0.0
+  - 0.0
+  baseline_table: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0/prepared/pputida_growth_robustness/baseline_compact.csv.gz
+  design_cache: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Environmental_Robustness_Benchmark_v0.2.0/inputs/runs/pputida_growth_robustness/design_cache/sobol_d21667fee5f4931b05e1.npy
+  qd_feature: EX_o2_e
+  case_key: pputida_growth_robustness

@@ -1,0 +1,40 @@
+{
+  "figure": "SI-Landscape",
+  "scientific_source": "ONLY_ORIGINAL_LANDSCAPE_GENERATION",
+  "generated_utc": "2026-10-30T01:18:36.500738+00:00",
+  "all_15_runs_content_validated": true,
+  "original_run_provenance_certified": false,
+  "provisional_reason": "Source path labeled _CANDIDATE_UNVERIFIED; independent model/seed provenance evidence not supplied",
+  "species": [
+    "cglutamicum",
+    "cho",
+    "ecoli_antiepex",
+    "pputida",
+    "yeast"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "evaluations": [
+    10,
+    25,
+    50,
+    100,
+    250,
+    500,
+    1000,
+    2500,
+    5000,
+    10000,
+    25000,
+    50000
+  ],
+  "hypervolume": "Exact dominated 2D HV, same seed 50K min-max bounds, maximize biomass_flux and product_flux, fixed reference 0/0",
+  "time_panel_mode": "worker",
+  "wall_time_source": "Original measured macOS /usr/bin/time endpoints; intermediate wall time only if original logged start and completion timestamps verified",
+  "worker_time_source": "Sum of original sample-level runtime_seconds, not parallel wall time",
+  "results": "outputs",
+  "source_integrity_manifest": "metadata/SOURCE_AND_METRIC_AUDIT.csv"
+}

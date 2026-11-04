@@ -1,0 +1,118 @@
+{
+  "template_id": "NONOXIDATIVE_PPP",
+  "name": "Nonoxidative pentose phosphate interconversions",
+  "scope": "Pentose-utilizing direction: 3 Ru5P to 2 F6P + GAP through RPI, RPE, TKT1, TAL, TKT2; no oxidative phase.",
+  "variant_id": "canonical_v1",
+  "release_version": "1.0.0",
+  "curation_status": "provisional_source_checked",
+  "validation_status": "automated_positive_negative_controls; independent human expert review pending",
+  "complete_claims_enabled": false,
+  "license": "Original Atlas definitions; source references only, no KEGG/MetaCyc data redistributed",
+  "reference_urls": [
+    "https://iubmb.qmul.ac.uk/enzyme/EC2/2/1/1.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC2/2/1/2.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC5/1/3/1.html",
+    "https://iubmb.qmul.ac.uk/enzyme/EC5/3/1/6.html",
+    "https://www.genome.jp/module/M00007"
+  ],
+  "required_step_groups": [
+    "RPI",
+    "RPE",
+    "TKT1",
+    "TAL",
+    "TKT2"
+  ],
+  "step_logic": "All groups AND; nested two-element group OR of direct step versus listed AND substeps",
+  "steps": {
+    "RPI": {
+      "step_id": "RPI",
+      "equation": "ru5p__D -> r5p",
+      "stoichiometry": {
+        "ru5p__D": -1,
+        "r5p": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC5/3/1/6.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "RPE": {
+      "step_id": "RPE",
+      "equation": "ru5p__D -> xu5p__D",
+      "stoichiometry": {
+        "ru5p__D": -1,
+        "xu5p__D": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC5/1/3/1.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "TKT1": {
+      "step_id": "TKT1",
+      "equation": "xu5p__D + r5p -> g3p + s7p",
+      "stoichiometry": {
+        "xu5p__D": -1,
+        "r5p": -1,
+        "g3p": 1,
+        "s7p": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC2/2/1/1.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "TAL": {
+      "step_id": "TAL",
+      "equation": "s7p + g3p -> f6p + e4p",
+      "stoichiometry": {
+        "s7p": -1,
+        "g3p": -1,
+        "f6p": 1,
+        "e4p": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC2/2/1/2.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    },
+    "TKT2": {
+      "step_id": "TKT2",
+      "equation": "xu5p__D + e4p -> f6p + g3p",
+      "stoichiometry": {
+        "xu5p__D": -1,
+        "e4p": -1,
+        "f6p": 1,
+        "g3p": 1
+      },
+      "alternatives": [],
+      "reference_urls": [
+        "https://iubmb.qmul.ac.uk/enzyme/EC2/2/1/1.html"
+      ],
+      "direction": "as written",
+      "protonation_policy": "H+ differences ignored; water and all other coefficients exact"
+    }
+  },
+  "key_discriminators": [
+    "TKT1",
+    "TAL",
+    "TKT2"
+  ],
+  "compartment_policy": "All participating non-proton compounds in one compartment; exact model intermediate IDs shared between steps; transport routes not inferred",
+  "normalization": "Coefficients proportional; ignores only proton stoichiometry, retains water, carbon and redox cofactors",
+  "false_positive_controls": [
+    "No reaction-name or EC-only match",
+    "No currency-only connectivity",
+    "L-lactate identity required",
+    "No cross-compartment joins"
+  ],
+  "optional_steps": []
+}

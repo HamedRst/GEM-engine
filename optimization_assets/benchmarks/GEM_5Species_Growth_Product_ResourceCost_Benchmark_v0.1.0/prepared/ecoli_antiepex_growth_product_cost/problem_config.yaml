@@ -1,0 +1,67 @@
+problem:
+  case_name: ecoli_antiepex_growth_product_cost
+  case_label: Escherichia coli / iJO1366 antiEpEX-scFv / growth + antiEpEX-scFv +
+    resource efficiency
+  run_dir: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0/inputs/runs/ecoli_antiepex_growth_product_cost
+  model_path: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0/inputs/models/ecoli_antiepex_growth_product_cost.json
+  case_key: ecoli_antiepex_growth_product_cost
+  model_id: iJO1366_producing_antiEpEX-scFv
+  model_fingerprint: 90707eee31f26dc81416fb575c7a0040f6ab0673014642f3dd4a306220b6a2f6
+  config_hash: b2459014137055adb0a3
+  biomass_reaction_id: BIOMASS_Ec_iJO1366_core_53p95M
+  product_reaction_id: DM_scFvAA_c
+  minimum_growth_fraction: 0.9
+  features:
+  - EX_cbl1_e
+  - EX_glc__D_e
+  - EX_nh4_e
+  - EX_o2_e
+  - EX_pi_e
+  - EX_so4_e
+  feature_labels:
+    EX_cbl1_e: Cob(I)alamin exchange
+    EX_glc__D_e: D-Glucose exchange
+    EX_nh4_e: Ammonia exchange
+    EX_o2_e: O2 exchange
+    EX_pi_e: Phosphate exchange
+    EX_so4_e: Sulfate exchange
+  bounds:
+    EX_cbl1_e:
+    - 0.0
+    - 0.01
+    EX_glc__D_e:
+    - 0.0
+    - 10.0
+    EX_nh4_e:
+    - 0.0
+    - 20.0
+    EX_o2_e:
+    - 0.0
+    - 20.0
+    EX_pi_e:
+    - 0.0
+    - 20.0
+    EX_so4_e:
+    - 0.0
+    - 20.0
+  growth_scale: 0.9654057799145532
+  product_scale: 0.03308888185231348
+  objective_names:
+  - maximum_growth
+  - growth_constrained_product_flux
+  - resource_efficiency
+  objective_directions:
+  - maximize
+  - maximize
+  - maximize
+  reported_cost_objective: normalized_resource_burden (minimize)
+  resource_cost_formula: mean_j((x_j-L_j)/(U_j-L_j))
+  resource_efficiency_formula: 1 - normalized_resource_burden
+  archive_additional_fba_solves_for_cost: 0
+  hv_reference_normalized:
+  - 0.0
+  - 0.0
+  - 0.0
+  baseline_table: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0/prepared/ecoli_antiepex_growth_product_cost/baseline_compact.csv.gz
+  design_cache: /Users/smdoliveira/Desktop/GEM-Hamed/GEM_5Species_Growth_Product_ResourceCost_Benchmark_v0.1.0/inputs/runs/ecoli_antiepex_growth_product_cost/design_cache/sobol_5a43007b5b132ab7702c.npy
+  qd_feature: EX_o2_e
